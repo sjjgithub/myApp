@@ -1,0 +1,43 @@
+<ion-view title="分类首页">
+<ion-content class="body-bggrey detail bg-white has-tabs" scroll="false">
+    <ion-content class="classify text-center fs-prim">
+   <ul >
+       <!--<li class="active">全部分类</li>-->
+       <li ng-repeat="fenlei in fenlei1"ng-bind="fenlei.gcName"ng-class="{'active':$index==actindex}"ng-click="onfenlei($index)"></li>
+   </ul>
+    </ion-content>
+    <ion-content class="classify-con">
+    	<div class="img-top">
+    		<img src="img/切图/P3分类首页/drawable-hdpi/banner.png"/>
+    	</div>
+    	<div class="feilei-goods clearfix  borderb">
+    		<div class="feilei-goods-imgwrap col col-33 fl">
+    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
+    			<p class="fs-tip c-tip">全部</p>
+    		</div>
+    		<div class="feilei-goods-imgwrap col col-33 fl">
+    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
+    			<p class="fs-tip c-tip">全部</p>
+    		</div>
+    		<div class="feilei-goods-imgwrap col col-33 fl">
+    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
+    			<p class="fs-tip c-tip">全部</p>
+    		</div>
+    		<div class="feilei-goods-imgwrap col col-33 fl">
+    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
+    			<p class="fs-tip c-tip">全部</p>
+    		</div>
+    	</div>
+    	<div class="feilie-pinpai">
+    		<div class="feilei-pinpai-title">
+    			<h3 class="fs-prim borderb">分类品牌</h3>
+    		</div>
+    		<div class="feilei-feilei-imgwrap col col-33">
+    			<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png" alt="" />
+    		</div>
+    	</div>
+    </ion-content>
+</ion-content>
+<!--ion-content ed-->
+</ion-view>
+

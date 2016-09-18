@@ -1,0 +1,20 @@
+<ion-view title="搜索首页">		
+    <ion-content class="bg-grey">
+     <div class="index">
+		<div class="list-result bg-grey">
+		<div class="item item-divider bg-white result-item-divider noborder">热门搜索</div>
+		<div class="xian"><hr width="80%"/></div>
+		<div class="key bg-white padding">
+			<a class="btn-key btn-small"ng-repeat="key in keys.keys"ng-bind="key"ng-class="{'btn-mid':key.length>4}"ng-class="{'btn-big':key.length>7}"ui-sref="search.result({keywords:key})"></a>
+		</div>
+		</div>
+		<div class="list-history bg-grey ">
+		<div class="item item-divider bg-white result-item-divider noborder">历史搜索记录</div>
+		<div class="xian"><hr width="80%"/></div>
+		<div class="item history">双肩包</div>
+		<div class="item history">流苏裙</div>
+		</div>
+		<div class="text-center clracrHistory"><button class="button btn-outline">清除历史搜索</button></div>
+		</div>
+    </ion-content>
+</ion-view>

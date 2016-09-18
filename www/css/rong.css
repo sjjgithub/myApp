@@ -1,0 +1,39 @@
+body{font-size: 12px;font-family:roboto, \65B9\6B63\5170\4EAD\7EA4\9ED1\7B80\4F53, \5FAE\8F6F\96C5\9ED1, "微软雅黑", Helvetica, Arial, sans-serif;
+    background:url(../img/切图/P7登录/drawable-hdpi/bg.png) no-repeat left top;background-size:100% auto;padding-left: 4em;padding-right: 4em;padding-bottom: 50px;}
+.text-center{text-align: center;}
+a{text-decoration: none;}
+a:hover{color:#48abb5;}
+.r{float:right;}
+.l{float:left;}
+.bar{background-size: 100% 0;}
+.bar.bar-header.bar-stable{background-color: transparent;border-bottom: none !important;}
+.button-icon{font-size: 25px;color:#fff;padding:5px 8px;}
+.content{padding-top: 50px;padding-left: 5%;padding-right: 5%;}
+.dl{background-color: transparent;border-top: none;border-left: none;border-right: none;height:50px;margin-top: 20px;border-bottom: 1px solid #b6b7b7;}
+.dl .icon{height:22px;width: 22px;}
+.dl .icon img{height:100%;width: auto;}
+.dl input::-webkit-input-placeholder{font-size: 14px;color:#fff;}
+.dl_list .pMess{height:50px;line-height: 50px;margin-top: 5px;}
+.dl_list .pMess .pull-right{color:#fff;font-size: 14px;}
+.button.button-royal1{height:30px;line-height: 30px;width: 100px;color:#fff;border-radius: 30px;background-color: #b3996b;border:1px solid #b3996b;}
+.button.button-royal2{height:30px;line-height: 30px;width: 100px;color:#fff;border-radius: 30px;background-color:transparent;border:1px solid #b6b7b7;}
+.dl_list .pTrh{height:60px;line-height: 60px;color:#fff;font-size: 14px;margin-top: 30px;}
+.dl_list table td{height:45px;}
+.dl_list table td img{height:100%;width: auto;}
+.dl_list table td:last-child{text-align: right;}
+/*我的关注*/
+.wrap{padding:1rem;}
+.banner{margin-top: 43px;}
+.banner img{width:100%;height: auto;}
+.section{padding-top: 5px;font-size: 14px;color:#666;}
+.section p{line-height: 25px;margin: 0;}
+/*新增收貨地址*/
+.sh_list{padding-left:1rem;padding-right: 1rem;background-color: #fff;}
+.sh_list .sh{height:60px;border-bottom: 1px solid #e2e2e2;padding: 0 0.5rem;border-top: none;border-left: none;border-right: none;}
+.sh_list .sh p{width: 100%;font-size: 14px;color:#000;position: relative;}
+.sh_list .sh input{display: inline;padding-right: 0;padding-left: 0.2rem;}
+.sh_list .sh .pull-right{position: absolute;right:0;top:0.5rem;color:#999;}
+.sh_list .sh .icon{height:25px;width: 25px;display: inline-block;}
+.sh_list .sh .pull-right img{height:100%;width: auto;}
+.button.button-block{background-color: #535454;color:#fff;}
+.padding{padding: 2rem !important;}

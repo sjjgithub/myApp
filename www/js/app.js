@@ -78,8 +78,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 	 		str="取消收藏";
 	 	}
 	 }
-  $ionicSlideBoxDelegate.update();
-  $ionicSlideBoxDelegate.loop(true);
+	 
   $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParamss){
                 if(toState.name=="tab.myinfo"||toState.name=="tab.pinpai"||toState.name=="tab.shopCart"){               

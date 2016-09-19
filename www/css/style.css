@@ -246,11 +246,12 @@ hr {
 .radius {
   border-radius: 1rem;
 }
-.slider-pager-page {
-  font-size: 0.5rem;
+.slider-pager {
+  bottom: 0.6rem;
 }
-.rexiaoslide .slider-pager-page i {
-  color: #ffffff;
+.slider-pager .slider-pager-page {
+  font-size: 0.5rem;
+  color: #fff;
 }
 .checkbox input,
 .checkbox-icon {
@@ -611,9 +612,6 @@ ion-nav-view {
   background-size: cover;
   background-image: url(../img/切图/P3-2商品详情/drawable-hdpi/bg1.png);
 }
-.detail .slider-pager {
-  bottom: 0.6rem;
-}
 .detail .card {
   margin: 0;
 }
@@ -863,12 +861,13 @@ ion-nav-view {
   position: relative;
   z-index: 9;
 }
-.limit-list .limit-list-imgbg {
-  width: 50%;
+.limit-list .qianggou {
   position: absolute;
-  top: 0;
   z-index: 10;
+  width: 50%;
+  height: auto;
   right: 0;
+  top: 0;
 }
 .limit-list-goodswrap {
   padding-right: 5px;
@@ -1160,8 +1159,9 @@ ion-nav-view {
 .pinpaiguan-list .pinpaiguan-list-box {
   padding-bottom: 1.5rem;
 }
-.pinpaiguan-list .pinpaiguan-list-box .slider-pager {
+.pinpaiguan-list .pinpaiguan-list-box .slider-pager .slider-pager-page {
   bottom: 10px;
+  color: #000000;
 }
 .pinpaitehui h3:before,
 .pinpaitehui h3:after {

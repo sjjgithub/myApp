@@ -17,7 +17,6 @@
 		var starTime=opt.star;
 		var endTime=opt.end;
 		var intDiff=endTime-starTime;
-		
 		window.setInterval(function(){
 					hour=0,
 					minute=0,

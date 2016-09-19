@@ -15,7 +15,7 @@ $ionicSlideBoxDelegate.update();
               			var star= $scope.xianshifoods[0].startTime;
                     	var end= $scope.xianshifoods[0].endTime;
                        	var dom=$scope.xianshifoods[0].xianshiId;                                                        						timer({"dom":"#xianshi"+dom,"star":star,"end":end})    
-                    $scope.quans=data.data.couponRecommendList;   	
+                    $scope.quans=data.data.couponRecommendList;  
                 })//广告 券 限时	
     $http.get("data.php",{params:{url:$scope.homeListApi}})
                 .success(function(data){  
@@ -52,13 +52,7 @@ $ionicSlideBoxDelegate.update();
                         })
                         .error(function(){
                             alert("喜欢banner请求失败")
-                        })//喜欢       
-            $scope.banner6Api=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=6"; 
-        $http.get("data.php", {params: {url:$scope.banner6Api}})
-                        .success(function(data){
-                           console.log(data)
-                        })
-                        
+                        })//喜欢                               
                        scrollX({dom:".scrolx"})
                                       
 })

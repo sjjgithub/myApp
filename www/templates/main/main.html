@@ -18,22 +18,28 @@
         		<img src="img\切图\P2首页\drawable-hdpi\icon-5.png"><br>
         		<span class="fs-min c-most">精品推荐</span>
         	</div>
-        	<div class="col col-25 text-center">
-        		<img src="img\切图\P2首页\drawable-hdpi\icon8.png"ui-sref="rexiao"><br>
+        	<div class="col col-25 text-center"ui-sref="rexiao">
+        		<img src="img\切图\P2首页\drawable-hdpi\icon8.png"><br>
         		<span class="fs-min c-most">热销推荐</span>
         	</div>
-        	<div class="col col-25 text-center">
+        	<div class="col col-25 text-center"ui-sref="xinpin">
         		<img src="img\切图\P2首页\drawable-hdpi\icon-4.png"><br>
         		<span class="fs-min c-most">新品推荐</span>
         	</div>
-            
-            <div class="col col-25 text-center"><img src="img\切图\P2首页\drawable-hdpi\icon-2.png"><br><span class="fs-min c-most">品牌馆</span></div>        
         </div>
         <div class="row">
-            <div class="col col-25 text-center"><img src="img\切图\P2首页\drawable-hdpi\icon-2.png"><br><span class="fs-min c-most">品牌馆</span></div>
-            <div class="col col-25 text-center"><img src="img\切图\P2首页\drawable-hdpi\icon-1.png"><br><span class="fs-min c-most">购物中心</span></div>
-            <div class="col col-25 text-center"><img src="img\切图\P2首页\drawable-hdpi\icon6.png"><br><span class="fs-min c-most">领券</span></div>
-            <div class="col col-25 text-center"><img src="img\切图\P2首页\drawable-hdpi\icon7.png"><br><span class="fs-min c-most">卖家秀</span></div>           
+            <div class="col col-25 text-center"ui-sref="tab.pinpai">
+            	<img src="img\切图\P2首页\drawable-hdpi\icon-2.png"><br>
+            	<span class="fs-min c-most">品牌馆</span></div>
+            <div class="col col-25 text-center">
+            	<img src="img\切图\P2首页\drawable-hdpi\icon-1.png"><br>
+            	<span class="fs-min c-most">购物中心</span></div>
+            <div class="col col-25 text-center">
+            	<img src="img\切图\P2首页\drawable-hdpi\icon6.png"><br>
+            	<span class="fs-min c-most">领券</span></div>
+            <div class="col col-25 text-center">
+            	<img src="img\切图\P2首页\drawable-hdpi\icon7.png"><br>
+            	<span class="fs-min c-most">卖家秀</span></div>           
         </div>
     </section>
 <!-- fenlei ed-->
@@ -84,7 +90,7 @@
         </div>
     </section>
 <!-- 抵用券-->
-    <section class="quan"ng-if="quans">
+    <section class="quan"ng-if="quans.length>0">
     	<img src="{{banner_img+bannerQuan[0].advSlidePic}}" class="banner-img"/>
         <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;">
             <span class="xixian"><span class="cuxian">抵用券推荐</span></span>

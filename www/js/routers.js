@@ -102,6 +102,12 @@ angular.module('starter')
 		        templateUrl: 'templates/main/jingpin.html',
 		       	controller: 'JingpinCtrl'
 		   })
+			.state("xinpin",{
+		    	url:"/xinpin",
+		    		params:{"goodsId":null},		    		
+		        templateUrl: 'templates/main/xinpin.html',
+		       	controller: 'XinpinCtrl'
+		   })
 			.state("rexiao",{
 		    	url:"/rexiao",
 		    		params:{"goodsId":null},		    		

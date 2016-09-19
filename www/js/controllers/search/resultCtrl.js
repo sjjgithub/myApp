@@ -21,8 +21,9 @@ angular.module('starter.controllers')
 				$scope.stores=data.data;
 				
 			})//获取店铺ed
-			$scope.ordByIt=function(even,path1,path2,path3){
+			$scope.ordByIt=function(even,scope){
 				var ordtype=$(even.target).index();
+				
 				if($scope.ordtype==ordtype){
 						return;
 				}else{

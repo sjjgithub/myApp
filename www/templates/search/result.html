@@ -12,9 +12,9 @@
 		</li>
 		</ul>
 		<div class="flex text-center ord-title">
-			<span ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==0}">默认排序</span>
-			<span ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==1}">热销</span>
-				<span class="ord-price"ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==2}">价格
+			<span ng-click="ordByIt($event,path1,path2,path3)"ng-class="{'ordactive':ordtype==0}">默认排序</span>
+			<span ng-click="ordByIt($event,path1,path2,path3)"ng-class="{'ordactive':ordtype==1}">热销</span>
+				<span class="ord-price"ng-click="ordByIt($event,path1,path2,path3)"ng-class="{'ordactive':ordtype==2}">价格
 					<div class="updown"ng-click="pricClick($event)">
 						<i  class="icon ion-ios-arrow-up picup" ></i>
 						<i  class="icon ion-ios-arrow-down picdown"></i>

@@ -8,8 +8,10 @@ angular.module('starter.controllers')
   //$scope.$on('$ionicView.enter', function(e) {
   //});
   
-	$scope.tosearch=function(){
-		
+	$scope.tosearch=function(){		
 		$state.go("search.index");
+	}
+	$scope.toinfo=function(){
+		$state.go("info");
 	}
 });

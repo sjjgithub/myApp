@@ -11,14 +11,14 @@
 		})
 	});
 	}
-
+	//倒计时
 	function timer(opt){
 		var dom=opt.dom;
 		var starTime=opt.star;
 		var endTime=opt.end;
 		var intDiff=endTime-starTime;
+		
 		window.setInterval(function(){
-
 					hour=0,
 					minute=0,
 					second=0;//时间默认值
@@ -29,10 +29,47 @@
 			}
 			if (minute <= 9) minute = '0' + minute;
 			if (second <= 9) second = '0' + second;
-			//$('#day_show').html(day+"天");
+			//$('#day_show').html(day+"天");			
 			$(opt.dom +' .hour_show').html('<s></s>'+hour);
 			$(opt.dom +' .minute_show').html('<s></s>'+minute);
 			$(opt.dom +' .second_show').html('<s></s>'+second);
 			intDiff--;
 		}, 1000);
+	}
+	//左右滑动
+	
+	function scrollX(opt){
+		var interId=window.setInterval(function(){
+		var startX = 0;  
+		var startY = 0;  
+		
+var $gallery =$(opt.dom); 
+$gallery.on("touchstart", function(e) {  	
+     startX = e.originalEvent.changedTouches[0].pageX;  
+     startY = e.originalEvent.changedTouches[0].pageY;     
+});  
+  
+$gallery.on("touchmove", function(e) {  
+    var X = e.originalEvent.changedTouches[0].pageX - startX;  
+    var Y = e.originalEvent.changedTouches[0].pageY - startY;  
+      
+    if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {  
+    	
+        var cur_scroll = $(this).scrollLeft();  
+        $(this).scrollLeft(parseInt(cur_scroll) - X);  
+        e.preventDefault();  
+        e.stopPropagation();  
+    }  
+    else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) { 
+    	
+        var cur_scroll = $(this).scrollLeft();  
+      
+        $(this).scrollLeft(parseInt(cur_scroll) - X);  
+        
+        e.preventDefault();  
+        e.stopPropagation();  
+    }   
+	});  
+		clearInterval(interId)
+		},1000)				
 	}

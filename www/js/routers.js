@@ -50,7 +50,17 @@ angular.module('starter')
     controller: 'TabsearchCtrl'
   })
   // Each tab has its own nav history stack:
-			.state('search', {
+			
+  .state('tab.main', {
+    url: '/main',
+    views: {
+      'tab-main': {
+        templateUrl: 'templates/main/main.html',
+       	controller: 'MainCtrl'
+      }
+    }
+  })
+  			.state('search', {
 		    url: '/search',
 		    abstract: true,
 		    templateUrl: 'templates/search/search-index.html',
@@ -74,16 +84,30 @@ angular.module('starter')
 		        templateUrl: 'templates/main/detail.html',
 		       	controller: 'DetailCtrl'
 		    })
-  .state('tab.main', {
-    url: '/main',
-    views: {
-      'tab-main': {
-        templateUrl: 'templates/main/main.html',
-       	controller: 'MainCtrl'
-      }
-    }
-  })
-  			
+			.state("info",{
+		    	url:"/info",
+		    		params:{"goodsId":null},		    		
+		        templateUrl: 'templates/main/info.html',
+		       	controller: 'InfoCtrl'
+		   })
+			.state("limitTime",{
+		    	url:"/limitTime",
+		    		params:{"goodsId":null},		    		
+		        templateUrl: 'templates/main/limitTime.html',
+		       	controller: 'LimitTimeCtrl'
+		   })
+			.state("jingpin",{
+		    	url:"/jingpin",
+		    		params:{"goodsId":null},		    		
+		        templateUrl: 'templates/main/jingpin.html',
+		       	controller: 'JingpinCtrl'
+		   })
+			.state("rexiao",{
+		    	url:"/rexiao",
+		    		params:{"goodsId":null},		    		
+		        templateUrl: 'templates/main/rexiao.html',
+		       	controller: 'RexiaoCtrl'
+		   })
 	.state('tab.fenlei', {
     url: '/fenlei',
     views: {

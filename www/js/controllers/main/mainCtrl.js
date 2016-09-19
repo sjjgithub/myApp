@@ -1,65 +1,64 @@
 angular.module('starter.controllers')
 .controller('MainCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover) {
-$scope.baneerApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=1";
-$scope.xisnhiApi=$rootScope.path+"/eland/api/elandXianshi/getXianshiBuy";
-$scope.xinpinApi=$rootScope.path+ "/eland/api/elandActivity/newRecommend?memberId=1&&pageSize=4&&pageIndex=1";              
-$scope.quanApi=$rootScope.path+"/eland/api/elandCoupon/getRecommendCoupon?memberId=0"; 
-$scope.weekApi=$rootScope.path+ "/eland/api/elandActivity/weekRecommend?memberId=1&&pageSize=4&&pageIndex=1";
-$scope.hotApi=$rootScope.path+ "/eland/api/elandActivity/hotRecommend?memberId=1&&pageSize=4&&pageIndex=1";  
-$scope.loveApi=$rootScope.path+ "/eland/api/elandLabel/guessYourLike?memberId=1&&pageSize=4&&pageIndex=1";
+$scope.homeApi=$rootScope.path+"/eland/api/elandHome/getHomePage?memberId=30&&apName=1&&count=3";
+$scope.homeListApi=$rootScope.path+"/eland/api/elandHome/getHomeRecommend?memberId=30&&pageSize=6&&pageIndex=1"
+$scope.bannerQuanApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=2"; 
+$scope.bannerJingpinApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=3"; 
+$scope.bannerRexiaoApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=4"; 
+$scope.bannerLoveApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=5"; 
 $ionicSlideBoxDelegate.update();
-        $http.get("data.php",{params:{url:$scope.baneerApi}})
+ 	$http.get("data.php",{params:{url:$scope.homeApi}})
                 .success(function(data){  
                 	console.log(data);
-                	$scope.banners=data.data;
-                })//top广告		
-                $http.get("data.php", {params: {url:$scope.xisnhiApi}})
-                        .success(function (data){
-                            console.log(data);
-                            $scope.xianshifoods = data.data;                          
-                                var star= $scope.xianshifoods[0].startTime;
-                                var end= $scope.xianshifoods[0].endTime;
-                                var dom=$scope.xianshifoods[0].xianshiId;                                                        						timer({"dom":"#xianshi"+dom,"star":star,"end":end})
-                          
-                        })
-                        .error(function () {                           	
-                        	console.log(shcemUtil)
-                        })//限时抢购
-                $http.get("data.php", {params: {url:$scope.quanApi}})
+              		$scope.banners=data.data.advlist;
+              		$scope.xianshifoods=data.data.xianshiList;
+              			var star= $scope.xianshifoods[0].startTime;
+                    	var end= $scope.xianshifoods[0].endTime;
+                       	var dom=$scope.xianshifoods[0].xianshiId;                                                        						timer({"dom":"#xianshi"+dom,"star":star,"end":end})    
+                    $scope.quans=data.data.couponRecommendList;   	
+                })//广告 券 限时	
+    $http.get("data.php",{params:{url:$scope.homeListApi}})
+                .success(function(data){  
+                	console.log(data);                         	
+                    $scope.newfoods=data.data.newRecommendList;					
+					$scope.weekfoods=data.data.weekRecommendList;
+					$scope.hotgoods =data.data.hotRecommendList;  
+					$scope.youlove=data.data.totalLikeList;  
+                })//list	            
+        $http.get("data.php", {params: {url:$scope.bannerQuanApi}})
                         .success(function(data){
-                        	console.log(data);
-                            $scope.quans = data.data;
+                            $scope.bannerQuan = data.data;
                         })
                         .error(function(){
-                            alert("券数据请求失败")
-                        })//券        
-                $http.get("data.php", {params: {url:$scope.xinpinApi}})
+                            alert("券banner请求失败")
+                        })//券   
+        $http.get("data.php", {params: {url:$scope.bannerJingpinApi}})
                         .success(function(data){
-                            $scope.newfoods = data.data;
+                            $scope.bannerJingpin = data.data;
                         })
                         .error(function(){
-                            alert("新品推荐数据请求失败")
-                        })//新品推荐
-                $http.get("data.php", {params: {url:$scope.weekApi}})
+                            alert("精品banner请求失败")
+                        })//精品  
+        $http.get("data.php", {params: {url:$scope.bannerRexiaoApi}})
                         .success(function(data){
-                            $scope.weekfoods = data.data;                    
+                            $scope.bannerRexiao = data.data;
                         })
                         .error(function(){
-                            alert("每周更新数据请求失败")
-                        })//每周更新
-                $http.get("data.php", {params: {url:$scope.hotApi}})
+                            alert("热销banner请求失败")
+                        })//热销  
+        $http.get("data.php", {params: {url:$scope.bannerLoveApi}})
                         .success(function(data){
-                            $scope.hotgoods = data.data;                      
+                            $scope.bannerLove = data.data;
                         })
                         .error(function(){
-                            alert("热销推荐数据请求失败")
-                        })//热销
-                $http.get("data.php", {params: {url:$scope.loveApi}})
+                            alert("喜欢banner请求失败")
+                        })//喜欢       
+            $scope.banner6Api=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=6"; 
+        $http.get("data.php", {params: {url:$scope.banner6Api}})
                         .success(function(data){
-                            $scope.youlove = data.data;
+                           console.log(data)
                         })
-                        .error(function(){
-                            alert("猜你喜欢数据请求失败")
-                        })//猜你喜欢
-                
+                        
+                       scrollX({dom:".scrolx"})
+                                      
 })

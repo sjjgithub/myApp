@@ -186,6 +186,10 @@ del {
 .button[disabled] {
   opacity: 1;
 }
+.banner-img {
+  width: 100%;
+  height: auto;
+}
 .shoucang {
   position: absolute;
   right: 0.75rem;
@@ -199,7 +203,7 @@ del {
 .icon-img-nav {
   width: 1rem;
   height: auto;
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 .icon-img-big {
   width: 1.2rem;
@@ -656,7 +660,6 @@ ion-nav-view {
   height: 4.5rem;
 }
 .classify {
-  height: 100vh;
   width: 30vw;
   font-size: 0.7rem;
   background-color: #e0e0e0;
@@ -848,9 +851,6 @@ ion-nav-view {
 }
 .show-goods-bottom i {
   margin-right: 10px;
-}
-.limit-list {
-  margin-top: 0.5rem;
 }
 .limit-list .col {
   padding-right: 5px;

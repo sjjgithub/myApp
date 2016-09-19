@@ -31,8 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    
+      cordova.plugins.Keyboard.disableScroll(true);    
     };
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -51,22 +50,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   $rootScope.$on('loading:hide', function() {
     $ionicLoading.hide()
   })
+  //页面刷新
+  $rootScope.doRefresh=function(){
+  	
+  }
   //后退
     $rootScope.goBack = function () {
-    	alert("back")
+    	alert("back");
       $ionicHistory.goBack();
       $ionicViewSwitcher.nextDirection("back");
     }
   });
   //返回顶部
    $rootScope.scrollTop  = function () {
-    	$ionicScrollDelegate.scrollTop();
-    }
+    	$ionicScrollDelegate.scrollTop(true);
+   }
+  //收藏
 	 $rootScope.collectionIt=function(e,type,id){
 	 	angular.element(e.target).toggleClass("ion-android-favorite-outline");
 	 	angular.element(e.target).toggleClass("ion-android-favorite");
+	 	var str=""
+	 	if(angular.element(e.target).attr("shoucang")){
+	 		angular.element(e.target).attr("shoucang")=false;
+	 		str="收藏成功";
+	 	}else{
+	 		angular.element(e.target).attr("shoucang")=true;
+	 		str="取消收藏";
+	 	}
 	 }
-	
   $ionicSlideBoxDelegate.update();
   $ionicSlideBoxDelegate.loop(true);
   $rootScope.$on('$stateChangeStart',

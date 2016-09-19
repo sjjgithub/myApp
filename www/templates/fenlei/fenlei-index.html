@@ -1,12 +1,12 @@
 <ion-view title="分类首页">
-<ion-content class="body-bggrey detail bg-white has-tabs" scroll="false">
-    <ion-content class="classify text-center fs-prim">
+<ion-content class="body-bggrey detail bg-white has-footer" scroll="false">
+    <ion-content class="classify text-center fs-prim"scrollbar-y="false">
    <ul >
        <!--<li class="active">全部分类</li>-->
        <li ng-repeat="fenlei in fenlei1"ng-bind="fenlei.gcName"ng-class="{'active':$index==actindex}"ng-click="onfenlei($index)"></li>
    </ul>
     </ion-content>
-    <ion-content class="classify-con">
+    <ion-content class="classify-con"scrollbar-y="false">
     	<div class="img-top">
     		<img src="img/切图/P3分类首页/drawable-hdpi/banner.png"/>
     	</div>

@@ -1,8 +1,8 @@
 <ion-view id="top" title="首页">
 
 <ion-content class="has-footer">
-	<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
-    <ion-slide-box show-pager="true" ng-if="banners" on-slide-changed="slideHasChanged($index)"  class="slidebox"  auto-play="true" slide-interval="4000" does-continue="true">
+	<!--<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>-->
+    <ion-slide-box show-pager="true" ng-if="banners.length>0" on-slide-changed="slideHasChanged($index)"  class="slidebox"  auto-play="true" slide-interval="4000" does-continue="true">
             <ion-slide ng-repeat="banner in banners">
                  <a ng-href="{{banner.advSlideUrl}}" target="_blank"><img ng-src="{{banner_img+banner.advSlidePic}}"class="other-img"></a>
             </ion-slide>          
@@ -10,47 +10,47 @@
 <!--slide-box ed-->
     <section class="item noborder main-nav nopadding">
         <div class="row">
-        	<div class="col col-25 text-center"ui-sref="limitTime">
-        		<img src="img\切图\P2首页\drawable-hdpi\icon-3.png"><br>
+        	<div class="col col-25 text-center"ui-sref="limitTime({limitId:xianshifoods[0].xianshiId})">
+        		<img ng-src="img\切图\P2首页\drawable-hdpi\icon-3.png"><br>
         		<span class="fs-min c-most">限时抢购</span>
         	</div>
         	<div class="col col-25 text-center"ui-sref="jingpin">
-        		<img src="img\切图\P2首页\drawable-hdpi\icon-5.png"><br>
+        		<img ng-src="img\切图\P2首页\drawable-hdpi\icon-5.png"><br>
         		<span class="fs-min c-most">精品推荐</span>
         	</div>
         	<div class="col col-25 text-center"ui-sref="rexiao">
-        		<img src="img\切图\P2首页\drawable-hdpi\icon8.png"><br>
+        		<img ng-src="img\切图\P2首页\drawable-hdpi\icon8.png"><br>
         		<span class="fs-min c-most">热销推荐</span>
         	</div>
         	<div class="col col-25 text-center"ui-sref="xinpin">
-        		<img src="img\切图\P2首页\drawable-hdpi\icon-4.png"><br>
+        		<img ng-src="img\切图\P2首页\drawable-hdpi\icon-4.png"><br>
         		<span class="fs-min c-most">新品推荐</span>
         	</div>
         </div>
         <div class="row">
             <div class="col col-25 text-center"ui-sref="tab.pinpai">
-            	<img src="img\切图\P2首页\drawable-hdpi\icon-2.png"><br>
+            	<img ng-src="img\切图\P2首页\drawable-hdpi\icon-2.png"><br>
             	<span class="fs-min c-most">品牌馆</span></div>
             <div class="col col-25 text-center">
-            	<img src="img\切图\P2首页\drawable-hdpi\icon-1.png"><br>
+            	<img ng-src="img\切图\P2首页\drawable-hdpi\icon-1.png"><br>
             	<span class="fs-min c-most">购物中心</span></div>
             <div class="col col-25 text-center">
-            	<img src="img\切图\P2首页\drawable-hdpi\icon6.png"><br>
+            	<img ng-src="img\切图\P2首页\drawable-hdpi\icon6.png"><br>
             	<span class="fs-min c-most">领券</span></div>
             <div class="col col-25 text-center">
-            	<img src="img\切图\P2首页\drawable-hdpi\icon7.png"><br>
+            	<img ng-src="img\切图\P2首页\drawable-hdpi\icon7.png"><br>
             	<span class="fs-min c-most">卖家秀</span></div>           
         </div>
     </section>
 <!-- fenlei ed-->
-    <section class="item item-divider noborder divider-toutiao item-icon-right">
+    <section class="item item-divider noborder divider-toutiao item-icon-right"ui-sref="toutiao">
         <span class="fs-rem c-most">依恋头条</span>&nbsp;
         <span class="c-while fs-prim toutiao-title">爱情从520开始</span>
         <i class="icon ion-ios-arrow-right"></i>
     </section>
 <!--toutiao ed-->
     <section class="xianshi"ng-if="xianshifoods">
-        <div class="item item-divider noborder item-icon-right bg-white">
+        <div class="item item-divider noborder item-icon-right bg-white"ui-sref="limitTime({limitId:xianshifoods[0].xianshiId})">
             <span class="fs-rem c-most">限时抢购</span>&nbsp;
             <span class="fs-prim toutiao-title untime"ng-bind="xianshifoods[0].xianshiName"></span>
             <i class="icon ion-ios-arrow-right"></i>
@@ -63,53 +63,50 @@
             <strong class="shi bg-time c-while second_show">0</strong>
         </div>
         <div class="list-goods flex">
-            <div class="goods"ng-repeat="goods in xianshifoods"ui-sref="detail({goodsId:goods.goodsId})">
+            <div class="goods"ng-repeat="goods in xianshifoods"ui-sref="limitTime({limitId:xianshifoods[0].xianshiId})">
                 <div class="goods-img">
-                    <img src="{{goods_img+goods.goodsImage}}">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h5 class="text-center fs-prim goods-title">{{goods.goodsName}}</h5>
                 <div class=" text-center fs-tip padding">
-                	<span class="c-red text-center fs-prim ">{{goods.xianshiPrice|currency:"¥"}}</span>
-                	&nbsp;&nbsp;<del>{{goods.goodsStorePrice|currency:"¥"}}</del>
+                	<span class="c-red text-center fs-prim ">¥{{goods.xianshiPrice}}</span>
+                	&nbsp;&nbsp;<del>¥{{goods.goodsStorePrice}}</del>
                 </div>
             </div>
         </div>
     </section>
 <!-- 限时 ed-->
     <section class="retui">
-        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;">
+        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;"ui-sref="tab.pinpai">
             <span class="xixian"><span class="cuxian">热销品牌</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>
-        <div class="scrolx"style="overflow-x: scroll;">
-        <div class="hotBrand"style="width: 200%;">
-            <img src="img/切图/P2首页/drawable-hdpi/logo1.png" style="width: 33vw;">
-            <img src="img/切图/P2首页/drawable-hdpi/logo1.png" style="width: 33vw;">
-            <img src="img/切图/P2首页/drawable-hdpi/logo1.png" style="width: 33vw;">
+        <div class="scrolx"style="overflow-x: scroll;overflow-y: hidden;">
+        <div class="hotBrand"style="white-space: nowrap;">
+            <img ng-src="{{pinpai_img+rexiaopinpai.brandPic}}" style="width: 33vw;height: 100%;"ng-repeat="rexiaopinpai in rexiaos">
         </div>
         </div>
     </section>
 <!-- 抵用券-->
-    <section class="quan"ng-if="quans.length>0">
-    	<img src="{{banner_img+bannerQuan[0].advSlidePic}}" class="banner-img"/>
+    <section class="quan"ng-show="quans.length>0">
+    	<img ng-src="{{banner_img+bannerQuan[0].advSlidePic}}" class="banner-img"/>
         <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;">
             <span class="xixian"><span class="cuxian">抵用券推荐</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>    
-       <!-- <ion-scroll scrollbar-x="false"zooming="true" direction="x">-->
         	<div class="scrolx"style="overflow-x: scroll;">
         	<div class="quanlist clearfix">
         		<div class="quanwrap fl"ng-repeat="quanq in quans">
         			<div class="quan clearfix"ng-class="{'quan2':$index==2}">
 		                <div class="quan-l text-center fl">
-		                    <div class="c-while money">¥<span class="price">{{quanq.couponPrice}}</span></div>
+		                    <div class="c-while money">¥ <span class="price">{{quanq.couponPrice}}</span></div>
 		                    <div class="fs-prim ">{{quanq.couponTitle}}</div>
 		                </div>		         
-		                <div class="quan-r text-center posit padding-v-v">
+		                <div class="quan-r text-center posit">
 		                    <button class="getQuan button-small button">
 		                        	领取
 		                    </button>
-		                    <h3 class="c-while quanStore">{{quanq.storeName}}</h3>
+		                    <h3 class="c-while quanStore fs-most moreit">{{quanq.storeName}}</h3>
 		                    <div class="fs-tip">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
 		                    <span class="fr fs-tip">剩余{{quanq.couponSurplus}}张</span>
 		                </div>
@@ -117,97 +114,96 @@
 		        </div>   
         	</div>
         	</div>
-       <!-- </ion-scroll>   -->  
     </section>
 <!--新品推荐 -->
     <section class="newgoods tuijian">
-        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;">
+        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;"ui-sref="xinpin">
             <span class="xixian"><span class="cuxian">新品推荐</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey ">
             <div class="goods"ng-repeat="goods in newfoods"ng-click="getDetail(goods)">
                 <div class="goods-img">
-                    <img src="{{goods_img+goods.goodsImage}}">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
                 <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
              </div>
         </div>
-        <div class="item item-divider noborder text-center more">
+        <div class="item item-divider noborder text-center more"ui-sref="xinpin">
            <button class="button button-small button-clear">
             	<span>查看更多</span>
-                <img src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
+                <img ng-src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
             </button>
         </div>
     </section>
     <!--精品推荐 -->   
     <section class="weekfoods tuijian">
-    	<img src="{{banner_img+bannerJingpin[0].advSlidePic}}" class="banner-img"/>
-        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;">
+    	<img ng-src="{{banner_img+bannerJingpin[0].advSlidePic}}" class="banner-img"/>
+        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;"ui-sref="jingpin">
             <span class="xixian"><span class="cuxian">精品推荐</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey">
                 <div class="goods"ng-repeat="goods in weekfoods">
                     <div class="goods-img">
-                        <img src="{{goods_img+goods.goodsImage}}">
+                        <img ng-src="{{goods_img+goods.goodsImage}}">
                     </div>
                     <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
                     <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
                 </div>
         </div>
         <div class="item item-divider noborder text-center more">
-           <button class="button button-small button-clear">
+           <button class="button button-small button-clear"ui-sref="jingpin">
             	<span>查看更多</span>
-                <img src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
+                <img ng-src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
             </button>
         </div>
     </section>  
    
 <!--热销推荐 -->	
     <section class="hotgoods tuijian">
-    	<img src="{{banner_img+bannerRexiao[0].advSlidePic}}" class="banner-img"/>
-        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;">
+    	<img ng-src="{{banner_img+bannerRexiao[0].advSlidePic}}" class="banner-img"/>
+        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;"ui-sref="rexiao">
             <span class="xixian"><span class="cuxian">热销推荐</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey ">
             <div class="goods"ng-repeat="goods in hotgoods">
                 <div class="goods-img">
-                    <img src="{{goods_img+goods.goodsImage}}">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
                 <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
             </div>
         </div>
         <div class="item item-divider noborder text-center more">
-           <button class="button button-small button-clear">
+           <button class="button button-small button-clear"ui-sref="rexiao">
             	<span>查看更多</span>
-                <img src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
+                <img ng-src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
             </button>
         </div>
     </section>
 <!--猜你喜欢-->
     <section class="youlove tuijian">
-    	<img src="{{banner_img+bannerLove[0].advSlidePic}}" class="banner-img"/>
-        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;">
+    	<img ng-src="{{banner_img+bannerLove[0].advSlidePic}}" class="banner-img"/>
+        <div class="item item-divider noborder text-center fs-rem c-most title item-icon-right"style="padding-left: 2.5rem;"ui-sref="youlove">
             <span class="xixian"><span class="cuxian">猜你喜欢</span></span>
             <i class="icon ion-ios-arrow-right "></i>
         </div>
         <div class="list-goods flex bg-grey">
             <div class="goods"ng-repeat="goods in youlove">
                 <div class="goods-img">
-                    <img src="{{goods_img+goods.goodsImage}}">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
                 <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
             </div>
         </div>
-        <div class="item item-divider noborder text-center more">
+        <div class="item item-divider noborder text-center more"ui-sref="youlove">
             <button class="button button-small button-clear">
             	<span>查看更多</span>
-                <img src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
+                <img ng-src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
             </button>
         </div>
     </section>

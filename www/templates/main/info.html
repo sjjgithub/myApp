@@ -6,8 +6,8 @@
     </div>
 <!--header e-->
     <ion-content class="has-header">
-       <div class="item item-icon-right item-divider"style="background-color: #9CC3B8;">
-       	系统消息
+       <div class="item item-icon-right item-divider"style="background-color: #9CC3B8;"ng-repeat="info in infos"ui-sref="infoDetail({infotype:info.className})">
+       	<span ng-bind="info.className"class="fs-min"></span>
        	<i class="icon ion-ios-arrow-right"></i>
        </div>
     </ion-content>

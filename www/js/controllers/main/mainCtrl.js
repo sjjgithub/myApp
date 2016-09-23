@@ -6,15 +6,19 @@ $scope.bannerQuanApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=
 $scope.bannerJingpinApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=3"; 
 $scope.bannerRexiaoApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=4"; 
 $scope.bannerLoveApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=5"; 
+$scope.rexiaoApi=$rootScope.path+"/eland/api/elandBrand/selectRandomBrand";
+
 $ionicSlideBoxDelegate.update();
  	$http.get("data.php",{params:{url:$scope.homeApi}})
                 .success(function(data){  
                 	console.log(data);
               		$scope.banners=data.data.advlist;
-              		$scope.xianshifoods=data.data.xianshiList;
+              		$scope.xianshifoods=data.data.xianshiList.length>0?data.data.xianshiList:null;           		
+              		if($scope.xianshifoods){
               			var star= $scope.xianshifoods[0].startTime;
                     	var end= $scope.xianshifoods[0].endTime;
-                       	var dom=$scope.xianshifoods[0].xianshiId;                                                        						timer({"dom":"#xianshi"+dom,"star":star,"end":end})    
+                       	var dom=$scope.xianshifoods[0].xianshiId;                                                        						timer({"dom":"#xianshi"+dom,"star":$scope.xianshifoods[0].sysTime,"end":$scope.xianshifoods[0].endTime})    
+              		}             			
                     $scope.quans=data.data.couponRecommendList;  
                 })//广告 券 限时	
     $http.get("data.php",{params:{url:$scope.homeListApi}})
@@ -24,24 +28,32 @@ $ionicSlideBoxDelegate.update();
 					$scope.weekfoods=data.data.weekRecommendList;
 					$scope.hotgoods =data.data.hotRecommendList;  
 					$scope.youlove=data.data.totalLikeList;  
-                })//list	            
+                })//list	
+        $http.get("data.php", {params: {url:$scope.rexiaoApi}})
+                        .success(function(data){
+                        	console.log(data)
+                            $scope.rexiaos=data.data;
+                        })
+                        .error(function(){
+                            alert("券banner请求失败")
+                        })//券   
         $http.get("data.php", {params: {url:$scope.bannerQuanApi}})
                         .success(function(data){
-                            $scope.bannerQuan = data.data;
+                            $scope.bannerQuan=data.data;
                         })
                         .error(function(){
                             alert("券banner请求失败")
                         })//券   
         $http.get("data.php", {params: {url:$scope.bannerJingpinApi}})
                         .success(function(data){
-                            $scope.bannerJingpin = data.data;
+                            $scope.bannerJingpin= data.data;
                         })
                         .error(function(){
                             alert("精品banner请求失败")
                         })//精品  
         $http.get("data.php", {params: {url:$scope.bannerRexiaoApi}})
                         .success(function(data){
-                            $scope.bannerRexiao = data.data;
+                            $scope.bannerRexiao= data.data;
                         })
                         .error(function(){
                             alert("热销banner请求失败")
@@ -52,7 +64,12 @@ $ionicSlideBoxDelegate.update();
                         })
                         .error(function(){
                             alert("喜欢banner请求失败")
-                        })//喜欢                               
+                        })//喜欢         
+//       $http.get($scope.bannerLoveApi)
+//                      .success(function(data){
+//                      	console.log("get"+data)
+//                          $scope.bannerLove = data.data;
+//                      })                                               
                        scrollX({dom:".scrolx"})
                                       
 })

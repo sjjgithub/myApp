@@ -4,32 +4,25 @@
         	<h3 class="title">新品推荐</h3>
         	<buttton class="button button-icon button-icon-right ion-ios-cart-outline"></buttton>
     </div>
-    <ion-content class="has-header"scroll="false">    
+   <ion-content class="has-header"scroll="false">    
  		<div class="flex text-center ord-title">
 			<span ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==0}">默认排序</span>
 			<span ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==1}">热销</span>
-				<span class="ord-price"ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==2}">价格
-					<div class="updown"ng-click="pricClick($event)">
-						<i  class="icon ion-ios-arrow-up picup" ></i>
-						<i  class="icon ion-ios-arrow-down picdown"></i>
-					</div>
-				</span>
+			<span class="ord-price"ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==2}">价格
+				<div class="updown"ng-click="pricClick($event)">
+					<i  class="icon ion-ios-arrow-up picup" ng-class="{'c-black':soft=='desc'}"></i>
+					<i  class="icon ion-ios-arrow-down picdown"ng-class="{'c-black':soft=='asc'}"></i>
+				</div>
+			</span>
 		</div>
 		<ion-content style="top:2.55rem">
 		<ul class="list-goods flex">	
-			<li class="goods bg-white padding">
-					<div class="goods-img">
-						<img src="img/切图/P2-2-2搜索结果页/drawable-hdpi/img.png" alt="">
-						<h5 class="goods-title fs-prim">2016款时尚小包单肩包提包女包</h5>
-						<span class="goods-price c-red fs-prim">{{ 123 | currency:"¥" }}</span>
-					</div>
-				</li>
 			<li class="goods bg-white padding"ng-repeat="goods in goodsList">	
 				<div class="goods-img">
-					<img src="{{goods_img+goods.goodsImage}}">
+					<img ng-src="{{goods_img+goods.goodsImage}}">
 				</div>
 				<h5 class="goods-title fs-prim">{{goods.goodsName}}</h5>
-				<span class="goods-price c-red fs-prim">{{ goods.price|currency:"¥" }}</span>					
+				<span class="goods-price c-red fs-prim">¥{{ goods.price}}</span>					
 			</li>
 		</ul>
 		</ion-content>

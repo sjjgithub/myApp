@@ -12,15 +12,17 @@
 	});
 	}
 	//倒计时
+	var interId;
 	function timer(opt){
+		clearInterval(interId)
 		var dom=opt.dom;
 		var starTime=opt.star;
 		var endTime=opt.end;
 		var intDiff=endTime-starTime;
-		window.setInterval(function(){
-					hour=0,
-					minute=0,
-					second=0;//时间默认值
+	   interId=window.setInterval(function(){
+					var hour=0;
+					var minute=0;
+					var second=0;//时间默认值
 			if(intDiff > 0){
 				hour = Math.floor(intDiff / (60 * 60));
 				minute = Math.floor(intDiff / 60)- (hour * 60);
@@ -69,6 +71,6 @@ $gallery.on("touchmove", function(e) {
         e.stopPropagation();  
     }   
 	});  
-		clearInterval(interId)
+		clearInterval(interId);
 		},1000)				
 	}

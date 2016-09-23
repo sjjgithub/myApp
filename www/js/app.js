@@ -15,6 +15,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+  
     $rootScope.path = "http://10.9.174.35:8080";
     $rootScope.store_img="http://10.9.174.35/eland/upload/store/"
 		$rootScope.goods_img="http://10.9.174.35/eland/upload/store/goods/";
@@ -56,6 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   }
   //后退
     $rootScope.goBack = function () {
+    	
     	alert("back");
       $ionicHistory.goBack();
       $ionicViewSwitcher.nextDirection("back");
@@ -71,14 +73,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 	 	angular.element(e.target).toggleClass("ion-android-favorite");
 	 	var str=""
 	 	if(angular.element(e.target).attr("shoucang")){
-	 		angular.element(e.target).attr("shoucang")=false;
+	 		angular.element(e.target).attr("shoucang",false);
 	 		str="收藏成功";
 	 	}else{
-	 		angular.element(e.target).attr("shoucang")=true;
+	 		angular.element(e.target).attr("shoucang",true);
 	 		str="取消收藏";
 	 	}
-	 }
-	 
+	 } 
   $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParamss){
                 if(toState.name=="tab.myinfo"||toState.name=="tab.pinpai"||toState.name=="tab.shopCart"){               

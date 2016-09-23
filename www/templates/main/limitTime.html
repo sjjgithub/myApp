@@ -1,5 +1,6 @@
 <ion-view title="限时抢购">
 	<!--header s-->
+	<!--<ion-infinite-scroll on-refresh="doRefresh()"></ion-infinite-scroll>-->
     <div class="bar bar-header icon-right bar-dark">
         <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"> </button>
         <h3 class="title">限时抢购</h3>
@@ -7,16 +8,16 @@
 <!--header e-->
     <ion-content class="has-header c-most">
     <section>
-     <ion-slide-box show-pager="true" ng-if="banners" class="slidebox"  auto-play="true" slide-interval="3000" does-continue="true"on-slide-changed="slideHasChanged($index,banners)"active-slide="actindex">
+     <ion-slide-box show-pager="true" ng-if="banners" class="slidebox"  auto-play="true" slide-interval="3000" does-continue="true">
             <ion-slide ng-repeat="banner in banners">
-                 <a ng-href="{{banner.advSlideUrl}}" target="_blank"><img ng-src="{{banner_img+banner.advSlidePic}}"></a>
+                 <img ng-src="{{banner_img+banner.advSlidePic}}">
             </ion-slide>          
     </ion-slide-box>	
     </section>
     <section class="limit-list">
-        <div class="row row-no-padding">
-            <div class="col col-33"ng-repeat="xianshiIt in xianshisIt">
-                <img src="{{xianshi_img+xianshiIt.xianshiLogo}}"class="limit-list-img">
+        <div class="row row-no-padding"ng-if="xianshisIt">
+            <div class="col col-33"ng-repeat="xianshiIt in xianshisIt"ng-click="zhuanchang(xianshiIt.xianshiId)">
+                <img ng-src="{{xianshi_img+xianshiIt.xianshiLogo}}"class="limit-list-img">
                 <img src="img/切图/P8限时抢购/drawable-hdpi/qianggouzhong.png"class="qianggou"ng-if="xianshiIt.xianshiState==1"/>
                 <img src="img/切图/P8限时抢购/drawable-hdpi/jijiangkaishi-.png"class="qianggou"ng-if="xianshiIt.xianshiState==0"/>
                 <div class="limit-list-goodswrap">
@@ -24,45 +25,31 @@
                 </div>
             </div>
         </div>
-        <div class="item item-divider noborder text-left fs-prim"id="xianshi{{xianshisIt[0].xianshiId}}"">
-              	  距离本场结束：
+       
+        <div class="item item-divider noborder text-left fs-prim "id="xianshiT{{xianshinow.xianshiId}}"ng-if="xianshisIt">
+              	  距离本场<span ng-if="xianshiStar">结束</span><span ng-if="!xianshiStar">开始</span>：
                 <strong class="shi bg-time c-while hour_show">0</strong>
                 :
                 <strong class="shi bg-time c-while minute_show">0</strong>
                 :
                 <strong class="shi bg-time c-while second_show">0</strong>
         </div>
-        <div class="padding-h bg-white limit-list-goods-info borderb-dark">
-            <span class="goods-nostart c-while">即将开始</span>
+        <div class="padding-h bg-white limit-list-goods-info borderb-dark"ng-repeat="good in goods"ng-class="{'nostar':!xianshiStar}">
+            <span class="goods-nostart c-while"ng-if="!xianshiStar">即将开始</span>
                 <div class="item item-image noborder item-text-wrap">
-                    <span class="limit-list-goods-img fl">
-                        <img src="img/切图/P8限时抢购/drawable-hdpi/tupian.png">
+                    <span class="limit-list-goods-img fl padding-v">
+                        <img ng-src="{{goods_img+good.goodsImage}}">
                     </span>
-                    <h3 class="text-left">防撒旦法撒防守打法司法阿法撒打法司法</h3>
-                    <p class="text-left"><spqn class="fs-tip c-red fl">￥240</spqn>&nbsp;&nbsp; <span><del class="c-black fs-tip">￥400</del></span></p>
-                    <div class="fs-tip c-dark6 text-left limit-numed">已抢169件</div>
+                    <h3 class="text-left"ng-bind="good.goodsName"></h3>
+                    <p class="text-left"><spqn class="fs-tip c-red fl">¥{{good.xianshiPrice}}</spqn>&nbsp;&nbsp; <span><del class="c-tip">¥{{good.goodsStorePrice}}</del></span></p>
+                    <div class="fs-tip c-dark6 text-left limit-numed">已抢{{good.goodsSalenum}}件</div>
                     <hr>
                     <div class="padding-h fs-tip text-left">
-                        <span class="rated-h">剩余104件</span>
-                        <button class="button button-small bg-black c-while fr nowrob">马上抢</button>
+                        <span class="rated-h">剩余{{good.goodsRestnum}}件</span>
+                        <button class="button button-small bg-submit c-while fr nowrob"style="width: 3rem;"ng-disabled="!xianshiStar">马上抢</button>
                     </div>
                 </div>
         </div>
-        <div class="padding-h bg-white limit-list-goods-info borderb-dark nostart">
-            <span class="goods-nostart c-while">即将开始</span>
-            <div class="item item-image noborder item-text-wrap">
-                    <span class="limit-list-goods-img fl">
-                        <img src="img/切图/P8限时抢购/drawable-hdpi/tupian.png">
-                    </span>
-                <h3 class="text-left">防撒旦法撒防守打法司法阿法撒打法司法</h3>
-                <p class="text-left"><spqn class="fs-tip c-red fl">￥240</spqn>&nbsp;&nbsp; <span><del class="c-black fs-tip">￥400</del></span></p>
-                <div class="fs-tip c-dark6 text-left limit-numed">已抢169件</div>
-                <hr>
-                <div class="padding-h fs-tip text-left">
-                    <span class="rated-h">剩余104件</span>
-                    <button class="button button-small bg-black c-while fr nowrob">马上抢</button>
-                </div>
-            </div>
         </div>
     </section>
 </ion-content>

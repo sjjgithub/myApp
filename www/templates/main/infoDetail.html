@@ -1,0 +1,12 @@
+<ion-view title="消息中心"> 
+	<div class="bar bar-header bar-dark"> 
+    	<button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"> </button>
+        <h3 class="title"style="padding:0 2rem;">消息中心</h3>
+	</div>
+	<ion-content class="has-header bg-grey">
+		<div class="fs-min borderb bg-white clearfix" style="padding-left: 0.75rem;margin-bottom: 0.5rem;"ng-repeat="info in infos">
+			<p class="borderb fs-prim"style="padding: 0.25rem 0;"ng-bind="info.messageTitle"></p>
+			<span class="fr c-tip"style="padding-right: 0.25rem;"ng-bind="info.messageTime"></span>
+		</div>
+	</ion-content>
+</ion-view>

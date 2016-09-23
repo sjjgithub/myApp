@@ -3,7 +3,7 @@
     <ion-content class="bg-grey"style="margin-bottom: 43px;">
     	<ul class="list-store">
       	<li class="item item-image text-left"ng-repeat="store in stores">
-			<img src="{{store_img+store.storeAuth}}"/>
+			<img src="{{store_img+store.storeAuth}}"class="fl"style="margin-right: 0.75rem;"/>
 			<div class="item-right">
 			<h3 class="text-left title" ng-bind="store.storeName"></h3>
 			<p class="text-left"><span>销量{{store.saleNum}}</span>&nbsp;&nbsp;<span>共{{store.classNum}}件宝贝</span></p>

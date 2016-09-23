@@ -21,7 +21,7 @@ del{color:@del}
 .c-most{color: @dark3}
 .c-red{color:@redlow}
 .c-while{color: #fff}
-.c-black{color: #000000;}
+.c-black{color: #000;}
 .c-dark6{color: #666}
 .c-tip{color:@dark9}
 .rated-h{color:#B3996B;}
@@ -48,6 +48,7 @@ del{color:@del}
 .bg-transparent{background-color: transparent;}
 .bar.bar-dark{background-color: #000;}
 //边框
+.noborder-v{border-left: none;border-right: none;}
 .noborder{border: none;}
 .noshadow{box-shadow: none}
 .nopadding{padding: 0;}
@@ -82,8 +83,9 @@ del{color:@del}
   background-color: #ff2b26;}
 .button.c-black{
   color:#000;}
-.button.disabled, .button[disabled]{opacity: 1;}
+.dis1.button.disabled,.dis1.button[disabled]{opacity: 1;}
 //一些其他样式
+.moreit{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .banner-img{width: 100%;height: auto;}
 .shoucang{position: absolute;right: 0.75rem;bottom: 0.75rem;}
 .icon-img{width:@icon-img;height:auto;vertical-align: text-bottom}
@@ -123,7 +125,7 @@ ion-tabs.tabs-color-active-dark.index-footer .tab-item{color: inherit;}
 .header input{color: #FFF}
 //searcindex s
 //item
-.item.item-image img{width: 5rem;height:5rem;float: left;margin-right: 0.75rem;}
+.item.item-image img{width: 5rem;height:5rem;}
 .item-right{margin-top: 1rem;}
 //select
 .list-secect {height: 2.5rem;line-height: 2.5rem;background: url(../img/切图/P2-2-2搜索结果页/drawable-hdpi/tab-bg.png);position: relative;top: -1px;}
@@ -147,6 +149,7 @@ ion-nav-view{background-color:transparent;}
 .picup{position:relative;top:-5px}
 .picdown{position:relative;left:-11px;top:5px}
 .ordactive{color: #333;position: relative}
+.ordactive .updown{color:#a9a9a9;}
 .ordactive:after{content: "";width: 5px;height: 5px;border-radius:50%;display: inline-block;
     background-color: #000;position: absolute;left: 50%;bottom:5px;transform:translate(-50%,0)}
 .list-goods{flex-wrap: wrap}
@@ -181,7 +184,8 @@ ion-nav-view{background-color:transparent;}
 .quanlist .quan div{line-height: 1.2em;}
 .quan-l .price{font-size:1.25rem;height: 100%}
 .quanStore{font-size: 1rem;margin-bottom: 0.25rem;}
-.quan-r{height: 100%;text-align: left;width: 66%;float: right;padding-right: 0.75rem;}
+.quan-r{height: 100%;text-align: left;width: 67%;float: right;padding:0 0.5rem;}
+.quan-r h3{font-size: 0.8rem;padding-right: 3rem;}
 .getQuan.button{font-size:0.7rem ;color: #fff;}
 .getQuan{ position: absolute;right:0.5rem;top:0.5rem;line-height: 1rem;background-color: #b09565;width: 2.5rem;outline: none;border-radius: 5px;border: none}
 .tuijian .item-divider.title{
@@ -285,17 +289,17 @@ ion-nav-view{background-color:transparent;}
 .show-goods-bottom i{margin-right: 10px}
 //.limit-list{margin-top: 0.5rem;}
 .limit-list .col{padding-right: 5px;padding-top: 5px;position: relative;}
-.limit-list .col .limit-list-img{width: 100%;height: auto;position: relative;z-index: 9}
+.limit-list .col .limit-list-img{width: 100%;height: auto;position: relative;z-index: 9;text-align: center;}
 .limit-list .qianggou{position: absolute;z-index: 10;width: 50%;height: auto;right: 0;top: 0;}
 .limit-list-goodswrap{padding-right: 5px;position: absolute;width: 100%;bottom: 0;z-index: 10;}
 .limit-list .limit-list-goods{font-size: 0.65rem;height: 1.5rem;line-height: 1.5rem;background-image: url(../img/切图/P8限时抢购/drawable-hdpi/zhezhaoceng.png);}
 .limit-list-goods-info{height:7.5rem;position: relative;overflow: hidden }
 .limit-numed{margin-bottom: 0.5rem}
-.limit-list-goods-img{width: 5rem;height: 7.5rem;
-  display: inline-block;padding-top: 1.25rem}
+.limit-list-goods-img{width: 35vw;height: 6rem;display:block;line-height: 6rem;}
+.limit-list-goods-info .limit-list-goods-img img{width: 100%;height: auto;max-height: 100%;}
 .nowrob{margin-top: -0.3rem;margin-right: 0.75rem}
-.limit-list-goods-info .goods-nostart{display:none}
-.limit-list-goods-info.nostart .goods-nostart{display:block;position: absolute;
+.limit-list-goods-info.nostar{opacity: 0.8;}
+.limit-list-goods-info .goods-nostart{display:block;position: absolute;
   top:0.5rem;z-index: 10;font-size: 0.65rem;width: 3.2rem;height:1.2rem;line-height: 1.25rem;
   background-image: url(../img/切图/P8限时抢购/drawable-hdpi/tips.png);
   -webkit-background-size:cover;padding-left: 5px;

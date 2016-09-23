@@ -1,0 +1,14 @@
+<ion-view title="依恋头条"> 
+	<div class="bar bar-header bar-dark"> 
+    	<button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"> </button>
+        <h3 class="title">依恋头条</h3>
+	</div>
+	<ion-content class="has-header bg-grey">
+		<ul class="list">
+			<li class="item flex item-divider bg-white"ng-repeat="toutiao in toutiaos"ui-sref="toutiaoDetail({con:toutiao.articleContent,tit:toutiao.articleTitle})">
+   				<h3 class="col col-50">{{toutiao.articleTitle}}</h3>
+   				<span class="col col-50 fs-min">{{toutiao.articleTime}}</span>
+   			</li>
+		</ion-list>
+	</ion-content>
+</ion-view>

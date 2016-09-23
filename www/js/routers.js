@@ -19,9 +19,12 @@ angular.module('starter')
          }
        }
      });
+    $httpProvider.defaults.useXDomain=true;
+ 			 delete $httpProvider.defaults.headers
+  		.common['X-Requsted-With'];
      //让nav一直在下边
      (function(){
-     	$ionicConfigProvider.platform.ios.tabs.style('standard'); 
+      	$ionicConfigProvider.platform.ios.tabs.style('standard'); 
         $ionicConfigProvider.platform.ios.tabs.position('bottom');
         $ionicConfigProvider.platform.android.tabs.style('standard');
         $ionicConfigProvider.platform.android.tabs.position('standard');
@@ -36,9 +39,7 @@ angular.module('starter')
     $ionicConfigProvider.views.maxCache(30);
     $httpProvider.defaults.timeout = 10000;
   
-  $httpProvider.defaults.useXDomain=true;
-  delete $httpProvider.defaults.headers
-  .common['X-Requsted-With'];
+ 
      })();
 	$ionicConfigProvider.scrolling.jsScrolling(true);
 	$stateProvider
@@ -90,9 +91,27 @@ angular.module('starter')
 		        templateUrl: 'templates/main/info.html',
 		       	controller: 'InfoCtrl'
 		   })
+			.state("infoDetail",{
+		    	url:"/infoDetail",
+		    		params:{"infotype":null},		    		
+		        templateUrl: 'templates/main/infoDetail.html',
+		       	controller: 'InfoDetailCtrl'
+		   })
+			.state("toutiao",{
+		    	url:"/toutiao",
+		    		params:{"toutiao":null},		    		
+		        templateUrl: 'templates/main/toutiao.html',
+		       	controller: 'ToutiaoCtrl'
+		   })
+			.state("toutiaoDetail",{
+		    	url:"/toutiaoDetail",
+		    		params:{"con":null,"tit":null},		    		
+		        templateUrl: 'templates/main/toutiaoDetail.html',
+		        controller: 'ToutiaoDetailCtrl'
+		   })
 			.state("limitTime",{
 		    	url:"/limitTime",
-		    		params:{"goodsId":null},		    		
+		    		params:{"limitId":null},		    		
 		        templateUrl: 'templates/main/limitTime.html',
 		       	controller: 'LimitTimeCtrl'
 		   })
@@ -114,6 +133,7 @@ angular.module('starter')
 		        templateUrl: 'templates/main/rexiao.html',
 		       	controller: 'RexiaoCtrl'
 		   })
+			
 	.state('tab.fenlei', {
     url: '/fenlei',
     views: {

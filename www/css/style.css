@@ -15,7 +15,7 @@ del {
   color: #ffffff;
 }
 .c-black {
-  color: #000000;
+  color: #000;
 }
 .c-dark6 {
   color: #666666;
@@ -182,9 +182,14 @@ del {
 .button.c-black {
   color: #000;
 }
-.button.disabled,
-.button[disabled] {
+.dis1.button.disabled,
+.dis1.button[disabled] {
   opacity: 1;
+}
+.moreit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .banner-img {
   width: 100%;
@@ -311,8 +316,6 @@ ion-tabs.tabs-color-active-dark.index-footer .tab-item {
 .item.item-image img {
   width: 5rem;
   height: 5rem;
-  float: left;
-  margin-right: 0.75rem;
 }
 .item-right {
   margin-top: 1rem;
@@ -394,6 +397,9 @@ ion-nav-view {
 .ordactive {
   color: #333;
   position: relative;
+}
+.ordactive .updown {
+  color: #a9a9a9;
 }
 .ordactive:after {
   content: "";
@@ -527,9 +533,13 @@ ion-nav-view {
 .quan-r {
   height: 100%;
   text-align: left;
-  width: 66%;
+  width: 67%;
   float: right;
-  padding-right: 0.75rem;
+  padding: 0 0.5rem;
+}
+.quan-r h3 {
+  font-size: 0.8rem;
+  padding-right: 3rem;
 }
 .getQuan.button {
   font-size: 0.7rem ;
@@ -860,6 +870,7 @@ ion-nav-view {
   height: auto;
   position: relative;
   z-index: 9;
+  text-align: center;
 }
 .limit-list .qianggou {
   position: absolute;
@@ -891,19 +902,24 @@ ion-nav-view {
   margin-bottom: 0.5rem;
 }
 .limit-list-goods-img {
-  width: 5rem;
-  height: 7.5rem;
-  display: inline-block;
-  padding-top: 1.25rem;
+  width: 35vw;
+  height: 6rem;
+  display: block;
+  line-height: 6rem;
+}
+.limit-list-goods-info .limit-list-goods-img img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
 }
 .nowrob {
   margin-top: -0.3rem;
   margin-right: 0.75rem;
 }
-.limit-list-goods-info .goods-nostart {
-  display: none;
+.limit-list-goods-info.nostar {
+  opacity: 0.8;
 }
-.limit-list-goods-info.nostart .goods-nostart {
+.limit-list-goods-info .goods-nostart {
   display: block;
   position: absolute;
   top: 0.5rem;

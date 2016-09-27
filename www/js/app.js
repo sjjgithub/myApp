@@ -16,15 +16,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
   
-    $rootScope.path = "http://10.9.174.35:8080";
+    $rootScope.path = "http://10.9.174.35:8090/eland/api/";
     $rootScope.store_img="http://10.9.174.35/eland/upload/store/"
 		$rootScope.goods_img="http://10.9.174.35/eland/upload/store/goods/";
 		$rootScope.banner_img="http://10.9.174.35/eland/upload/adv/";
 		$rootScope.pinpai_img="http://10.9.174.35/eland/upload/brand/";
 		$rootScope.xianshi_img="http://10.9.174.35/eland/upload/xianshi/";
-		$rootScope.touxiang_img="http://10.9.174.35/img/";
+		$rootScope.touxiang_img="http://10.9.174.35/img";
 		$rootScope.bendi_img="http://10.9.174.35/img/sellerShowPics/";
 		$rootScope.tuihuo_img="http://10.9.174.35/img/sellerShowPics/";
+		$rootScope.class_img="http://10.9.174.35/eland/upload/goodsclass/"
 		$rootScope.top_show=true;
 		$rootScope.foot_show=true;
 		$rootScope.win_W = window.innerWidth;  
@@ -52,9 +53,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
     $ionicLoading.hide()
   })
   //页面刷新
-  $rootScope.doRefresh=function(){
-  	
-  }
   //后退
     $rootScope.goBack = function () {
     	

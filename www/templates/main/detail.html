@@ -3,76 +3,99 @@
 <a class="button-icon ion-ios-arrow-left padding c-dark6 back-button fs-icon"href="javascript:history.back()"></a>
 <ion-content class="has-tabs bg-grey">
 	
-    <ion-slide-box show-pager="true">   	 
-            <ion-slide class="positr">
-                <img src="img/切图/P3-2商品详情/drawable-hdpi/banner1.png"class="top_slide_img"ng-click="open_modal($index)">              	               
-                <i class="shoucang  button-icon ion-android-favorite-outline fs-icon c-dark6"shoucang="false"ng-click="collectionIt($event,goods,0)"style="z-index: 10;"></i>
-            </ion-slide>
-                 
+<ion-slide-box show-pager="false" ng-if="good.goodsImageList" on-slide-changed="slideHasChanged($index)"class="slidebox"  auto-play="true" slide-interval="4000" does-continue="true">
+            <ion-slide ng-repeat="banner in good.goodsImageList">
+                <img ng-src="{{goods_img+banner}}">
+				 <i class="shoucang  button-icon ion-android-favorite-outline fs-icon c-dark6"shoucang="false"ng-click="collectionIt($event,goods,0)"style="z-index: 10;"></i>
+            </ion-slide>          
     </ion-slide-box>
 <!--slide-box ed-->
-    <section class="padding bg-white">
-        <h3>2016</h3>
-        <h2 class="c-red"><span class="prid"></span> - <span class="prit"></span></h2>
-        <div class="yishou">152</div>
+    <section class="padding bg-white goodIt-info"ng-class="{'new':good.newGood==1}">
+        <h4 class="nomargin">{{good.goodsName}}</h4>
+        <p class="c-red nomargin fs-prim"><span class="prid">¥{{good.price}}</span>
+        	<span class="good_xianshi"ng-if="good.xianshiGood==1">限时抢购</span>
+        	<i class="icon ion-android-share-alt"style="margin-left: 1rem;color: #000;font-size: 1rem;"></i>
+        </p>
+        <div class="yishou c-tip fs-tip">已售：{{good.saleNum}}份</div>
     </section>
     <div class="item item-icon-right store bg-white assess-title">
-        <img src="img/切图/P3-2商品详情/drawable-hdpi/homeicon.png"class="fl">
-        <h3 class="padding-v c-while">elada</h3>
+        <img ng-src="img/切图/P3-2商品详情/drawable-hdpi/homeicon.png"class="fl">
+        <h3 class="padding-v c-while"ng-bind="good.storeName"></h3>
         <i class="icon ion-ios-arrow-right c-while"></i>
     </div>
     <!-- 抵用券-->
     <section class="quanlist">
-       
+      <!-- <div class="scrolx"style="overflow-x: scroll;">-->
+        	<div class="clearfix"style="overflow: scroll;">
+        		<div class="quanwrap fl"ng-repeat="quanit in quans">
+        			<div class="quan clearfix"ng-class="{'quan2':$index==2}">
+		                <div class="quan-l text-center fl">
+		                    <div class="c-while money">¥ <span class="price"ng-bind="quanit.couponPrice"></span></div>
+		                    <div class="fs-prim esp goods-title"ng-bind="quanit.couponTitle"></div>
+		                </div>		         
+		                <div class="quan-r text-center posit">
+		                    <button class="getQuan button-small button">
+		                        	领取
+		                    </button>
+		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanit.storeName"></h3>
+		                    <div class="fs-tip">{{quanit.couponStartDate}}-{{quanit.couponEndDate}}</div>
+		                    <span class="fr fs-tip">剩余{{quanit.couponSurplus}}张</span>
+		                </div>
+		            </div> 
+		        </div>   
+        	</div>
+        	<!--</div>-->
     </section>
     <section class="assesslist bg-white">
         <div class="item item-icon-right assess-title bg-white">
-            <img src="img/切图/P3-2商品详情/drawable-hdpi/pinglun.png"class="fl">
-            <h3 class="padding-v">elada(<span class="rated-h">1</span>)</h3>
+            <img ng-src="img/切图/P3-2商品详情/drawable-hdpi/pinglun.png"class="fl">
+            <h3 class="padding-v">用户评论(<span class="rated-h"ng-bind="pinglun.count"></span>)</h3>
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="assess noborder">
-        <div class="card">
+        <div class="card"ng-if="pinglun.detail[0]">
             <div class="item item-avatar item-icon-right margin-v noborder">
-                <img src="http://www.runoob.com/try/demo_source/mcfly.jpg" alt="" />
-                <h2>夏天已来，未来在哪</h2>
-                <p>2015/6/12</p>
+                <img ng-src="{{touxiang_img+pinglun.detail[0].memberAvatar}}" />
+                <h2 ng-bind="pinglun.detail[0].memberName"style="font-size: 0.7rem;"></h2>
+                <p ng-bind="pinglun.detail[0].gevaldetailTime"></p>
                 <div class="cardr">
-                    <i class="icon"><img src="img/切图/P3-2商品详情/drawable-hdpi/great.png" class="icon-img"><span class="fs-prim rated-h">好评</span></i>
+                    <i class="icon"ng-if="pinglun.detail[0].gevalstatLevel==1"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/great.png" class="icon-img"><span class="fs-prim rated-h">好评</span></i>
+                    <i class="icon"ng-if="pinglun.detail[0].gevalstatLevel==0"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/soso.png" class="icon-img"><span class="fs-prim rated-m">中评</span></i>
+                    <i class="icon"ng-if="pinglun.detail[0].gevalstatLevel==-1"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/notgood.png" class="icon-img"><span class="fs-prim rated-low">差评</span></i>
                 </div>
             </div>
-            <div class="item-body margin-v borderb noborder c-tip fs-prim">
-                6768686866867jghghnvnvn
-            </div>
+            <div class="margin-v borderb noborder c-tip fs-prim "ng-bind="pinglun.detail[0].content"style="padding-bottom: 0.25rem;"></div>
         </div>
         </div>
         <div class="item item-divider noborder text-center fs-tip bg-white c-tip">
             查看全部评价 >>
         </div>
     </section>
-    <section class="sameStore">
+    <section class="sameStore">    	
         <div class="item item-icon-right assess-title bg-white">
             <img src="img/切图/P3-2商品详情/drawable-hdpi/shangpin-icon.png"class="fl">
-            <h3 class="padding-v">elada</h3>
+            <h3 class="padding-v">同类商品</h3>
         </div>
-        <div class="list flex">
-            <div class="goods samegoods bg-white padding"ng-repeat="goods in newfoods"ng-click="getDetail(goods)">
+        <div class="scrolx"style="overflow-x: scroll;">
+        <div class="list flex samelist">
+            <div class="goods samegoods bg-white"ng-repeat="goods in samefoods"ng-click="getDetail(goods)">
                 <div class="goods-img">
-                    <img src="{{goods.goodsImage}}">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h4 class="goods-name">{{goods.goodsName}}</h4>
-                <div class="c-red fs-prim ">{{goods.price|currency:"¥"}}</div>
+                <h4 class="goods-name fs-min esp"ng-bind="goods.goodsName"style="margin:0.25rem;"></h4>
+                <div class="c-red fs-prim text-center">¥{{goods.goodsStorePrice}}</div>
             </div>
+        </div>
         </div>
         <div class="item item-divider noborder text-center fs-tip bg-white c-tip">
             继续拖动，查看图文详情 >>
-        </div>
+        </div>        
     </section>
 </ion-content>
 <!--ion-content ed-->
     <div class="tabs tabs-icon-top row row-no-padding">
             <a href=""class="tab-item col">
-            	<i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"style="width: auto;"/></i>
+            	<i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>
             	<p >客服</p>
             </a>
             <a href=""class="tab-item col"><i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>店铺</a>

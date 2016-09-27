@@ -3,37 +3,26 @@
     <ion-content class="classify text-center fs-prim"scrollbar-y="false">
    <ul >
        <!--<li class="active">全部分类</li>-->
-       <li ng-repeat="fenlei in fenlei1"ng-bind="fenlei.gcName"ng-class="{'active':$index==actindex}"ng-click="onfenlei($index)"></li>
+       <li ng-repeat="fenlei in fenlei1"ng-bind="fenlei.gcName"ng-class="{'active':$index==actindex}"ng-click="onfenlei($index,fenlei.gcId)"></li>
    </ul>
     </ion-content>
-    <ion-content class="classify-con"scrollbar-y="false">
+    <ion-content class="classify-con bg-grey"scrollbar-y="false">
     	<div class="img-top">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/banner.png"/>
+    		<img ng-src="{{banner_img+details.advList[0].advSlidePic}}"/>
     	</div>
-    	<div class="feilei-goods clearfix  borderb">
-    		<div class="feilei-goods-imgwrap col col-33 fl">
-    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
-    			<p class="fs-tip c-tip">全部</p>
+    	<div class="feilei-goods clearfix ">
+    		<div class="feilei-goods-imgwrap col col-33 fl"ng-repeat="detail in details.goodsClassList">   			
+    			<img ng-src="{{class_img+detail.classPic}}"/>
+    			<p class="fs-tip c-tip esp1"ng-bind="detail.gcName"></p>
     		</div>
-    		<div class="feilei-goods-imgwrap col col-33 fl">
-    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
-    			<p class="fs-tip c-tip">全部</p>
-    		</div>
-    		<div class="feilei-goods-imgwrap col col-33 fl">
-    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
-    			<p class="fs-tip c-tip">全部</p>
-    		</div>
-    		<div class="feilei-goods-imgwrap col col-33 fl">
-    			<img src="img/切图/P3分类首页/drawable-hdpi/pic.png"/>
-    			<p class="fs-tip c-tip">全部</p>
-    		</div>
+    		
     	</div>
-    	<div class="feilie-pinpai">
-    		<div class="feilei-pinpai-title">
-    			<h3 class="fs-prim borderb">分类品牌</h3>
+    	<div class="feilie-pinpai ">
+    		<div class="feilei-pinpai-title bg-white">
+    			<h3 class="fs-prim borderb2">分类品牌</h3>
     		</div>
-    		<div class="feilei-feilei-imgwrap col col-33">
-    			<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png" alt="" />
+    		<div class="feilei-feilei-imgwrap col col-33"ng-repeat="detail in details.brandList">
+    			<img ng-src="{{pinpai_img+detail.brandPic}}" />
     		</div>
     	</div>
     </ion-content>

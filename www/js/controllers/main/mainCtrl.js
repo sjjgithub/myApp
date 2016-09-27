@@ -1,18 +1,19 @@
 angular.module('starter.controllers')
 .controller('MainCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover) {
-$scope.homeApi=$rootScope.path+"/eland/api/elandHome/getHomePage?memberId=30&&apName=1&&count=3";
-$scope.homeListApi=$rootScope.path+"/eland/api/elandHome/getHomeRecommend?memberId=30&&pageSize=6&&pageIndex=1"
-$scope.bannerQuanApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=2"; 
-$scope.bannerJingpinApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=3"; 
-$scope.bannerRexiaoApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=4"; 
-$scope.bannerLoveApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=5"; 
-$scope.rexiaoApi=$rootScope.path+"/eland/api/elandBrand/selectRandomBrand";
+$scope.homeApi=$rootScope.path+"elandHome/getHomePage?memberId=30&&apName=1&&count=3";
+$scope.homeListApi=$rootScope.path+"elandHome/getHomeRecommend?memberId=30&&pageSize=6&&pageIndex=1"
+$scope.bannerQuanApi=$rootScope.path+"elandAdv/getAdvPosition?apName=2"; 
+$scope.bannerJingpinApi=$rootScope.path+"elandAdv/getAdvPosition?apName=3"; 
+$scope.bannerRexiaoApi=$rootScope.path+"elandAdv/getAdvPosition?apName=4"; 
+$scope.bannerLoveApi=$rootScope.path+"elandAdv/getAdvPosition?apName=5"; 
+$scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
 
-$ionicSlideBoxDelegate.update();
+	
  	$http.get("data.php",{params:{url:$scope.homeApi}})
                 .success(function(data){  
                 	console.log(data);
               		$scope.banners=data.data.advlist;
+              		$ionicSlideBoxDelegate.update();
               		$scope.xianshifoods=data.data.xianshiList.length>0?data.data.xianshiList:null;           		
               		if($scope.xianshifoods){
               			var star= $scope.xianshifoods[0].startTime;
@@ -36,14 +37,14 @@ $ionicSlideBoxDelegate.update();
                         })
                         .error(function(){
                             alert("券banner请求失败")
-                        })//券   
+                        })// 
         $http.get("data.php", {params: {url:$scope.bannerQuanApi}})
                         .success(function(data){
                             $scope.bannerQuan=data.data;
                         })
                         .error(function(){
                             alert("券banner请求失败")
-                        })//券   
+                        })//
         $http.get("data.php", {params: {url:$scope.bannerJingpinApi}})
                         .success(function(data){
                             $scope.bannerJingpin= data.data;
@@ -64,12 +65,13 @@ $ionicSlideBoxDelegate.update();
                         })
                         .error(function(){
                             alert("喜欢banner请求失败")
-                        })//喜欢         
-//       $http.get($scope.bannerLoveApi)
-//                      .success(function(data){
-//                      	console.log("get"+data)
-//                          $scope.bannerLove = data.data;
-//                      })                                               
+                        })//喜欢     
+         var ppt="http://127.0.0.1:8080/eland/api/elandAdv/getAdvPosition?apName=4 "              
+         $http.get(ppt)
+                        .success(function(data){
+                        	console.log("get"+data)
+                            $scope.bannerLove = data.data;
+                        })                                               
                        scrollX({dom:".scrolx"})
                                       
 })

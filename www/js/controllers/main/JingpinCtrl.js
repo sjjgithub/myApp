@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('JingpinCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http) {
-        $scope.thisApi=$rootScope.path+"/eland/api/elandActivity/searchOrderActivityGoods?activityType=1&pageSize=10&pageIndex=1&";
-        $scope.thisBanApi=$rootScope.path+"/eland/api/elandAdv/getAdvPosition?apName=3"
+        $scope.thisApi=$rootScope.path+"elandActivity/searchOrderActivityGoods?activityType=1&pageSize=10&pageIndex=1&";
+        $scope.thisBanApi=$rootScope.path+"elandAdv/getAdvPosition?apName=3"
         $scope.ordtype=0;//排序类别
 	    $scope.soft="desc";//价格排序默认升序
 	    $scope.params="orderType="+$scope.ordtype;

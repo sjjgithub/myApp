@@ -127,6 +127,12 @@ angular.module('starter')
 		        templateUrl: 'templates/main/xinpin.html',
 		       	controller: 'XinpinCtrl'
 		   })
+			.state("quan",{
+		    	url:"/quan",
+		    		params:{"goodsId":null},		    		
+		        templateUrl: 'templates/main/quan.html',
+		       	controller: 'QuanCtrl'
+		   })
 			.state("rexiao",{
 		    	url:"/rexiao",
 		    		params:{"goodsId":null},		    		
@@ -157,7 +163,7 @@ angular.module('starter')
     views: {
       'tab-pinpai': {
         templateUrl: 'templates/pinpai/pinpai.html',
-        controller: 'ShopcartCtrl'
+        controller: 'PinpaiCtrl'
       }
     }
   })

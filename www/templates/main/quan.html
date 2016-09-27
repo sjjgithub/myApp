@@ -1,0 +1,38 @@
+<ion-view title="领券中心">
+	<!--header s-->
+	<!--<ion-infinite-scroll on-refresh="doRefresh()"></ion-infinite-scroll>-->
+    <div class="bar bar-header icon-right bar-dark">
+        <button class="button button-icon ion-ios-arrow-left" ng-click="goBack()"> </button>
+        <h3 class="title">领券中心</h3>
+    </div>
+<!--header e-->
+    <ion-content class="has-header c-most"scroll="false">
+    <section>
+     <ion-slide-box show-pager="true" class="lunbo quanbans" auto-play="true" slide-interval="3000" >
+            <ion-slide ng-repeat="banner in banners">
+                 <img ng-src="{{banner_img+banner.advSlidePic}}">
+            </ion-slide>          
+    </ion-slide-box>	
+    </section>
+    <ion-scroll direction="y"scrollbar-y="false"zooming="true"style="height: 100%;">
+    <section class="quanlist clearfix">
+       <div class="quanwrap fl"ng-repeat="quanq in quans">
+        			<div class="quan clearfix"ng-class="{'quan2':$index==2}">
+		                <div class="quan-l text-center fl">
+		                    <div class="c-while money">¥ <span class="price">{{quanq.couponPrice}}</span></div>
+		                    <div class="fs-prim ">{{quanq.couponTitle}}</div>
+		                </div>		         
+		                <div class="quan-r text-center posit">
+		                    <button class="getQuan button-small button">
+		                        	领取
+		                    </button>
+		                    <h3 class="c-while quanStore fs-most moreit">{{quanq.storeName}}</h3>
+		                    <div class="fs-tip">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
+		                    <span class="fr fs-tip">剩余{{quanq.couponSurplus}}张</span>
+		                </div>
+		            </div> 
+		</div>   
+    </section>
+    </ion-scroll>
+</ion-content>
+</ion-view>

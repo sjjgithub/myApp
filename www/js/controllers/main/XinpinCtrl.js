@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('XinpinCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http) {
-      $scope.thisApi=$rootScope.path+"/eland/api/elandActivity/searchOrderActivityGoods?activityType=0&pageSize=10&pageIndex=1&";
+      $scope.thisApi=$rootScope.path+"elandActivity/searchOrderActivityGoods?activityType=0&pageSize=10&pageIndex=1&";
         $scope.ordtype=0;//排序类别
 	    $scope.soft="desc";//价格排序默认升序
 	    $scope.params="orderType="+$scope.ordtype;

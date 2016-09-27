@@ -86,6 +86,10 @@ del {
 .bar.bar-dark {
   background-color: #000;
 }
+.noborder-v {
+  border-left: none;
+  border-right: none;
+}
 .noborder {
   border: none;
 }
@@ -105,6 +109,10 @@ del {
 .borderb {
   border: none;
   border-bottom: 1px solid #e7e7e7;
+}
+.borderb2 {
+  border: none;
+  border-bottom: 2px solid #666;
 }
 .border {
   border: 1px solid #e7e7e7;
@@ -186,6 +194,20 @@ del {
 .dis1.button[disabled] {
   opacity: 1;
 }
+.esp1 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.esp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.lunbo {
+  height: 5rem;
+}
 .moreit {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -257,6 +279,9 @@ hr {
 .slider-pager .slider-pager-page {
   font-size: 0.5rem;
   color: #fff;
+}
+.quanbans .slider-pager .slider-pager-page {
+  color: #000;
 }
 .checkbox input,
 .checkbox-icon {
@@ -416,6 +441,20 @@ ion-nav-view {
 .list-goods {
   flex-wrap: wrap;
 }
+.goodIt-info.new {
+  background-image: url(../img/切图/P3-2商品详情/drawable-hdpi/newtag-.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto 40%;
+}
+.good_xianshi {
+  display: inline-block;
+  background-color: red;
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 0 0.25rem;
+  margin-left: 1rem;
+}
 .goods {
   flex: 0 0 49vw;
   display: inline-block;
@@ -519,9 +558,6 @@ ion-nav-view {
   padding-top: 0.75rem;
   margin-bottom: 0.25rem;
 }
-.quanlist .quan div {
-  line-height: 1.2em;
-}
 .quan-l .price {
   font-size: 1.25rem;
   height: 100%;
@@ -562,15 +598,9 @@ ion-nav-view {
 .goods {
   background-color: #fff;
 }
-.goods .goods-title {
-  margin-bottom: 0;
+.goods-title {
+  margin: 0.25rem 0;
   height: 1.6rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.goods h3 {
-  color: #e3e3e3;
-  font-size: 1rem;
 }
 .goods-img {
   min-height: 3rem;
@@ -578,18 +608,22 @@ ion-nav-view {
   width: 100%;
   line-height: 49vw;
 }
+.samelist .samegoods .goods-img {
+  height: 33vw;
+  line-height: 33.3vw;
+}
 .goods-img img {
   max-height: 100%;
   height: auto;
   width: 100%;
   vertical-align: middle;
-  max-width: 100%;
 }
 .goods-name {
   text-overflow: ellipsis;
   word-wrap: normal;
   overflow: hidden;
-  height: 2.5rem;
+  height: 2rem;
+  line-height: 1rem;
 }
 .more button.button-clear span {
   color: #333;
@@ -1135,11 +1169,13 @@ ion-nav-view {
   padding: 0;
 }
 .feilei-goods-imgwrap img {
-  height: 80%;
+  height: 75%;
   width: auto;
 }
 .feilei-goods-imgwrap p {
-  line-height: 20%;
+  line-height: 100%;
+  height: 20%;
+  margin: 0 0.25rem;
 }
 .feilei-pinpai-title {
   padding: 0.5rem;
@@ -1152,6 +1188,7 @@ ion-nav-view {
 .feilei-feilei-imgwrap {
   height: 23.33vw;
   padding: 0;
+  overflow: hidden;
 }
 .feilei-feilei-imgwrap img {
   height: 100%;

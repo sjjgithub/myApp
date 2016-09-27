@@ -8,11 +8,12 @@
 <!--header e-->
     <ion-content class="has-header c-most">
     <section>
-     <ion-slide-box show-pager="true" ng-if="banners" class="slidebox"  auto-play="true" slide-interval="3000" does-continue="true">
+     <ion-slide-box show-pager="true"  auto-play="true" slide-interval="3000" >
             <ion-slide ng-repeat="banner in banners">
                  <img ng-src="{{banner_img+banner.advSlidePic}}">
             </ion-slide>          
     </ion-slide-box>	
+    
     </section>
     <section class="limit-list">
         <div class="row row-no-padding"ng-if="xianshisIt">

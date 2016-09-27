@@ -2,7 +2,7 @@
 
 <ion-content class="has-footer">
 	<!--<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>-->
-    <ion-slide-box show-pager="true" ng-if="banners.length>0" on-slide-changed="slideHasChanged($index)"  class="slidebox"  auto-play="true" slide-interval="4000" does-continue="true">
+    <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)"  class="slidebox"  auto-play="true" slide-interval="4000" does-continue="true">
             <ion-slide ng-repeat="banner in banners">
                  <a ng-href="{{banner.advSlideUrl}}" target="_blank"><img ng-src="{{banner_img+banner.advSlidePic}}"class="other-img"></a>
             </ion-slide>          
@@ -68,7 +68,7 @@
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h5 class="text-center fs-prim goods-title">{{goods.goodsName}}</h5>
-                <div class=" text-center fs-tip padding">
+                <div class=" text-center fs-tip padding ">
                 	<span class="c-red text-center fs-prim ">¥{{goods.xianshiPrice}}</span>
                 	&nbsp;&nbsp;<del>¥{{goods.goodsStorePrice}}</del>
                 </div>
@@ -90,8 +90,8 @@
 <!-- 抵用券-->
     <section class="quan"ng-show="quans.length>0">
     	<img ng-src="{{banner_img+bannerQuan[0].advSlidePic}}" class="banner-img"/>
-        <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;">
-            <span class="xixian"><span class="cuxian">抵用券推荐</span></span>
+        <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;"ui-sref="quan">
+            <span class="xixian"><span class="cuxian">优惠券推荐</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>    
         	<div class="scrolx"style="overflow-x: scroll;">
@@ -99,14 +99,14 @@
         		<div class="quanwrap fl"ng-repeat="quanq in quans">
         			<div class="quan clearfix"ng-class="{'quan2':$index==2}">
 		                <div class="quan-l text-center fl">
-		                    <div class="c-while money">¥ <span class="price">{{quanq.couponPrice}}</span></div>
-		                    <div class="fs-prim ">{{quanq.couponTitle}}</div>
+		                    <div class="c-while money">¥ <span class="price"ng-bind="quanq.couponPrice"></span></div>
+		                    <div class="fs-prim esp goods-title"ng-bind="quanq.couponTitle"></div>
 		                </div>		         
 		                <div class="quan-r text-center posit">
 		                    <button class="getQuan button-small button">
 		                        	领取
 		                    </button>
-		                    <h3 class="c-while quanStore fs-most moreit">{{quanq.storeName}}</h3>
+		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanq.storeName"></h3>
 		                    <div class="fs-tip">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
 		                    <span class="fr fs-tip">剩余{{quanq.couponSurplus}}张</span>
 		                </div>
@@ -122,12 +122,12 @@
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey ">
-            <div class="goods"ng-repeat="goods in newfoods"ng-click="getDetail(goods)">
+            <div class="goods"ng-repeat="goods in newfoods"ng-click="getDetail(goods)"ui-sref="detail({goodsId:goods.goodsId})">
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
-                <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
+                <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+                <div class="c-red fs-prim padding-v">¥ {{goods.price}}</div>
              </div>
         </div>
         <div class="item item-divider noborder text-center more"ui-sref="xinpin">
@@ -145,12 +145,12 @@
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey">
-                <div class="goods"ng-repeat="goods in weekfoods">
+                <div class="goods"ng-repeat="goods in weekfoods"ui-sref="detail({goodsId:goods.goodsId})">
                     <div class="goods-img">
                         <img ng-src="{{goods_img+goods.goodsImage}}">
                     </div>
-                    <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
-                    <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
+                    <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+                    <div class="c-red fs-prim padding-v">{{goods.price|currency:"¥"}}</div>
                 </div>
         </div>
         <div class="item item-divider noborder text-center more">
@@ -169,12 +169,12 @@
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey ">
-            <div class="goods"ng-repeat="goods in hotgoods">
+            <div class="goods"ng-repeat="goods in hotgoods"ui-sref="detail({goodsId:goods.goodsId})">
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
-                <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
+                <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+                <div class="c-red fs-prim padding-v">{{goods.price|currency:"¥"}}</div>
             </div>
         </div>
         <div class="item item-divider noborder text-center more">
@@ -192,12 +192,12 @@
             <i class="icon ion-ios-arrow-right "></i>
         </div>
         <div class="list-goods flex bg-grey">
-            <div class="goods"ng-repeat="goods in youlove">
+            <div class="goods"ng-repeat="goods in youlove"ui-sref="detail({goodsId:goods.goodsId})">
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h5 class="padding-v goods-title">{{goods.goodsName}}</h5>
-                <div class="c-red fs-prim padding">{{goods.price|currency:"¥"}}</div>
+                <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+                <div class="c-red fs-prim padding-v">{{goods.price|currency:"¥"}}</div>
             </div>
         </div>
         <div class="item item-divider noborder text-center more"ui-sref="youlove">

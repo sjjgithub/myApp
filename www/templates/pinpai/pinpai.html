@@ -6,54 +6,23 @@
     </div>
 <!--header e-->
 <ion-content class="has-header has-tabs bg-grey" >
-   <ion-slide-box class="rexiaoslide">
-            <ion-slide>
-            	<img src="img/切图/P2首页/drawable-hdpi/banner2.png">
-            </ion-slide>
+   <ion-slide-box show-pager="true"class="slidebox"  auto-play="true" slide-interval="4000"does-continue="true">
+            <ion-slide ng-repeat="banner in banners">
+                 <img ng-src="{{banner_img+banner.advSlidePic}}">
+            </ion-slide>          
     </ion-slide-box>
     <section class="pinpaiguan-list clearfix">
     	<ion-slide-box class="pinpaiguan-list-box">
     	<ion-slide>
     	<div class="pinpaiguan-list-imgwrap">
     		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
+    	</div>    	
     	</ion-slide>
     	<ion-slide>
     	<div class="pinpaiguan-list-imgwrap">
     		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>
-    	</ion-slide>
-    	
+    	</div>    	
+    	</ion-slide>    	
     </ion-slide-box>
     </section>
     <section class="pinpaitehui bg-white">

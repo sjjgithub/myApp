@@ -7,7 +7,7 @@ angular.module('starter.controllers')
         $scope.getGoods=function(path,param){
 				console.log(path+param)
 			//获取商品
-				$http.get("data.php",{params:{url:path+param}})
+				$http.get(path+param)
 						.success(function(data){
 							console.log(data)
 							$scope.goodsList=data.data;

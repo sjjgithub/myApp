@@ -9,11 +9,12 @@ $scope.bannerLoveApi=$rootScope.path+"elandAdv/getAdvPosition?apName=5";
 $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
 
 	
- 	$http.get("data.php",{params:{url:$scope.homeApi}})
+ 	$http.get($scope.homeApi)
                 .success(function(data){  
                 	console.log(data);
               		$scope.banners=data.data.advlist;
               		$ionicSlideBoxDelegate.update();
+              		$ionicSlideBoxDelegate.loop(true);
               		$scope.xianshifoods=data.data.xianshiList.length>0?data.data.xianshiList:null;           		
               		if($scope.xianshifoods){
               			var star= $scope.xianshifoods[0].startTime;
@@ -22,7 +23,7 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
               		}             			
                     $scope.quans=data.data.couponRecommendList;  
                 })//广告 券 限时	
-    $http.get("data.php",{params:{url:$scope.homeListApi}})
+    $http.get($scope.homeListApi)
                 .success(function(data){  
                 	console.log(data);                         	
                     $scope.newfoods=data.data.newRecommendList;					
@@ -30,7 +31,7 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
 					$scope.hotgoods =data.data.hotRecommendList;  
 					$scope.youlove=data.data.totalLikeList;  
                 })//list	
-        $http.get("data.php", {params: {url:$scope.rexiaoApi}})
+        $http.get($scope.rexiaoApi)
                         .success(function(data){
                         	console.log(data)
                             $scope.rexiaos=data.data;
@@ -38,40 +39,35 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
                         .error(function(){
                             alert("券banner请求失败")
                         })// 
-        $http.get("data.php", {params: {url:$scope.bannerQuanApi}})
+        $http.get($scope.bannerQuanApi)
                         .success(function(data){
                             $scope.bannerQuan=data.data;
                         })
                         .error(function(){
                             alert("券banner请求失败")
                         })//
-        $http.get("data.php", {params: {url:$scope.bannerJingpinApi}})
+        $http.get($scope.bannerJingpinApi)
                         .success(function(data){
                             $scope.bannerJingpin= data.data;
                         })
                         .error(function(){
                             alert("精品banner请求失败")
                         })//精品  
-        $http.get("data.php", {params: {url:$scope.bannerRexiaoApi}})
+        $http.get($scope.bannerRexiaoApi)
                         .success(function(data){
                             $scope.bannerRexiao= data.data;
                         })
                         .error(function(){
                             alert("热销banner请求失败")
                         })//热销  
-        $http.get("data.php", {params: {url:$scope.bannerLoveApi}})
+        $http.get($scope.bannerLoveApi)
                         .success(function(data){
                             $scope.bannerLove = data.data;
                         })
                         .error(function(){
                             alert("喜欢banner请求失败")
                         })//喜欢     
-         var ppt="http://127.0.0.1:8080/eland/api/elandAdv/getAdvPosition?apName=4 "              
-         $http.get(ppt)
-                        .success(function(data){
-                        	console.log("get"+data)
-                            $scope.bannerLove = data.data;
-                        })                                               
+                                                    
                        scrollX({dom:".scrolx"})
                                       
 })

@@ -15,17 +15,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-  
-    $rootScope.path = "http://10.9.174.35:8090/eland/api/";
-    $rootScope.store_img="http://10.9.174.35/eland/upload/store/"
-		$rootScope.goods_img="http://10.9.174.35/eland/upload/store/goods/";
-		$rootScope.banner_img="http://10.9.174.35/eland/upload/adv/";
-		$rootScope.pinpai_img="http://10.9.174.35/eland/upload/brand/";
-		$rootScope.xianshi_img="http://10.9.174.35/eland/upload/xianshi/";
-		$rootScope.touxiang_img="http://10.9.174.35/img";
-		$rootScope.bendi_img="http://10.9.174.35/img/sellerShowPics/";
-		$rootScope.tuihuo_img="http://10.9.174.35/img/sellerShowPics/";
-		$rootScope.class_img="http://10.9.174.35/eland/upload/goodsclass/"
+   	var Ip="http://127.0.0.1";
+   	var Ip2="http://10.9.174.35";
+    $rootScope.path =Ip+":8080/eland/api/";
+    $rootScope.store_img=Ip+"/eland/upload/store/"
+		$rootScope.goods_img=Ip+"/eland/upload/store/goods/";
+		$rootScope.banner_img=Ip+"/eland/upload/adv/";
+		$rootScope.pinpai_img=Ip+"/eland/upload/brand/";
+		$rootScope.xianshi_img=Ip+"/eland/upload/xianshi/";
+		$rootScope.touxiang_img=Ip+"/img";
+		$rootScope.bendi_img=Ip+"/img/sellerShowPics/";
+		$rootScope.tuihuo_img=Ip+"/img/sellerShowPics/";
+		$rootScope.class_img=Ip+"/eland/upload/goodsclass/"
 		$rootScope.top_show=true;
 		$rootScope.foot_show=true;
 		$rootScope.win_W = window.innerWidth;  

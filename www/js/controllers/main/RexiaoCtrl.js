@@ -1,13 +1,13 @@
 angular.module('starter.controllers')
 .controller('RexiaoCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http) {
-              $scope.thisApi=$rootScope.path+"elandActivity/searchOrderActivityGoods?activityType=2&pageSize=10&pageIndex=1&";
-        $scope.ordtype=0;//排序类别
+      $scope.thisApi=$rootScope.path+"elandActivity/searchOrderActivityGoods?activityType=2&pageSize=10&pageIndex=1&";
+      $scope.ordtype=0;//排序类别
 	    $scope.soft="desc";//价格排序默认升序
 	    $scope.params="orderType="+$scope.ordtype;
         $scope.getGoods=function(path,param){
 				console.log(path+param)
 			//获取商品
-				$http.get("data.php",{params:{url:path+param}})
+				$http.get(path+param)
 						.success(function(data){
 							console.log(data)
 							$scope.goodsList=data.data;

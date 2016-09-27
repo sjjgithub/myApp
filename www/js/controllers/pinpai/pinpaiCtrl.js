@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 	
     $scope.bannerApi=$rootScope.path+"elandAdv/getAdvPosition?apName=6";
     $scope.pinpaisApi=$rootScope.path+"elandBrand/selectAllBrand";
-    $http.get("data.php", {params: {url:$scope.bannerApi}})
+    $http.get($scope.bannerApi)
                         .success(function(data){
                         	console.log(data)
                             $scope.banners=data.data;
@@ -12,18 +12,12 @@ angular.module('starter.controllers')
                         .error(function(){
                             
                         })// 
-    $http.get("data.php", {params: {url:$scope.pinpaisApi}})
+    $http.get($scope.pinpaisApi)
                         .success(function(data){
                         	console.log(data)
                             $scope.pinpais=data.data;
                         })
                         .error(function(){
-                            alert("券banner请求失败")
-                        })//券     
-      $http.get($scope.pinpaisApi)
-                        .success(function(data){
-                        	console.log(data)
-                            $scope.pinpais=data.data;
-                        })                    
-           
+                           
+                        })//券                
 })

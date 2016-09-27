@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 	$scope.infoApi=$rootScope.path+"elandMessage/readMessage?memberId=20";
     $scope.infoDetails=$stateParams.infotype;
     if($scope.infoDetails=="系统消息"){
-    $http.get("data.php",{params:{url:$scope.infoApi}})
+    $http.get($scope.infoApi)
 	.success(function(data){
 		console.log(data)
 		$scope.infos=data.data;

@@ -10,7 +10,7 @@ angular.module('starter.controllers')
        	 $rootScope.zhunchangid=$stateParams.limitId;
        }
       
-       $http.get("data.php",{params:{url:$scope.bannerApi}})
+       $http.get($scope.bannerApi)
         .success(function(data){  
         	console.log(data)
         	$scope.banners=data.data;
@@ -19,7 +19,7 @@ angular.module('starter.controllers')
         })
        
       $scope.zhuanchang=function(id){      		
-       		$http.get("data.php",{params:{url:$scope.xianshisApi}})
+       		$http.get($scope.xianshisApi)
         		.success(function(data){  
         		console.log(data);
         			$scope.xianshisIt=data.data.length>0?data.data:null;
@@ -38,7 +38,7 @@ angular.module('starter.controllers')
         new timer({"dom":"#xianshiT"+$scope.xianshinow.xianshiId,"star":$scope.xianshinow.sysTime,"end":$scope.xianshinow.startTime})        
                 	}      
 			        $scope.goodsApi=$scope.goodsUrl+"xianshiId="+$scope.xianshinow.xianshiId;;
-			        $http.get("data.php",{params:{url:$scope.goodsApi}})
+			        $http.get($scope.goodsApi)
 			        	.success(function(data){ 
 			        		console.log(data);
 			        		$scope.goods=data.data;

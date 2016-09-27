@@ -4,7 +4,7 @@ angular.module('starter.controllers')
     $scope.detailsApi=$rootScope.path+"elandClassPage/getClassPage?pageNum=1&pageSize=10&gcParentId=";
     $scope.id;
     $scope.actindex=0;
-    $http.get("data.php", {params: {url:$scope.fenlei1Api}})
+    $http.get($scope.fenlei1Api)
                         .success(function(data){
                         	console.log(data);
                             $scope.fenlei1 = data.data;
@@ -16,7 +16,7 @@ angular.module('starter.controllers')
                             alert("一级分类数据请求失败")
                         })//一级分类     
     function getDetails(id){
-    	  $http.get("data.php", {params: {url:$scope.detailsApi+id}})
+    	  $http.get($scope.detailsApi+id)
                         .success(function(data){
                         	console.log(data);
                             $scope.details= data.data;

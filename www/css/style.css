@@ -56,6 +56,9 @@ del {
 .fs-tip {
   font-size: 0.55rem;
 }
+.fs-13 {
+  font-size: 0.65rem;
+}
 .fs-min {
   font-size: 0.5rem;
 }
@@ -76,6 +79,9 @@ del {
 }
 .bg-grey {
   background-color: #F2F2F2;
+}
+.bg-ord {
+  background-color: #e0e0e0;
 }
 .bg-submit {
   background: #535454;
@@ -98,6 +104,10 @@ del {
 }
 .nopadding {
   padding: 0;
+}
+.nopadding-v {
+  padding-left: 0;
+  padding-right: 0;
 }
 .nopadding-h {
   padding-top: 0 ;
@@ -124,6 +134,9 @@ del {
 .bar.bar-header.noborder {
   -webkit-background-size: 0 0;
   background-size: 0 0;
+}
+.marginb {
+  margin-bottom: 0.5rem;
 }
 .nomarginb {
   margin-bottom: 0;
@@ -176,7 +189,7 @@ del {
   width: 4.05rem;
 }
 .btn-big {
-  width: 5.55rem;
+  width: 6.55rem;
 }
 .button.bg-grey {
   background-color: #f2f2f2;
@@ -194,6 +207,9 @@ del {
 .dis1.button[disabled] {
   opacity: 1;
 }
+.noit textarea {
+  resize: none;
+}
 .esp1 {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -203,6 +219,9 @@ del {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.slider-slides {
   overflow: hidden;
 }
 .lunbo {
@@ -372,7 +391,8 @@ ion-tabs.tabs-color-active-dark.index-footer .tab-item {
   border-color: #7d7d7d;
 }
 .key a.btn-key {
-  margin: 5px;
+  padding: 0 0.5rem;
+  margin: 0.25rem;
 }
 .clracrHistory {
   margin-top: 1rem;
@@ -1143,16 +1163,11 @@ ion-nav-view {
   right: 0;
   top: 0;
   transform: translate(50%, -50%);
-  font-size: 10px;
   line-height: 0.75rem;
   background-color: #ff2b26;
   display: inline-block;
   color: #fff;
   font-size: 0.5rem;
-  display: none;
-}
-.myinfo-nav .qipao.has {
-  display: inline-block;
 }
 .classify-con.scroll-content {
   width: 70vw;
@@ -1219,8 +1234,8 @@ ion-nav-view {
 .pinpaitehui h3:before,
 .pinpaitehui h3:after {
   content: "";
-  width: 0.5rem;
-  height: 0.25rem;
+  width: 0.75rem;
+  height: 0.15rem;
   background-color: #000;
   display: inline-block;
   margin: 5px;

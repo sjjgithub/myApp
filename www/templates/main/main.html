@@ -2,9 +2,9 @@
 
 <ion-content class="has-footer">
 	<!--<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>-->
-    <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)"  class="slidebox"  auto-play="true" slide-interval="4000" does-continue="true">
+    <ion-slide-box show-pager="true" class="slidebox"auto-play="true" slide-interval="4000">
             <ion-slide ng-repeat="banner in banners">
-                 <a ng-href="{{banner.advSlideUrl}}" target="_blank"><img ng-src="{{banner_img+banner.advSlidePic}}"class="other-img"></a>
+                <img ng-src="{{banner_img+banner.advSlidePic}}">
             </ion-slide>          
     </ion-slide-box>	
 <!--slide-box ed-->
@@ -67,8 +67,8 @@
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h5 class="text-center fs-prim goods-title">{{goods.goodsName}}</h5>
-                <div class=" text-center fs-tip padding ">
+                <h5 class="text-center fs-prim goods-title esp">{{goods.goodsName}}</h5>
+                <div class=" text-center fs-tip padding-v">
                 	<span class="c-red text-center fs-prim ">¥{{goods.xianshiPrice}}</span>
                 	&nbsp;&nbsp;<del>¥{{goods.goodsStorePrice}}</del>
                 </div>
@@ -197,7 +197,7 @@
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
-                <div class="c-red fs-prim padding-v">{{goods.price|currency:"¥"}}</div>
+                <div class="c-red fs-prim padding-v">¥{{goods.price}}</div>
             </div>
         </div>
         <div class="item item-divider noborder text-center more"ui-sref="youlove">

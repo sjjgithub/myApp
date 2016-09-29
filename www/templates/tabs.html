@@ -7,11 +7,10 @@ navigation history that also transitions its views in and out.
 <div class="bar bar-header item-input-inset bg-black fs-most header bgs0"ng-class="{'hide':hideTabs}">
     <button class="button button-icon"><img src="img\切图\P2首页\drawable-hdpi\erweim.png" class="icon-img-nav"></button>
     <label class="item-input-wrapper bg-transparent header-inp text-center">
-        <a class="icon ion-ios-search placeholder-icon c-while fs-icon fs-b search"ng-click="tosearch()"></a>
-        <input type="search" placeholder="搜索商品或品牌"class="c-while text-center search-shop"ng-model="search"ng-click="tosearch()">
-        <i class="icon ion-ios-close-outline icon-right c-while fs-b fs-icon"ng-show="false"></i>
+        <a class="icon ion-ios-search placeholder-icon c-while fs-icon fs-b search"></a>
+        <input type="search" placeholder="搜索商品或品牌"class="c-while text-center search-shop"ng-click="tosearch()">
     </label>
-    <button class="button button-icon"ng-click="toinfo()"><img src="img\切图\P2首页\drawable-hdpi\mess.png" class="icon-img-nav"></button>
+    <button class="button button-icon"ui-sref="info"><img src="img\切图\P2首页\drawable-hdpi\mess.png" class="icon-img-nav"></button>
 </div>
 <!--header e-->
 <ion-tabs class="tabs-icon-top tabs-color-active-dark index-footer">

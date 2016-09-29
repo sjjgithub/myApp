@@ -1,0 +1,17 @@
+<ion-view title="意见反馈">
+	<div class="bar bar-header noborder bar-dark">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">意见反馈</h3>
+    </div>
+	<ion-content class="has-header c-most bg-white">
+	<div class="padding">
+	<div class="padding">
+		<div class="terwrap">
+		<textarea class="border"rows="5"style= "overflow:hidden;resize:none;padding:0.25rem;width: 100%;border-radius:0.25rem;font-size: 0.6rem;"placeholder="欢迎您提出宝贵的意见..."ng-model="yijianIt"></textarea>
+		<i class="icon ion-ios-close"style="color:#ccc"></i>
+		</div>
+		<div class="padding-h"><button class="button button-full button-dark"ng-click="putIt()">提交</button></div>
+	</div>
+	</div>
+	</ion-content>
+</ion-view>

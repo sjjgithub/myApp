@@ -4,8 +4,7 @@ angular.module('starter.controllers')
 		$scope.xianshiStar;
         $scope.bannerApi=$rootScope.path+"elandAdv/getAdvPosition?apName=7";//限时广告接口
         $scope.xianshisApi=$rootScope.path+"elandXianshi/specialClassification";
- 		$scope.goodsUrl=$rootScope.path+"elandXianshi/specialGoodsList?&pageSize=10&pageIndex=1&";
- 		
+ 		$scope.goodsUrl=$rootScope.path+"elandXianshi/specialGoodsList?&pageSize=10&pageIndex=1&"; 		
        if($stateParams.limitId){
        	 $rootScope.zhunchangid=$stateParams.limitId;
        }
@@ -15,7 +14,7 @@ angular.module('starter.controllers')
         	console.log(data)
         	$scope.banners=data.data;
         	$ionicSlideBoxDelegate.update();
-        	$ionicSlideBoxDelegate.loop(true);
+//      	$ionicSlideBoxDelegate.loop(true);
         })
        
       $scope.zhuanchang=function(id){      		

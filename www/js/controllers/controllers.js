@@ -11,7 +11,4 @@ angular.module('starter.controllers')
 	$scope.tosearch=function(){		
 		$state.go("search.index");
 	}
-	$scope.toinfo=function(){
-		$state.go("info");
-	}
 });

@@ -15,15 +15,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-   	var Ip="http://127.0.0.1";
-   	var Ip2="http://10.9.174.35";
-    $rootScope.path =Ip+":8080/eland/api/";
+// 	var Ip="http://127.0.0.1";
+   	var Ip="http://10.9.174.35";
+    $rootScope.path =Ip+":8090/eland/api/";
     $rootScope.store_img=Ip+"/eland/upload/store/"
 		$rootScope.goods_img=Ip+"/eland/upload/store/goods/";
 		$rootScope.banner_img=Ip+"/eland/upload/adv/";
 		$rootScope.pinpai_img=Ip+"/eland/upload/brand/";
 		$rootScope.xianshi_img=Ip+"/eland/upload/xianshi/";
-		$rootScope.touxiang_img=Ip+"/img";
+		$rootScope.touxiang_img=Ip+"/img/";
 		$rootScope.bendi_img=Ip+"/img/sellerShowPics/";
 		$rootScope.tuihuo_img=Ip+"/img/sellerShowPics/";
 		$rootScope.class_img=Ip+"/eland/upload/goodsclass/"

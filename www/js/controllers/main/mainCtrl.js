@@ -7,7 +7,6 @@ $scope.bannerJingpinApi=$rootScope.path+"elandAdv/getAdvPosition?apName=3";
 $scope.bannerRexiaoApi=$rootScope.path+"elandAdv/getAdvPosition?apName=4"; 
 $scope.bannerLoveApi=$rootScope.path+"elandAdv/getAdvPosition?apName=5"; 
 $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
-
 	
  	$http.get($scope.homeApi)
                 .success(function(data){  
@@ -23,6 +22,10 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
               		}             			
                     $scope.quans=data.data.couponRecommendList;  
                 })//广告 券 限时	
+                .error(function(){
+//              	shcemUtil.hideLoading();
+                	shcemUtil.showMsg("加载失败");
+                })
     $http.get($scope.homeListApi)
                 .success(function(data){  
                 	console.log(data);                         	
@@ -48,7 +51,9 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
                         })//
         $http.get($scope.bannerJingpinApi)
                         .success(function(data){
+                        	
                             $scope.bannerJingpin= data.data;
+                            console.log($scope.bannerJingpin)
                         })
                         .error(function(){
                             alert("精品banner请求失败")
@@ -67,7 +72,7 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
                         .error(function(){
                             alert("喜欢banner请求失败")
                         })//喜欢     
-                                                    
+             
                        scrollX({dom:".scrolx"})
                                       
 })

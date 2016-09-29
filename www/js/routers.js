@@ -63,14 +63,13 @@ angular.module('starter')
   })
   			.state('search', {
 		    url: '/search',
-		    abstract: true,
-		    templateUrl: 'templates/search/search-index.html',
-		    controller: 'SearchCtrl'		    
+//		    abstract: true,
+		    templateUrl: 'templates/search/search.html',	    
 			})
 			.state("search.index",{
 		    	url:"/index",
-		        templateUrl: 'templates/search/search.html',
-		       	controller: 'SearchindexCtrl'
+		        templateUrl: 'templates/search/search-index.html',
+		       	controller: 'SearchCtrl'
 		    })
 			.state("search.result",{
 		    	url:"/result",
@@ -148,16 +147,7 @@ angular.module('starter')
         controller: 'FenleiCtrl'
       }
     }
-  })
-//			 .state('search',{
-//			 	url:'/search',
-//			 	views:{
-//			 		'search':{
-//			 			templateUrl:'templates/search/search-index.html',
-//      		controller: 'SearchCtrl'
-//			 		}
-//			 	}
-//			 })
+ })
 		.state('tab.pinpai', {
     url: '/pinpai',
     views: {
@@ -184,8 +174,23 @@ angular.module('starter')
         controller: 'MyinfoCtrl'
       }
     }
-  });
-
+  })
+		.state('myorder', {
+   		 	url: '/myorder',  
+    		params:{"ordType":null},	
+        templateUrl: 'templates/wode/myorder.html',
+        controller: 'MyorderCtrl'   
+  	})
+		.state('setting', {
+   		 	url: '/setting',  
+        templateUrl: 'templates/wode/setting.html',
+        controller: 'SettingCtrl'   
+  	})
+		.state('yijian', {
+   		 	url: '/yijian',  
+        templateUrl: 'templates/wode/yijian.html',
+        controller: 'YijianCtrl'   
+  	})
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/main');
 	

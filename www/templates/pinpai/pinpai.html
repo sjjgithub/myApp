@@ -6,30 +6,33 @@
     </div>
 <!--header e-->
 <ion-content class="has-header has-tabs bg-grey" >
-   <ion-slide-box show-pager="true"class="slidebox"  auto-play="true" slide-interval="4000"does-continue="true">
+   <ion-slide-box show-pager="true"class="slidebox" auto-play="true" slide-interval="4000"does-continue="true">
             <ion-slide ng-repeat="banner in banners">
                  <img ng-src="{{banner_img+banner.advSlidePic}}">
             </ion-slide>          
     </ion-slide-box>
-    <section class="pinpaiguan-list clearfix">
-    	<ion-slide-box class="pinpaiguan-list-box">
-    	<ion-slide>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
+    <section class="pinpaiguan-list clearfix"style="height: 100%;">
+    	<ion-slide-box class="pinpaiguan-list-box"ng-if="pinpais.length>0">
+    	<ion-slide ng-repeat="page in pinpais">
+    	<div class="pinpaiguan-list-imgwrap"ng-repeat="pinpaiIt in page">
+    		<img ng-src="{{pinpai_img+pinpaiIt.brandPic}}"/>
     	</div>    	
-    	</ion-slide>
-    	<ion-slide>
-    	<div class="pinpaiguan-list-imgwrap">
-    		<img src="img/切图/P3分类首页/drawable-hdpi/nb-.png"/>
-    	</div>    	
-    	</ion-slide>    	
+    	</ion-slide>	
     </ion-slide-box>
     </section>
     <section class="pinpaitehui bg-white">
-   	<div class="item noborder text-center ">
-   		<h3><span class="fw-b fs-most">品牌特惠</span></h3>
+   	<div class="item noborder text-center item-divider bg-white">
+   		<h3><span class="fw-b fs-rem ">品牌特惠</span></h3>
    	</div>
-   	<img src="img/切图/P4商家（品牌馆）列表页/drawable-hdpi/banner-5.png"style="width: 100%;margin-bottom: 0.25rem;"/>
+   	<div class="flex text-center ord-title"style="background-color: #fff;">
+			<span ng-click="ordByIt(15)"ng-class="{'ordactive':ordtype==15}">全部</span>
+			<span ng-click="ordByIt(10)"ng-class="{'ordactive':ordtype==10}">女装</span>	
+			<span ng-click="ordByIt(11)"ng-class="{'ordactive':ordtype==11}">男装</span>	
+			<span ng-click="ordByIt(12)"ng-class="{'ordactive':ordtype==12}">运动</span>	
+			<span ng-click="ordByIt(13)"ng-class="{'ordactive':ordtype==13}">童装</span>	
+			<span ng-click="ordByIt(14)"ng-class="{'ordactive':ordtype==14}">饰品</span>	
+	</div>
+   	<img ng-src="{{banner_img+store.advSlidePic}}"ng-repeat="store in storesList"style="width: 100%;margin-bottom: 0.25rem;"/>   	
    	</section>
 </ion-content>
 <!--ion-content ed-->

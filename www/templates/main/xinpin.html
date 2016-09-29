@@ -16,15 +16,16 @@
 			</span>
 		</div>
 		<ion-content style="top:2.55rem">
-		<ul class="list-goods flex">	
-			<li class="goods bg-white padding"ng-repeat="goods in goodsList">	
-				<div class="goods-img">
-					<img ng-src="{{goods_img+goods.goodsImage}}">
-				</div>
-				<h5 class="goods-title fs-prim">{{goods.goodsName}}</h5>
-				<span class="goods-price c-red fs-prim">¥{{ goods.price}}</span>					
-			</li>
-		</ul>
+		<ul class="list-goods flex bg-grey">
+            <li class="goods bg-white
+            	"ng-repeat="goods in goodsList"ng-click="getDetail(goods)"ui-sref="detail({goodsId:goods.goodsId})">
+                <div class="goods-img">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
+                </div>
+                <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+                <div class="goods-price c-red fs-prim padding-v">¥ {{goods.price}}</div>
+             </li>
+        </ul>
 		</ion-content>
     </ion-content>
 </ion-view>

@@ -4,19 +4,20 @@ angular.module('starter.controllers')
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  //
 			$scope.stores=[];//店铺集合
 			$scope.goodsList=[];//商品集合
 			$scope.ordtype=0;//排序类别
 			$scope.soft=0;//价格排序默认升序
-			$scope.param="key="+$stateParams.keywords+"&pageSize=10&pageIndex=1"//参数
-			$scope.path1="/eland/api/elandGoods/selectByGoodsNameList?";
-			$scope.path2="/eland/api/elandGoods/selectByGoodsNameAndSaleNum?";
-			$scope.path3="/eland/api/elandGoods/selectByGoodsNameAndPrice?";
-			$scope.path=$scope.path1;
+			$scope.keywords="";
 //获取店铺
-//			$http.jsonp($rootScope.path+"/eland/api/elandStore/getStoreByKeyWord?key="+$stateParams.result+"&"+$rootScope.suffix)
-			$http.get("data.php",{params:{url:$rootScope.path+"/eland/api/elandStore/getStoreByKeyWord?key="+$stateParams.keywords+""}})
+			if($stateParams.keywords){$scope.keywords=$stateParams.keywords}
+			$scope.param="key="+$scope.keywords+"&pageSize=10&pageIndex=1"//参数
+			$scope.path1=$rootScope.path+"elandGoods/selectByGoodsNameList?";
+			$scope.path2=$rootScope.path+"elandGoods/selectByGoodsNameAndSaleNum?";
+			$scope.path3=$rootScope.path+"elandGoods/selectByGoodsNameAndPrice?";
+			$scope.path=$scope.path1;
+			
+			$http.get($rootScope.path+"elandStore/getStoreByKeyWord?key="+$scope.keywords)
 			.success(function(data){
 				$scope.stores=data.data;
 				
@@ -54,9 +55,9 @@ angular.module('starter.controllers')
 				$scope.getGoods($scope.path,$scope.param);
 			}//pricClick ed
 			$scope.getGoods=function(path,param){
-				console.log($rootScope.path+path+param)
+				console.log(path+param)
 			//获取商品
-				$http.get("data.php",{params:{url:$rootScope.path+path+param}})
+				$http.get(path+param)
 						.success(function(data){
 							$scope.goodsList=data.data;
 						})

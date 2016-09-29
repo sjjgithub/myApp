@@ -1,8 +1,8 @@
 <ion-view view-title="我的">
   <div class="myinfo top clearfix text-center">
     <div class="bar bar-header noborder">
-        <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"href="javascript:history.back()"></a>
-        <button class="button button-icon ion-android-settings icon-right c-while"></button>
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="goBack()"></a>
+        <button class="button button-icon ion-android-settings icon-right c-while"ui-sref="setting"></button>
     </div>
     <div class="touxiang positr has-header">
         <div class="img-touxiang">
@@ -15,69 +15,70 @@
         </button>
     </div>
     <div class="c-while touxiang-info">
-        <span class="phone">15378791993</span>
-        <p class="grade">120积分 <img src="" alt=""></p>
+        <span class="phone"ng-bind="personIt.memberName"></span>
+        <p class="grade"><span ng-bind="personIt.memberPoints"></span> 积分<img src="" alt=""></p>
     </div>
 </div>
 <!--header e-->
 <ion-content class="has-header c-most myinfo-con bg-grey">
 	<div class="bg-white">
-    <div class="margin-v2">
-        <div class="item item-icon-right borderb nomargin">
-            <div class="">
+    <div class="margin-v2 ">
+        <div class="item item-icon-right borderb nomargin fs-13 c-dark6"ui-sref="myorder({ordType:0})">
             我的订单 <span class="fs-tip fr">查看全部订单</span>
             <i class="icon ion-ios-arrow-right"></i>
-            </div>
         </div>
-        <div class="row fs-tip borderb myinfo-nav">
-            <div class="col col-20 text-center">
-                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon1.png"class="icon-img-big"><span class="qipao"></span></i>
-                <p>待付款</p>
-
+        <div class="row fs-tip borderb myinfo-nav row-center">
+            <div class="col col-20 text-center"ui-sref="myorder({ordType:1})">
+                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon1.png"class="icon-img-big">
+                <span class="qipao has"ng-if="infos.noPayment&&infos.noPayment>0"ng-bind="infos.noPayment"></span>
+                </i>
+                <div>待付款</div>
             </div>
-            <div class="col col-20 text-center">
+            <div class="col col-20 text-center"ui-sref="myorder({ordType:2})">
                 <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon2.png"class="icon-img-big">
-                    <span class="qipao has">20</span></i>
-                </br>待发货
-
+                    <span class="qipao has"ng-if="infos.waitSend&&infos.waitSend>0"ng-bind="infos.waitSend"></span></i>
+                 <div>待发货</div>
             </div>
-            <div class="col col-20 text-center">
-                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon3.png"class="icon-img-big"><span class="qipao has">20</span></i>
-                </br>待收获
-
+            <div class="col col-20 text-center"ui-sref="myorder({ordType:3})">
+                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon3.png"class="icon-img-big">
+                <span class="qipao has"ng-if="infos.waitGoods&&infos.waitGoods>0"ng-bind="infos.waitGoods"></span>
+                </i>
+                <div>待收货</div>
             </div>
-            <div class="col col-20 text-center">
-                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon4.png"class="icon-img-big"><span class="qipao"></span></i>
-                </br>待评价
-
+            <div class="col col-20 text-center"ui-sref="myorder({ordType:4})">
+                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon4.png"class="icon-img-big">
+                <span class="qipao has"ng-if="infos.waitEvaluate&&infos.waitEvaluate>0"ng-bind="infos.waitEvaluate"></span>
+                </i>
+                <div>待评价</div>
             </div>
-            <div class="col col-20 text-center">
-                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon5.png"class="icon-img-big"><span class="qipao"></span></i>
-                </br>退款/售后
-
+            <div class="col col-20 text-center"ui-sref="myorder({ordType:5})">
+                <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\icon5.png"class="icon-img-big">
+                <!--<span class="qipao has"></span>-->
+                </i>
+                <div class="esp1">退款/售后</div>
             </div>
         </div>
-        <div class="item borderb nomargin">
+        <div class="item borderb nomargin nopadding-v fs-13">
             <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\dizhi.png"class="icon-img"></i>
-            我的收货地址
+            	我的收货地址
             <i class="icon icon-right ion-ios-arrow-right fr"></i>
         </div>
-        <div class="item borderb nomargin">
+        <div class="item borderb nomargin nopadding-v fs-13 c-dark6">
             <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\shoucang.png"class="icon-img"></i>
-            我的收藏
+            	我的收藏
             <i class="icon icon-right ion-ios-arrow-right fr"></i>
         </div>
-        <div class="item borderb nomargin">
+        <div class="item borderb nomargin nopadding-v fs-13 c-dark6">
             <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\youhuiquan.png"class="icon-img"></i>
             优惠券
             <i class="icon icon-right ion-ios-arrow-right fr"></i>
         </div>
-        <div class="item borderb nomargin">
+        <div class="item borderb nomargin nopadding-v fs-13 c-dark6">
             <i class="icon"><img src="img\切图\P6我的\drawable-hdpi\zuji.png"class="icon-img"></i>
             足迹
             <i class="icon icon-right ion-ios-arrow-right fr"></i>
         </div>
-        <div class="item noborder text-center c-tip nomargin">
+        <div class="item noborder text-center c-tip nomargin fs-13">
             平台服务热线：400-888-0526
         </div>
     </div>

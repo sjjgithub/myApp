@@ -1,0 +1,32 @@
+<ion-view view-title="修改密码"> 
+	<div class="bar bar-header noborder bar-dark ">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">修改密码</h3>
+    </div>
+    <ion-content class="has-header">
+    <form name="resert_form"id="resert" novalidate
+		  ng-submit="putIt()">
+		  <ul class="list list-inset fs-min">
+			<li class="item item-input borderb">
+				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
+				<input type="password" placeholder="请输入当前密码"class="text-left"name="phone" ng-model="phone"ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"required/>
+				<i class="icon icon-right ion-checkmark-round ok"ng-show="resert_form.phone.$dirty && resert_form.phone.$valid"></i>
+			</li>
+			<li class="item item-input noborder-v">
+				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
+				<input ng-model="code"type="password" placeholder="请输新密码"class="text-left "maxlength="6" required name="code"ng-blur="checkCode()"/>
+			</li>
+			<li class="item item-input noborder-v">
+				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
+				<input ng-model="code2"type="password" placeholder="请再次输入密码"class="text-left "maxlength="6" required name="code2"ng-blur="checkCode2()"/>
+			</li>
+			<li class="fs-tip"style="padding: 0.5rem;">（密码长度至少6个字符，最多16个字符）</li>
+			</ul>
+			<div class="padding">
+				<div class="padding-v">
+				<button class="button button-block button-dark"ng-submit="putIt()">确定</button>
+				</div>
+			</div>			
+	</form>
+    </ion-content>
+</ion-view>

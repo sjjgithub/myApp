@@ -10,7 +10,9 @@ angular.module('starter.controllers',[]);
 angular.module('starter.directives',[]);
 angular.module('templates', []);
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','templates',"starter.directives"])
-
+.constant('ApiEndpoint', {
+  url: 'http://10.9.174.35:8090/eland/api/'
+})
 .run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

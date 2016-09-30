@@ -32,6 +32,9 @@ del {
 .rated-low {
   color: #ADADAD;
 }
+.song {
+  font-family: "宋体";
+}
 .fs-puton {
   font-size: 0.8rem;
 }
@@ -322,8 +325,16 @@ hr {
 [nav-view-transition=ios][nav-view-direction=back] {
   background-color: transparent;
 }
-input::-webkit-input-placeholder {
+#resert input::-webkit-input-placeholder {
+  /* WebKit browsers */
+
+  color: #666;
+  padding-left: 2rem;
+  font-size: 0.6rem;
+}
+.header-inp input::-webkit-input-placeholder {
   color: #535252;
+  text-align: center;
 }
 .toTop {
   position: fixed;
@@ -350,12 +361,14 @@ ion-tabs.tabs-color-active-dark.index-footer .tab-item {
 .header-inp {
   border-bottom: 1px solid #ffffff;
   margin: 5px;
+  text-align: left;
 }
 .button-clear.c-while {
   color: #ffffff;
 }
 .header input {
-  color: #ffffff;
+  color: #FFF;
+  text-align: left;
 }
 .item.item-image img {
   width: 5rem;

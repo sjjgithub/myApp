@@ -53,7 +53,6 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
                         .success(function(data){
                         	
                             $scope.bannerJingpin= data.data;
-                            console.log($scope.bannerJingpin)
                         })
                         .error(function(){
                             alert("精品banner请求失败")

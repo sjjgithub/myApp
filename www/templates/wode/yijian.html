@@ -3,14 +3,16 @@
         <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
         <h3 class="title">意见反馈</h3>
     </div>
-	<ion-content class="has-header c-most bg-white">
+	<ion-content class="has-header c-most bg-white"ng-controller="YijianCtrl">
 	<div class="padding">
 	<div class="padding">
-		<div class="terwrap">
-		<textarea class="border"rows="5"style= "overflow:hidden;resize:none;padding:0.25rem;width: 100%;border-radius:0.25rem;font-size: 0.6rem;"placeholder="欢迎您提出宝贵的意见..."ng-model="yijianIt"></textarea>
-		<i class="icon ion-ios-close"style="color:#ccc"></i>
+	<form name="yijian_form"id="yijian_form" novalidate
+		  ng-submit="putIt()">	
+		<div class="terwrap positr">
+		<textarea class="border"name="info"rows="5"style= "overflow:hidden;resize:none;padding:0.25rem;width: 100%;border-radius:0.25rem;font-size: 0.6rem;"placeholder="欢迎您提出宝贵的意见..."ng-model="yijianIt"required></textarea>
+		<i class="icon ion-ios-close"style="position:absolute;color:#ccc;right:0.25rem;top: 0.15rem;"ng-show="yijian_form.info.$dirty && yijian_form.info.$valid"ng-click="yijianIt=''"></i>
 		</div>
-		<div class="padding-h"><button class="button button-full button-dark"ng-click="putIt()">提交</button></div>
+		<div class="padding-h"><button class="button button-full button-dark"ng-submit="putIt()">提交</button></div>	
 	</div>
 	</div>
 	</ion-content>

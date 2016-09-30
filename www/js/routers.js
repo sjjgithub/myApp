@@ -186,11 +186,41 @@ angular.module('starter')
         templateUrl: 'templates/wode/setting.html',
         controller: 'SettingCtrl'   
   	})
-		.state('yijian', {
-   		 	url: '/yijian',  
-        templateUrl: 'templates/wode/yijian.html',
-        controller: 'YijianCtrl'   
-  	})
+				.state('yijian', {
+		   		 	url: '/yijian',  
+		        templateUrl: 'templates/wode/yijian.html',
+		        controller: 'YijianCtrl'   
+		  	})
+				.state('about', {
+		   		 	url: '/about',  
+		        templateUrl: 'templates/wode/about.html',
+		        controller: 'AboutCtrl'   
+		  	})
+						.state('helps', {
+				   		 	url: '/helps',  
+				        templateUrl: 'templates/wode/helps.html' 
+				  	})
+								.state('helpnew', {
+				   		 	url: '/helpnew',  
+				        templateUrl: 'templates/wode/helpnew.html',
+				        controller: 'HelpnewCtrl' 
+				  			})	
+				  			.state('helppay', {
+				   		 	url: '/helppay',  
+				        templateUrl: 'templates/wode/helppay.html',
+				        controller: 'HelppayCtrl' 
+				  			})	
+				  			.state('helpsend', {
+				   		 	url: '/helpsend',  
+				        templateUrl: 'templates/wode/helpsend.html',
+				        controller: 'HelpsendCtrl' 
+				  			})
+				  			.state('resertPass', {
+				   		 	url: '/resertPass',  
+				   		 	params:{"useId":null},
+				        templateUrl: 'templates/wode/resertPass.html',
+				        controller: 'ResertpassCtrl' 
+				  			})
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/main');
 	

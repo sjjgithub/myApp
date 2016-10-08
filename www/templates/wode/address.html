@@ -1,0 +1,32 @@
+<ion-view title="地址管理">
+	<div class="bar bar-header noborder bar-dark ">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">地址管理</h3>
+        <button class="button button-icon-right button-clear c-while"ui-sref="addIt">新增</button>
+    </div>
+    <ion-content class="has-header"ng-controller="AddressCtrl">
+    <section class="addresslist">
+    	<div class="bg-grey list"style="padding-bottom: 0.15rem;"ng-repeat="addIt in addressIts track by $index">
+        <div class="address bg-white">
+        <div class="item noborder">
+            <h3 class=""><span ng-bind="addIt.trueName"></span><span class="fr"ng-bind="addIt.mobPhone"></span></h3>
+        </div>
+        <div class="padding-v">
+            <p class="c-tip borderb fs-prim paddb address-text esp" ng-bind="addIt.areaInfo+addIt.address"></p>
+        </div>
+        <div class="item padding noborder fs-prim item-button-right  c-tip"style="line-height: 1.4rem;">
+            <label class="radioIt">
+            <input type="radio"ng-model="moren"ng-change="setDef(addIt.addressId)">
+            <span class="icon ion-ios-circle-outline fs-rem"style="vertical-align: sub;"></span>
+            <span class="icon ion-ios-checkmark fs-rem"style="vertical-align: sub;"></span>
+            <span>设为默认</span>       
+            </label>
+            <span class="fr"><span ui-sref="changeIt({addinfo:addIt})"><i class="icon"><img src="img/切图/P6-2收货地址管理/drawable-hdpi/bianj.png"class="icon-img"></i> 编辑</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span ng-click="deleteIt(addIt.addressId)"><i class="icon"><img src="img/切图/P6-2收货地址管理/drawable-hdpi/delete.png"class="icon-img"></i> 删除</span></span>
+        </div>
+       
+        </div>
+        </div><!--address ed-->        
+    </section><!--addresslist-->
+    </ion-content>
+</ion-view>

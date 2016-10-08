@@ -17,8 +17,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-// 	var Ip="http://127.0.0.1";
-   	var Ip="http://10.9.174.35";
+   	var Ip="http://127.0.0.1";
+// 	var Ip="http://172.16.0.10";
+// 	var Ip="http://10.9.174.35";
     $rootScope.path =Ip+":8090/eland/api/";
     $rootScope.store_img=Ip+"/eland/upload/store/"
 		$rootScope.goods_img=Ip+"/eland/upload/store/goods/";
@@ -89,6 +90,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
                 	$rootScope.hideTabs = false;
                 }
         })
- 
 })
 

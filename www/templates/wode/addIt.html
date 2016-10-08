@@ -1,0 +1,44 @@
+<ion-view title="新增收回地址">
+	<div class="bar bar-header noborder bar-dark ">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">新增收货地址</h3>
+    </div>
+    <ion-content class="has-header"ng-controller="AddItCtrl">
+    <form name="resert_form"id="addit" novalidate
+		  ng-submit="putIt()">
+		  <ul class="list list-inset fs-min nomargin-h">
+			<li class="item item-input borderb">
+				收货人姓名
+				<input type="text" placeholder="请输入收货人姓名"class="text-left"name="phone" ng-model="phone"ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"required/>
+				<i class="icon icon-right ion-checkmark-round ok"ng-show="resert_form.phone.$dirty && resert_form.phone.$valid"></i>
+			</li>
+			<li class="item item-input noborder-v">
+				 联系电话
+				<input ng-model="code"type="tel" placeholder="请输入联系电话"class="text-left "maxlength="6" required name="code"ng-blur="checkCode()"/>
+			</li>
+			<li class="item item-input noborder-v">
+				 区域选择
+				<input ng-model="code2"type="password" placeholder="请选择"class="text-left "maxlength="6" required name="code2"ng-blur="checkCode2()"/>
+			</li>
+			<li class="item item-input noborder-v">
+				 详细地址
+				<input ng-model="code2"type="text" placeholder="请输入详细地址"class="text-left "maxlength="6" required name="code2"ng-blur="checkCode2()"/>
+			</li>
+		    <li class="item item-checkbox checkbox-dark item-checkbox-right noborder-v">
+					<label for="" class="checkbox full">
+						<input type="checkbox" name="" id="" checked="" />
+					</label>
+					设为常用地址					
+			</li>
+			</ul>
+			<div class="padding">
+				<div class="padding-v">
+					<div class="padding-v">
+					<button class="button button-block button-dark"ng-submit="putIt()">保存</button>
+					</div>
+				</div>
+			</div>			
+	</form>
+    </ion-content>
+	
+</ion-view>

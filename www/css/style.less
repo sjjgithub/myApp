@@ -70,6 +70,7 @@ del{color:@del}
 .nomarginb{margin-bottom: 0}
 .paddb{padding-bottom: 0.5rem;}
 .nomargin{margin: 0}
+.nomargin-h{margin-bottom: 0;margin-top: 0;}
 .nomargin-v{margin-top: 0;margin-bottom: 0}
 .margin-t{margin-top: 1px}
 .margin-v{margin:0 0.75rem;}
@@ -92,6 +93,7 @@ del{color:@del}
   color:#000;}
 .dis1.button.disabled,.dis1.button[disabled]{opacity: 1;}
 //一些其他样式
+
 .noit textarea{resize:none;}
 .esp1{text-overflow:ellipsis;
     white-space: nowrap;
@@ -122,19 +124,25 @@ hr{margin: 0;}
 .slider-pager{bottom:0.6rem;}
 .slider-pager .slider-pager-page{font-size: 0.5rem;color: #fff;}
 .quanbans .slider-pager .slider-pager-page{color: #000;}
-.checkbox input, .checkbox-icon{width: 1rem;height: 1rem;border-radius: 50%;}
+//.radioIt input{display: none;}
+.radioIt span.ion-ios-checkmark{display: none;}
+.radioIt input[type="radio"]:checked + span.ion-ios-circle-outline{display: none;}
+.radioIt input[type="radio"]:checked + span.ion-ios-circle-outline + span.ion-ios-checkmark{display: inline-block;}
+.checkbox input, .checkbox-icon{width: 1rem;height: 1rem;border-radius: 50%;color: #000;}
 .checkbox input:after, .checkbox-icon:after{width: 0.5rem;height: 0.25rem;}
-.item-checkbox .checkbox{margin-top: 0;transform: translate(0,-50%);width: 1.75rem;}
+//.item-checkbox .checkbox.full{margin-top: -0.8rem;}
+.myorder .item-checkbox .checkbox{margin-top: 0;transform: translate(0,-50%);width: 1.75rem;}
+#addit .item-checkbox .checkbox{margin-top: 0;transform: translate(0,-50%);width:100%;left: inherit;}
 [nav-view-transition=ios][nav-view-direction=forward], [nav-view-transition=ios][nav-view-direction=back]{background-color: transparent;}
-//header
-//input::-moz-placeholder { /* Mozilla Firefox 19+ */
-//  color: @pl;
-//}
+
 #resert input::-webkit-input-placeholder { /* WebKit browsers */
 　　color:#666;
    padding-left: 2rem;
     font-size: 0.6rem;
 　　}
+#addit input::-webkit-input-placeholder{text-align: right;padding-right: 0;}
+#addit ul li{padding-left: 0;}
+#addit ul li>input{padding-right: 0;padding-left: 1rem;text-align: right;}
 .header-inp input::-webkit-input-placeholder{
     color: @pl;
     text-align: center;

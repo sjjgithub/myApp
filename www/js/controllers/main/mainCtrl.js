@@ -71,7 +71,5 @@ $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
                         .error(function(){
                             alert("喜欢banner请求失败")
                         })//喜欢     
-             
-                       scrollX({dom:".scrolx"})
-                                      
+                       scrollX({dom:".scrolx"})                                     
 })

@@ -150,6 +150,10 @@ del {
 .nomargin {
   margin: 0;
 }
+.nomargin-h {
+  margin-bottom: 0;
+  margin-top: 0;
+}
 .nomargin-v {
   margin-top: 0;
   margin-bottom: 0;
@@ -305,21 +309,37 @@ hr {
 .quanbans .slider-pager .slider-pager-page {
   color: #000;
 }
+.radioIt span.ion-ios-checkmark {
+  display: none;
+}
+.radioIt input[type="radio"]:checked + span.ion-ios-circle-outline {
+  display: none;
+}
+.radioIt input[type="radio"]:checked + span.ion-ios-circle-outline + span.ion-ios-checkmark {
+  display: inline-block;
+}
 .checkbox input,
 .checkbox-icon {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
+  color: #000;
 }
 .checkbox input:after,
 .checkbox-icon:after {
   width: 0.5rem;
   height: 0.25rem;
 }
-.item-checkbox .checkbox {
+.myorder .item-checkbox .checkbox {
   margin-top: 0;
   transform: translate(0, -50%);
   width: 1.75rem;
+}
+#addit .item-checkbox .checkbox {
+  margin-top: 0;
+  transform: translate(0, -50%);
+  width: 100%;
+  left: inherit;
 }
 [nav-view-transition=ios][nav-view-direction=forward],
 [nav-view-transition=ios][nav-view-direction=back] {
@@ -331,6 +351,18 @@ hr {
   color: #666;
   padding-left: 2rem;
   font-size: 0.6rem;
+}
+#addit input::-webkit-input-placeholder {
+  text-align: right;
+  padding-right: 0;
+}
+#addit ul li {
+  padding-left: 0;
+}
+#addit ul li > input {
+  padding-right: 0;
+  padding-left: 1rem;
+  text-align: right;
 }
 .header-inp input::-webkit-input-placeholder {
   color: #535252;

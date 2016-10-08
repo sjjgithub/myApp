@@ -221,6 +221,19 @@ angular.module('starter')
 				        templateUrl: 'templates/wode/resertPass.html',
 				        controller: 'ResertpassCtrl' 
 				  			})
+				  			.state('address', {
+				  			url: '/address',  
+				        templateUrl: 'templates/wode/address.html'				       
+				  			})
+				  			.state('addIt', {
+				  			url: '/addIt',  
+				        templateUrl: 'templates/wode/addIt.html'				       
+				  			})
+				  			.state('changeIt', {
+				  			url: '/changeIt', 
+				  			params:{"addinfo":null},
+				        templateUrl: 'templates/wode/changeIt.html'				       
+				  			})
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/main');
 	

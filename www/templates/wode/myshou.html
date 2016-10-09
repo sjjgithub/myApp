@@ -1,0 +1,31 @@
+<ion-view title="我的收藏">
+<div class="bar bar-header bar-dark">
+    <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="goBack()"></a>
+    <h3 class="title">我的收藏</h3>
+</div>
+<!--header e-->
+<ion-content class=" has-header c-most detail"scroll="false">
+    <div class="flex text-center ord-title">
+        <span ng-click="ordByIt(0)"ng-class="{'ordactive':ordtype==0}">商品收藏</span>
+        <span ng-click="ordByIt(1)"ng-class="{'ordactive':ordtype==1}">店铺收藏</span>
+    </div>
+    <ion-content style="margin-top: 2.4rem;"class="bg-grey">
+    <section class="order">
+    	<div class="padding-v bg-white">
+        <ul class="list">
+        	<li class="item item-image nopadding-v borderb text-left clearfix nomargin"ng-repeat="goods in ordersGoods">
+        		<div class="img-wrap fl"style="position: relative;margin-right: 0.5rem;width: 5rem;height: 124px;line-height: 124px;">
+        			<img ng-src="{{goods_img+goods.goodsImage}}"style="width: 100%;"/>
+        		</div>
+	        	<div class="item-right text-left"style="margin-bottom: 1rem;">
+					<h5 class="title esp goods-name"ng-bind="goods.goodsName"></h5>
+					<div class="goods-price c-red fs-prim padding-v">¥ {{goods.price}}</div>
+					<div class="fs-tip c-tip"ng-bind="goods.storeName"></div>
+				</div>
+        	</li>
+        </ul>
+        </div>
+    </section>
+    </ion-content>
+</ion-content>
+</ion-view>

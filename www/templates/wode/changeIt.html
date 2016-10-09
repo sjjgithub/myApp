@@ -15,9 +15,8 @@
 				 联系电话
 				<input type="tel" ng-value="addIt.mobPhone"ng-model="phone"/>
 			</li>
-			<li class="item item-input noborder-v">
-				 区域选择
-				<input type="password" placeholder="请选择"ng-model="quyu"/>
+			<li class="item item-input noborder-v nopadding-h">
+				<ionic-city-picker options='vm.CityPickData2'style="width: 100%;"></ionic-city-picker>
 			</li>
 			<li class="item item-input noborder-v">
 				 详细地址

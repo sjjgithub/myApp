@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('MainCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover) {
+.controller('MainCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover,locals) {
 $scope.homeApi=$rootScope.path+"elandHome/getHomePage?memberId=30&&apName=1&&count=3";
 $scope.homeListApi=$rootScope.path+"elandHome/getHomeRecommend?memberId=30&&pageSize=6&&pageIndex=1"
 $scope.bannerQuanApi=$rootScope.path+"elandAdv/getAdvPosition?apName=2"; 
@@ -7,7 +7,11 @@ $scope.bannerJingpinApi=$rootScope.path+"elandAdv/getAdvPosition?apName=3";
 $scope.bannerRexiaoApi=$rootScope.path+"elandAdv/getAdvPosition?apName=4"; 
 $scope.bannerLoveApi=$rootScope.path+"elandAdv/getAdvPosition?apName=5"; 
 $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
-	
+	if(locals.get("isdenglu")){
+		
+	}else{
+		$state.go("denglu");
+	}
  	$http.get($scope.homeApi)
                 .success(function(data){  
                 	console.log(data);

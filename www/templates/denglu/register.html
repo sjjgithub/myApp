@@ -1,0 +1,43 @@
+<ion-view title="注册">
+	<div class="bar bar-header item-input-inset bg-black fs-most header c-while text-center">
+	<a class="button-icon ion-ios-arrow-left c-while back-button"href="javascript:history.back()"></a>
+	<h3 class="title c-while">注册</h3>
+</div>
+<!--header e-->
+<!--<ion-content class="has-header">-->
+	<form name="register_form"id="register" novalidate
+		  ng-submit="signupForm()"class="margin-v">
+		<!--<div class="list list-inset">-->
+			<div class="item item-input">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/shouji.png" class="icon-img"/></i>
+				<input type="tel" placeholder="请输入手机号"class="text-left"name="phone" ng-model="phone"ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"required/>
+				<i class="icon icon-right ion-checkmark-round ok"ng-show="register_form.phone.$dirty && register_form.phone.$valid"></i>
+					<small class="error"ng-show="register_form.phone.$dirty && register_form.phone.$invalid &&
+register_form.submitted">
+						手机号已注册
+					</small>
+			</div>
+			<div class="item item-input posit">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/yanzhengm.png"class="icon-img code-img"/></i>
+				<input ng-model="code"type="text" placeholder="请输入验证码"class="text-left "maxlength="6" required name="code"ng-blur="checkCode()"/>
+				<button class="button button-small code radius c-while text-center"ng-click="getCode($event)">获取验证码</button>
+			</div>
+			<p class="code-tip">(请在60秒内完成验证，超时请点击重新发送)</p>
+			<div class="item item-input">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/pw.png" class="icon-img"/></i>
+				<input type="password" placeholder="请输入密码（字母开头的6-16个字符）"class="text-left"name="pass"ng-model="pass"ng-pattern="/^[a-zA-Z]\w{5,16}$/" required />
+				<i class="icon icon-right ion-checkmark-round ok"ng-show="register_form.pass.$dirty && register_form.pass.$valid"></i>
+			</div>
+			<div class="item item-input">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/pw.png" class="icon-img"/></i>
+				<input type="password" placeholder="请确认密码"class="text-left noborder"name="pass2"required ng-model="pass2"/>
+				<i class="icon icon-right ion-checkmark-round ok"ng-show="register_form.pass.$dirty&&pass2==pass&&register_form.pass.$valid"></i>
+			</div>
+			<label for="agree" class="agree">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/gouxuan.png" class="icon-img"></i>
+				<span id="agree"class="fs-tip">&nbsp;<em class="c-tip">我同意</em>&nbsp;《会员注册协议》</span>
+			</label>
+		</div>
+		<div class="submit padding"><button class="button button-block bg-submit c-while"type="submit">提交</button></div>
+	</form>
+</ion-view>

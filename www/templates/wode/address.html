@@ -2,21 +2,21 @@
 	<div class="bar bar-header noborder bar-dark ">
         <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
         <h3 class="title">地址管理</h3>
-        <button class="button button-icon-right button-clear c-while"ui-sref="addIt">新增</button>
+        <button class="button button-icon-right button-clear c-while"ui-sref="addIt()">新增</button>
     </div>
     <ion-content class="has-header"ng-controller="AddressCtrl">
     <section class="addresslist">
-    	<div class="bg-grey list"style="padding-bottom: 0.15rem;"ng-repeat="addIt in addressIts track by $index">
+    	<div class="bg-grey list"style="padding-bottom: 0.15rem;"ng-repeat="addIt in addressIts track by addIt.addressId">
         <div class="address bg-white">
         <div class="item noborder">
             <h3 class=""><span ng-bind="addIt.trueName"></span><span class="fr"ng-bind="addIt.mobPhone"></span></h3>
         </div>
         <div class="padding-v">
-            <p class="c-tip borderb fs-prim paddb address-text esp" ng-bind="addIt.areaInfo+addIt.address"></p>
+            <p class="c-tip borderb fs-prim paddb address-text esp" ng-bind="addIt.areaInfo+' '+addIt.address"></p>
         </div>
         <div class="item padding noborder fs-prim item-button-right  c-tip"style="line-height: 1.4rem;">
             <label class="radioIt">
-            <input type="radio"ng-model="moren"ng-change="setDef(addIt.addressId)">
+            <input type="radio"ng-model="morenId"ng-click="setDef(addIt.addressId)"ng-value="addIt.addressId"name="checkIt">
             <span class="icon ion-ios-circle-outline fs-rem"style="vertical-align: sub;"></span>
             <span class="icon ion-ios-checkmark fs-rem"style="vertical-align: sub;"></span>
             <span>设为默认</span>       

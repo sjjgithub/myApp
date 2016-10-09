@@ -309,6 +309,9 @@ hr {
 .quanbans .slider-pager .slider-pager-page {
   color: #000;
 }
+.radioIt input {
+  display: none;
+}
 .radioIt span.ion-ios-checkmark {
   display: none;
 }
@@ -351,6 +354,18 @@ hr {
   color: #666;
   padding-left: 2rem;
   font-size: 0.6rem;
+}
+.item-note {
+  color: currentcolor;
+}
+.place .item-note {
+  color: #aaa;
+}
+.changeIt .item-note {
+  color: currentcolor;
+}
+.ionic-citypicker.noit .item-note:after {
+  display: none;
 }
 #addit input::-webkit-input-placeholder {
   text-align: right;

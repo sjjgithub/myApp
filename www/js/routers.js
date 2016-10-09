@@ -51,7 +51,22 @@ angular.module('starter')
     controller: 'TabsearchCtrl'
   })
   // Each tab has its own nav history stack:
-			
+		.state('denglu', {
+				  			url: '/denglu', 
+				        templateUrl: 'templates/denglu/dneglu.html'	,
+				         controller:"DengluCtrl"
+				  			})
+	.state('resertPass', {
+				   		 	url: '/resertPass',  
+				   		 	params:{"useId":null},
+				        templateUrl: 'templates/denglu/resertPass.html',
+				        controller: 'ResertpassCtrl' 
+				  			})
+	.state('register', {
+				   		 	url: '/register',  
+				        templateUrl: 'templates/denglu/register.html',
+				        controller: 'RegisterCtrl' 
+				  			})		
   .state('tab.main', {
     url: '/main',
     views: {
@@ -214,26 +229,28 @@ angular.module('starter')
 				   		 	url: '/helpsend',  
 				        templateUrl: 'templates/wode/helpsend.html',
 				        controller: 'HelpsendCtrl' 
-				  			})
-				  			.state('resertPass', {
-				   		 	url: '/resertPass',  
-				   		 	params:{"useId":null},
-				        templateUrl: 'templates/wode/resertPass.html',
-				        controller: 'ResertpassCtrl' 
-				  			})
+				  			})				  			
 				  			.state('address', {
 				  			url: '/address',  
-				        templateUrl: 'templates/wode/address.html'				       
+				        templateUrl: 'templates/wode/address.html',
+				        controller:"AddressCtrl"
 				  			})
 				  			.state('addIt', {
 				  			url: '/addIt',  
-				        templateUrl: 'templates/wode/addIt.html'				       
+				  			params:{"memId":null},
+				        templateUrl: 'templates/wode/addIt.html'
 				  			})
 				  			.state('changeIt', {
 				  			url: '/changeIt', 
 				  			params:{"addinfo":null},
 				        templateUrl: 'templates/wode/changeIt.html'				       
 				  			})
+				  			.state('myshou', {
+				  			url: '/myshou', 
+				        templateUrl: 'templates/wode/myshou.html'	,
+				         controller:"MyshouCtrl"
+				  			})
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/main');
 	

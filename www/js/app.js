@@ -8,8 +8,9 @@
 angular.module('starter.services',[]);
 angular.module('starter.controllers',[]);
 angular.module('starter.directives',[]);
-angular.module('templates', []);
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','templates',"starter.directives"])
+angular.module('templates',[]);
+angular.module('ionic-citypicker',[]);
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','templates',"starter.directives",'ionic-citypicker'])
 .constant('ApiEndpoint', {
   url: 'http://10.9.174.35:8090/eland/api/'
 })
@@ -43,7 +44,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-     $rootScope.$on('loading:show', function() {
+    $rootScope.$on('loading:show', function() {
     $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',

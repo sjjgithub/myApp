@@ -14,7 +14,7 @@
     </div>
     <ion-content style="margin-top: 2.4rem;"class="bg-grey">
     <section class="myorder">
-        <div class="padding-v bg-white marginb"ng-repeat="orderIt in ordersIt"ng-class="{'nomargin':$last}">
+        <div class="padding-v bg-white marginb"ng-repeat="orderIt in ordersIt track by $index"ng-class="{'nomargin':$last}">
             <div class="item item-icon-right padding-h borderb myorder-title">
                 <img src="img/切图/P6-1我的订单/drawable-hdpi/shop.png"class="icon-img fl"style="margin-right: 0.25rem;margin-top:0.1rem;">
                 <h3><span ng-bind="orderIt.storeName"></span>
@@ -26,7 +26,7 @@
                 <p>订单金额：<span class="c-red">¥<span ng-bind="orderIt.orderAmount"></span></span></p>
                 <p>下单时间：<span ng-bind="orderIt.addTime*1000|date : 'yyyy-MM-dd HH:mm:ss'"></span></p>
                 <div class="myorder-img">
-                    <img ng-src="{{goods_img+ordItimg}}"ng-repeat="ordItimg in orderIt.listGoodsImg">
+                    <img ng-src="{{goods_img+ordItimg}}"ng-repeat="ordItimg in orderIt.listGoodsImg track by $index">
                     <i class="icon ion-ios-arrow-right fr"></i>
                 </div>
             </div>

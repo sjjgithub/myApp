@@ -1,0 +1,30 @@
+<ion-view title="登录">
+	<div class="bgIt"style="height: 100%;">
+	<div class="bar bar-header bar-stable">
+        <a class="button-icon ion-ios-arrow-left" href="javascript:history.back()"> </a>
+    </div>
+<!--header e-->
+    <ion-content class="has-header"controller="DengluCtrl">
+        <div class="list dl_list padding"style="padding: 1rem 2rem;">
+        	<form name="login_form"id="login" novalidate="novalidate" ng-submit="login()">
+            <div class="item item-input dl">
+                <i class="icon"><img src="img/切图/P7登录/drawable-hdpi/user.png" ></i>
+                <input type="tel" placeholder="输入手机号"name="user">
+            </div>
+            <div class="item item-input dl">
+                <i class="icon"><img src="img/切图/P7登录/drawable-hdpi/pw.png" alt=""></i>
+                <input type="password" placeholder="输入密码"name="pass">
+            </div>
+            <p class="pMess"><a href="" class="pull-right r"ui-sref="resertPass">忘记密码？</a></p>
+            <p class="pBot clearfix"><button class="button button-royal1 l"ng-submit="login()">登录</button> <button class="button button-royal2 r"ui-sref="register">注册</button></p>
+            <p class="pTrh text-center">第三方登录</p>
+          	<div class="row">
+          		<div class="col col-33 san"><img src="img/切图/P7登录/drawable-hdpi/icon1.png" ></div>
+                <div class="col col-33 san text-center"><img src="img/切图/P7登录/drawable-hdpi/icon2.png" ></div>
+                <div class="col col-33 san text-right"><img src="img/切图/P7登录/drawable-hdpi/icon3.png" ></div>
+          	</div>          
+            </form>
+        </div>
+    </ion-content>
+    </div>
+</ion-view>

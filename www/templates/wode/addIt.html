@@ -9,24 +9,22 @@
 		  <ul class="list list-inset fs-min nomargin-h">
 			<li class="item item-input borderb">
 				收货人姓名
-				<input type="text" placeholder="请输入收货人姓名"class="text-left"name="phone" ng-model="phone"ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"required/>
-				<i class="icon icon-right ion-checkmark-round ok"ng-show="resert_form.phone.$dirty && resert_form.phone.$valid"></i>
+				<input type="text" placeholder="请输入收货人姓名"name="nicheng" ng-model="nicheng"/>
 			</li>
 			<li class="item item-input noborder-v">
 				 联系电话
-				<input ng-model="code"type="tel" placeholder="请输入联系电话"class="text-left "maxlength="6" required name="code"ng-blur="checkCode()"/>
+				<input type="tel"ng-model="phone"placeholder="请输入联系电话"/>
 			</li>
-			<li class="item item-input noborder-v">
-				 区域选择
-				<input ng-model="code2"type="password" placeholder="请选择"class="text-left "maxlength="6" required name="code2"ng-blur="checkCode2()"/>
+			<li class="item item-input noborder-v nopadding-h">
+				<ionic-city-picker options='vm.CityPickData2'style="width: 100%;"ng-class="itIs"></ionic-city-picker>
 			</li>
 			<li class="item item-input noborder-v">
 				 详细地址
-				<input ng-model="code2"type="text" placeholder="请输入详细地址"class="text-left "maxlength="6" required name="code2"ng-blur="checkCode2()"/>
+				<input type="text" ng-model="dizhi"placeholder="请输入详细地址"/>
 			</li>
 		    <li class="item item-checkbox checkbox-dark item-checkbox-right noborder-v">
 					<label for="" class="checkbox full">
-						<input type="checkbox" name="" id="" checked="" />
+						<input type="checkbox" ng-checked="false" ng-model="isdef"/>
 					</label>
 					设为常用地址					
 			</li>

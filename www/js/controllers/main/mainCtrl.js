@@ -7,9 +7,7 @@ $scope.bannerJingpinApi=$rootScope.path+"elandAdv/getAdvPosition?apName=3";
 $scope.bannerRexiaoApi=$rootScope.path+"elandAdv/getAdvPosition?apName=4"; 
 $scope.bannerLoveApi=$rootScope.path+"elandAdv/getAdvPosition?apName=5"; 
 $scope.rexiaoApi=$rootScope.path+"elandBrand/selectRandomBrand";
-	if(locals.get("isdenglu")){
-		
-	}else{
+	if(!locals.getObject("userData")){		
 		$state.go("denglu");
 	}
  	$http.get($scope.homeApi)

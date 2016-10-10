@@ -9,16 +9,16 @@
 		  <ul class="list list-inset fs-min">
 			<li class="item item-input borderb">
 				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
-				<input type="password" placeholder="请输入当前密码"class="text-left"name="phone" ng-model="phone"ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"required/>
-				<i class="icon icon-right ion-checkmark-round ok"ng-show="resert_form.phone.$dirty && resert_form.phone.$valid"></i>
+				<input type="password" placeholder="请输入当前密码"class="text-left"name="oldpass" ng-model="oldpass"required/>
+				<!--<i class="icon icon-right ion-checkmark-round ok"ng-show="resert_form.phone.$dirty && resert_form.phone.$valid"></i>-->
 			</li>
 			<li class="item item-input noborder-v">
 				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
-				<input ng-model="code"type="password" placeholder="请输新密码"class="text-left "maxlength="6" required name="code"ng-blur="checkCode()"/>
+				<input ng-model="newpass"type="password" placeholder="请输新密码"class="text-left"required name="newpass"/>
 			</li>
 			<li class="item item-input noborder-v">
 				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
-				<input ng-model="code2"type="password" placeholder="请再次输入密码"class="text-left "maxlength="6" required name="code2"ng-blur="checkCode2()"/>
+				<input ng-model="newpass2"type="password" placeholder="请再次输入密码"class="text-left" required name="newpass2"/>
 			</li>
 			<li class="fs-tip"style="padding: 0.5rem;">（密码长度至少6个字符，最多16个字符）</li>
 			</ul>

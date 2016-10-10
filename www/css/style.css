@@ -210,6 +210,9 @@ del {
 .button.c-black {
   color: #000;
 }
+.button.c-white {
+  color: #fff;
+}
 .dis1.button.disabled,
 .dis1.button[disabled] {
   opacity: 1;
@@ -367,17 +370,28 @@ hr {
 .ionic-citypicker.noit .item-note:after {
   display: none;
 }
-#addit input::-webkit-input-placeholder {
+#chargeAdd input::-webkit-input-placeholder {
   text-align: right;
   padding-right: 0;
 }
-#addit ul li {
+#chargeAdd ul li {
   padding-left: 0;
 }
-#addit ul li > input {
+#chargeAdd ul li > input {
   padding-right: 0;
   padding-left: 1rem;
   text-align: right;
+}
+#resert input {
+  padding-left: 1rem;
+}
+#register input {
+  padding-left: 0.5rem;
+}
+#register input::-webkit-input-placeholder {
+  padding-left: 2rem;
+  font-size: 12px;
+  color: #999999;
 }
 .header-inp input::-webkit-input-placeholder {
   color: #535252;
@@ -580,11 +594,8 @@ ion-nav-view {
 .agree img {
   vertical-align: middle;
 }
-#register input::-webkit-input-placeholder {
-  color: #999999;
-}
 .ok {
-  color: #4cd964;
+  color: #000000;
 }
 .error {
   color: #ff0000;

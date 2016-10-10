@@ -1,9 +1,7 @@
 angular.module('starter.controllers')
 .controller('AddItCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	$scope.thisApi=$rootScope.path+"elandAddress/editOrAddAddress?";
-	
-//  $scope.memberId=locals.get("memberId");
-    $scope.memberId=162;
+	if(!locals.getObject("userData")){$state.go("denglu");}
+	$scope.thisApi=$rootScope.path+"elandAddress/editOrAddAddress?member_id="+locals.getObject("userData").memberId;
 	//三级联动str
 	var vm=$scope.vm={};
 	  vm.CityPickData2 = {
@@ -27,13 +25,13 @@ angular.module('starter.controllers')
   	//三级联动ed
   	$scope.putIt=function(){
 		$scope.isdef?$scope.isdef=1:$scope.isdef=0;
-		var param="&address="+$scope.dizhi+"&area_info="+$scope.quyu+"&is_default="+$scope.isdef+"&member_id="+$scope.memberId+"&mob_phone="+$scope.phone+"&true_name="+$scope.nicheng;
+		var param="&address="+$scope.dizhi+"&area_info="+$scope.quyu+"&is_default="+$scope.isdef+"&mob_phone="+$scope.phone+"&true_name="+$scope.nicheng;
 		console.log(param)
 		$http.get($scope.thisApi+param)
 		.success(function(data){
 			console.log(data)
 			shcemUtil.showMsg(data.msg);
-			 $state.go('address');
+			 $state.go('address',{},{reload: true});
 
 		})
 		.error(function(){

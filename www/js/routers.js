@@ -59,6 +59,7 @@ angular.module('starter')
 	.state('resertPass', {
 				   		 	url: '/resertPass',  
 				   		 	params:{"useId":null},
+				   		 	cache:'false', 
 				        templateUrl: 'templates/denglu/resertPass.html',
 				        controller: 'ResertpassCtrl' 
 				  			})
@@ -231,7 +232,8 @@ angular.module('starter')
 				        controller: 'HelpsendCtrl' 
 				  			})				  			
 				  			.state('address', {
-				  			url: '/address',  
+				  			url: '/address', 
+				  			 cache:'false', 
 				        templateUrl: 'templates/wode/address.html',
 				        controller:"AddressCtrl"
 				  			})
@@ -243,7 +245,9 @@ angular.module('starter')
 				  			.state('changeIt', {
 				  			url: '/changeIt', 
 				  			params:{"addinfo":null},
-				        templateUrl: 'templates/wode/changeIt.html'				       
+				        templateUrl: 'templates/wode/changeIt.html',
+				        controller:"ChangeItCtrl"
+				        
 				  			})
 				  			.state('myshou', {
 				  			url: '/myshou', 

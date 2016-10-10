@@ -12,7 +12,7 @@
     <ion-content style="margin-top: 2.4rem;"class="bg-grey">
     <section class="order">
     	<div class="padding-v bg-white">
-        <ul class="list">
+        <ul class="list"ng-if="ordersGoods">
         	<li class="item item-image nopadding-v borderb text-left clearfix nomargin"ng-repeat="goods in ordersGoods">
         		<div class="img-wrap fl"style="position: relative;margin-right: 0.5rem;width: 5rem;height: 124px;line-height: 124px;">
         			<img ng-src="{{goods_img+goods.goodsImage}}"style="width: 100%;"/>

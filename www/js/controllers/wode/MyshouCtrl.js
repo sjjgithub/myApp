@@ -1,7 +1,8 @@
 angular.module('starter.controllers')
 .controller('MyshouCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	$scope.thisgoodsApi=$rootScope.path+"elandFavorites/getFavoritesGoodsList?memberId=162";
-	$scope.thisStoreApi=$rootScope.path+"elandFavorites/getFavoritesStoresList?memberId=162";
+	if(!locals.getObject("userData")){$state.go("denglu");}
+	$scope.thisgoodsApi=$rootScope.path+"elandFavorites/getFavoritesGoodsList?memberId="+locals.getObject("userData").memberId;
+	$scope.thisStoreApi=$rootScope.path+"elandFavorites/getFavoritesStoresList?memberId="+locals.getObject("userData").memberId;
 	$scope.ordtype=0;
 	
 	$scope.getGoods=function(param){

@@ -1,54 +1,48 @@
 angular.module('starter.controllers')
-.controller('RegisterCtrl', function($scope,$state,$http,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-    $scope.thisApi=$rootScope.path+"/eland/api/member/sendAuthCode?memberMobile=10010001000";
-    			$scope.codeIt="";
-				$scope.code="";
-				$scope.submitted = false;
-				$scope.checkCode=function(){
-							console.log($scope.code);
-							console.log($scope.codeIt);
-					if($scope.code==$scope.codeIt&&$scope.codeIt!=""){
-						$scope.time="验证成功"
-					}else{
-						$scope.time="重新发送"
-					}
-				}//checkCode
+.controller('RegisterCtrl', function($scope,$state,$http,$timeout,$interval,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
+    $scope.codeApi=$rootScope.path+"member/sendAuthCode?type=register&memberMobile=";
+	$scope.putItApi=$rootScope.path+"member/register?devNum=F16CE6D7-ECED-40DD-9C5B-3E4F6C3F2342&";
+	$scope.timeout="获取验证码";
 				$scope.getCode=function(event){
-					$scope.time=60;
-					$http.get($scope.thisApi)
+					$http.get($scope.codeApi+register.phone.value)
 							.success(function(data){
-								$scope.codeIt=data.data;
-								alert($scope.codeIt);
-							})
-					timeDown();
-					function timeDown(){
-						if($scope.time>=0){
-							$(event.target).html("失效记时"+$scope.time);
-							$scope.time--;
-							$(event.target).attr("disabled","disabled");
-							$timeout(timeDown,1000);
-						}else{
-							$(event.target).attr("disabled",false)
-							if($scope.time!=-1){
-								$(event.target).html($scope.time);
-								$scope.time=60;
-							}else{
-								$(event.target).html("重新发送");
-							}
-						}
-					}
+								if(data.status){
+									shcemUtil.showMsg(data.msg,2000);
+								}else{
+									$scope.code=data.data;
+									var second=10;
+									
+									var  timePromise=undefined;
+									timePromise=$interval(function(){
+										 if(second<=0){  
+								            $interval.cancel(timePromise);  
+								            timePromise=undefined;  								  
+								            $scope.timeout=10;  
+								            $scope.timeout = "重发验证码";
+								          }else{  
+								            $scope.timeout = second + " 秒后可重发";  
+								            second--;  								             
+								          }  
+									},1000,100)
+								}
+	
+							})				
 				}//getCode
-//				$scope.signupForm=function(){
-//					if($scope.register_form.$valid){
-//							alert("跳转主页")
-//					}else{
-//						console.log($scope.register_form.phone.$valid)
-//						$scope.register_form.phone.$valid=false;
-//						$scope.register_form.submitted = true;
-//					}
-//				}
-//			})
-		$scope.login=function(){
-			console.log(11)
+
+		$scope.putIt=function(){
+		console.log("memberMobile="+register.phone.value+"&authCode="+register.code.value+"&password="+register.pass.value)
+			if(register.agree.value){
+				$http.get($scope.putItApi+"memberMobile="+register.phone.value+"&authCode="+register.code.value+"&password="+register.pass.value)
+				.success(function(data){
+					console.log(data)
+					if(data.status){
+						shcemUtil.showMsg(data.msg,2000)
+					}else{
+						$state.go("denglu")
+					}
+				})
+			}else{
+				shcemUtil.showMsg("请同意依恋协议",2000)
+			}
 		}
 });

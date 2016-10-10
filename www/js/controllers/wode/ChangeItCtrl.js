@@ -2,16 +2,16 @@ angular.module('starter.controllers')
 .controller('ChangeItCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
 	
 	$scope.thisApi=$rootScope.path+"elandAddress/editOrAddAddress?";
-	if($stateParams.addinfo){		
-         	 locals.setObject("addIt",$stateParams.addinfo);
-         }	
-    $scope.addIt=locals.getObject("addIt");
-	$scope.dizhi=$scope.dizhi?$scope.dizhi:$scope.addIt.address;
-	$scope.isdef=$scope.isdef?$scope.isdef:$scope.addIt.isDefault;
-	$scope.pnone=$scope.pnone?$scope.pnone:$scope.addIt.mobPhone;
-	$scope.nicheng=$scope.nicheng?$scope.nicheng:$scope.addIt.trueName;
+	console.log($stateParams.addinfo)
+	if($stateParams.addinfo){				
+         	 locals.setObject("address",$stateParams.addinfo);
+        }	
+    $scope.addIt=locals.getObject("address");
+
 	//三级联动str
+	console.log($scope.addIt)
 	console.log($scope.addIt.areaInfo.split(" "))
+	$scope.quyu=$scope.addIt.areaInfo;
 	var vm=$scope.vm={};
 	  vm.CityPickData2 = {
 	    areaData: ["请选择"],
@@ -22,7 +22,6 @@ angular.module('starter.controllers')
 	    tag:" ",
 	    cssClass:"noborder nopadding-v noit",
 	    buttonClicked:function(){
-	    	$scope.quyu=vm.CityPickData2.areaData;
 	    	var str=""
 	    	for(k in vm.CityPickData2.areaData){
 	    		str=str+vm.CityPickData2.areaData[k];
@@ -32,15 +31,17 @@ angular.module('starter.controllers')
 	    }
 	  }
   	//三级联动ed
+	
 	$scope.putIt=function(){	
-		$scope.isdef?$scope.isdef=1:$scope.isdef=0;
-		var param="addressId="+$scope.addIt.addressId+"&address="+$scope.dizhi+"&area_info="+$scope.quyu+"&is_default="+$scope.isdef+"&member_id="+$scope.addIt.memberId+"&mob_phone="+$scope.phone+"&true_name="+$scope.nicheng;
+		console.log(chargeAdd.isdef.checked)
+		var isdef;
+		chargeAdd.isdef.checked?isdef=1:isdef=0;
+var param="addressId="+$scope.addIt.addressId+"&address="+chargeAdd.dizhi.value+"&area_info="+$scope.quyu+"&is_default="+isdef+"&member_id="+$scope.addIt.memberId+"&mob_phone="+chargeAdd.phone.value+"&true_name="+chargeAdd.nicheng.value;
 		console.log(param)
-		console.log("addressId="+$scope.addIt.addressId+"&address="+$scope.dizhi);
 		$http.get($scope.thisApi+param)
 		.success(function(data){
-			shcemUtil.showMsg(data.msg);
-			 $state.go('address')
+			console.log(data)
+			$state.go('address',{reload: true});
 		})
 		.error(function(){
 			

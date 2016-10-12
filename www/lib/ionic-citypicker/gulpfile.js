@@ -26,7 +26,7 @@ gulp.task('css2js', function () {
 
 gulp.task('minify-all', ['delete-dist', 'html2js', 'css2js'], function () {
     return gulp.src(['./dist/*.js', './src/js/*.js'])
-        .pipe(concat('ionic-citypicker.min.js'))
+        .pipe(concat('ionic-citypicker1.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/'));
 });

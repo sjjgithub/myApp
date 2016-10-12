@@ -1,0 +1,26 @@
+<ion-view title="我的优惠券"> 
+	<div class="bar bar-header noborder bar-dark ">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">我的优惠券</h3>
+    </div>
+    <ion-content class="has-header">
+    <section class="quanlist clearfix">
+       <div class="quanwrap "ng-repeat="quanq in quans">
+        			<div class="quan clearfix quan2">
+		                <div class="quan-l text-center fl">
+		                    <div class="c-while money">¥ <span class="price">{{quanq.couponPrice}}</span></div>
+		                    <div class="fs-prim ">{{quanq.couponTitle}}</div>
+		                </div>		         
+		                <div class="quan-r text-center posit">
+		                    <button class="getQuan button-small button button-outline dis1"disabled="disabled">
+		                        	已领取
+		                    </button>
+		                    <h3 class="c-while quanStore fs-most moreit">{{quanq.storeName}}</h3>
+		                    <div class="fs-tip">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
+		                    <span class="fr fs-tip">去使用>></span>
+		                </div>
+		            </div> 
+		</div>   
+    </section>
+    </ion-content>
+</ion-view>

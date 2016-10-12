@@ -7,23 +7,24 @@
    </ul>
     </ion-content>
     <ion-content class="classify-con bg-grey"scrollbar-y="false">
-    	<div class="img-top">
+    	<div class="img-top"style="max-height: 7.5rem;>
     		<img ng-src="{{banner_img+details.advList[0].advSlidePic}}"/>
     	</div>
-    	<div class="feilei-goods clearfix ">
-    		<div class="feilei-goods-imgwrap col col-33 fl"ng-repeat="detail in details.goodsClassList">   			
+    	<div class="feilei-goods clearfix flex"style="border-top: 1px solid #e2e2e2;">
+    		<div class="feilei-goods-imgwrap col col-33 fl"ng-repeat="detail in details.goodsClassList"style="padding: 0.25rem;">   			
     			<img ng-src="{{class_img+detail.classPic}}"/>
     			<p class="fs-tip c-tip esp1"ng-bind="detail.gcName"></p>
-    		</div>
-    		
+    		</div>    		
     	</div>
-    	<div class="feilie-pinpai ">
-    		<div class="feilei-pinpai-title bg-white">
-    			<h3 class="fs-prim borderb2">分类品牌</h3>
-    		</div>
-    		<div class="feilei-feilei-imgwrap col col-33"ng-repeat="detail in details.brandList">
-    			<img ng-src="{{pinpai_img+detail.brandPic}}" />
-    		</div>
+    	<div class="feilie-pinpai clearfix">
+    		<div class="padding-v bg-white">
+    			<p class="fs-prim borderb2 nomargin"style="width: 100%;padding: 0.5rem 0;">分类品牌</p>
+    		</div>  
+    		<div class="row row-no-padding">
+    			<div class="feilei-feilei-imgwrap col col-33"ng-repeat="brand in details.brandList"ui-sref="store({storeId:brand.storeId})">
+    			<img ng-src="{{pinpai_img+brand.brandPic}}"/>
+    			</div>
+    		</div>   		
     	</div>
     </ion-content>
 </ion-content>

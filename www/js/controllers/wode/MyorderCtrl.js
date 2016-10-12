@@ -1,8 +1,6 @@
 angular.module('starter.controllers')
 .controller('MyorderCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	if(!locals.getObject("userData")){
-		$state.go("denglu")
-	}
+	
 	$scope.thisApi=$rootScope.path+"elandOrder/getOrderList?memberId="+locals.getObject("userData").memberId+"&pageIndex=1&pageSize=10&orderState=";
 	$scope.ordtype=0;
 	if($stateParams.ordType){$scope.ordtype=$stateParams.ordType};

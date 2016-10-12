@@ -15,9 +15,11 @@
 			<span ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==1}">热销</span>
 				<span class="ord-price"ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==2}">
 					价格
-					<div class="updown"ng-click="pricClick($event)">
-						<i  class="icon ion-ios-arrow-up picup" ></i>
-						<i  class="icon ion-ios-arrow-down picdown"></i>
+					<span class="updown"ng-click="pricClick($event)">
+						<span class="posit clearfix"style="display: inline-block;">
+							<i  class="icon ion-ios-arrow-up picup" ng-class="{'c-black':!soft&&ordtype==2}"></i>
+							<i  class="icon ion-ios-arrow-down picdown"ng-class="{'c-black':soft&&ordtype==2}"></i>
+						<span>						
 					</div>
 				</span>
 		</div>

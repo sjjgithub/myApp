@@ -14,12 +14,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 .constant('ApiEndpoint', {
   url: 'http://10.9.174.35:8090/eland/api/'
 })
-.run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate) {
+.run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-   	var Ip="http://127.0.0.1";
-// 	var Ip="http://172.16.0.10";
+// 	var Ip="http://127.0.0.1";
+   	var Ip="http://172.16.0.10";
 // 	var Ip="http://10.9.174.35";
     $rootScope.path =Ip+":8090/eland/api/";
     $rootScope.store_img=Ip+"/eland/upload/store/"
@@ -59,9 +59,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   })
   //页面刷新
   //后退
+	  $rootScope.goTo=function(type,id){
+	  	console.log(id)
+	  	switch (type){
+	  		case 1:
+	  			$state.go("detail",{goodsId:id})
+	  			break;
+	  		case 2:
+	  			$state.go("detail",{goodId:id})
+	  			break;
+	  		case 3:
+	  			$state.go("detail",{goodId:id})
+	  			break;
+	  		case 4:
+	  			$state.go("detail",{goodId:id})
+	  			break;
+	  		case 5:
+	  			$state.go("detail",{goodId:id})
+	  			break;
+	  		default:
+	  			break;
+	  	}
+	  	
+	  }
     $rootScope.goBack = function () {
-    	
-    	alert("back");
+    	console.log("back")
       $ionicHistory.goBack();
       $ionicViewSwitcher.nextDirection("back");
     }
@@ -70,26 +92,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
    $rootScope.scrollTop  = function () {
     	$ionicScrollDelegate.scrollTop(true);
    }
-  //收藏
-	 $rootScope.collectionIt=function(e,type,id){
-	 	angular.element(e.target).toggleClass("ion-android-favorite-outline");
-	 	angular.element(e.target).toggleClass("ion-android-favorite");
-	 	var str=""
-	 	if(angular.element(e.target).attr("shoucang")){
-	 		angular.element(e.target).attr("shoucang",false);
-	 		str="收藏成功";
-	 	}else{
-	 		angular.element(e.target).attr("shoucang",true);
-	 		str="取消收藏";
-	 	}
-	 } 
+  
+	
   $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParamss){
-                if(toState.name=="tab.myinfo"||toState.name=="tab.pinpai"||toState.name=="tab.shopCart"){               
+          $rootScope.isLogin=!$.isEmptyObject(locals.getObject("userData"));
+          console.log($rootScope.isLogin)
+          
+					if($rootScope.isLogin){	
+							if(toState.name=="denglu"){
+								$state.go("tab.main");
+								 event.preventDefault(); 
+							}else if(toState.name=="tab.myinfo"||toState.name=="tab.pinpai"||toState.name=="tab.shopCart"){
 									$rootScope.hideTabs = true;
                 }else{               
                 	$rootScope.hideTabs = false;
                 }
+               }
         })
 })
 

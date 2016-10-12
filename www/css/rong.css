@@ -2,13 +2,13 @@
     background:url(../img/切图/P7登录/drawable-hdpi/bg.png) no-repeat left top;background-size:100% auto;}
 .bar-denglu{background-size: 100% 0;}
 .bar.bar-header.bar-stable{background-color: transparent;border-bottom: none !important;}
-.button-icon{font-size: 25px;color:#fff;padding:5px 8px;}
+.button-icon{font-size: 25px;padding:5px 8px;}
 .content{padding-top: 50px;padding-left: 5%;padding-right: 5%;}
 .dl{background-color: transparent;border-top: none;border-left: none;border-right: none;height:50px;margin-top: 20px;border-bottom: 1px solid #b6b7b7;}
 .dl .icon{height:22px;width: 22px;}
 .dl .icon img{height:100%;width: auto;}
 .dl input{color: #fff;text-align: left;padding-left: 1rem;}
-.dl input::-webkit-input-placeholder{font-size: 0.7rem;color:#fff;text-align: center;padding-right: 1rem;}
+.dl input::-webkit-input-placeholder{font-size: 0.7rem;text-align: center;padding-right: 1rem;color: #fff;}
 .dl_list .pMess{height:2.5rem;line-height: 2.5rem;margin-top:0.25rem;}
 .dl_list .pMess .pull-right{color:#fff;font-size: 0.7rem;}
 .button.button-royal1{height:1.5rem;line-height: 1.5rem;width: 5rem;color:#fff;border-radius: 1.5rem;background-color: #b3996b;border:1px solid #b3996b;}

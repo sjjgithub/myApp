@@ -65,8 +65,10 @@ angular.module('starter.services', [])
         //读取对象
         getObject: function (key) {
           return JSON.parse($window.sessionStorage.getItem(key) || '{}');
-        }
-
+        },
+				delItem:function(key){
+					 return $window.sessionStorage.removeItem(key);
+				}
       }
   }])
 //.factory('Api', function($http, ApiEndpoint) {

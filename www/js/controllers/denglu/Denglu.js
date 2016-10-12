@@ -6,6 +6,7 @@
 				$scope.login=function(){
 					$http.get($scope.thisApi+"client="+type+"&devNum=F16CE6D7-ECED-40DD-9C5B-3E4F6C3F2342"+"&password="+login.pass.value+"&username="+login.user.value)
 					.success(function(data){
+						console.log(data)
 						if(!data.status){
 							locals.setObject("userData",data.data);
 							$state.go("tab.main")

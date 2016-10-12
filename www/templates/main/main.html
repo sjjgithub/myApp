@@ -34,7 +34,7 @@
             <div class="col col-25 text-center">
             	<img ng-src="img\切图\P2首页\drawable-hdpi\icon-1.png"><br>
             	<span class="fs-min c-most">购物中心</span></div>
-            <div class="col col-25 text-center">
+            <div class="col col-25 text-center"ui-sref="quan">
             	<img ng-src="img\切图\P2首页\drawable-hdpi\icon6.png"><br>
             	<span class="fs-min c-most">领券</span></div>
             <div class="col col-25 text-center">
@@ -49,7 +49,7 @@
         <i class="icon ion-ios-arrow-right"></i>
     </section>
 <!--toutiao ed-->
-    <section class="xianshi"ng-if="xianshifoods">
+    <section class="xianshi"ng-if="xianshifoods&&xianshifoods.length>=0">
         <div class="item item-divider noborder item-icon-right bg-white"ui-sref="limitTime({limitId:xianshifoods[0].xianshiId})">
             <span class="fs-rem c-most">限时抢购</span>&nbsp;
             <span class="fs-prim toutiao-title untime"ng-bind="xianshifoods[0].xianshiName"></span>
@@ -97,18 +97,19 @@
         	<div class="scrolx"style="overflow-x: scroll;">
         	<div class="quanlist clearfix">
         		<div class="quanwrap fl"ng-repeat="quanq in quans">
-        			<div class="quan clearfix"ng-class="{'quan2':$index==2}">
+        			<div class="quan clearfix"ng-class="{'quan2':quanq.isGet!='0'}">
 		                <div class="quan-l text-center fl">
 		                    <div class="c-while money">¥ <span class="price"ng-bind="quanq.couponPrice"></span></div>
 		                    <div class="fs-prim esp goods-title"ng-bind="quanq.couponTitle"></div>
 		                </div>		         
 		                <div class="quan-r text-center posit">
-		                    <button class="getQuan button-small button">
-		                        	领取
+		                    <button class="getQuan button-small button"ng-class="{'button-outline dis1':quanq.isGet!='0'}"ng-click="lingqu(quanq.couponId,quanq.isGet=='0')">
+		                        	<span ng-if="quanq.isGet=='0'">领取</span><span ng-if="quanq.isGet!='0'">已领取</span>
 		                    </button>
 		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanq.storeName"></h3>
-		                    <div class="fs-tip">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
-		                    <span class="fr fs-tip">剩余{{quanq.couponSurplus}}张</span>
+		                    <div class="fs-tip c-while">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
+		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet=='0'">剩余{{quanq.couponSurplus}}张</span>
+		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet!='0'">去使用>></span>
 		                </div>
 		            </div> 
 		        </div>   
@@ -122,7 +123,7 @@
             <i class="icon ion-ios-arrow-right"></i>
         </div>
         <div class="list-goods flex bg-grey ">
-            <div class="goods"ng-repeat="goods in newfoods"ng-click="getDetail(goods)"ui-sref="detail({goodsId:goods.goodsId})">
+            <div class="goods"ng-repeat="goods in newfoods"ui-sref="detail({goodsId:goods.goodsId})">
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>

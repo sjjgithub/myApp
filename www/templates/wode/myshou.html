@@ -12,15 +12,27 @@
     <ion-content style="margin-top: 2.4rem;"class="bg-grey">
     <section class="order">
     	<div class="padding-v bg-white">
-        <ul class="list"ng-if="ordersGoods">
+        <ul class="list item-text-wrap"ng-if="ordersGoods&&ordersGoods.length>=0">
         	<li class="item item-image nopadding-v borderb text-left clearfix nomargin"ng-repeat="goods in ordersGoods">
         		<div class="img-wrap fl"style="position: relative;margin-right: 0.5rem;width: 5rem;height: 124px;line-height: 124px;">
         			<img ng-src="{{goods_img+goods.goodsImage}}"style="width: 100%;"/>
         		</div>
 	        	<div class="item-right text-left"style="margin-bottom: 1rem;">
-					<h5 class="title esp goods-name"ng-bind="goods.goodsName"></h5>
+					<h5 class="esp goods-title"ng-bind="goods.goodsName"style="white-space: inherit;"></h5>
 					<div class="goods-price c-red fs-prim padding-v">¥ {{goods.price}}</div>
 					<div class="fs-tip c-tip"ng-bind="goods.storeName"></div>
+				</div>
+        	</li>
+        </ul>
+        <ul class="list item-text-wrap"ng-if="ordersStores&&ordersStores.length>=0">
+        	<li class="item item-image nopadding-v borderb text-left clearfix nomargin"ng-repeat="goods in ordersStores">
+        		<div class="img-wrap fl"style="position: relative;margin-right: 0.5rem;width: 5rem;height: 124px;line-height: 124px;">
+        			<img ng-src="{{store_img+goods.storeLogo}}"style="width: 100%;"/>
+        		</div>
+	        	<div class="item-right text-left"style="margin-bottom: 1rem;">
+					<h5 class="title "ng-bind="goods.storeName"></h5>
+					<div class="goods-price c-tip fs-tip padding-v"style="margin:0.5rem 0;">销量：{{goods.saleNum}} 共{{goods.classNum}}</div>
+					<div class="fs-tip c-tip esp "ng-bind="goods.storeZy"style="line-height: 1.4em;"></div>
 				</div>
         	</li>
         </ul>

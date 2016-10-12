@@ -53,6 +53,7 @@ angular.module('starter')
   // Each tab has its own nav history stack:
 		.state('denglu', {
 				  			url: '/denglu', 
+				  			cache:'false',
 				        templateUrl: 'templates/denglu/dneglu.html'	,
 				         controller:"DengluCtrl"
 				  			})
@@ -70,6 +71,7 @@ angular.module('starter')
 				  			})		
   .state('tab.main', {
     url: '/main',
+    cache:'false', 
     views: {
       'tab-main': {
         templateUrl: 'templates/main/main.html',
@@ -99,6 +101,19 @@ angular.module('starter')
 		    		
 		        templateUrl: 'templates/main/detail.html',
 		       	controller: 'DetailCtrl'
+		    })
+					.state("pingjia",{
+				    	url:"/pingjia",
+				    		params:{"goodsId":null},				    		
+				        templateUrl: 'templates/main/pingjia.html',
+				       	controller: 'PingjiaCtrl'
+				    })
+			.state("store",{
+		    	  url:"/store",
+		    		params:{"storeId":null},		
+		    		 cache:'false', 
+		        templateUrl: 'templates/pinpai/store.html',
+		       	controller: 'StoreCtrl'
 		    })
 			.state("info",{
 		    	url:"/info",
@@ -254,9 +269,20 @@ angular.module('starter')
 				        templateUrl: 'templates/wode/myshou.html'	,
 				         controller:"MyshouCtrl"
 				  			})
+				  			.state('myquan', {
+				  			url: '/myquan', 
+				        templateUrl: 'templates/wode/myquan.html'	,
+				         controller:"MyquanCtrl"
+				  			})
+				  			.state('myhistory', {
+				  			url: '/myhistory', 
+				  			cache:'false', 
+				        templateUrl: 'templates/wode/myhistory.html',
+				        controller:"MyhistoryCtrl"
+				  			})
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/main');
+  $urlRouterProvider.otherwise('/denglu');
 	
 });
 

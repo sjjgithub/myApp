@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('MyshouCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	if(!locals.getObject("userData")){$state.go("denglu");}
+	
 	$scope.thisgoodsApi=$rootScope.path+"elandFavorites/getFavoritesGoodsList?memberId="+locals.getObject("userData").memberId;
 	$scope.thisStoreApi=$rootScope.path+"elandFavorites/getFavoritesStoresList?memberId="+locals.getObject("userData").memberId;
 	$scope.ordtype=0;
@@ -11,7 +11,7 @@ angular.module('starter.controllers')
 					.success(function(data){
 						console.log(data);
 						$scope.ordersGoods=data.data;
-			
+						$scope.ordersStores=null;
 					})
 			        .error(function(){
 			       	
@@ -20,7 +20,7 @@ angular.module('starter.controllers')
 					.success(function(data){
 						console.log(data);
 						$scope.ordersStores=data.data;
-			
+						$scope.ordersGoods=null;
 					})
 			        .error(function(){
 			       	

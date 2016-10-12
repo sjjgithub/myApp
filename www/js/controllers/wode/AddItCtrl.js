@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('AddItCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	if(!locals.getObject("userData")){$state.go("denglu");}
+	
 	$scope.thisApi=$rootScope.path+"elandAddress/editOrAddAddress?member_id="+locals.getObject("userData").memberId;
 	//三级联动str
 	var vm=$scope.vm={};
@@ -14,12 +14,24 @@ angular.module('starter.controllers')
 	    buttonClicked:function(){
 	    	$scope.quyu=vm.CityPickData2.areaData;
 	    	$scope.itIs="changeIt";
-	    	var str=""
+	    	var str="";
+	    	var str1="";
 	    	for(k in vm.CityPickData2.areaData){
 	    		str=str+vm.CityPickData2.areaData[k];
 	    		if(k<vm.CityPickData2.areaData.length-1){str=str+" "}
 	    	}
 	    	$scope.quyu=str;
+//	    	var bb=str.split(" ");	    	
+//	    		if(bb.length<3){
+//	    			bb[0]=bb[0]+"市";
+//	    			bb[2]=bb[1];
+//	    			bb[1]=bb[0];	    			
+//	    		}	
+//	    		for(k in bb){
+//	    			str1=str1+bb[k];
+//	    		if(k<bb.length-1){str1=str1+" "}
+//	    		}
+//	    	console.log(str1);
 	    }
 	  }
   	//三级联动ed

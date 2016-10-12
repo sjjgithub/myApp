@@ -1,0 +1,35 @@
+<ion-view title="评价">
+	<div class="bar bar-header bar-dark">
+    <button class="button button-icon ion-ios-arrow-back c-while"ng-click="goBack()"></button>
+    <h3 class="title">评价</h3>
+</div>
+<!--header e-->
+<ion-content class="has-header bg-white" scroll="false">
+    <div class="flex text-center ord-title">
+        <span ng-click="ordByIt(2)"ng-class="{'ordactive':ordtype==2}">全部</span>
+        <span ng-click="ordByIt(1)"ng-class="{'ordactive':ordtype==1}">好评</span>
+        <span ng-click="ordByIt(0)"ng-class="{'ordactive':ordtype==0}">中评</span>
+        <span ng-click="ordByIt(-1)"ng-class="{'ordactive':ordtype==-1}">差评</span>
+    </div>
+    <ion-content style="margin-top: 2.5rem;">
+    <section class="assesslist bg-white">
+    	<div class="assess noborder  detail"ng-repeat="ass in pingjias">
+        <div class="card nomargin noshadow">
+            <div class="item item-avatar item-icon-right margin-v noborder">
+                <img ng-src="{{touxiang_img+ass.memberAvatar}}" />
+                <h2 ng-bind="ass.memberName"style="font-size: 0.7rem;"></h2>
+                <p ng-bind="ass.gevaldetailTime"></p>
+                <div class="cardr">
+                    <i class="icon"ng-if="ass.gevalstatLevel==1"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/great.png" class="icon-img"><span class="fs-prim rated-h">好评</span></i>
+                    <i class="icon"ng-if="ass.gevalstatLevel==0"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/soso.png" class="icon-img"><span class="fs-prim rated-m">中评</span></i>
+                    <i class="icon"ng-if="ass.gevalstatLevel==-1"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/notgood.png" class="icon-img"><span class="fs-prim rated-low">差评</span></i>
+                </div>
+            </div>
+            <div class="margin-v borderb noborder c-tip fs-prim "ng-bind="ass.content"style="padding-bottom: 0.25rem;"></div>
+        </div>
+       </div>
+    </section>
+    </ion-content>
+</ion-content>
+<!--ion-content ed-->
+</ion-view>

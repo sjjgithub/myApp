@@ -1,7 +1,7 @@
 
 var app=angular.module('starter');
 
-app.factory('shcemUtil', function($http, $state, $ionicLoading, config, $q) {
+app.factory('shcemUtil', function($http, $state, $ionicLoading,config, $q,$timeout,$ionicPopup,$rootScope) {
   var shcemUtil = this;
 
 
@@ -83,6 +83,7 @@ app.factory('shcemUtil', function($http, $state, $ionicLoading, config, $q) {
   };
 
   shcemUtil.showMsg = function(msg, duration) {
+  	console.log(msg)
     $ionicLoading.show({
       template: msg,
       noBackdrop: true,
@@ -90,6 +91,20 @@ app.factory('shcemUtil', function($http, $state, $ionicLoading, config, $q) {
       duration: duration ? duration : 2000
     });
   };
+  shcemUtil.showMsg2=function(msg,duration){
+  				if(!duration){
+  					duration=2000;
+  				}
+           // 自定义弹窗
+           var myPopup = $ionicPopup.show({
+//           title: msg,
+//           subTitle: 'Please use normal things',
+             scope:$rootScope,
+           });
+           $timeout(function() {
+              myPopup.close(); // 3秒后关闭弹窗
+           }, duration);
+  }
   shcemUtil.console=function(msg){
     console.log(msg);
   };

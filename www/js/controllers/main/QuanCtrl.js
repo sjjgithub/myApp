@@ -1,6 +1,10 @@
 angular.module('starter.controllers')
-.controller('QuanCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http,$ionicSlideBoxDelegate) {
-    $scope.thisApi=$rootScope.path+"elandCoupon/receiveCouponCenter?goodsId=246&memberId=5&pageSize=10&pageIndex=1";
+.controller('QuanCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http,$ionicSlideBoxDelegate,locals) {
+	if(!locals.getObject("userData")){		
+		$state.go("denglu");
+	}
+    $scope.thisApi=$rootScope.path+"elandCoupon/receiveCouponCenter?goodsId=246&pageSize=10&pageIndex=1&memberId="+locals.getObject("userData").memberId;
+   
    	$scope.bannerApi=$rootScope.path+"elandAdv/getAdvPosition?apName=9";//限时广告接口
    	$http.get($scope.bannerApi)
         .success(function(data){  

@@ -7,7 +7,7 @@
   url('iconfont.svg?t=1473128545#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-.tab-item .iconfont {
+.tab-item .iconfont,i.iconfont{
   font-family:"iconfont" !important;
   font-size:20px;
   height: 25px;
@@ -23,3 +23,4 @@
 .tab-item .icon-gouwuche:before { content: "\e7b7"; }
 .tab-item .icon-wode:before { content: "\e604"; }
 .tab-item .icon-pinpai:before { content: "\e622"; }
+i.icon-wode:before { content: "\e604"; }

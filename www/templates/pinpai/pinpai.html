@@ -1,20 +1,19 @@
-<ion-view title="品牌馆">
+<ion-view title="品牌馆">	
 <!--header s-->
 <div class="bar bar-header noborder bar-dark">
-        <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"href="javascript:history.back()"></a>
         <h3 class="title">品牌馆</h3>
-    </div>
+</div>
 <!--header e-->
 <ion-content class="has-header has-tabs bg-grey" >
    <ion-slide-box show-pager="true"class="slidebox" auto-play="true" slide-interval="4000"does-continue="true">
-            <ion-slide ng-repeat="banner in banners">
+            <ion-slide ng-repeat="banner in banners"ng-click="goTo(banner.advSlideType,banner.advId)">
                  <img ng-src="{{banner_img+banner.advSlidePic}}">
             </ion-slide>          
     </ion-slide-box>
     <section class="pinpaiguan-list clearfix"style="height: 100%;">
-    	<ion-slide-box class="pinpaiguan-list-box"ng-if="pinpais.length>0">
+    	<ion-slide-box class="pinpaiguan-list-box">
     	<ion-slide ng-repeat="page in pinpais">
-    	<div class="pinpaiguan-list-imgwrap"ng-repeat="pinpaiIt in page">
+    	<div class="pinpaiguan-list-imgwrap"ng-repeat="pinpaiIt in page"ui-sref="store.index({storeId:pinpaiIt.storeId})">
     		<img ng-src="{{pinpai_img+pinpaiIt.brandPic}}"/>
     	</div>    	
     	</ion-slide>	

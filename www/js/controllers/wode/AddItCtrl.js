@@ -43,8 +43,7 @@ angular.module('starter.controllers')
 		.success(function(data){
 			console.log(data)
 			shcemUtil.showMsg(data.msg);
-			 $state.go('address',{},{reload: true});
-
+			 $rootScope.goBack()
 		})
 		.error(function(){
 			

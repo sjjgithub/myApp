@@ -134,9 +134,20 @@ del {
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
 }
-.bar.bar-header.noborder {
+.border-dark3 {
+  border: 1px solid #333333;
+}
+.bar.bar-header.noborder,
+.tabs.noxian {
   -webkit-background-size: 0 0;
   background-size: 0 0;
+}
+.tuikuanIt .item.item-input input,
+.tuikuanIt .item.item-input textarea {
+  padding: 1em;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-right: 0.75rem;
 }
 .marginb {
   margin-bottom: 0.5rem;
@@ -167,11 +178,17 @@ del {
 .margin-v2 {
   margin: 0 0.5rem;
 }
+.margin-r {
+  margin-right: 0.5rem;
+}
 .padding-v {
   padding: 0 0.75rem;
 }
 .padding-h {
   padding: 0.75rem 0;
+}
+.padding-hs {
+  padding: 0.5rem 0;
 }
 .btn-outline {
   outline: none;
@@ -198,6 +215,12 @@ del {
 .btn-big {
   width: 6.55rem;
 }
+button.button.btn-ai {
+  min-height: 1.2rem;
+  height: 1.2rem;
+  font-size: 0.6rem;
+  line-height: 1.2rem;
+}
 .button.bg-grey {
   background-color: #f2f2f2;
 }
@@ -217,6 +240,77 @@ del {
 .dis1.button[disabled] {
   opacity: 1;
 }
+.val-m {
+  vertical-align: middle;
+}
+.close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+}
+.button.active {
+  background-color: #333;
+  color: #fff;
+}
+.modal-backdrop-bg {
+  opacity: 0.3;
+  background: #000;
+}
+.modal-wrapper {
+  height: 100%;
+}
+.tuwen {
+  transition: all 0.6s;
+}
+.bgItc {
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+}
+.kuang-caidan {
+  width: 50%;
+  position: absolute;
+  margin: 0;
+  z-index: 12;
+  padding: 0 0.25rem;
+  top: 43px;
+  right: 0;
+}
+.kuang-caidan:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0.5rem solid transparent;
+  border-bottom-color: #fff;
+  position: absolute;
+  right: 0.75rem;
+  top: 1px;
+  transform: translate(0, -100%);
+  z-index: 11;
+}
+.kuang-caidan > div {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.kuang-caidan li {
+  line-height: 2rem;
+  border-top: 1px solid #ccc;
+  font-size: 0.7rem;
+}
+.kuang-caidan li:nth-child(1) {
+  border: none;
+}
+.kuang-caidan .icon-img {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
 img.img-v {
   width: 100%;
   height: auto;
@@ -227,9 +321,17 @@ img.img-h {
   width: auto;
   max-width: 100%;
 }
+img.img-a {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+}
 img.img-f {
   width: 100%;
   height: 100%;
+}
+img.img-mr {
+  margin-right: 0.25rem;
 }
 .goodnew {
   width: 30%;
@@ -248,11 +350,15 @@ img.img-f {
 ion-scroll .scroll {
   height: 100%;
 }
+.car .scroll {
+  height: 100%;
+}
 .allCenter {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 11;
 }
 .noit textarea {
   resize: none;
@@ -270,6 +376,7 @@ ion-scroll .scroll {
 }
 .slider-slides {
   overflow: hidden;
+  min-height: 5rem;
 }
 .lunbo {
   height: 5rem;
@@ -311,6 +418,10 @@ ion-slide img {
 .flex {
   display: flex;
 }
+.flex-cen {
+  display: flex;
+  justify-content: space-around;
+}
 .fl {
   float: left;
 }
@@ -338,6 +449,9 @@ hr {
 }
 .radius {
   border-radius: 1rem;
+}
+.radiuss {
+  border-radius: 0.25rem;
 }
 .slider-pager {
   bottom: 0.6rem;
@@ -468,12 +582,41 @@ ion-tabs.tabs-color-active-dark.index-footer .tab-item {
   color: #FFF;
   text-align: left;
 }
-.item.item-image img {
+.item.tui-img {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 4vw;
+}
+.item div.addImg {
+  width: 23vw;
+  height: 23vw;
+  text-align: center;
+  padding: 0.25rem;
+}
+.item.item-image .img-wrap.ord {
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  line-height: 5rem;
+}
+.item.item-image > img {
   width: 5rem;
   height: 5rem;
 }
+.item.item-image img.guige-img {
+  width: 4rem;
+  height: 4rem;
+}
 .item-right {
   margin-top: 1rem;
+}
+.img-wrap.ordcart {
+  width: 4.5rem;
+  height: 4.5rem;
+  text-align: center;
+  line-height: 4.5rem;
+  margin: 0.5rem;
 }
 .list-secect {
   height: 2.5rem;
@@ -750,8 +893,8 @@ ion-nav-view {
   text-overflow: ellipsis;
   word-wrap: normal;
   overflow: hidden;
-  height: 2rem;
-  line-height: 1rem;
+  height: 2.1em;
+  line-height: 1em;
 }
 .more button.button-clear span {
   color: #333;
@@ -878,9 +1021,11 @@ ion-nav-view {
   height: 4.5rem;
   width: auto;
 }
+.order-user-info {
+  height: 5.05rem;
+}
 .order-user-info .item p {
   color: #333;
-  padding-right: 1.5rem;
   overflow-wrap: break-word;
 }
 .order-user-info .icon {
@@ -907,8 +1052,7 @@ ion-nav-view {
   font-size: 0.8rem;
 }
 .order-kuaidi .icon {
-  vertical-align: top;
-  font-size: 0.8rem;
+  vertical-align: sub;
 }
 .fapiao .item .icon,
 .youhuiquan .item .icon {
@@ -924,7 +1068,7 @@ ion-nav-view {
   font-size: 0.55rem;
 }
 .surePay {
-  padding: 10px 40px;
+  padding: 0.5rem 1rem;
 }
 .surePay a.button {
   color: #ffffff;
@@ -1130,8 +1274,8 @@ ion-nav-view {
   width: 100%;
 }
 .store-index-con .store-img {
-  height: 2.25rem;
-  width: auto;
+  height: 3rem;
+  width: 3rem;
   margin-right: 0.25rem;
 }
 .store-cen {
@@ -1315,4 +1459,29 @@ ion-nav-view {
   background-color: #000;
   display: inline-block;
   margin: 5px;
+}
+.fapiaotype span {
+  vertical-align: middle;
+}
+.popover.hs {
+  height: 10rem;
+}
+.popover.hl {
+  height: 14rem;
+  transform: translate(0, -4rem);
+}
+.fapiao .popover-arrow {
+  display: none;
+}
+.paytop {
+  background-image: url(../img/切图/确认订单并支付（收银台）/drawable-hdpi/tab1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.item.zhifu.active {
+  background-color: #e7e7e7;
+}
+.ordde li span {
+  width: 3.5rem;
+  display: inline-block;
 }

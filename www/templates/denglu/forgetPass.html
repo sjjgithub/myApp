@@ -1,0 +1,37 @@
+<ion-view view-title="忘记密码"> 
+	<div class="bar bar-header noborder bar-dark ">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">忘记密码</h3>
+    </div>
+    <ion-content class="has-header">
+    <form name="resert_form"id="resert" novalidate
+		  ng-submit="putIt()">
+		  <ul class="list list-inset fs-min "style="margin-top: 0;">
+		  	<li class="item item-input noborder-v">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/shouji.png" class="icon-img"/></i>
+				<input type="tel" placeholder="请输入手机号"class="text-left"name="phone"ng-model="phone" ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"required/>
+				<i class="icon icon-right ion-checkmark-round ok"ng-show="register_form.phone.$dirty && register_form.phone.$valid"></i> 
+			</li>
+			<li class="item item-input posit noborder-v">
+				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/yanzhengm.png"class="icon-img code-img"/></i>
+				<input ng-model="code"type="text" placeholder="请输入验证码"class="text-left "maxlength="6" required name="code"ng-model="code" ng-blur="checkCode()"/>
+				<a class="button button-small code radius c-while text-center"ng-click="getCode()"ng-bind="timeout"></a>
+			</li>
+			<li class="code-tip esp1 nomargin">(请在60秒内完成验证，超时请点击重新发送)</li>
+			<li class="item item-input noborder">
+				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
+				<input ng-model="newpass"type="password" placeholder="请输新密码（6～16个字符）"class="text-left"required name="newpass"/>
+			</li>
+			<li class="item item-input noborder-v">
+				 <i class="icon ion-ios-unlocked-outline placeholder-icon c-black fs-rem"></i>
+				<input ng-model="newpass2"type="password" placeholder="请再次输入密码"class="text-left" required name="newpass2"/>
+			</li>
+			</ul>
+			<div class="padding">
+				<div class="padding-v">
+				<button class="button button-block button-dark"ng-submit="putIt()">确定</button>
+				</div>
+			</div>			
+	</form>
+    </ion-content>
+</ion-view>

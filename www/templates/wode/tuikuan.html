@@ -1,0 +1,75 @@
+<ion-view title="退款申请"> 
+	<div class="bar bar-header noborder bar-dark">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">退款申请</h3>
+    </div>
+    <ion-content class="has-header has-tabs bg-grey">
+    <form name="send_form"id="sendIt" novalidate ng-submit="putIt()">
+    	<div class="borderb bg-white">
+    	<div class="padding">
+           	<label class="radioIt">
+           		<div class="fl val-m margin-r">
+           			<input type="radio"name="checkIt"ng-checked="type==0"ng-click="type=0;cheType(type)">
+		            <span class="icon ion-ios-circle-outline fs-rem"></span>
+		            <span class="icon ion-ios-checkmark fs-rem"></span>
+           		</div>	           
+	            <div>
+	            	<span>退款退货</span><br>
+	            	<span class="fs-tip c-tip">已收到货物，需要退还收到的货物</span>
+	            </div>     
+            </label>
+        </div>
+        <div class="padding">
+           	<label class="radioIt">
+           		<div class="fl val-m margin-r">
+           			 <input type="radio"name="checkIt"ng-click="type=1;cheType(type)">
+		            <span class="icon ion-ios-circle-outline fs-rem"></span>
+		            <span class="icon ion-ios-checkmark fs-rem"></span>
+           		</div>	           
+	            <div>
+	            	<span>仅退款</span><br>
+	            	<span class="fs-tip c-tip">未收到货物，与商家协商后提出申请</span>
+	            </div>     
+            </label>
+        </div>
+    	</div>
+    	<div class="bg-white tuikuanIt">
+    		<div class="item item-input noborder fs-prim">
+    			&nbsp;&nbsp;&nbsp;&nbsp;退款金额：
+    			<input type="number"placeholder="订单金额：{{orderIt.orderAmount}}"ng-model="ret.orderRefund"style="padding-top: 0;padding-bottom: 0;"/>
+    		</div>
+    		<div class="item item-input noborder fs-prim">
+    			&nbsp;&nbsp;&nbsp;&nbsp;退款原因：
+    			<textarea name="yuanyin"ng-model="ret.buyerMessage" rows="5"placeholder="请输入退款原因"></textarea>
+    		</div>
+    		<div class="item item-input noborder  fs-prim">
+    			支付宝名称：
+    			<input type="text"ng-model="ret.refundBuyerName"placeholder="请输入支付宝名称"/>
+    		</div>
+    		<div class="item item-input noborder fs-prim">
+    			支付宝账号：
+    			<input type="text"ng-model="ret.refundBuyerAccount"placeholder="请输入支付宝号"/>
+    		</div>
+    		<div class="item item-input item-text-wrap nopadding noborder tui-img"ng-show="type==0">
+    			<div id="imgs"></div>
+    			<div class="fl positr clearfix addImg">
+    				<input type="file" name="file" multiple="multiple"id="file"ng-model="addImg"onchange="angular.element(this).scope().addIt(this)"style="padding: 0;opacity: 0;width: 100%;height: 100%;"class="allCenter"/>
+    				<img src="img/切图/P6-1-2退款申请/drawable-hdpi/plus.png"style="z-index: 9;"class="img-a"/>
+    			</div>	
+    		</div>
+    		<div class="padding fs-tip c-tip">
+    			退款只能申请一次，建议与卖家沟通后认真填写。如果卖家同意，将采用线下支付的方式付款给你，请及时查收。
+    		</div>		
+    		</div>
+    	</form>
+    </ion-content>
+<div class="tabs tabs-icon-top row row-no-padding noxian">
+	<a class="tab-item col"style="padding-top: 0.5rem;">
+        <i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>
+        <p >客服</p>
+    </a>   
+	<div class="col col-80 tab-item"ng-click="putIt()">
+        <button class="button button-dark button-full noborder"style="margin: 0;height: 100%;">申请</button>
+   </div>    	
+</div>	
+</ion-view>

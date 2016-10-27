@@ -31,11 +31,14 @@ function getone(){
 	getone();
     	$http.get($scope.homeListApi)
                 .success(function(data){  
-                	console.log(data);                         	
-                    $scope.newfoods=data.data.newRecommendList;					
-					$scope.weekfoods=data.data.weekRecommendList;
-					$scope.hotgoods =data.data.hotRecommendList;  
-					$scope.youlove=data.data.totalLikeList;  
+                	console.log(data)
+                	     if(!data.status){
+                	     	 $scope.newfoods=data.data.newRecommendList;					
+							$scope.weekfoods=data.data.weekRecommendList;
+							$scope.hotgoods =data.data.hotRecommendList;  
+							$scope.youlove=data.data.totalLikeList;  
+                	     }
+                   
                 })//list	
         $http.get($scope.rexiaoApi)
                         .success(function(data){

@@ -10,14 +10,15 @@ angular.module('starter.controllers',[]);
 angular.module('starter.directives',[]);
 angular.module('templates',[]);
 angular.module('ionic-citypicker',[]);
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','templates',"starter.directives",'ionic-citypicker'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','templates',"starter.directives",'ionic-citypicker',"ngAnimate"])
 .constant('ApiEndpoint', {
   url: 'http://10.9.174.35:8090/eland/api/'
 })
 .run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+//     for form inputs)
+//	var Ip="http://192.168.3.45";
 // 	var Ip="http://127.0.0.1";
    	var Ip="http://172.16.0.10";
 // 	var Ip="http://10.9.174.35";
@@ -31,10 +32,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 		$rootScope.bendi_img=Ip+"/img/sellerShowPics/";
 		$rootScope.tuihuo_img=Ip+"/img/sellerShowPics/";
 		$rootScope.class_img=Ip+"/eland/upload/goodsclass/"
-		$rootScope.top_show=true;
-		$rootScope.foot_show=true;
 		$rootScope.win_W = window.innerWidth;  
-    $rootScope.win_H=window.innerHeight; 
+    $rootScope.win_H=window.innerHeight;
+    $rootScope.hideTop=false;
+//  $rootScope.isTo=false;
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -79,36 +80,44 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 	  			break;
 	  		default:
 	  			break;
-	  	}
-	  	
+	  	}  	
 	  }
-    $rootScope.goBack = function () {
-    	console.log("back")
-      $ionicHistory.goBack();
-      $ionicViewSwitcher.nextDirection("back");
+		 $rootScope.showIt=function(){
+		 	$rootScope.itshow=!$rootScope.itshow;	 	
+		 }
+    $rootScope.goBack = function (ind) {    	
+      if($ionicHistory.viewHistory().backView){
+      	if(ind<0){
+      			$ionicHistory.goBack(ind);
+      	}else{$ionicHistory.goBack()}     
+//   		$ionicViewSwitcher.nextDirection("back");
+      }else{
+      	alert(1)
+      	location.href=history.back();
+      }
     }
   });
   //返回顶部
    $rootScope.scrollTop  = function () {
     	$ionicScrollDelegate.scrollTop(true);
    }
-  
-	
+  //搜索头隐藏
   $rootScope.$on('$stateChangeStart',
-            function(event, toState, toParams, fromState, fromParamss){
+        function(event, toState, toParams, fromState, fromParamss){
           $rootScope.isLogin=!$.isEmptyObject(locals.getObject("userData"));
-          console.log($rootScope.isLogin)
-          
+          var tabsHide=["tab.myinfo","tab.pinpai","tab.shopCart"];
+          var isTohide=["search.index","search.result"];
 					if($rootScope.isLogin){	
 							if(toState.name=="denglu"){
 								$state.go("tab.main");
 								 event.preventDefault(); 
-							}else if(toState.name=="tab.myinfo"||toState.name=="tab.pinpai"||toState.name=="tab.shopCart"){
-									$rootScope.hideTabs = true;
-                }else{               
-                	$rootScope.hideTabs = false;
-                }
-               }
+							}else {
+                tabsHide.indexOf(toState.name)>=0?$rootScope.hideTabs=true:$rootScope.hideTabs=false;
+                isTohide.indexOf(toState.name)>=0?$rootScope.isTo=true:$rootScope.isTo=false;
+                toState.name=="store.index"?$rootScope.storeTabs=true:$rootScope.storeTabs="";
+							}
+							
+           }
         })
 })
 

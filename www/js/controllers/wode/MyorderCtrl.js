@@ -1,9 +1,9 @@
 angular.module('starter.controllers')
 .controller('MyorderCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	
+	console.log($stateParams.ordType)
 	$scope.thisApi=$rootScope.path+"elandOrder/getOrderList?memberId="+locals.getObject("userData").memberId+"&pageIndex=1&pageSize=10&orderState=";
-	$scope.ordtype=0;
-	if($stateParams.ordType){$scope.ordtype=$stateParams.ordType};
+	if($stateParams.ordType||$stateParams.ordType==0){locals.set("ordType",$stateParams.ordType);}
+	$scope.ordtype=locals.get("ordType");
 	$scope.getGoods=function(path,param){
 				console.log(path+param)
 			//获取商品
@@ -50,13 +50,12 @@ angular.module('starter.controllers')
        	
         })
 			}
+	console.log($scope.ordtype)
        	$scope.getGoods($scope.thisApi,$scope.ordtype)
-		$scope.ordByIt=function(ind){					
-				if($scope.ordtype==ind){
-						return;
-				}else{
+		$scope.ordByIt=function(ind){									
 					$scope.ordtype=ind;
+					locals.set("ordType",$scope.ordtype);
+					console.log(ind)
 					$scope.getGoods($scope.thisApi,$scope.ordtype);
-					}
 			}//ordByIt ed                    
 })

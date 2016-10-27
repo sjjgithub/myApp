@@ -4,7 +4,7 @@
    "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://10.9.174.35/8090/eland/api"
+      "proxyUrl": "http://10.9.174.35:8090/eland/api"
     }
   ]
   

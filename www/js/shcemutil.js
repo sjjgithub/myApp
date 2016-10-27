@@ -83,13 +83,12 @@ app.factory('shcemUtil', function($http, $state, $ionicLoading,config, $q,$timeo
   };
 
   shcemUtil.showMsg = function(msg, duration) {
-  	console.log(msg)
-    $ionicLoading.show({
+  		$ionicLoading.show({
       template: msg,
       noBackdrop: true,
       animation: 'fade-in',
       duration: duration ? duration : 2000
-    });
+  	})   
   };
   shcemUtil.showMsg2=function(msg,duration){
   				if(!duration){
@@ -97,7 +96,7 @@ app.factory('shcemUtil', function($http, $state, $ionicLoading,config, $q,$timeo
   				}
            // 自定义弹窗
            var myPopup = $ionicPopup.show({
-//           title: msg,
+             title: msg,
 //           subTitle: 'Please use normal things',
              scope:$rootScope,
            });

@@ -1,0 +1,18 @@
+<ion-view titile="全部分类">
+<div class="bar bar-header noborder bar-dark">
+	<button class="button button-icon ion-ios-arrow-back"ng-click="goBack()"></button>
+    <h3 class="title">全部分类</h3>
+</div>
+<ion-content class="has-header" scroll="false">
+    <ion-content class="classify text-center fs-prim">
+	   <ul ng-if="fenlei1s">
+	       <li ng-class="{'active':actindex==$index}"class="esp1 padding-left"ng-repeat="feilei in fenlei1s"ng-bind="feilei.stcName"ng-click="onfenlei($index)"></li>
+	   </ul>
+    </ion-content>
+     <ion-content class="classify-con bg-grey"scrollbar-y="false">
+	    <ul class="classify-detail text-center fr fs-prim ">
+	        <li class="fl bg-white"ng-repeat="feilei in fenlei2s"ng-bind="feilei.stcName"ui-sref="store.goods({stcId:feilei.stcId,stcType:0})"></li>
+	    </ul>
+    </ion-content>
+</ion-content>
+</ion-view>

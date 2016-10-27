@@ -1,0 +1,28 @@
+<ion-view title="店铺介绍">
+	<div class="bar bar-header item-input-inset bg-black fs-most header store-index">
+    <button class="button button-icon ion-ios-arrow-back c-while"ng-click="goBack()"></button>
+    <h3 class="title c-while">店铺介绍</h3>
+</div>
+<ion-content scroll="false"class="has-header bg-grey">
+	<div class="store-top">
+    	<img ng-src="{{store_img+storeIt.storeLable}}" class="store-top_bg"/>
+        <div class="store-index-con c-while">        	
+            <img src="{{store_img+storeIt.storeLogo}}" class="store-img">
+            <div class="store-cen">
+                <h3 class=" c-while fs-puton"ng-bind="storeIt.storeName"></h3>
+                <p class=" fs-showmin"><span ng-bind="storeIt.storeCollect"></span>人收藏</p>
+            </div>
+            <i class="goods-shoucang  button-icon fs-icon"ng-class="{true: 'ion-android-favorite', false: 'ion-android-favorite-outline'}[storeIt.isCollect==1]"ng-click="collectionIt(storeIt.isCollect)"style="z-index: 10;color: #ff2b26;"></i>
+        </div>
+    </div>
+    <ul class="list fs-prim c-dark6 nomargin">
+    	<li class="item item-divider bg-white noborder">商品质量<span class="fr"style="display: inline-block;width: 5.5rem;height: 1rem;"><canvas id="star1"style="width: 100%;height: 100%;"></canvas></span></li>
+    	<li class="item item-divider bg-white noborder">商品质量<span></span></li>
+    	<li class="item item-divider bg-white noborder">商品质量<span></span></li>
+    </ul>
+    <ion-scroll zooming="true" direction="y"scrollbar-y="false"style="height: 100%;">
+    	<div class="padding fs-prim bg-white"ng-bind-html="storeIt.description"style="height: 100%;"></div>
+    </ion-scroll>
+</ion-content>
+
+</ion-view>

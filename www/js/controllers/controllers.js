@@ -7,8 +7,5 @@ angular.module('starter.controllers')
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  
-	$scope.tosearch=function(){		
-		$state.go("search.index");
-	}
+
 });

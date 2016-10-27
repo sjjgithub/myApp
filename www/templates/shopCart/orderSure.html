@@ -1,0 +1,158 @@
+<ion-view title="订单确认">
+<!--header s-->
+<div class="bar bar-header bar-dark">
+    <button class="button button-icon ion-ios-arrow-left c-while"ng-click="goBack()"></button>
+    <h3 class="title">订单确认</h3>
+</div>
+
+<!--header e-->
+<ion-content class=" has-header c-most bg-grey fs-prim c-dark6"ng-controller="OrdersureCtrl">
+    <section class="order-user-info borderb-dark bg-white positr">
+    	<span class="posita allCenter"ui-sref="addIt"ng-if="!address">
+    		<i class="icon ion-plus-round c-red"style="vertical-align: middle;"></i><span>添加新地址</span>
+    	</span>   	
+    <div ng-if="address"ui-sref="address">
+    <div class="item padding noborder nomargin-v">
+        <p >收货人: <span class="order-user"ng-bind="address.trueName"></span> <span class="order-phone fr"ng-bind="address.mobPhone"></span></p>
+    </div>
+    <div class="item padding noborder item-icon-right nomargin-v item-text-wrap dizhi">
+        <i class="icon ion-ios-arrow-right"></i>
+        <p style="padding-right: 1.5rem;">收货地址: <i ng-bind="address.areaInfo"></i> <i ng-bind="address.address"></i></p>
+    </div>
+    </div>
+    </section>
+    <section class="order-goods-list padding-v bg-white borderb-dark">
+    	<!--<div class="padding-h borderb">-->
+        <div class="item item-image order-goods borderb nomargin item-text-wrap"ng-repeat="order in orders">
+        	<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">
+        		<img ng-src="{{goods_img+order.goodsImage}}"class="img-a">
+        	</div>           
+            <div class="order-goods-info">
+            <h3 class="text-left goods-name esp"ng-bind="order.goodsName"></h3>
+            <p class="c-tip text-left"style="overflow: hidden;white-space: nowrap;"><span class="order-goods-color fs-prim"ng-bind="order.goodsSpecInfo"></span><span class="order-goods-size fs-prim"></span></p>
+            <p class="text-left"><span class="order-goods-price c-red fs-prim">¥<i ng-bind="order.goodsprice"></i></span><span class="order-goods-num fr fs-prim">X<i ng-bind="order.goodsNum"></i></span></p>
+            </div>
+        </div>
+       <!-- </div>-->
+    </section>
+    <section class="order-kuaidi bg-white padding borderb-dark">
+            <span>配送方式：</span>
+            <div class="change-kuaidi">
+           <div>
+           	<label class="radioIt">
+	            <input type="radio"name="checkIt" checked="checked"ng-click="yunfei=putong;cheSend(0);">
+	            <span class="icon ion-ios-circle-outline fs-rem"></span>
+	            <span class="icon ion-ios-checkmark fs-rem"></span>
+	            <span>普通快递：<i ng-if="putong!=0"><i ng-bind="putong"></i>元</i><i ng-if="putong==0">包邮</i></span>       
+            </label>
+           </div>
+            <div>
+          	<label class="radioIt">      
+	            <input type="radio"name="checkIt"ng-click="yunfei=putong+12;cheSend(1);">
+	            <span class="icon ion-ios-circle-outline fs-rem"></span>
+	            <span class="icon ion-ios-checkmark fs-rem"></span>
+	            <span>顺丰：<i ng-bind="putong+12"></i>元</span>  
+	        </label>
+            </div>          
+			<div>
+          	<label class="radioIt">      
+	            <input type="radio"name="checkIt"ng-click="yunfei=putong+12;cheSend(1)">
+	            <span class="icon ion-ios-circle-outline fs-rem"></span>
+	            <span class="icon ion-ios-checkmark fs-rem"></span>
+	            <span>EMS：<i ng-bind="putong+12"></i>元</span>  
+	        </label>
+           </div>   
+            </div>
+    </section>
+    <section class="fapiao  bg-white borderb-dark ">
+        <div class="item item-icon-right fs-prim noborder nomargin-v item-divider bg-white"ng-click="popover.show($event)">
+           发票: <span class="fr c-tip"ng-if="fapiaoType==2">单位</span>
+            <i class="icon  ion-ios-arrow-right "></i>
+        </div>
+    </section>
+    <section class="youhuiquan  bg-white borderb-dark ">
+        <div class="item item-icon-right fs-prim noborder nomargin-v item-divider bg-white">
+            优惠券: <span class="fr c-tip"ng-if="quans"ng-click="modal.show()"ng-bind="quaninfo"></span>
+              <span class="fr c-tip"ng-if="!quans">无可用券</span>
+            <i class="icon  ion-ios-arrow-right"></i>
+        </div>
+    </section>
+    <section class="liuyan bg-white borderb-dark padding">
+        <div class="padding positr">
+            <textarea ng-model="liuyan"name="liuyan"rows="5"class="padding" ng-change="liuyan=liuyan.length<=45?liuyan:liuyan.substring(0,46)" placeholder="请给我们留言(选填，45字以内)">
+			</textarea>
+			<i class="icon ion-close-circled fs-rem c-tip close"ng-click="liuyan='';"ng-show="liuyan"></i>
+        </div>
+    </section>
+    <section class="price bg-white borderb-dark">
+        <div class="item item-divider bg-white nomargin-v">
+          	运费：<i ng-bind="yunfei"></i><span class="fr">付款总额：<span class="c-red fs-prim">¥<i ng-bind="price+yunfei-youhui"></i>元</span></span>
+        </div>
+    </section>
+    <div class="surePay padding bg-white">
+        <a class="button button-block bg-submit"style="margin: 0;"ng-click="payIt()">确认并支付</a>
+    </div>
+<script id="fapiao.html" type="text/ng-template">
+<ion-popover-view class="hs fapiao"ng-class="{'hl':fapiaoType==2}"style="top: 2.5rem;">
+  <ion-header-bar>
+    <h1 class="title">发票信息</h1>
+  </ion-header-bar>
+  <ion-content scroll="false">
+    <h4 class="padding-v">发票抬头：</h4>
+    <div class="flex-cen fapiaotype">
+    <label class="radioIt"ng-click="fapiaoche(1)">      
+	            <input type="radio"name="fapiao"value="个人"ng-checked="fapiaoType==1">
+	            <span class="icon ion-ios-circle-outline fs-rem"></span>
+	            <span class="icon ion-ios-checkmark fs-rem"></span>
+	            <span>个人</span>  
+	</label>
+	<label class="radioIt"ng-click="fapiaoche(2)">      
+	            <input type="radio"name="fapiao"value="单位"ng-checked="fapiaoType==2">
+	            <span class="icon ion-ios-circle-outline fs-rem"></span>
+	            <span class="icon ion-ios-checkmark fs-rem"></span>
+	            <span>单位</span>  
+	</label>
+	</div>
+	<div class="padding"ng-show="fapiaoType==2">
+		<textarea name="taitou"ng-model="taitou"rows="4" placeholder="输入公司名"class="border-dark3 radiuss padding"style="width: 100%;"></textarea>
+	</div>
+	<div class="flex-cen noborder">
+		<span style="width: 2.5rem;"><button class="button button-full button-small button-dark c-while noborder nomargin"ng-click="taitou='';quxiao()">取消</button></span>
+		<span style="width: 2.5rem;"><button class="button button-full button-small button-dark c-while noborder nomargin"ng-click="baocun(taitou,fapiaoType)">保存</button></span>
+	</div>
+  </ion-content>
+</ion-popover-view>
+</script> 
+ <script id="quan.html" type="text/ng-template">  
+<ion-modal-view  class="scale-in"style="height: 100%;position: relative;background: transparent;"> 
+	<div class="posita bg-white"style="width: 100%;bottom: 0;height: 50%;">
+	<div class="item item-divider nomargin noborder item-icon-right"style="background-color: transparent;padding-top: 0.75rem;">
+		<h3 ng-bind="storeName"></h3>		
+		<i class="icon ion-close-circled fs-icon c-tip"ng-click="num=1;modal.hide();"></i>
+	</div>
+	<ion-scroll direction="y"scrollbar-y="false"scrollbar-x="false"style="height: 100%;"ng-show="true">
+		<ul class="quanlist clearfix">
+        		<li class="quanwrap"ng-repeat="quanq in quans">
+        			<div class="quan clearfix"ng-class="{'quan2':quanq.isGet!='0'}">
+		                <div class="quan-l text-center fl">
+		                    <div class="c-while money">¥ <span class="price"ng-bind="quanq.couponPrice"></span></div>
+		                    <div class="fs-prim esp goods-title"ng-bind="quanq.couponTitle"></div>
+		                </div>		         
+		                <div class="quan-r text-center posit">
+		                    <button class="getQuan button-small button"ng-class="{'button-outline dis1':quanq.isGet!='0'}"ng-click="lingqu(quanq.couponId,quanq.isGet=='0')">
+		                        	<span ng-if="quanq.isGet=='0'">领取</span><span ng-if="quanq.isGet!='0'">已领取</span>
+		                    </button>
+		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanq.storeName"></h3>
+		                    <div class="fs-tip c-while">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
+		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet=='0'">剩余{{quanq.couponSurplus}}张</span>
+		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet!='0'"ng-click="userQuan(quanq)">去使用>></span>
+		                </div>
+		           </div> 
+        		</li>
+		</ul>
+	</ion-scroll>
+	</div>	
+</ion-modal-view>  
+</script> 
+</ion-content>
+</ion-view>

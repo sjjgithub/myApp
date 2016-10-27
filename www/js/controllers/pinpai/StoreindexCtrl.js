@@ -1,10 +1,11 @@
 angular.module('starter.controllers')
-.controller('StoreCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$stateParams,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover,locals) {
+.controller('StoreIndexCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$stateParams,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover,locals) {
 	if($stateParams.storeId){
          	 locals.set("storeId",$stateParams.storeId);
          }	
          var memberId=locals.getObject("userData").memberId;
          var storeId=locals.get("storeId");
+    $scope.itshow=false;
     $scope.storeApi=$rootScope.path+"elandStore/getStoreInfoDetail?memberId="+memberId+"&storeId="+storeId; 
     $scope.goodsApi=$rootScope.path+"elandStore/selectStorePage?pageIndex=1&pageSize=20&storeId="+storeId;
     $scope.shoucangApi=$rootScope.path+"elandStore/collectStore?memberId="+memberId+"&storeId="+storeId+"&isCollect=";
@@ -13,24 +14,45 @@ angular.module('starter.controllers')
 	.success(function(data){		
 		if(!data.status){
 			$scope.storeIt=data.data[0];
+			locals.setObject("storeInfo",$scope.storeIt)
 			console.log($scope.storeIt)
 		}
 	})
 	$http.get($scope.goodsApi)
 	.success(function(data){
 		console.log(data)
+		var arr=[];
 		if(!data.status){
-			$scope.adv1=data.data.advLt[0].advDetail[0];
-			$scope.adv2=data.data.advLt[1].advDetail;
-			
-			$scope.adv3l=data.data.advLt[2].advDetail[0];
-			$scope.adv3r=[];
-			for (k in data.data.advLt[2].advDetail) {
-				if(k>0){
-					$scope.adv3r.push(data.data.advLt[2].advDetail[k])
+			var obj=data.data.advLt;
+			for (k in obj) {
+				switch (obj[k].advModuleType){
+					case 1:
+						arr.push(obj[k].advDetail[0]);
+						break;
+					case 2:				
+						break;
+					case 3:
+						$scope.adv2=obj[k].advDetail;
+						break;
+					case 4:
+						$scope.adv3l=obj[k].advDetail[0];
+						if(obj[k]){
+							$scope.adv3r=[];
+						for (i in obj[k].advDetail) {
+							if(k>0){
+								$scope.adv3r.push(obj[k].advDetail[i])
+							}
+						}
+						}
+						break;
 				}
 			}
-			$scope.adv4=data.data.advLt[3].advDetail[0];
+			if(arr){
+				$scope.adv1=arr[0];
+				if(arr.length<=1){
+				$scope.adv4=arr[1];
+				}
+			}
 			$scope.storesIt=data.data.recommendClassLt;
 		}		
 	})  
@@ -45,5 +67,5 @@ angular.module('starter.controllers')
 	 			$scope.storeIt.isCollect=type;
 	 		}
 	 	})
-	 } 
+	} 
 })

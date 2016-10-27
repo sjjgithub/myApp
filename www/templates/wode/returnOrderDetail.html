@@ -1,0 +1,30 @@
+<ion-view title="退款详情">
+<div class="bar bar-header bar-dark">
+    <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="goBack()"></a>
+    <h3 class="title">退款详情</h3>
+</div>
+<!--header e-->
+<ion-content class=" has-header c-most detail bg-grey has-tabs">
+    <section class="myorder">
+       	<div class="padding-v bg-white">
+            <ul class="fs-prim bg-white ordde">
+             	<li class="padding-hs"><span>订单编号：</span><i ng-bind="detail.orderSn"></i></li>
+                <li class="padding-hs"><span>退款编号：</span><i ng-bind="detail.refundSn"></i></li>
+                <li class="padding-hs"><span>店铺：</span><i ng-bind="detail.storeName"></i></li>
+                <li class="padding-hs"><span>退款金额：</span><i ng-bind="detail.orderRefund"></i></li>
+                <li class="padding-hs"><span>申请时间：</span><i ng-bind="detail.addTime"></i></li>
+                <li class="padding-hs"><span>审核状态：</span><i ng-bind="detail.refundState"></i></li>
+                <li class="padding-hs"><span>退款账号：</span><i ng-bind="detail.refundBuyerName+' '+detail.refundBuyerAccount"></i></li>
+            </ul>
+        </div>              
+    </section>
+</ion-content>
+<div class="tabs tabs-icon-top row row-no-padding">
+	 <div class="col col-25"ng-click="">
+        <button class="button bg-white button-full c-black"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">联系卖家</button>
+    </div>
+    <div class="col col-75"ng-click="">
+        <button class="button bg-black button-full c-while"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">待处理</button>
+    </div>
+</div>	
+</ion-view>

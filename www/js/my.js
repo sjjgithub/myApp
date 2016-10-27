@@ -1,4 +1,3 @@
-
 	function inphold(){
 		$("input").each(function(index,elem){
 			var placeholder;

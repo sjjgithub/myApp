@@ -2,63 +2,47 @@
 	<div class="bar bar-header bar-dark">
     <h3 class="title">购物车</h3>
 </div>
-  <ion-content class=" has-header c-most bg-grey">   
-    <section class="myorder bg-white"style="margin-bottom: 0.5rem;">
-    	<ul class="list">
+  <ion-content class=" has-header c-most bg-grey car">   
+    <section class="myorder">
+    	<ul class="list nomargin bg-white"ng-repeat="car in youxiao"ng-init="outerIndex = $index"style="margin-bottom: 0.5rem;">
         <li class="item item-checkbox checkbox-dark item-button-right">
            <span class="checkbox">
-             <input type="checkbox" checked="checked">
+             <input type="checkbox"ng-click="cheStore(car)"ng-model="car.cheStore">
            </span>
-           <span>艾弗森</span>
-           <button class="button icon button-clear"style="margin-right: 1.5rem;"disabled="false"><img src="img/切图/p5购物车/drawable-hdpi/couponicon.png"class="icon-img"/></button>
+           <span ng-bind="car.storeName"></span>
+           <button class="button icon button-clear"ng-if="car.isCoupon"style="margin-right: 1.5rem;"disabled="false"><img src="img/切图/p5购物车/drawable-hdpi/couponicon.png"class="icon-img"/></button>
           
-           <button class="button icon button-clear"><img src="img/切图/p5购物车/drawable-hdpi/deleteicon.png"class="icon-img"/></button>
+           <button class="button icon button-clear"ng-click="removeCrat(outerIndex)"><img src="img/切图/p5购物车/drawable-hdpi/deleteicon.png"class="icon-img"/></button>
         </li>
-        <li class="item item-checkbox checkbox-dark nopadding-h item-text-wrap"style="overflow: hidden;padding-left: 1.75rem;">
+        <li class="item item-checkbox checkbox-dark nopadding-h item-text-wrap"style="overflow: hidden;padding-left: 1.75rem;"ng-repeat="goods in car.elandCartGoods" ng-init="innerIndex=$index">
            <span class="checkbox ">
-             <input type="checkbox" checked="">
+             <input type="checkbox"ng-model="goods.cheGoods"ng-click="cheGoods(outerIndex,goods)">
            </span>
            <div class="clearfix"style="height: 100%;">
-           	<div class="fl">
-           		<img src="img/切图/p5购物车/drawable-hdpi/img.png"style="height: 5rem;width: 5rem;"/>
+           	<div class="img-wrap fl ordcart text-center">
+           		<img src="{{goods_img+goods.goodsImage}}"class="img-a"/>
            	</div>
-           	<h3 style="padding-top: 0.75rem;">你骚男is是我是死死 你是你是弄死你你说</h3>
-           	<p><span>红色 M码</span>
-           		<span class="fr">
-           			<button class="button button-small button-light button-outline"style="min-width:0.75rem;min-height:1rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="jian()">－</button>
-           			<button class="button button-small button-light dis1 button-outline"style="min-width:1rem;min-height:1rem;line-height: 0.75rem;width: 1.4rem;color: #000;"disabled="true">{{num1}}</button>
-           			<button class="button button-small button-light button-outline"style="min-width:1rem;min-height:0.75rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="add()">＋</button>
-           		</span>
-           	</p>
-           	<span class="c-red">¥240</span>
-           </div>
-        </li>
-        
-         <li class="item item-checkbox checkbox-dark nopadding-h item-text-wrap"style="overflow: hidden;padding-left: 1.75rem;">
-           <span class="checkbox ">
-             <input type="checkbox" checked="">
-           </span>
-           <div class="clearfix"style="height: 100%;">
-           	<div class="fl overhide"style="padding: 0.25rem;">
-           		<img src="img/切图/p5购物车/drawable-hdpi/img.png"style="height: 5rem;width: 5rem;"/>
+           	<h3 style="margin-top: 0.75rem;"class="goods-name esp"ng-bind="goods.goodsName"></h3>
+           	<p class="esp1"style="overflow: hidden;white-space: nowrap;"><span ng-bind="goods.specInfo"></span></p>
+           	<div>
+           	<span class="c-red">¥<i ng-bind="goods.specGoodsPrice"></i></span>
+           	<span class="fr">
+           			<button class="button button-small button-light button-outline"style="min-width:0.75rem;min-height:1rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="cheNum(car,goods,0)">－</button>
+           			<button class="button button-small button-light dis1 button-outline"style="min-width:1rem;min-height:1rem;line-height: 0.75rem;width: 1.4rem;color: #000;"disabled="true"ng-bind="goods.goodsNum"></button>
+           			<button class="button button-small button-light button-outline"style="min-width:1rem;min-height:0.75rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="cheNum(car,goods,1)">＋</button>
+           	</span>
            	</div>
-           	<h3 style="padding-top: 0.75rem;">你骚男is是我是死死 你是你是弄死你你说</h3>
-           	<p><span>红色 M码</span>
-           		<span class="fr">
-           			<button class="button button-small button-light button-outline"style="min-width:0.75rem;min-height:1rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="jian()">－</button>
-           			<button class="button button-small button-light dis1 button-outline"style="min-width:1rem;min-height:1rem;line-height: 0.75rem;width: 1.4rem;color: #000;"disabled="true">{{num1}}</button>
-           			<button class="button button-small button-light button-outline"style="min-width:1rem;min-height:0.75rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="add()">＋</button>
-           		</span>
-           	</p>
-           	<span class="c-red">¥240</span>
            </div>
         </li>
         <li class="item item-button-right noborder margin-t">
-        	<span>合计：</span><span class="c-red">¥2222</span>
-        	<button class="button button-dark">结算</button>
+        	合计：<span class="c-red">¥<i ng-bind="car.chePrice | number:2"></i></span>
+        	<button class="button button-dark"ng-click="payIt(car)">结算</button>
         </li>
+        </ul>
     </section>
-
+    	<div class="allCenter"ng-if="youxiao<1">
+		暂无商品，去转转
+    	</div>	
 </ion-content>
 
 </ion-view>

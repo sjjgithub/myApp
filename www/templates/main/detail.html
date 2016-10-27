@@ -4,7 +4,8 @@
         <button class="button button-icon ion-ios-arrow-back c-while"ng-click="goBack()"></button>
         <h3 class="title">商品详情</h3>
 </div>
-<ion-content class="has-tabs has-header bg-grey">	
+<ion-content class="has-tabs has-header bg-grey shangpin"on-scroll-complete="scrollIt()"has-bouncing="true">	
+	<!--<ion-scroll direction="y"scrollbar-y="false">-->
 	<section class="detail-top positr">		
 	<ion-slide-box show-pager="false" ng-if="good.goodsImageList" on-slide-changed="slideHasChanged($index)"class="slidebox"  auto-play="true" slide-interval="4000">
 	            <ion-slide ng-repeat="banner in good.goodsImageList">
@@ -16,13 +17,14 @@
 	</section>
     <section class="padding bg-white goodIt-info"ng-class="{'new':good.newGood==1}">
         <h4 class="nomargin"ng-bind="good.goodsName"></h4>
-        <p class="c-red nomargin fs-prim"><span class="prid">¥{{good.price}}</span>
+        <p class="c-red nomargin fs-prim"><span class="prid">¥<i ng-bind="good.price"></i></span>
         	<span class="good_xianshi"ng-if="good.xianshiGood==1">限时抢购</span>
-        	<i class="icon ion-android-share-alt"style="margin-left: 1rem;color: #000;font-size: 1rem;"></i>
+        	<i class="icon"style="margin-left: 0.5rem;"><img src="img/切图/public/drawable-hdpi/hot.png"class="icon-img-nav"ng-if="good.hotGood==1"/></i>
+        	<i class="icon ion-android-share-alt"style="margin-left: 0.5rem;color: #000;font-size: 1rem;"></i>
         </p>
-        <div class="yishou c-tip fs-tip">已售：{{good.saleNum}}份</div>
+        <div class="yishou c-tip fs-tip">已售：<i ng-bind="good.saleNum"></i>份</div>
     </section>
-    <div class="item item-icon-right store bg-white assess-title"ui-sref="store({storeId:good.storeId})">
+    <div class="item item-icon-right store bg-white assess-title"ui-sref="store.index({storeId:good.storeId})">
         <img ng-src="img/切图/P3-2商品详情/drawable-hdpi/homeicon.png"class="fl">
         <h3 class="padding-v c-while"ng-bind="good.storeName"></h3>
         <i class="icon ion-ios-arrow-right c-while"></i>
@@ -88,7 +90,7 @@
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
                 <h4 class="goods-name fs-min esp"ng-bind="goods.goodsName"style="margin:0.25rem;"></h4>
-                <div class="c-red fs-prim text-center">¥{{goods.goodsStorePrice}}</div>
+                <div class="c-red fs-prim text-center">¥<i ng-bind="goods.goodsStorePrice"></i></div>
             </div>
         </div>
         </div>
@@ -96,31 +98,61 @@
             继续拖动，查看图文详情 >>
         </div>        
     </section>
+ <!-- </ion-scroll>-->
 </ion-content>
-<!--ion-content ed-->
+  <ion-scroll style="height: 100%;top: 100vh;"class="has-header has-tabs bg-white tuwen">
+  	<ion-refresher pulling-text="下拉，返回商品简介"on-refresh="xiala()"pulling-icon="ion-arrow-down-c"></ion-refresher>
+  	<div class="padding fs-13" ng-bind-html="tuwenIt.goodsBody"></div>
+  </ion-scroll>
     <div class="tabs tabs-icon-top row row-no-padding">
-            <a href=""class="tab-item col">
+            <a class="tab-item col">
             	<i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>
             	<p >客服</p>
             </a>
-            <a class="tab-item col"ui-sref="store({storeId:good.storeId})"><i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>店铺</a>
+            <a class="tab-item col"ui-sref="store.index({storeId:good.storeId})"><i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>店铺</a>
             <a class="tab-item col"ui-sref="tab.shopCart"><i><img src="img/切图/P3-2商品详情/drawable-hdpi/gouwuche.png"class="icon-img"/></i>购物车</a>
         	<div class="col col-50 tab-item">
-            <button class="button button-balanced button-small"style="width: 45%;height: 100%;">立即购买</button><button class=" button button-assertive button-small"style="width: 55%;height: 100%;">加入购物车</button>
+            <button class="button button-balanced button-small"style="width: 45%;height: 100%;"ng-click="buyIt(1)">立即购买</button><button class=" button button-assertive button-small"ng-click="buyIt(0)"style="width: 55%;height:100%">加入购物车</button>
        		 </div>
     </div>	
-    
-<!--<script id="top_slide_modal.html" type="text/ng-template">  
-<ion-modal-view style="height: {{win_H}}px;bottom: 0;position: fixed;" class="scale-in">  
-<ion-slide-box delegate-handle="modal_slide" style="height: {{win_H}}px;z-index: 10; background-color: black;">  
-<ion-slide ng-repeat="img in img_data" ng-click="close_modal()">  
-<ion-scroll overflow-scroll='false' zooming="true" direction="xy" min-zoom="1" max-zoom="4" style="height: {{win_H}}px;width:{{win_W}}px;">  
- 	<img src="img/切图/P3-2商品详情/drawable-hdpi/banner1.png"class="top_slide_img"ng-click="open_modal($index)">              	<i class="shoucang  button-icon ion-android-favorite-outline fs-icon c-dark6"shoucang="false"ng-click="collectionIt($event,goods,0)"></i> 
-</ion-scroll>  
-</ion-slide>  
-</ion-slide-box>  
-</ion-modal-view>  
-</script>  -->
 
+<script id="guige.html" type="text/ng-template">  
+<ion-modal-view  class="scale-in"style="height: 100%;position: relative;background: transparent;"> 
+	<div class="posita"style="width: 100%;bottom: 0;">
+	<div class="item item-image positr borderb"style="background-color: transparent;padding-top: 0.75rem;">
+		<div class="bg-white nopadding-h"style="height: 4rem;">
+		<div class="img-wrap fl padding-v overhide positr"style="top: -0.75rem;overflow: visible;">
+				<img ng-src="{{goods_img+guigeIt.goodsImage}}" class="bg-white img-f guige-img"/>
+		</div>	
+		<div class="text-left padding">
+			<h3 class="c-red">¥<i ng-bind="guigeIt.specGoodsPrice"></i></h3>
+		<span class="c-tip fs-13">库存<i ng-bind="guigeIt.specGoodsStorage"></i>件</span>
+		</div>		
+		<i class="icon ion-close-circled posita fs-icon"ng-click="num=1;modal.hide();"style="top:1.25rem;right: 0.5rem;"></i>
+		</div>
+	</div>
+	<ion-scroll direction="y"scrollbar-y="false"scrollbar-x="false"style="max-height: 6rem;"class="bg-white"ng-if="good.specStatus">
+		<ul class="list">
+			<li class="item"ng-repeat="det1 in guigeDet">
+				<div class="c-tip fs-13"ng-bind="det1.spName"></div>
+				<div>
+					<button class="button button-small bg-grey noborder"ng-repeat="bt in det1.spValueNameLt"ng-bind="bt"style="margin-right: 0.5rem;"ng-click="checkIt($event,det1,$index)"></button>
+				</div>
+			</li>
+		</ul>
+	</ion-scroll>
+	<div class="item bg-white">
+		购买数量
+		<span class="fr">
+           			<button class="button button-small button-light button-outline"style="min-width:0.75rem;min-height:1rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="num=num-1>=1?num-1:1">－</button>
+           			<button class="button button-small button-light dis1 button-outline"style="min-width:1rem;min-height:1rem;line-height: 0.75rem;width: 1.4rem;color: #000;"disabled="true"ng-bind="num"></button>
+           			<button class="button button-small button-light button-outline"style="min-width:1rem;min-height:0.75rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="num=num+1">＋</button>
+      	 件
+		</span>       
+	</div>
+	<button class="button button-full button-dark"style="margin: 0;"ng-bind="buytype"ng-click="buyOr(num)"></button>
+	</div>
+</ion-modal-view>  
+</script> 
 <!--ion-content ed-->
 </ion-view>

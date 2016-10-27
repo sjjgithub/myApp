@@ -1,0 +1,142 @@
+<ion-view title="我的订单">
+<div class="bar bar-header bar-dark">
+    <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="goBack()"></a>
+    <h3 class="title">我的订单</h3>
+</div>
+<!--header e-->
+<ion-content class=" has-header c-most detail bg-grey "ng-class="{'has-tabs':['退款','退款退货'].indexOf(orderIt.orderState)<0}">
+    <section class="myorder">
+        <div class="padding-v bg-white">
+            <div class="item item-icon-right padding-h borderb myorder-title">
+                <img src="img/切图/P6-1我的订单/drawable-hdpi/shop.png"class="icon-img fl"style="margin-right: 0.25rem;margin-top:0.1rem;">
+                <h3><span ng-bind="orderIt.storeName"></span>
+                	<span class="fr c-tip fs-tip"ng-bind="orderIt.orderState"></span>
+                </h3>
+            </div>
+        </div>
+       	<div class="padding-v bg-white marginb">
+            <ul class="fs-prim bg-white ordde">
+             	<li class="padding-hs"><span>订单号：</span><i ng-bind="orderIt.orderSn"></i></li>
+                <li class="padding-hs"><span>下单时间：</span><i ng-bind="orderIt.addTime*1000|date : 'yyyy-MM-dd HH:mm:ss'"></i></li>
+                <li class="padding-hs"><span>收货人：</span><i ng-bind="orderIt.elandAddress.trueName+' '+orderIt.elandAddress.mobPhone"></i></li>
+                <li class="padding-hs"><span>配送地址：</span><i ng-bind="orderIt.elandAddress.areaInfo+' '+orderIt.elandAddress.address"></i></li>
+                <li class="padding-hs"><span>订单金额：</span><i ng-bind="orderIt.orderAmount+'元'"class="c-red"></i><i ng-if="orderIt.shippingFee>0">（含运费）</i></li>
+                <li class="padding-hs" style="margin-bottom: 0.5rem;"><span>商品数量：</span><span ng-bind="orderIt.num+'个'"></span></span></li>
+            </ul>
+        </div>       
+        <section class="order-goods-list padding-v bg-white">
+    	<!--<div class="padding-h borderb">-->
+    	<div ng-repeat="order in orderIt.listGoods">
+        <div class="item item-image order-goods borderb nomargin item-text-wrap"ui-sref="detail({goodsId:order.goodsId})">
+        	<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">
+        		<img ng-src="{{goods_img+order.goodsImage}}"class="img-a">
+        	</div>           
+            <div class="order-goods-info">
+	            <h3 class="text-left goods-name esp"ng-bind="order.goodsName"></h3>
+	            <p class="c-tip text-left"style="overflow: hidden;white-space: nowrap;"><span class="order-goods-color fs-prim"ng-bind="order.specInfo"></span><span class="order-goods-size fs-prim"></span></p>
+	            <p class="text-left"><span class="order-goods-price c-red fs-prim">¥<i ng-bind="order.goodsPrice"></i></span><span class="order-goods-num fr fs-prim">X<i ng-bind="order.goodsNum"></i></span></p>
+            </div>
+        </div>
+         <div class="item noborder margin-t nopadding"ng-if="!order.isChange && ['待评价','待收货','待发货'].indexOf(orderIt.orderState)>=0"style="padding:0.5rem 0;">
+	        	<span class="fr">
+	        		<button class="button button-outline button-dark btn-ai"ng-if="!order.isBuyerShow && orderIt.orderState=='待评价'"ui-sref="buyerShow">买家秀</button>
+	        		<button class="button button-dark btn-ai"ng-if="!order.isChange"ng-click="changeGoods(order)">换&nbsp;&nbsp;&nbsp;&nbsp;货</button>
+	        	</span>
+        	</div>
+        </div>
+       <!-- </div>-->
+    	</section>
+    </section>
+</ion-content>
+<div class="tabs tabs-icon-top row row-no-padding noxian"ng-if="orderIt.orderState=='已取消'">
+	<div class="col col-80 tab-item"ng-click="removeIt('删除')">
+        <button class="button button-dark button-full noborder"style="margin: 0;height: 100%;">删除</button>
+    </div>
+   <a class="tab-item col"style="padding-top: 0.5rem;">
+        <i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>
+        <p >客服</p>
+   </a>       	
+</div>	
+<div class="tabs tabs-icon-top row row-no-padding noxian"ng-if="orderIt.orderState=='已关闭'">
+	<div class="col col-80 tab-item"ng-click="removeIt('删除')">
+        <button class="button button-dark button-full noborder"style="margin: 0;height: 100%;">删除</button>
+    </div>
+   <a class="tab-item col"style="padding-top: 0.5rem;">
+        <i><img src="img/切图/P3-2商品详情/drawable-hdpi/dianpu.png"class="icon-img"/></i>
+        <p >客服</p>
+   </a>       	
+</div>	
+<div class="tabs tabs-icon-top row row-no-padding"ng-if="orderIt.orderState=='未付款'">
+	<div class="col tab-item"ng-click="removeIt('取消')">
+        <button class="button button-dark button-full"style="padding: 0;margin: 0;height: 100%;">取消</button>
+    </div>
+    <div class="col col-60 tab-item"style="border-left:1px solid #000000;border-right:1px solid #000000;"ng-click="payIt()">
+        <button class="button button-dark button-full"style="padding: 0;margin: 0;height: 100%;"ui-sref="shouyin({payInfo:orderIt})">付款</button>
+    </div>
+    <div class="col tab-item"ng-click="">
+        <button class="button button-dark button-full"style="padding: 0;margin: 0;height: 100%;"ng-click="">客服</button>
+    </div>
+</div>	
+<div class="tabs tabs-icon-top row row-no-padding"ng-if="orderIt.orderState=='待收货'">
+	<div class="col col-80 flex">
+		<div class="col tab-item nopadding"ng-click="wuliu()">
+        	<button class="button bg-grey button-full"style="padding: 0;margin: 0;height: 100%;color: black;"ng-click="">查看物流</button>
+	    </div>
+	    <div class="col tab-item nopadding"ng-click="payIt()">
+	        <button class="button button-dark button-full"style="padding: 0;margin: 0;height: 100%;"ui-sref="tuikuan">退款</button>
+	    </div>
+	    <div class="col tab-item nopadding"ng-click="payIt()">
+	        <button class="button button-assertive button-full"style="padding: 0;margin: 0;height: 100%;"ng-click="sureIt()">确认收货</button>
+	    </div>
+	</div>	
+    <div class="col col-20 tab-item"ng-click="">
+        <button class="button bg-grey button-full"style="padding: 0;margin: 0;height: 100%;color: black;"ng-click="buyIt(1)">客服</button>
+    </div>
+</div>	
+<div class="tabs tabs-icon-top row row-no-padding"ng-if="orderIt.orderState=='待评价'">
+	 <div class="col col-80 tab-item"ng-click="">
+        <button class="button bg-black button-full c-while"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">去评价</button>
+    </div>
+    <div class="col col-20 tab-item"ng-click="">
+        <button class="button bg-grey button-full"style="padding: 0;margin: 0;height: 100%;color: black;"ng-click="buyIt(1)">客服</button>
+    </div>
+</div>	
+<script id="guige.html" type="text/ng-template">  
+<ion-modal-view  class="scale-in"style="height: 100%;position: relative;background: transparent;"> 
+	<div class="posita"style="width: 100%;bottom: 0;">
+	<div class="item item-image positr borderb"style="background-color: transparent;padding-top: 0.75rem;">
+		<div class="bg-white nopadding-h"style="height: 4rem;">
+		<div class="img-wrap fl padding-v overhide positr"style="top: -0.75rem;">
+				<img ng-src="{{goods_img+guigeIt.specImg}}" class="bg-white guige-img"/>
+		</div>	
+		<div class="text-left padding">
+			<h3 class="c-red">¥<i ng-bind="guigeIt.specPrice"></i></h3>
+		<span class="c-tip fs-13">库存<i ng-bind="guigeIt.specStorage"></i>件</span>
+		</div>		
+		<i class="icon ion-close-circled posita fs-icon"ng-click="num=1;modal.hide();"style="top:1.25rem;right: 0.5rem;"></i>
+		</div>
+	</div>
+	<ion-scroll direction="y"scrollbar-y="false"scrollbar-x="false"style="max-height: 6rem;"class="bg-white"ng-if="guigeIt.specStatus">
+		<ul class="list">
+			<li class="item"ng-repeat="det1 in guigeDet"ng-init="outerIndex = $index">
+				<div class="c-tip fs-13"ng-bind="det1.spName"></div>
+				<div>
+					<button class="button button-small bg-grey noborder margin-r"ng-class="{'active':det1.spValueIndex==innerIndex}"ng-repeat="bt in det1.spValueNameLt"ng-init="innerIndex = $index"ng-bind="bt"ng-click="checkIt(det1,innerIndex)"></button>
+				</div>
+			</li>
+		</ul>
+	</ion-scroll>
+	<div class="item bg-white">
+		购买数量
+		<span class="fr">
+           			<button class="button button-small button-light button-outline"style="min-width:0.75rem;min-height:1rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="cheNum(0)">－</button>
+           			<button class="button button-small button-light dis1 button-outline"style="min-width:1rem;min-height:1rem;line-height: 0.75rem;width: 1.4rem;color: #000;"disabled="true"ng-bind="guigeIt.orderGoodsNum"></button>
+           			<button class="button button-small button-light button-outline"style="min-width:1rem;min-height:0.75rem;line-height: 0.75rem;width: 1rem;color: #999;"ng-click="cheNum(1)">＋</button>
+      	 件
+		</span>       
+	</div>
+	<button class="button button-full button-dark"style="margin: 0;"ng-click="shenQing(guigeIt.orderGoodsNum)">申请</button>
+	</div>
+</ion-modal-view>  
+</script> 
+</ion-view>

@@ -48,7 +48,6 @@ angular.module('starter')
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html',
-    controller: 'TabsearchCtrl'
   })
   // Each tab has its own nav history stack:
 		.state('denglu', {
@@ -63,6 +62,12 @@ angular.module('starter')
 				   		 	cache:'false', 
 				        templateUrl: 'templates/denglu/resertPass.html',
 				        controller: 'ResertpassCtrl' 
+				  			})
+	.state('forgetPass', {
+				   		 	url: '/forgetPass',  
+				   		 	cache:'false', 
+				        templateUrl: 'templates/denglu/forgetPass.html',
+				        controller: 'ForgetpassCtrl' 
 				  			})
 	.state('register', {
 				   		 	url: '/register',  
@@ -80,17 +85,15 @@ angular.module('starter')
     }
   })
   			.state('search', {
-		    url: '/search',
-//		    abstract: true,
 		    templateUrl: 'templates/search/search.html',	    
 			})
 			.state("search.index",{
-		    	url:"/index",
+		    	url:"/search-index",
 		        templateUrl: 'templates/search/search-index.html',
 		       	controller: 'SearchCtrl'
 		    })
 			.state("search.result",{
-		    	url:"/result",
+		    	url:"/search-result",
 		    		params:{"keywords":null},
 		        templateUrl: 'templates/search/result.html',
 		       	controller: 'ResultCtrl'
@@ -98,7 +101,7 @@ angular.module('starter')
 			.state("detail",{
 		    	url:"/detail",
 		    		params:{"goodsId":null},
-		    		
+	    			cache:'false', 
 		        templateUrl: 'templates/main/detail.html',
 		       	controller: 'DetailCtrl'
 		    })
@@ -109,12 +112,26 @@ angular.module('starter')
 				       	controller: 'PingjiaCtrl'
 				    })
 			.state("store",{
-		    	  url:"/store",
-		    		params:{"storeId":null},		
-		    		 cache:'false', 
-		        templateUrl: 'templates/pinpai/store.html',
-		       	controller: 'StoreCtrl'
+		        templateUrl: 'templates/pinpai/store.html',		      
 		    })
+						.state("store.index",{
+		    	  url:"/store-index",
+		    		params:{"storeId":null},		
+		    		cache:'false', 
+		        templateUrl: 'templates/pinpai/store-index.html',
+		       	controller: 'StoreIndexCtrl'
+		    		})
+						.state("store.goods",{
+		    	  url:"/store-goods",
+		    		params:{"stcId":null,"stcType":null},		
+		        templateUrl: 'templates/pinpai/store-goods.html',
+		       	controller: 'StoregoodsCtrl'
+		    		})
+						.state("aboutStore",{
+		    	  url:"/store-about",		
+		        templateUrl: 'templates/pinpai/store-about.html',
+		       	controller: 'AboutstoreCtrl'
+		    		})
 			.state("info",{
 		    	url:"/info",
 		    		params:{"goodsId":null},		    		
@@ -168,16 +185,21 @@ angular.module('starter')
 		    		params:{"goodsId":null},		    		
 		        templateUrl: 'templates/main/rexiao.html',
 		       	controller: 'RexiaoCtrl'
-		   })
-			
+		  })			
 	.state('tab.fenlei', {
     url: '/fenlei',
     views: {
       'tab-fenlei': {
-        templateUrl: 'templates/fenlei/fenlei-index.html',
+        templateUrl: 'templates/fenlei/fenlei.html',
         controller: 'FenleiCtrl'
       }
     }
+ })
+	.state('search.feileig', {
+    		url: '/fenlei-search', 
+    		params:{"gcId":null},	
+        templateUrl: 'templates/fenlei/feilei-search.html',
+        controller: 'FenleiSearchCtrl'
  })
 		.state('tab.pinpai', {
     url: '/pinpai',
@@ -188,8 +210,16 @@ angular.module('starter')
       }
     }
   })
+		.state('pinpai-feileig', {
+    		url: '/pinpai-feileig', 
+    		cache:'false', 
+    		params:{"gcId":null},	
+        templateUrl: 'templates/pinpai/store-pinpai.html',
+        controller: 'StorefenleiCtrl'
+ })
 		.state('tab.shopCart', {
     url: '/shopCart',
+    cache:'false', 
     views: {
       'tab-shopCart': {
         templateUrl: 'templates/shopCart/shopCart.html',
@@ -197,6 +227,20 @@ angular.module('starter')
       }
     }
   })
+		.state('orderSure', {
+    		url: '/orederSure', 
+    		cache:'false', 
+    		params:{"orders":null,"buType":null},	
+        templateUrl: 'templates/shopCart/orderSure.html'
+//      controller: 'OrdersureCtrl'
+ })
+		.state('shouyin', {
+    		url: '/shouyin', 
+    		cache:'false', 
+    		params:{"payInfo":null},	
+        templateUrl: 'templates/shopCart/shouyin.html',
+        controller: 'ShouyinCtrl'
+ })
   .state('tab.myinfo', {
     url: '/myinfo',
     views: {
@@ -208,9 +252,34 @@ angular.module('starter')
   })
 		.state('myorder', {
    		 	url: '/myorder',  
+   		 	cache:'false',
     		params:{"ordType":null},	
         templateUrl: 'templates/wode/myorder.html',
         controller: 'MyorderCtrl'   
+  	})
+		.state('myorderDetail', {
+   		 	url: '/myorderDetail',  
+    		params:{"orderId":null,"orderState":null},	
+        templateUrl: 'templates/wode/myorderDetail.html',
+        controller: 'MyorderDetailCtrl'   
+  	})
+		.state('tuikuan', {
+   		 	url: '/tuikuan',  
+    		params:{"ordType":null},	
+        templateUrl: 'templates/wode/tuikuan.html',
+        controller:"TuikuanCtrl"
+  	})
+		.state('buyerShow', {
+   		 	url: '/buyerShow',  
+   		 	cache:'false',
+        templateUrl: 'templates/wode/buyerShow.html',
+        controller:"BuyerShowCtrl"
+  	})
+		.state('returnOrderDetail', {
+   		 	url: '/resultOrderDetail',  
+    		params:{"ordType":null},	
+        templateUrl: 'templates/wode/returnOrderDetail.html',
+        controller:"ReturnOrderDetailCtrl"
   	})
 		.state('setting', {
    		 	url: '/setting',  

@@ -1,0 +1,30 @@
+<ion-view>
+	 <ion-content scroll="false"class="has-footer">    
+ 		<div class="flex text-center ord-title">
+			<span ng-click="ordByIt(0)"ng-class="{'ordactive':ordtype==0}">默认排序</span>
+			<span ng-click="ordByIt(1)"ng-class="{'ordactive':ordtype==1}">热销</span>
+			<span ng-click="ordByIt(2)"ng-class="{'ordactive':ordtype==2}">新品</span>
+			<span class="ord-price"ng-click="ordByIt(3)"ng-class="{'ordactive':ordtype==3}">价格
+				<div class="updown"ng-click="pricClick()">
+					<i  class="icon ion-ios-arrow-up picup" ng-class="{'c-black':!soft&&ordtype==3}"></i>
+					<i  class="icon ion-ios-arrow-down picdown"ng-class="{'c-black':soft&&ordtype==3}"></i>
+				</div>
+			</span>
+		</div>
+		<ion-content style="top:2.55rem"class="bg-grey">		
+		<ul class="list-goods flex bg-grey">
+			 
+            <li class="goods bg-white
+            	"ng-repeat="goods in goodsList"ng-click="getDetail(goods)"ui-sref="detail({goodsId:goods.goodsId})">
+               <div class="goods-img "style="position: relative;">
+                    	<span><img src="img/切图/public/drawable-hdpi/newtag.png"ng-if="goods.newGood"class="goodnew"/></span>
+                        <img ng-src="{{goods_img+goods.goodsImage}}">
+                        <span><img src="img/切图/public/drawable-hdpi/hot.png"ng-if="goods.hotGood"class="goodhot"/></span>
+           		 </div>
+            	<h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+            	<div class="c-red fs-prim padding-v">¥{{goods.price}}</div>
+             </li>
+        </ul>
+		</ion-content>
+    </ion-content>
+</ion-view>

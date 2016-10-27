@@ -94,7 +94,7 @@
             <span class="xixian"><span class="cuxian">优惠券推荐</span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>    
-        	<div class="scrolx"style="overflow-x: scroll;">
+        <div class="scrolx"style="overflow-x: scroll;">
         	<div class="quanlist clearfix">
         		<div class="quanwrap fl"ng-repeat="quanq in quans">
         			<div class="quan clearfix"ng-class="{'quan2':quanq.isGet!='0'}">
@@ -109,12 +109,12 @@
 		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanq.storeName"></h3>
 		                    <div class="fs-tip c-while">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>
 		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet=='0'">剩余{{quanq.couponSurplus}}张</span>
-		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet!='0'">去使用>></span>
+		                    <span class="fr fs-tip c-while"ng-if="quanq.isGet!='0'"ui-sref="store.index({storeId:quanq.storeId})">去使用>></span>
 		                </div>
 		            </div> 
 		        </div>   
         	</div>
-        	</div>
+        </div>
     </section>
 <!--新品推荐 -->
     <section class="newgoods tuijian">

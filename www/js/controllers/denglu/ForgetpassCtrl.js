@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('ResertpassCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals) {
+.controller('ForgetpassCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals) {
 	if(!locals.getObject("userData")){$state.go("denglu");}	
 	$scope.thisApi=$rootScope.path+"elandMember/modifyPswd?memberId="+locals.getObject("userData").memberId;
 	$scope.timeout="获取验证码";

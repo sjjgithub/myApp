@@ -63,8 +63,9 @@ del{color:@del}
 .borderb2{border: none;border-bottom:2px solid #666;}
 .border{border:@boder-grey}
 .border-h{border-top:@boder-grey;border-bottom:@boder-grey}
-.bar.bar-header.noborder{  -webkit-background-size:0 0;
-  background-size:0 0;}
+.border-dark3{border: 1px solid #333333;}
+.bar.bar-header.noborder,.tabs.noxian{  -webkit-background-size:0 0;background-size:0 0;}
+.tuikuanIt .item.item-input input,.tuikuanIt .item.item-input textarea{padding:1em;border: 1px solid #ccc;width: 100%;margin-right: 0.75rem;}
 //边距
 .marginb{margin-bottom:0.5rem;}
 .nomarginb{margin-bottom: 0}
@@ -75,14 +76,17 @@ del{color:@del}
 .margin-t{margin-top: 1px}
 .margin-v{margin:0 0.75rem;}
 .margin-v2{margin:0 0.5rem }
+.margin-r{margin-right: 0.5rem;}
 .padding-v{padding:0 0.75rem;}
 .padding-h{padding:0.75rem 0;}
+.padding-hs{padding:0.5rem 0;}
 //button
 .btn-outline{outline: none;border:@boder-dark6;}
 .btn-key{height: 1.25rem;line-height:1.25rem;font-size:0.5rem;border-radius:1.25rem;background-color:#f1f1f1;outline: none;display: inline-block;text-align: center;color:@dark6 ;text-decoration:none}
 .btn-small{width: 3.05rem;}
 .btn-mid{width: 4.05rem;}
 .btn-big{width: 6.55rem;}
+button.button.btn-ai{min-height: 1.2rem;height: 1.2rem;font-size: 0.6rem;line-height: 1.2rem;}
 .button.bg-grey{
   background-color: #f2f2f2;}
 .button.bg-dark3{
@@ -95,13 +99,29 @@ del{color:@del}
   color:#fff;}
 .dis1.button.disabled,.dis1.button[disabled]{opacity: 1;}
 //一些其他样式
+.val-m{vertical-align: middle;}
+.close{position: absolute;top: 0.65rem;right: 0.65rem;}
+.button.active{background-color: #333;color: #fff;}
+.modal-backdrop-bg{opacity: 0.3;background: #000;}
+.modal-wrapper{height: 100%;}
+.tuwen{transition: all 0.6s;}
+.bgItc{opacity: 0.3;width: 100%;height: 100%;background-color: #000000;position: absolute;z-index: 10;top: 0;}
+.kuang-caidan{width:50%;right: 0;position: absolute;margin: 0;z-index: 12;padding: 0 0.25rem;top: 43px;right: 0;}
+.kuang-caidan:after{content: "";display: inline-block;width: 0;height: 0;border:0.5rem solid transparent;border-bottom-color:#fff;position: absolute;right:0.75rem;top:1px;transform: translate(0,-100%);z-index: 11;}
+.kuang-caidan>div{overflow: hidden;background-color: #fff;border-radius:10px;border: 1px solid #ccc;}
+.kuang-caidan li{line-height: 2rem;border-top: 1px solid #ccc;font-size: 0.7rem;}
+.kuang-caidan li:nth-child(1){border: none;}
+.kuang-caidan .icon-img{margin-right: 0.5rem;vertical-align: middle;}
 img.img-v{width: 100%;height: auto;max-height: 100%;}
 img.img-h{height: 100%;width: auto;max-width: 100%;}
+img.img-a{max-height: 100%;max-width: 100%;vertical-align: middle;}
 img.img-f{width: 100%;height: 100%;}
+img.img-mr{margin-right: 0.25rem;}
 .goodnew{width: 30%;height: auto;position: absolute;right: 0;top: 0;}
 .goodhot{width: 1rem;height: auto;position: absolute;left: 0.5rem;bottom: 0;}
 ion-scroll .scroll{height: 100%;}
-.allCenter{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);}
+.car .scroll{height: 100%;}
+.allCenter{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);z-index: 11;}
 .noit textarea{resize:none;}
 .esp1{text-overflow:ellipsis;
     white-space: nowrap;
@@ -110,7 +130,7 @@ ion-scroll .scroll{height: 100%;}
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;}
-.slider-slides{overflow: hidden;}
+.slider-slides{overflow: hidden;min-height: 5rem;}
 .lunbo{height: 5rem;}
 .moreit{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .banner-img{width: 100%;height: auto;}
@@ -120,6 +140,7 @@ ion-scroll .scroll{height: 100%;}
 .icon-img-big{width: 1.2rem;height: auto;vertical-align: middle}
 ion-slide img{width:100%;height: auto;line-height: 100%;}
 .flex{display: flex;}
+.flex-cen{display: flex;justify-content:space-around}
 .fl{float:left}
 .fr{float:right}
 .notop{top: 0;z-index: 10;}
@@ -129,6 +150,7 @@ hr{margin: 0;}
 .positr{position: relative}
 .posita{position: absolute;}
 .radius{border-radius: 1rem;}
+.radiuss{border-radius: 0.25rem;}
 .slider-pager{bottom:0.6rem;}
 .slider-pager .slider-pager-page{font-size: 0.5rem;color: #fff;}
 .quanbans .slider-pager .slider-pager-page{color: #000;}
@@ -171,8 +193,13 @@ ion-tabs.tabs-color-active-dark.index-footer .tab-item{color: inherit;}
 .header input{color: #FFF;text-align:left}
 //searcindex s
 //item
-.item.item-image img{width: 5rem;height:5rem;}
+.item.tui-img{display: flex;justify-content:flex-start;flex-wrap:wrap;padding:4vw;}
+.item div.addImg{width:23vw;height: 23vw;text-align:center;padding:0.25rem;}
+.item.item-image .img-wrap.ord{width: 5rem;height:5rem;text-align: center;line-height: 5rem;}
+.item.item-image>img{width: 5rem;height:5rem;}
+.item.item-image img.guige-img{width: 4rem;height:4rem;}
 .item-right{margin-top: 1rem;}
+.img-wrap.ordcart{width: 4.5rem;height:4.5rem;text-align: center;line-height: 4.5rem;margin: 0.5rem;}
 //select
 .list-secect {height: 2.5rem;line-height: 2.5rem;background: url(../img/切图/P2-2-2搜索结果页/drawable-hdpi/tab-bg.png);position: relative;top: -1px;}
 .list-result,.list-history{padding-top: 0.5rem;}
@@ -243,7 +270,7 @@ ion-nav-view{background-color:transparent;}
 .goods-img{min-height:3rem;height:49vw;width: 100%;line-height: 49vw;}
 .samelist .samegoods .goods-img{height:33vw;line-height: 33.3vw;}
 .goods-img>img{max-height: 100%;height: auto;width: 100%;vertical-align: middle;}
-.goods-name{ text-overflow: ellipsis;word-wrap: normal;overflow: hidden;height: 2rem;line-height: 1rem;}
+.goods-name{ text-overflow: ellipsis;word-wrap: normal;overflow: hidden;height: 2.1em;line-height: 1em;}
 .more button.button-clear span{color: #333;margin-left:1.5rem;margin-right:1rem ;}
 .more-img{width: 0.5rem;
   height:auto;}
@@ -288,19 +315,19 @@ ion-nav-view{background-color:transparent;}
 .spec .pop-detail-img img{margin-top:-0.75rem;margin-left: 0.75rem;height: 4.5rem;width: auto;}
 
 
-
-.order-user-info .item p{color: #333;padding-right: 1.5rem;overflow-wrap: break-word;}
+.order-user-info{height: 5.05rem;}
+.order-user-info .item p{color: #333;overflow-wrap: break-word;}
 .order-user-info .icon{font-size: 1rem;height: 2rem}
 .order-goods-info{box-sizing: border-box;padding-top:0.75rem}
 .order-goods{height: 5rem;overflow: hidden}
 .order-goods:last-child{margin-bottom: 0;border-bottom: none}
 .change-kuaidi{display: inline-block}
 .order-kuaidi>span{vertical-align: top;font-size: 0.8rem}
-.order-kuaidi .icon{vertical-align: top;font-size: 0.8rem}
+.order-kuaidi .icon{vertical-align: sub;}
 .fapiao .item .icon,.youhuiquan .item .icon{font-size: 0.8rem}
 .liuyan textarea{width: 100%;border: 1px solid #333;border-radius: 5px;font-size:0.6rem }
 .price .item{font-size: 0.55rem}
-.surePay{padding: 10px 40px;}
+.surePay{padding: 0.5rem 1rem;}
 .surePay a.button{color: #fff}
 
 
@@ -361,7 +388,7 @@ ion-nav-view{background-color:transparent;}
 .store-top{position: relative;height:6.5rem;}
 .store-top_bg{width: 100%;height: 100%;position: absolute;left: 0;top: 0;}
 .store-index-con{padding: 0.75rem;position: absolute;bottom: 0;width: 100%}
-.store-index-con .store-img{height: 2.25rem;width: auto;margin-right: 0.25rem}
+.store-index-con .store-img{height: 3rem;width: 3rem;margin-right: 0.25rem}
 .store-cen{display: inline-block;overflow: hidden;height: 2.25rem}
 .store-cen h3{margin-bottom: 5px}
 .goods-shoucang{position: absolute;bottom: 0.5rem;right: 0.5rem;width:1.25rem;height: 1.25rem;padding: 0;
@@ -416,13 +443,15 @@ ion-nav-view{background-color:transparent;}
 .pinpaiguan-list .pinpaiguan-list-box .slider-pager .slider-pager-page{bottom: 10px;color:#000}
 .pinpaitehui h3:before,.pinpaitehui h3:after{content: "";width: 0.75rem;height: 0.15rem;background-color: #000;display: inline-block;margin: 5px;}
 
+.fapiaotype span{vertical-align: middle;}
+.popover.hs{height:10rem;}
+.popover.hl{height: 14rem;transform: translate(0,-4rem);}
+.fapiao .popover-arrow{display: none;}
 
+.paytop{background-image: url(../img/切图/确认订单并支付（收银台）/drawable-hdpi/tab1.png);background-repeat: no-repeat;background-size: cover;}
+.item.zhifu.active{background-color:#e7e7e7;}
 
-
-
-
-
-
+.ordde li span{width: 3.5rem;display: inline-block;}
 
 
 

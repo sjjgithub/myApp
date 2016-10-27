@@ -1,0 +1,33 @@
+<ion-view title="发布买家秀"> 
+	<div class="bar bar-header noborder bar-dark ">
+        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <h3 class="title">发布买家秀</h3>
+        <button class="button fr button-clear c-while" ng-click="putIt()">发布</button>
+    </div>
+    <ion-content class="has-header bg-grey">
+    	<form name="show_form"id="buyyerShow" novalidate
+		  ng-submit="putIt()">
+    	<div class="item item-input">
+    		<input type="tel" name="biaoti" ng-moedl="show.showTitle"placeholder="标题：6-25个字"maxlength="25" />
+    	</div>
+    	<div class="item item-input">
+    		<textarea name="article" rows="5"ng-moedl="show.showContext"placeholder="正文0-100个字"maxlength="100"></textarea>
+    	</div>
+    	<div class="item item-input item-select">
+    		 <div class="input-label">
+             	 添加图片（最多6张）
+            </div>
+            <select ng-model="value.topicName"ng-options="value.topicName for value in tits" ng-change="cheType(value)">
+            	<option value="">选择主题</option>
+            </select>
+    	</div>
+    	<div class="item item-input item-text-wrap nopadding noborder tui-img">
+    		<div id="imgs"></div>
+    			<div class="fl positr clearfix addImg">
+    				<input type="file" name="file" multiple="multiple"id="file"ng-model="addImg"onchange="angular.element(this).scope().addIt(this)"style="padding: 0;opacity: 0;width: 100%;height: 100%;"class="allCenter"/>
+    				<img src="img/切图/P6-1-2退款申请/drawable-hdpi/plus.png"style="z-index: 9;"class="img-a"/>
+    		</div>	
+    	</div>
+    </form>
+    </ion-content>
+</ion-view>

@@ -39,7 +39,7 @@
         </div>
          <div class="item noborder margin-t nopadding"ng-if="!order.isChange && ['待评价','待收货','待发货'].indexOf(orderIt.orderState)>=0"style="padding:0.5rem 0;">
 	        	<span class="fr">
-	        		<button class="button button-outline button-dark btn-ai"ng-if="!order.isBuyerShow && orderIt.orderState=='待评价'"ui-sref="buyerShow">买家秀</button>
+	        		<button class="button button-outline button-dark btn-ai"ng-if="!order.isBuyerShow && orderIt.orderState=='待评价'"ui-sref="buyerShow({showGoods:order})">买家秀</button>
 	        		<button class="button button-dark btn-ai"ng-if="!order.isChange"ng-click="changeGoods(order)">换&nbsp;&nbsp;&nbsp;&nbsp;货</button>
 	        	</span>
         	</div>
@@ -77,6 +77,14 @@
         <button class="button button-dark button-full"style="padding: 0;margin: 0;height: 100%;"ng-click="">客服</button>
     </div>
 </div>	
+<div class="tabs tabs-icon-top row row-no-padding"ng-if="orderIt.orderState=='待发货'">
+	 <div class="col col-80 tab-item"ng-click="removeIt('取消')">
+        <button class="button bg-black button-full c-while"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">取消订单</button>
+    </div>
+    <div class="col col-20 tab-item"ng-click="">
+        <button class="button bg-grey button-full"style="padding: 0;margin: 0;height: 100%;color: black;"ng-click="buyIt(1)">客服</button>
+    </div>
+</div>	
 <div class="tabs tabs-icon-top row row-no-padding"ng-if="orderIt.orderState=='待收货'">
 	<div class="col col-80 flex">
 		<div class="col tab-item nopadding"ng-click="wuliu()">
@@ -95,7 +103,7 @@
 </div>	
 <div class="tabs tabs-icon-top row row-no-padding"ng-if="orderIt.orderState=='待评价'">
 	 <div class="col col-80 tab-item"ng-click="">
-        <button class="button bg-black button-full c-while"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">去评价</button>
+        <button class="button bg-black button-full c-while"style="padding: 0;margin: 0;height: 100%;"ui-sref="goodsPingjia({pingjiaId:orderIt.orderId})">去评价</button>
     </div>
     <div class="col col-20 tab-item"ng-click="">
         <button class="button bg-grey button-full"style="padding: 0;margin: 0;height: 100%;color: black;"ng-click="buyIt(1)">客服</button>

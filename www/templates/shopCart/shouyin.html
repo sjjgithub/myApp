@@ -4,6 +4,7 @@
 	<h3 class="title">收银台</h3>
 </div>
  <ion-content class="has-header c-most bg-grey">   
+ 	<form id="pay"novalidate ng-submit="payIt()">
    <div class="item noborder paytop noborder"style="background-color: transparent;">
    	支付金额
    	<span class="c-red fr">¥<i ng-bind="payInfo.orderAmount"></i></span>
@@ -13,29 +14,30 @@
 	支付方式
 	</div>
 	<label class="radioIt clearfix"for="wei"ng-click="chePay(0)">
-		<div class="item zhifu"id="wei"ng-class="{'active':!payType}">
+		<div class="item zhifu"id="wei"ng-class="{'active':payType==0}">
 			<img src="img/切图/确认订单并支付（收银台）/drawable-hdpi/zhi.png"class="icon-img-big img-mr"/>
 			<span style="vertical-align: middle;"class="fs-prim">支付宝支付</span>
 			<span class="fr">
-				<input type="radio"name="pay" ng-checked="!payType">
+				<input type="radio"name="payType">
 	            <span class="icon ion-ios-circle-outline fs-rem"></span>
 	            <span class="icon ion-ios-checkmark fs-rem"></span>  
 			</span>
 		</div>	              
     </label>	
     <label class="radioIt"for="zhi"ng-click="chePay(1)">
-		<div class="item noborder zhifu"id="zhi"ng-class="{'active':payType}">
+		<div class="item zhifu"id="zhi"ng-class="{'active':payType==1}">
 			<img src="img/切图/确认订单并支付（收银台）/drawable-hdpi/weixin.png"class="icon-img-big img-mr"/>
 			<span style="vertical-align: middle;"class="fs-prim">微信支付</span>
 			<span class="fr">
-				<input type="radio"name="pay"ng-checked="payType">
+				<input type="radio"name="payType">
 	            <span class="icon ion-ios-circle-outline fs-rem"></span>
 	            <span class="icon ion-ios-checkmark fs-rem"></span>  
 			</span>
 		</div>	              
   </label>	
    <div style="padding: 1rem 2rem;">
-   	    <button class="button button-block c-while button-dark"ng-click="payIt()">立即支付</button>
+   	    <button class="button button-block c-while button-dark">立即支付</button>
    </div>
+   </form>
 </ion-content>
 </ion-view>

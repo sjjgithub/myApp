@@ -15,7 +15,7 @@
 			<div class="item item-input posit">
 				<i class="icon"><img src="img/切图/P2-3-1注册/drawable-hdpi/yanzhengm.png"class="icon-img code-img"/></i>
 				<input ng-model="code"type="text" placeholder="请输入验证码"class="text-left "maxlength="6" required name="code"ng-model="code" ng-blur="checkCode()"/>
-				<a class="button button-small code radius c-while text-center"ng-click="getCode()"ng-bind="timeout"></a>
+				<a class="button button-small code radius c-while text-center"ng-click="getCode()"ng-disabled="isSend"ng-bind="timeout"></a>
 			</div>
 			<p class="code-tip">(请在60秒内完成验证，超时请点击重新发送)</p>
 			<div class="item item-input">

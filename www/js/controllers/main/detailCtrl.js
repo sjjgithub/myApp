@@ -40,9 +40,6 @@ angular.module('starter.controllers')
 								},1000)                       		
                         	}
                         })
-                        .error(function(){
-                           
-                        })
          }
        	getIt();
          $http.get($scope.pingjiaApi)
@@ -85,7 +82,7 @@ $ionicModal.fromTemplateUrl('guige.html', {
           });
 $scope.scrollIt=function(){
 	var top=$(".shangpin").css("top");
-	if($ionicScrollDelegate.getScrollPosition().top>($(".shangpin .scroll").height()-$(".shangpin").height()+$(".shangpin").height()*0.15)){
+	if($ionicScrollDelegate.getScrollPosition().top>($(".shangpin .scroll").height()-$(".shangpin").height()+$(".shangpin").height()*0.1)){
 		if(!$scope.tuwenIt){			
 		$http.get($scope.tuwenApi)
 		.success(function(data){

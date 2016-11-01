@@ -4,10 +4,10 @@ angular.module('starter.controllers')
 	console.log($scope.orderIt)
 	$scope.thisApi=$rootScope.path+"elandReturn/sendReturnGoods";
 	$scope.this2Api=$rootScope.path+"elandRefundLog/applyRefundLog";
-	$scope.ret={};
-	$scope.ret.orderId=530
 	$scope.type=0;
-	$scope.ret.imgs=$scope.orderIt.orderId;
+	$scope.ret={};
+	$scope.ret.orderId=$scope.orderIt.orderId;
+	$scope.ret.imgs=[];	
 	$scope.ret.returnGoodsnum=$scope.orderIt.num;
 	$scope.cheType=function(type){
 		$scope.type=type;
@@ -37,22 +37,42 @@ angular.module('starter.controllers')
 	$scope.putIt=function(){
 		console.log($scope.ret);
 			if($scope.ret.orderRefund&&$scope.ret.refundBuyerName&&$scope.ret.refundBuyerAccount){
-				if($scope.type){
-					$http({method:'POST',url:$scope.thisApi,params:$scope.ret})
-					.success(function(data){
+				if($scope.type==0){
+					console.log($scope.ret)
+					var formData = new FormData();
+					formData.append("buyerMessage",$scope.ret.buyerMessage);
+					formData.append("orderId",$scope.ret.orderId);
+					formData.append("orderRefund",$scope.ret.orderRefund);
+					formData.append("refundBuyerAccount",$scope.ret.refundBuyerAccount);
+					formData.append("refundBuyerName",$scope.ret.refundBuyerName);
+					formData.append("returnGoodsnum",$scope.ret.returnGoodsnum);
+					formData.append("files",sendIt.img.files[0]);
+//					$http({method:'POST',url:$scope.thisApi,params:$scope.ret})
+////					$http.post($scope.thisApi,$scope.ret)
+	 			$.ajax({  
+	                url : $scope.thisApi,  
+	                type : 'POST',  
+	                data : formData,  
+	                processData : false,  
+	                contentType : false,  
+					success:function(data){
 						console.log(data);
-						if(!data.status){
 							shcemUtil.showMsg(data.msg)
-							$state.go("returnOrderDetail");
-						}	
+							if(data.status==0){
+								$state.go("returnOrderDetail",{"tuiOrderId":$scope.ret.orderId});
+							}								
+					}
 					});
-				}else{
-					$http.post($scope.this2Api,$scope.ret)
+					
+				}else{		
+					console.log(1)
+					$http({method:'POST',url:$scope.this2Api,params:$scope.ret})
+//					$http.post($scope.this2Api,$scope.ret)
 					.success(function(data){
 						console.log(data);
 						if(!data.status){
 							shcemUtil.showMsg(data.msg)
-							$state.go("returnOrderDetail");
+							$state.go("returnOrderDetail",{"tuiOrderId":$scope.ret.orderId});
 						}						
 					});
 				}				

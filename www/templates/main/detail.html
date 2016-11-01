@@ -4,8 +4,7 @@
         <button class="button button-icon ion-ios-arrow-back c-while"ng-click="goBack()"></button>
         <h3 class="title">商品详情</h3>
 </div>
-<ion-content class="has-tabs has-header bg-grey shangpin"on-scroll-complete="scrollIt()"has-bouncing="true">	
-	<!--<ion-scroll direction="y"scrollbar-y="false">-->
+<ion-content class="has-tabs has-header bg-grey shangpin"on-scroll="scrollIt()"has-bouncing="true">	
 	<section class="detail-top positr">		
 	<ion-slide-box show-pager="false" ng-if="good.goodsImageList" on-slide-changed="slideHasChanged($index)"class="slidebox"  auto-play="true" slide-interval="4000">
 	            <ion-slide ng-repeat="banner in good.goodsImageList">
@@ -31,7 +30,6 @@
     </div>
     <!-- 抵用券-->
     <section class="quanlist">
-      <!-- <div class="scrolx"style="overflow-x: scroll;">-->
         	<div class="clearfix"style="overflow: scroll;">
         		<div class="quanwrap fl"ng-repeat="quanq in quans">
         			<div class="quan clearfix"ng-class="{'quan2':quanq.isGet!='0'}">
@@ -51,7 +49,6 @@
 		            </div> 
 		        </div>   
         	</div>
-        	<!--</div>-->
     </section>
     <section class="assesslist bg-white">
         <div class="item item-icon-right assess-title bg-white"style="margin-bottom: 1px;"ui-sref="pingjia">
@@ -89,7 +86,7 @@
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h4 class="goods-name fs-min esp"ng-bind="goods.goodsName"style="margin:0.25rem;"></h4>
+                <h4 class="goods-name fs-min esp"ng-bind="goods.goodsName"style="margin:0.25rem;height:1.5rem;line-height: 0.75rem;"></h4>
                 <div class="c-red fs-prim text-center">¥<i ng-bind="goods.goodsStorePrice"></i></div>
             </div>
         </div>
@@ -98,7 +95,11 @@
             继续拖动，查看图文详情 >>
         </div>        
     </section>
- <!-- </ion-scroll>-->
+  <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="5%"
+    ng-if="notMore()">
+  </ion-infinite-scroll>
 </ion-content>
   <ion-scroll style="height: 100%;top: 100vh;"class="has-header has-tabs bg-white tuwen">
   	<ion-refresher pulling-text="下拉，返回商品简介"on-refresh="xiala()"pulling-icon="ion-arrow-down-c"></ion-refresher>

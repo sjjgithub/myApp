@@ -26,6 +26,7 @@ angular.module('starter.controllers')
 					$scope.orderIt.num+=$scope.orderIt.listGoods[k].goodsNum;
 				}
 				locals.setObject("tuikuanOrder",$scope.orderIt);
+				console.log($scope.orderIt)
 			}
 		})
 	}

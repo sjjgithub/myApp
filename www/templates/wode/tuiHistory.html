@@ -1,0 +1,35 @@
+<ion-view title="售后记录">
+<div class="bar bar-header bar-dark">
+    <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="goBack()"></a>
+    <h3 class="title">售后记录</h3>
+</div>
+<!--header e-->
+<ion-content class=" has-header c-most detail"scroll="false">
+    <div class="flex text-center ord-title">
+        <span ng-click="ordByIt(0)"ng-class="{'ordactive':ordtype==0}">退款记录</span>
+        <span ng-click="ordByIt(1)"ng-class="{'ordactive':ordtype==1}">换货记录</span>
+    </div>
+    <ion-content style="margin-top: 2.4rem;"class="bg-grey">
+    <section class="myorder">
+        <div class="item bg-white padding-v item-icon-right"ng-repeat="orderIt in ordersIt track by $index">            
+            <i class="icon ion-ios-arrow-right"></i>
+            <ul class="fs-prim bg-white ordde"ng-if="ordtype==0"ui-sref="returnOrderDetail({tuiOrderId:orderIt.orderId})">
+             	<li class="padding-hs"><span>订单编号：</span><i ng-bind="orderIt.orderSn"></i></li>
+                <li class="padding-hs"><span>店铺：</span><i ng-bind="orderIt.storeName"></i></li>
+                <li class="padding-hs"><span>退款金额：</span><i ng-bind="orderIt.orderRefund"></i></li>
+                <li class="padding-hs"><span>申请时间：</span><i ng-bind="orderIt.addTime"></i></li>
+                <li class="padding-hs"><span>审核状态：</span><i ng-bind="orderIt.refundState"></i><i></i></li>
+                <li class="padding-hs"><span>退款类型：</span><i ng-bind="orderIt.refundType?'退款退货':'退款'"></i><i></i></li>
+            </ul>              
+            <ul class="fs-prim bg-white ordde"ng-if="ordtype==1"ui-sref="changeOrderDetail({changeId:orderIt.changeId,specIdFrom:orderIt.specIdFrom})">
+             	<li class="padding-hs"><span>订单编号：</span><i ng-bind="orderIt.orderSn"></i></li>
+                <li class="padding-hs"><span>店铺：</span><i ng-bind="orderIt.storeName"></i></li>
+                <li class="padding-hs"><span>换货数量：</span><i ng-bind="orderIt.changeGoodsnum"></i></li>
+                <li class="padding-hs"><span>申请时间：</span><i ng-bind="orderIt.addTime"></i></li>
+                <li class="padding-hs"><span>审核状态：</span><span ng-bind="orderIt.changeStatus"></span></span></li>
+            </ul>    
+        </div>
+    </section>
+    </ion-content>
+</ion-content>
+</ion-view>

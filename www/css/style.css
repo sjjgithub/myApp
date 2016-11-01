@@ -243,6 +243,12 @@ button.button.btn-ai {
 .val-m {
   vertical-align: middle;
 }
+.right-cen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0);
+}
 .close {
   position: absolute;
   top: 0.65rem;
@@ -347,7 +353,8 @@ img.img-mr {
   left: 0.5rem;
   bottom: 0;
 }
-ion-scroll .scroll {
+ion-scroll .scroll,
+.limitTime .scroll {
   height: 100%;
 }
 .car .scroll {
@@ -969,9 +976,6 @@ ion-nav-view {
 .detail .tab-item button {
   border-radius: 0;
 }
-.detail .goods-img {
-  height: 4.5rem;
-}
 .classify {
   width: 30vw;
   font-size: 0.7rem;
@@ -1288,10 +1292,10 @@ ion-nav-view {
 }
 .goods-shoucang {
   position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  width: 1.25rem;
-  height: 1.25rem;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
   text-align: center;
   line-height: 1.25rem;

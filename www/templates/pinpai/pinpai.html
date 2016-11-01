@@ -11,7 +11,7 @@
             </ion-slide>          
     </ion-slide-box>
     <section class="pinpaiguan-list clearfix"style="height: 100%;">
-    	<ion-slide-box class="pinpaiguan-list-box">
+    <ion-slide-box class="pinpaiguan-list-box"ng-if="pinpais">
     	<ion-slide ng-repeat="page in pinpais">
     	<div class="pinpaiguan-list-imgwrap"ng-repeat="pinpaiIt in page"ui-sref="store.index({storeId:pinpaiIt.storeId})">
     		<img ng-src="{{pinpai_img+pinpaiIt.brandPic}}"/>

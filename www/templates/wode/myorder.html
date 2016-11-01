@@ -12,9 +12,15 @@
         <span ng-click="ordByIt(3)"ng-class="{'ordactive':ordtype==3}">待收货</span>
         <span ng-click="ordByIt(4)"ng-class="{'ordactive':ordtype==4}">待评价</span>
     </div>
-    <ion-content style="margin-top: 2.4rem;"class="bg-grey">
-    <section class="myorder">
-        <div class="padding-v bg-white marginb"ng-repeat="orderIt in ordersIt track by $index"ng-class="{'nomargin':$last}"ui-sref="myorderDetail({'orderId':orderIt.orderId,'orderState':orderIt.orderState})">
+    <ion-content style="margin-top: 2.4rem;"class="bg-grey myorder"has-bouncing="true">
+   	<ion-infinite-scroll
+	ng-if="more"
+	immediate-check="false"
+    icon="ion-loading-c"
+    on-infinite="loadMoreData()"
+    distance="1%"style="height: 0;">
+</ion-infinite-scroll>
+        <div class="padding-v bg-white marginb"ng-repeat="orderIt in ordersIt track by $index"ng-class="{'nomargin':$last}"ng-click="goIt(orderIt)">
             <div class="item item-icon-right padding-h borderb myorder-title">
                 <img src="img/切图/P6-1我的订单/drawable-hdpi/shop.png"class="icon-img fl"style="margin-right: 0.25rem;margin-top:0.1rem;">
                 <h3><span ng-bind="orderIt.storeName"></span>
@@ -22,7 +28,7 @@
                 </h3>
             </div>
             <div class=" fs-prim myorder-content">
-                <p><span>订单号：</span><span ng-bind="orderIt.orderSn"></span><a class="fr btn-key btn-mid"style="background-color: #666;color: #fff;"ng-if="orderIt.orderState=='待评价'">去评价</a></p>
+                <p><span>订单号：</span><span ng-bind="orderIt.orderSn"></span> <button class="button button-dark btn-ai fr" ng-if="orderIt.orderState=='待评价'"ui-sref="goodsPingjia({pingjiaId:orderIt.orderId,pingjiaStoreId:orderIt.storeId})">去评价</button></p>
                 <p>订单金额：<span class="c-red">¥<span ng-bind="orderIt.orderAmount"></span></span></p>
                 <p>下单时间：<span ng-bind="orderIt.addTime*1000|date : 'yyyy-MM-dd HH:mm:ss'"></span></p>
                 <div class="myorder-img">
@@ -31,7 +37,6 @@
                 </div>
             </div>
         </div>
-    </section>
     </ion-content>
 </ion-content>
 </ion-view>

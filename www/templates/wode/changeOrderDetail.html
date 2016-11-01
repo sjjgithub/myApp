@@ -1,0 +1,38 @@
+<ion-view title="换货详情">
+<div class="bar bar-header bar-dark">
+    <a class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="goBack()"></a>
+    <h3 class="title">换货详情</h3>
+</div>
+<!--header e-->
+<ion-content class=" has-header c-most detail bg-grey has-tabs">
+    <section class="myorder">
+       	<div class="item padding-v bg-white borderb nomargin">
+            <ul class="fs-prim bg-white ordde">
+             	<li class="padding-hs"><span>订单编号：</span><i ng-bind="detail.orderSn"></i></li>
+                <li class="padding-hs"><span>换货编号：</span><i ng-bind="detail.changeSn"></i></li>
+                <li class="padding-hs"><span>店铺：</span><i ng-bind="detail.storeName"></i></li>
+                <li class="padding-hs"><span>申请时间：</span><i ng-bind="detail.addTime"></i></li>
+                <li class="padding-hs"><span>审核状态：</span><i ng-bind="detail.changeStatus"></i></li>
+            </ul>	        
+        </div>  
+        <div class="item item-image padding-v order-goods borderb nomargin item-text-wrap"ui-sref="detail({goodsId:order.goodsId})">
+	        	<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">
+	        		<img ng-src="{{goods_img+detail.goodsImage}}"class="img-a">
+	        	</div>           
+	            <div class="order-goods-info">
+		            <h3 class="text-left goods-name esp"ng-bind="detail.goodsName"></h3>
+		            <p class="c-tip text-left"style="overflow: hidden;white-space: nowrap;"><span class="order-goods-color fs-prim"ng-bind="detail.specInfoTo"></span><span class="order-goods-size fs-prim"></span></p>
+		            <span class="fs-tip c-dark6 fr">换货数量<i ng-bind="detail.goodsNum"></i></span>
+	            </div>
+	        </div>
+    </section>
+</ion-content>
+<div class="tabs tabs-icon-top row row-no-padding">
+	 <div class="col col-25"ng-click="">
+        <button class="button bg-white button-full c-black"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">联系卖家</button>
+    </div>
+    <div class="col col-75"ng-click="">
+        <button class="button bg-black button-full c-while"style="padding: 0;margin: 0;height: 100%;"ng-click="buyIt(1)">待处理</button>
+    </div>
+</div>	
+</ion-view>

@@ -1,6 +1,6 @@
 <ion-view id="top" title="首页">
 
-<ion-content class="has-footer">
+<ion-content class="has-footer bg-grey">
 	<!--<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>-->
     <ion-slide-box show-pager="true" class="slidebox"auto-play="true" slide-interval="4000">
             <ion-slide ng-repeat="banner in banners">
@@ -39,7 +39,7 @@
             	<span class="fs-min c-most">领券</span></div>
             <div class="col col-25 text-center">
             	<img ng-src="img\切图\P2首页\drawable-hdpi\icon7.png"><br>
-            	<span class="fs-min c-most">卖家秀</span></div>           
+            	<span class="fs-min c-most">买家秀</span></div>           
         </div>
     </section>
 <!-- fenlei ed-->
@@ -83,7 +83,7 @@
         </div>
         <div class="scrolx"style="overflow-x: scroll;overflow-y: hidden;">
         <div class="hotBrand"style="white-space: nowrap;">
-            <img ng-src="{{pinpai_img+rexiaopinpai.brandPic}}" style="width: 33vw;height: 100%;"ng-repeat="rexiaopinpai in rexiaos">
+            <img ng-src="{{pinpai_img+rexiaopinpai.brandPic}}" style="width: 33vw;height: 100%;"ng-repeat="rexiaopinpai in rexiaos"ui-sref="store.index({storeId:rexiaopinpai.storeId})">
         </div>
         </div>
     </section>
@@ -200,12 +200,6 @@
                 <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
                 <div class="c-red fs-prim padding-v">¥{{goods.price}}</div>
             </div>
-        </div>
-        <div class="item item-divider noborder text-center more"ui-sref="youlove">
-            <button class="button button-small button-clear">
-            	<span>查看更多</span>
-                <img ng-src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
-            </button>
         </div>
     </section>
 	

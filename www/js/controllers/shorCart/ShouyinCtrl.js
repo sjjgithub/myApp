@@ -3,12 +3,19 @@ angular.module('starter.controllers')
     if($stateParams.payInfo){
      	locals.setObject("payInfo",$stateParams.payInfo);
      }
+    $scope.zhifubaoApi="https://openapi.alipay.com/gateway.do?app_id=2016083101828596&method=alipay.trade.wap.pay&sign_type=RSA&sign=ERITJKEIJKJHKKKKKKKHJEREEEEEEEEEEE&version=1.0"
   $scope.payInfo=locals.getObject("payInfo")
-  $scope.payType=0;
+  $scope.payType;
 	$scope.chePay=function(type){
 		$scope.payType=type;
+		console.log($scope.payType)
 	}
 	$scope.payIt=function(){
-		
+		if($scope.payType==0){ //支付宝
+			
+		}
+		if($scope.payType==1){  //微信
+			
+		}
 	}
 })

@@ -14,7 +14,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 .constant('ApiEndpoint', {
   url: 'http://10.9.174.35:8090/eland/api/'
 })
-.run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state) {
+.run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state,$location) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 //     for form inputs)
@@ -85,20 +85,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 		 $rootScope.showIt=function(){
 		 	$rootScope.itshow=!$rootScope.itshow;	 	
 		 }
-    $rootScope.goBack = function (ind) {    	
+    $rootScope.goBack = function (ind) {  
       if($ionicHistory.viewHistory().backView){
       	if(ind<0){
       			$ionicHistory.goBack(ind);
       	}else{$ionicHistory.goBack()}     
-//   		$ionicViewSwitcher.nextDirection("back");
-      }else{
-      	alert(1)
-      	location.href=history.back();
+     		
       }
     }
+		
   });
   //返回顶部
-   $rootScope.scrollTop  = function () {
+   $rootScope.scrollTop=function () {
     	$ionicScrollDelegate.scrollTop(true);
    }
   //搜索头隐藏

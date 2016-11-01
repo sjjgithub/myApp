@@ -259,27 +259,49 @@ angular.module('starter')
   	})
 		.state('myorderDetail', {
    		 	url: '/myorderDetail',  
+   		 	cache:'false',
     		params:{"orderId":null,"orderState":null},	
         templateUrl: 'templates/wode/myorderDetail.html',
         controller: 'MyorderDetailCtrl'   
   	})
 		.state('tuikuan', {
    		 	url: '/tuikuan',  
+   		 	cache:'false',
     		params:{"ordType":null},	
         templateUrl: 'templates/wode/tuikuan.html',
         controller:"TuikuanCtrl"
   	})
+		.state('tuiHistory', {
+   		 	url: '/tuiHistory',  
+   		 	cache:'false',
+    		params:{"ordType":null},	
+        templateUrl: 'templates/wode/tuiHistory.html',
+        controller:"TuiHistoryCtrl"
+  	})
 		.state('buyerShow', {
    		 	url: '/buyerShow',  
    		 	cache:'false',
+   		 	params:{"showGoods":null},	
         templateUrl: 'templates/wode/buyerShow.html',
         controller:"BuyerShowCtrl"
   	})
 		.state('returnOrderDetail', {
    		 	url: '/resultOrderDetail',  
-    		params:{"ordType":null},	
+    		params:{"tuiOrderId":null},	
         templateUrl: 'templates/wode/returnOrderDetail.html',
         controller:"ReturnOrderDetailCtrl"
+  	})
+		.state('changeOrderDetail', {
+   		 	url: '/changeOrderDetail',  
+    		params:{"changeId":null,"specIdFrom":null},	
+        templateUrl: 'templates/wode/changeOrderDetail.html',
+        controller:"ChangeOrderDetailCtrl"
+  	})
+		.state('goodsPingjia', {
+   		 	url: '/goodsPingjia',  
+    		params:{"pingjiaId":null,"pingjiaStoreId":null},
+        templateUrl: 'templates/wode/goodsPingjia.html',
+        controller:"GoodsPingjiaCtrl"
   	})
 		.state('setting', {
    		 	url: '/setting',  

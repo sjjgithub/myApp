@@ -4,6 +4,7 @@ angular.module('starter.controllers')
 	$scope.putItApi=$rootScope.path+"member/register?devNum=F16CE6D7-ECED-40DD-9C5B-3E4F6C3F2342&";
 	$scope.timeout="获取验证码";
 				$scope.getCode=function(event){
+					$scope.isSend=true;
 					$http.get($scope.codeApi+register.phone.value)
 							.success(function(data){
 								if(data.status){
@@ -19,7 +20,8 @@ angular.module('starter.controllers')
 								            timePromise=undefined;  								  
 								            $scope.timeout=10;  
 								            $scope.timeout = "重发验证码";
-								          }else{  
+								            $scope.isSend=false;
+								         }else{  								          	
 								            $scope.timeout = second + " 秒后可重发";  
 								            second--;  								             
 								          }  

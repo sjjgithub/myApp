@@ -93,9 +93,6 @@ $ionicModal.fromTemplateUrl('quan.html', {
     $scope.modal = modal;
 });  
 $scope.popover=$ionicPopover.fromTemplateUrl('fapiao.html', {
-            scope: $scope
-          });
-$ionicPopover.fromTemplateUrl('fapiao.html', {
     scope: $scope
 }).then(function(popover) {
     $scope.popover = popover;

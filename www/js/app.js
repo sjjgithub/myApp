@@ -16,11 +16,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 })
 .run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state,$location) {
   $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+//  Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 //     for form inputs)
 //	var Ip="http://192.168.3.45";
 // 	var Ip="http://127.0.0.1";
-   	var Ip="http://172.16.0.10";
+   	var Ip="http://172.16.0.19";
 // 	var Ip="http://10.9.174.35";
     $rootScope.path =Ip+":8090/eland/api/";
     $rootScope.store_img=Ip+"/eland/upload/store/"
@@ -36,7 +36,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
     $rootScope.win_H=window.innerHeight;
     $rootScope.hideTop=false;
 //  $rootScope.isTo=false;
-
+		// 应用公钥    
+		$rootScope.appkey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7vi69qLbyye38GtDCoOKZNYtqYP8OY9AoSOKwEBz9Vsyl1FPYAiKC4i7H3Dmh3+tNeWjhe3zYk6oOhcPepo81NMgSGTihZAaBW5U6wMmIyyU5RFKhNdQUOf8+EmpypoaH7bwz92iLAASivBOpjXi/1qEbqvpn+n5zs0TQAZeUJQIDAQAB";
+		$rootScope.mayikey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB";
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);    
@@ -67,16 +69,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 	  			$state.go("detail",{goodsId:id})
 	  			break;
 	  		case 2:
-	  			$state.go("detail",{goodId:id})
+	  			$state.go("detail",{goodsId:id})
 	  			break;
 	  		case 3:
-	  			$state.go("detail",{goodId:id})
+	  			$state.go("detail",{goodsId:id})
 	  			break;
 	  		case 4:
-	  			$state.go("detail",{goodId:id})
+	  			$state.go("detail",{goodsId:id})
 	  			break;
 	  		case 5:
-	  			$state.go("detail",{goodId:id})
+	  			$state.go("detail",{goodsId:id})
 	  			break;
 	  		default:
 	  			break;
@@ -99,19 +101,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
    $rootScope.scrollTop=function () {
     	$ionicScrollDelegate.scrollTop(true);
    }
+   
   //搜索头隐藏
   $rootScope.$on('$stateChangeStart',
         function(event, toState, toParams, fromState, fromParamss){
-          $rootScope.isLogin=!$.isEmptyObject(locals.getObject("userData"));
+          $rootScope.isLogin=locals.get("memberId");
           var tabsHide=["tab.myinfo","tab.pinpai","tab.shopCart"];
-          var isTohide=["search.index","search.result"];
+         
 					if($rootScope.isLogin){	
 							if(toState.name=="denglu"){
 								$state.go("tab.main");
 								 event.preventDefault(); 
 							}else {
-                tabsHide.indexOf(toState.name)>=0?$rootScope.hideTabs=true:$rootScope.hideTabs=false;
-                isTohide.indexOf(toState.name)>=0?$rootScope.isTo=true:$rootScope.isTo=false;
+                tabsHide.indexOf(toState.name)>=0?$rootScope.hideTabs=true:$rootScope.hideTabs=false;               
                 toState.name=="store.index"?$rootScope.storeTabs=true:$rootScope.storeTabs="";
 							}
 							

@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('MyhistoryCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals,$ionicPopup) {
-	var memberId=locals.getObject("userData").memberId
+	var memberId=locals.get("memberId")
 	$scope.thisApi=$rootScope.path+"elandFoot/getFootHistory?pageIndex=1&pageSize=20&memberId="+memberId;
 	$scope.delApi=$rootScope.path+"elandFoot/deleteFootHistory?memberId="+memberId;
 	function getfoot(){

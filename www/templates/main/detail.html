@@ -6,7 +6,7 @@
 </div>
 <ion-content class="has-tabs has-header bg-grey shangpin"on-scroll="scrollIt()"has-bouncing="true">	
 	<section class="detail-top positr">		
-	<ion-slide-box show-pager="false" ng-if="good.goodsImageList" on-slide-changed="slideHasChanged($index)"class="slidebox"  auto-play="true" slide-interval="4000">
+	<ion-slide-box show-pager="false" ng-if="good.goodsImageList" on-slide-changed="slideHasChanged($index)"class="slidebox"  auto-play="true"does-continue="true"slide-interval="4000">
 	            <ion-slide ng-repeat="banner in good.goodsImageList">
 	                <img ng-src="{{goods_img+banner}}">				 
 	            </ion-slide>              
@@ -95,11 +95,11 @@
             继续拖动，查看图文详情 >>
         </div>        
     </section>
-  <ion-infinite-scroll
+  <!--<ion-infinite-scroll
     on-infinite="loadMore()"
     distance="5%"
-    ng-if="notMore()">
-  </ion-infinite-scroll>
+    ng-if="notMore">
+  </ion-infinite-scroll>-->
 </ion-content>
   <ion-scroll style="height: 100%;top: 100vh;"class="has-header has-tabs bg-white tuwen">
   	<ion-refresher pulling-text="下拉，返回商品简介"on-refresh="xiala()"pulling-icon="ion-arrow-down-c"></ion-refresher>

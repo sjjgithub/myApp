@@ -1,9 +1,9 @@
 angular.module('starter.controllers')
-.controller('MyorderCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
+.controller('MyorderCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals,$ionicScrollDelegate) {
 	console.log($stateParams.ordType)
 	var pageIndex=1;
-	$scope.more=true;
-	$scope.thisApi=$rootScope.path+"elandOrder/getOrderList?memberId="+locals.getObject("userData").memberId+"&pageSize=10&orderState=";
+	$scope.more=false;
+	$scope.thisApi=$rootScope.path+"elandOrder/getOrderList?memberId="+locals.get("memberId")+"&pageSize=10&orderState=";
 	if($stateParams.ordType||$stateParams.ordType==0){locals.set("ordType",$stateParams.ordType);}
 	$scope.ordtype=locals.get("ordType");
 			function stateBian(arr){
@@ -60,9 +60,10 @@ angular.module('starter.controllers')
 		$scope.ordByIt=function(ind){									
 					$scope.ordtype=ind;
 					pageIndex=1;
-					$scope.more=true;
+					$scope.more=false;
 					locals.set("ordType",$scope.ordtype);
 					console.log(ind)
+					$ionicScrollDelegate.scrollTop(false)
 					$scope.getGoods($scope.thisApi,$scope.ordtype+"&pageIndex="+pageIndex);
 			}//ordByIt ed     
 		$scope.loadMoreData=function(){
@@ -72,12 +73,17 @@ angular.module('starter.controllers')
 				.success(function(data){
 					console.log(data);
 					if(data.data.length>1&&data.status==0){
-						stateBian(data.data)	
+						stateBian(data.data);	
 						$scope.ordersIt=$scope.ordersIt.concat(data.data)
 					}else{
-						$scope.more=false;
-						shcemUtil.showMsg("没有更多数据了");
-					}					
+						$scope.more=true;
+						if(pageIndex>1){
+							shcemUtil.showMsg("没有更多数据了");
+						}
+						
+					}										
+				})
+				.finally(function(){
 					$scope.$broadcast('scroll.infiniteScrollComplete');
 				})
 			

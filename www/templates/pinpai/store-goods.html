@@ -25,6 +25,11 @@
             	<div class="c-red fs-prim padding-v">¥{{goods.price}}</div>
              </li>
         </ul>
+         <ion-infinite-scroll 
+	        	ng-if="!domore" 
+	        	on-infinite="doRefresh()" 
+	        	immediate-check="false" >	        	
+	     </ion-infinite-scroll>
 		</ion-content>
     </ion-content>
 </ion-view>

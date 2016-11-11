@@ -1,15 +1,16 @@
-	function inphold(){
-		$("input").each(function(index,elem){
-			var placeholder;
-		$(elem).click(function(){
-			placeholder=$(this).attr("placeholder")
-			$(this).attr("placeholder","")
-		})
-		$(elem).blur(function(){
-			$(this).attr("placeholder",placeholder)
-		})
-	});
-	}
+//	function inphold(){
+//		$("input").each(function(index,elem){
+//			var placeholder;
+//		$(elem).click(function(){
+//			placeholder=$(this).attr("placeholder")
+//			$(this).attr("placeholder","")
+//		})
+//		$(elem).blur(function(){
+//			$(this).attr("placeholder",placeholder)
+//		})
+//	});
+//	}
+
 	//倒计时
 	var interId;
 	function timer(opt){

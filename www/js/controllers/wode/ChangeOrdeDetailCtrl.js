@@ -7,7 +7,7 @@ angular.module('starter.controllers')
 	var specIdFrom=locals.get("specIdFrom");
 	console.log(changeId)
 	console.log(specIdFrom)
-	var memberId=locals.getObject("userData").memberId;
+	var memberId=locals.get("memberId");
 	$scope.thisApi=$rootScope.path+"elandChange/selectChangeDetail?memberId="+memberId+"&changeId="+changeId+"&specId="+specIdFrom;
 	console.log($scope.thisApi)
 	$http.get($scope.thisApi)

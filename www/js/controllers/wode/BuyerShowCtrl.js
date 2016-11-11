@@ -6,7 +6,7 @@ angular.module('starter.controllers')
 	$scope.thisApi=$rootScope.path+"elandSellerShow/topicClassList";
 	$scope.showApi=$rootScope.path+"elandSellerShow/releaseSellerShow";
 	$scope.showGoods=locals.getObject("showOrder");
-	var memberId=locals.getObject("userData").memberId;
+	var memberId=locals.get("memberId");
 	console.log($scope.showGoods);
 	$scope.show={};	
 	$scope.show.memberId=memberId;

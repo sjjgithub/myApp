@@ -1,7 +1,7 @@
 <ion-view view-title="购物车">
 	<div class="bar bar-header bar-dark">
-    <h3 class="title">购物车</h3>
-</div>
+    	<h3 class="title">购物车</h3>
+	</div>
   <ion-content class=" has-header c-most bg-grey car">   
     <section class="myorder">
     	<ul class="list nomargin bg-white"ng-repeat="car in youxiao"ng-init="outerIndex = $index"style="margin-bottom: 0.5rem;">
@@ -20,7 +20,7 @@
            </span>
            <div class="clearfix"style="height: 100%;">
            	<div class="img-wrap fl ordcart text-center">
-           		<img src="{{goods_img+goods.goodsImage}}"class="img-a"/>
+           		<img ng-src="{{goods_img+goods.goodsImage}}"class="img-a"/>
            	</div>
            	<h3 style="margin-top: 0.75rem;"class="goods-name esp"ng-bind="goods.goodsName"></h3>
            	<p class="esp1"style="overflow: hidden;white-space: nowrap;"><span ng-bind="goods.specInfo"></span></p>
@@ -37,10 +37,24 @@
         <li class="item item-button-right noborder margin-t">
         	合计：<span class="c-red">¥<i ng-bind="car.chePrice | number:2"></i></span>
         	<button class="button button-dark"ng-click="payIt(car)">结算</button>
+        </li>        
+        </ul>
+        <ul class="list">
+        <li class="item item-checkbox checkbox-dark nopadding-h item-text-wrap"style="overflow: hidden;padding-left: 0;"ng-repeat="goods in wuxiao">
+           	<div class="img-wrap fl ordcart text-center positr">
+           		<img ng-src="{{goods_img+goods.goodsImage}}"class="img-a"/>
+           		<div class="bg-black allCenter"style="opacity: 0.5;height: 100%;width: 100%;"></div>
+           		<span class="posita allCenter c-while fs-prim">已下架</span>
+           	</div>
+           	<div style="margin-top: 1.5rem;">
+           		<h3 class="goods-name esp"ng-bind="goods.goodsName"></h3>
+           		<p class="esp1"style="overflow: hidden;white-space: nowrap;"><span ng-bind="goods.specInfo"></span></p>
+           	</div>
+           	
         </li>
         </ul>
     </section>
-    	<div class="allCenter fs-prim"ng-if="youxiao<1">
+    	<div class="allCenter fs-prim"ng-if="youxiao.length+wuxiao.length<1">
 		暂无商品，去转转
     	</div>	
 </ion-content>

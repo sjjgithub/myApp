@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 	if($stateParams.tuiOrderId){locals.set("tuiOrderId",$stateParams.tuiOrderId)}
 	var orderId=locals.get("tuiOrderId");
 	console.log(orderId)
-	var memberId=locals.getObject("userData").memberId;
+	var memberId=locals.get("memberId");
 	$scope.thisApi=$rootScope.path+"elandRefundLog/selectRefundDetail?memberId="+memberId+"&orderId="+orderId;
 	$http.get($scope.thisApi)
 	.success(function(data){

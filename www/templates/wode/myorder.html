@@ -12,14 +12,8 @@
         <span ng-click="ordByIt(3)"ng-class="{'ordactive':ordtype==3}">待收货</span>
         <span ng-click="ordByIt(4)"ng-class="{'ordactive':ordtype==4}">待评价</span>
     </div>
-    <ion-content style="margin-top: 2.4rem;"class="bg-grey myorder"has-bouncing="true">
-   	<ion-infinite-scroll
-	ng-if="more"
-	immediate-check="false"
-    icon="ion-loading-c"
-    on-infinite="loadMoreData()"
-    distance="1%"style="height: 0;">
-</ion-infinite-scroll>
+    <ion-content style="margin-top: 2.4rem;"class="bg-grey myorder">
+    <ion-list>
         <div class="padding-v bg-white marginb"ng-repeat="orderIt in ordersIt track by $index"ng-class="{'nomargin':$last}"ng-click="goIt(orderIt)">
             <div class="item item-icon-right padding-h borderb myorder-title">
                 <img src="img/切图/P6-1我的订单/drawable-hdpi/shop.png"class="icon-img fl"style="margin-right: 0.25rem;margin-top:0.1rem;">
@@ -37,6 +31,12 @@
                 </div>
             </div>
         </div>
+    </ion-list>
+<ion-infinite-scroll
+	ng-if="!more"
+	immediate-check="false"
+    on-infinite="loadMoreData()">
+</ion-infinite-scroll>
     </ion-content>
 </ion-content>
 </ion-view>

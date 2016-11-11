@@ -15,7 +15,7 @@
     <div class="item padding noborder nomargin-v">
         <p >收货人: <span class="order-user"ng-bind="address.trueName"></span> <span class="order-phone fr"ng-bind="address.mobPhone"></span></p>
     </div>
-    <div class="item padding noborder item-icon-right nomargin-v item-text-wrap dizhi">
+    <div class="item padding noborder item-icon-right nomargin-v item-text-wrap dizhi ">
         <i class="icon ion-ios-arrow-right"></i>
         <p style="padding-right: 1.5rem;">收货地址: <i ng-bind="address.areaInfo"></i> <i ng-bind="address.address"></i></p>
     </div>
@@ -140,7 +140,7 @@
 		                </div>		         
 		                <div class="quan-r text-center posit">
 		                    <button class="getQuan button-small button"ng-class="{'button-outline dis1':quanq.isGet!='0'}"ng-click="lingqu(quanq.couponId,quanq.isGet=='0')">
-		                        	<span ng-if="quanq.isGet=='0'">领取</span><span ng-if="quanq.isGet!='0'">已领取</span>
+		                        	<span ng-if="quanq.isGet=='0'"ng-click="">领取</span><span ng-if="quanq.isGet!='0'">已领取</span>
 		                    </button>
 		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanq.storeName"></h3>
 		                    <div class="fs-tip c-while">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>

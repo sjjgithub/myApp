@@ -1,0 +1,71 @@
+<ion-view title="商品详情"class="detail">
+<!--header e-->
+<ion-content class="bg-grey shangpin"on-scroll="scrollIt()"has-bouncing="true">	
+	<section class="detail-top positr">		
+	<ion-slide-box show-pager="false" ng-if="good.goodsImageList" on-slide-changed="slideHasChanged($index)"class="slidebox">
+	            <ion-slide ng-repeat="banner in good.goodsImageList">
+	                <img ng-src="{{goods_img+banner}}">				 
+	            </ion-slide>              
+	</ion-slide-box>
+	<!--slide-box ed-->
+	<i class="goods-shoucang  button-icon fs-icon"ng-class="{true: 'ion-android-favorite', false: 'ion-android-favorite-outline'}[good.isCollect==1]"ng-click="collectionIt(good.isCollect)"style="z-index: 10;color: #ff2b26;"></i>
+	</section>
+    <section class="padding bg-white goodIt-info"ng-class="{'new':good.newGood==1}">
+        <h4 class="nomargin"ng-bind="good.goodsName"></h4>
+        <p class="c-red nomargin fs-prim"><span class="prid">¥<i ng-bind="good.price"></i></span>
+        	<span class="good_xianshi"ng-if="good.xianshiGood==1">限时抢购</span>
+        	<i class="icon"style="margin-left: 0.5rem;"><img src="img/切图/public/drawable-hdpi/hot.png"class="icon-img-nav"ng-if="good.hotGood==1"/></i>
+        	<i class="icon ion-android-share-alt"style="margin-left: 0.5rem;color: #000;font-size: 1rem;"></i>
+        </p>
+        <div class="yishou c-tip fs-tip">已售：<i ng-bind="good.saleNum"></i>份</div>
+    </section>
+    <div class="item item-icon-right store bg-white assess-title">
+        <img ng-src="img/切图/P3-2商品详情/drawable-hdpi/homeicon.png"class="fl">
+        <h3 class="padding-v c-while"ng-bind="good.storeName"></h3>
+        <i class="icon ion-ios-arrow-right c-while"></i>
+    </div>
+    <!-- 抵用券-->
+    
+    <section class="assesslist bg-white">
+        <div class="item item-icon-right assess-title bg-white"style="margin-bottom: 1px;">
+            <img src="img/切图/P3-2商品详情/drawable-hdpi/pinglun.png"class="fl">
+            <h3 class="padding-v">用户评论(<span class="rated-h"ng-bind="pinglun.count"></span>)</h3>
+            <i class="icon ion-ios-arrow-right"></i>
+        </div>
+        <div class="assess noborder">
+        <div class="card"ng-if="pinglun.detail[0]">
+            <div class="item item-avatar item-icon-right margin-v noborder">
+                <img ng-src="{{touxiang_img+pinglun.detail[0].memberAvatar}}" />
+                <h2 ng-bind="pinglun.detail[0].memberName"style="font-size: 0.7rem;"></h2>
+                <p ng-bind="pinglun.detail[0].gevaldetailTime"></p>
+                <div class="cardr">
+                    <i class="icon"ng-if="pinglun.detail[0].gevalstatLevel==1"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/great.png" class="icon-img"><span class="fs-prim rated-h">好评</span></i>
+                    <i class="icon"ng-if="pinglun.detail[0].gevalstatLevel==0"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/soso.png" class="icon-img"><span class="fs-prim rated-m">中评</span></i>
+                    <i class="icon"ng-if="pinglun.detail[0].gevalstatLevel==-1"><img ng-src="img/切图/P3-2商品详情/drawable-hdpi/notgood.png" class="icon-img"><span class="fs-prim rated-low">差评</span></i>
+                </div>
+            </div>
+            <div class="margin-v borderb noborder c-tip fs-prim "ng-bind="pinglun.detail[0].content"style="padding-bottom: 0.25rem;"></div>
+        </div>
+        </div>
+        <div class="item item-divider noborder text-center fs-tip bg-white c-tip">
+           	 查看全部评价 >>
+        </div>
+    </section>
+    <section class="sameStore">    	
+        <div class="item item-divider noborder text-center fs-tip bg-white c-tip">
+            继续拖动，查看图文详情 >>
+        </div>        
+    </section>
+  <!--<ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="5%"
+    ng-if="notMore">
+  </ion-infinite-scroll>-->
+</ion-content>
+  <ion-scroll style="height: 100%;top: 100vh;"class="has-header has-tabs bg-white tuwen">
+  	<ion-refresher pulling-text="下拉，返回商品简介"on-refresh="xiala()"pulling-icon="ion-arrow-down-c"></ion-refresher>
+  	<div class="padding fs-13" ng-bind-html="tuwenIt.goodsBody"></div>
+  </ion-scroll>
+    
+<!--ion-content ed-->
+</ion-view>

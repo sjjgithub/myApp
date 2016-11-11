@@ -16,12 +16,14 @@ angular.module('starter.controllers')
 			$scope.path2=$rootScope.path+"elandGoods/selectByGoodsNameAndSaleNum?";
 			$scope.path3=$rootScope.path+"elandGoods/selectByGoodsNameAndPrice?";
 			$scope.path=$scope.path1;
-			
-			$http.get($rootScope.path+"elandStore/getStoreByKeyWord?key="+$scope.keywords)
-			.success(function(data){
-				$scope.stores=data.data;
-				
-			})//获取店铺ed
+			function getStore(){
+				$http.get($rootScope.path+"elandStore/getStoreByKeyWord?key="+$scope.keywords)
+				.success(function(data){
+					console.log(data)
+					$scope.stores=data.data;				
+				})//获取店铺ed
+			}
+			getStore();
 			$scope.ordByIt=function(even,scope){
 				var ordtype=$(even.target).index();
 				
@@ -59,8 +61,20 @@ angular.module('starter.controllers')
 			//获取商品
 				$http.get(path+param)
 						.success(function(data){
+							console.log(data)
 							$scope.goodsList=data.data;
 						})
 			}
 			$scope.getGoods($scope.path,$scope.param);
+			$scope.search=function(){
+				$scope.keywords=$scope.search.text;
+				getStore();
+				$scope.param="key="+$scope.keywords+"&pageSize=10&pageIndex=1"//参数
+				$scope.getGoods($scope.path,$scope.param);
+			}
+			//清空输入框
+//			$scope.can=function(){
+//				console.log(searchIt)
+//				$scope.search.text="";				
+//			}
 		})

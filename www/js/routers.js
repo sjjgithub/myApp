@@ -49,11 +49,12 @@ angular.module('starter')
     abstract: true,
     templateUrl: 'templates/tabs.html',
   })
+   
   // Each tab has its own nav history stack:
 		.state('denglu', {
 				  			url: '/denglu', 
 				  			cache:'false',
-				        templateUrl: 'templates/denglu/dneglu.html'	,
+				        templateUrl: 'templates/denglu/dneglu.html',
 				         controller:"DengluCtrl"
 				  			})
 	.state('resertPass', {
@@ -84,30 +85,32 @@ angular.module('starter')
       }
     }
   })
-  			.state('search', {
-		    templateUrl: 'templates/search/search.html',	    
-			})
-			.state("search.index",{
+//			.state('search', {
+//			cache:'false',
+//		    templateUrl: 'templates/search/search.html',	    
+//			})
+			.state("searchIndex",{
 		    	url:"/search-index",
+		    	cache:'false',
 		        templateUrl: 'templates/search/search-index.html',
 		       	controller: 'SearchCtrl'
 		    })
-			.state("search.result",{
-		    	url:"/search-result",
-		    		params:{"keywords":null},
+			.state("searchResult",{
+		    	url:"/search-result/:keywords",
+//		    		params:{"keywords":null},
 		        templateUrl: 'templates/search/result.html',
 		       	controller: 'ResultCtrl'
 		    })
 			.state("detail",{
-		    	url:"/detail",
-		    		params:{"goodsId":null},
+		    	url:"/detail/:goodsId",
+//		    		params:{"goodsId":null},
 	    			cache:'false', 
 		        templateUrl: 'templates/main/detail.html',
 		       	controller: 'DetailCtrl'
 		    })
 					.state("pingjia",{
-				    	url:"/pingjia",
-				    		params:{"goodsId":null},				    		
+				    	url:"/pingjia/:goodsId",
+//				    		params:{"goodsId":null},				    		
 				        templateUrl: 'templates/main/pingjia.html',
 				       	controller: 'PingjiaCtrl'
 				    })
@@ -115,15 +118,15 @@ angular.module('starter')
 		        templateUrl: 'templates/pinpai/store.html',		      
 		    })
 						.state("store.index",{
-		    	  url:"/store-index",
-		    		params:{"storeId":null},		
+		    	  url:"/store-index/:storeId",
+//		    		params:{"storeId":null},		
 		    		cache:'false', 
 		        templateUrl: 'templates/pinpai/store-index.html',
 		       	controller: 'StoreIndexCtrl'
 		    		})
 						.state("store.goods",{
-		    	  url:"/store-goods",
-		    		params:{"stcId":null,"stcType":null},		
+		    	  url:"/store-goods/:stcId/:stcType",
+//		    		params:{"stcId":null,"stcType":null},		
 		        templateUrl: 'templates/pinpai/store-goods.html',
 		       	controller: 'StoregoodsCtrl'
 		    		})
@@ -139,50 +142,50 @@ angular.module('starter')
 		       	controller: 'InfoCtrl'
 		   })
 			.state("infoDetail",{
-		    	url:"/infoDetail",
-		    		params:{"infotype":null},		    		
+		    	url:"/infoDetail/:infotype",
+//		    		params:{"infotype":null},		    		
 		        templateUrl: 'templates/main/infoDetail.html',
 		       	controller: 'InfoDetailCtrl'
 		   })
 			.state("toutiao",{
-		    	url:"/toutiao",
+		    	url:"/toutiao/:toutiao",
 		    		params:{"toutiao":null},		    		
 		        templateUrl: 'templates/main/toutiao.html',
 		       	controller: 'ToutiaoCtrl'
 		   })
 			.state("toutiaoDetail",{
-		    	url:"/toutiaoDetail",
+		    	url:"/toutiaoDetail/:con/:tit",
 		    		params:{"con":null,"tit":null},		    		
 		        templateUrl: 'templates/main/toutiaoDetail.html',
 		        controller: 'ToutiaoDetailCtrl'
 		   })
 			.state("limitTime",{
-		    	url:"/limitTime",
+		    	url:"/limitTime/:limitId",
 		    		params:{"limitId":null},		    		
 		        templateUrl: 'templates/main/limitTime.html',
 		       	controller: 'LimitTimeCtrl'
 		   })
 			.state("jingpin",{
 		    	url:"/jingpin",
-		    		params:{"goodsId":null},		    		
+		    	    cache:'false', 		
 		        templateUrl: 'templates/main/jingpin.html',
 		       	controller: 'JingpinCtrl'
 		   })
 			.state("xinpin",{
 		    	url:"/xinpin",
-		    		params:{"goodsId":null},		    		
+		       	cache:'false', 	
 		        templateUrl: 'templates/main/xinpin.html',
 		       	controller: 'XinpinCtrl'
 		   })
 			.state("quan",{
-		    	url:"/quan",
+		    	url:"/quan/:goodsId",
 		    		params:{"goodsId":null},		    		
 		        templateUrl: 'templates/main/quan.html',
 		       	controller: 'QuanCtrl'
 		   })
 			.state("rexiao",{
 		    	url:"/rexiao",
-		    		params:{"goodsId":null},		    		
+		    			 cache:'false',    		
 		        templateUrl: 'templates/main/rexiao.html',
 		       	controller: 'RexiaoCtrl'
 		  })			
@@ -195,8 +198,8 @@ angular.module('starter')
       }
     }
  })
-	.state('search.feileig', {
-    		url: '/fenlei-search', 
+	.state('searchfeileig', {
+    		url: '/fenleiSearch/:gcId', 
     		params:{"gcId":null},	
         templateUrl: 'templates/fenlei/feilei-search.html',
         controller: 'FenleiSearchCtrl'
@@ -211,12 +214,13 @@ angular.module('starter')
     }
   })
 		.state('pinpai-feileig', {
-    		url: '/pinpai-feileig', 
+    		url: '/pinpai-feileig/:gcId', 
     		cache:'false', 
     		params:{"gcId":null},	
         templateUrl: 'templates/pinpai/store-pinpai.html',
         controller: 'StorefenleiCtrl'
  })
+		
 		.state('tab.shopCart', {
     url: '/shopCart',
     cache:'false', 
@@ -227,6 +231,11 @@ angular.module('starter')
       }
     }
   })
+	.state('buyCenter', {
+    		url: '/buyCenter', 
+    		cache:'false', 
+        templateUrl: 'templates/main/buyCenter.html'
+ })
 		.state('orderSure', {
     		url: '/orederSure', 
     		cache:'false', 
@@ -371,7 +380,18 @@ angular.module('starter')
 				        templateUrl: 'templates/wode/myhistory.html',
 				        controller:"MyhistoryCtrl"
 				  			})
-
+ 								.state('shareGoodsDetail', {
+				  			url: '/shareGoodsDetail/:goodsId/:memberId', 
+				  			cache:'false',
+				        templateUrl: 'templates/main/ShareGoodsDetail.html',
+				        controller:"ShareGoodsDetailCtrl"
+				  			})
+ 								.state('shareStore', {
+				  			url: '/shareStore/:storeId/:memberId', 
+				  			cache:'false',
+				        templateUrl: 'templates/pinpai/ShareStore.html',
+				        controller:"ShareStoreCtrl"
+				  			})
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/denglu');
 	

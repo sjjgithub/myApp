@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 	if($stateParams.storeId){
          	 locals.set("storeId",$stateParams.storeId);
          }	
-         var memberId=locals.getObject("userData").memberId;
+         var memberId=locals.get("memberId");
          var storeId=locals.get("storeId");
     $scope.itshow=false;
     $scope.storeApi=$rootScope.path+"elandStore/getStoreInfoDetail?memberId="+memberId+"&storeId="+storeId; 

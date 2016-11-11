@@ -1,15 +1,12 @@
 angular.module('starter.controllers')
 .controller('DetailCtrl', function($scope,$parse,$state,$rootScope,$timeout,shcemUtil,$ionicPopover,$stateParams,$http,locals,$ionicScrollDelegate,$ionicModal) {
-		
-	 	if($stateParams.goodsId){
-         	 locals.set("goodIt",$stateParams.goodsId);
-         }	
-         var memberId=locals.getObject("userData").memberId;
-         var goodId=locals.get("goodIt");
+		console.log($stateParams)
+         var memberId=locals.get("memberId");
+         var goodId=$stateParams.goodsId;
          $scope.istuwen=true;
          $scope.tuwenApi=$rootScope.path+"elandGoods/showGoodsBody?goodsId="+goodId;
 		 $scope.footApi=$rootScope.path+"elandFoot/addFootHistory?memberId="+memberId+"&goodsId="+goodId;
-         $scope.goodApi=$rootScope.path+"elandGoods/showGoodsDetail?storeId=7&goodsId="+goodId+"&memberId="+memberId;
+         $scope.goodApi=$rootScope.path+"elandGoods/showGoodsDetail?goodsId="+goodId+"&memberId="+memberId;
          $scope.quansApi=$rootScope.path+"elandCoupon/receiveCouponCenter?goodsId="+goodId+"&memberId="+memberId+"&pageSize=10&pageIndex=1";
          $scope.pingjiaApi=$rootScope.path+"elandEvaluateGoods/getEvaluatePage?gevalstatLevel=&pageIndex=1&pageSize=3&goodsId="+goodId;
          $scope.sameApi=$rootScope.path+"elandGoods/showSimilarGoods?pageIndex=1&pageSize=3&typeId=";  

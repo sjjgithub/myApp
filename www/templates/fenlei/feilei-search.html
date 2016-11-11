@@ -1,5 +1,16 @@
 <ion-view>
-	 <ion-content scroll="false">    
+<div class="bar bar-header item-input-inset bg-black fs-most header store-index">
+    <button class="button button-icon ion-ios-arrow-back c-while"ng-click="goBack()"></button>
+    <label class="item-input-wrapper bg-white  text-center">
+        <a class="icon ion-ios-search placeholder-icon c-black fs-icon fs-b search"ng-click="searchIt()"></a>
+        <input type="search" placeholder="搜索商品或品牌"class="text-center search-shop"ui-sref="searchIndex"ng-model="search">
+        <i class="icon ion-ios-close-outline icon-right c-while fs-b fs-icon"ng-show="false"></i>
+    </label>
+    <button class="button button-icon-right button-clear"ui-sref="info">
+    	<img src="img\切图\P2首页\drawable-hdpi\mess.png"class="icon-img-nav"/>
+    </button>
+</div>
+	 <ion-content scroll="false"style="margin-top: 2.15rem;">    
  		<div class="flex text-center ord-title">
 			<span ng-click="ordByIt(0)"ng-class="{'ordactive':ordtype==0}">默认排序</span>
 			<span ng-click="ordByIt(1)"ng-class="{'ordactive':ordtype==1}">热销</span>
@@ -9,7 +20,9 @@
 					<i  class="icon ion-ios-arrow-down picdown"ng-class="{'c-black':soft&&ordtype==2}"></i>
 				</div>
 			</span>
-			<span ng-click="ordByIt($event)"ng-class="{'ordactive':ordtype==3}"><i class="icon"><img src="img/切图/P商品列表页（购物中心）/drawable-hdpi/shaixuan.png" class="icon-img"/></i> 筛选</span>
+			<span ng-click="showModal()"ng-class="{'ordactive':ordtype==3}">
+				<i class="icon"><img src="img/切图/P3-1商品列表页-筛选/drawable-hdpi/shaixuan.png"class="icon-img"/></i>&nbsp;筛选				
+			</span>
 		</div>
 		<ion-content style="top:2.55rem"class="bg-grey">		
 		<ul class="list-goods flex bg-grey">
@@ -22,6 +35,100 @@
                 <div class="goods-price c-red fs-prim padding-v">¥ {{goods.price}}</div>
              </li>
         </ul>
+        <ion-infinite-scroll 
+	        	ng-if="!domore" 
+	        	on-infinite="doRefresh()" 
+	        	immediate-check="false" >	        	
+	    </ion-infinite-scroll>
 		</ion-content>
+		<span class="allCenter fs-prim"ng-if="ordtype==3&&goodsList.length<1">没有符合的商品</span>
     </ion-content>
+    <span class="toTop icon ion-eye"ui-sref="myhistory"style="bottom:3rem;"></span>
+    <span class="toTop icon ion-android-arrow-up"ng-click="scrollTop()"style="bottom:1rem;"></span>
+<script id="guige.html" type="text/ng-template">  
+<ion-modal-view style="position: relative;margin-top:4.5rem;"> 	
+    <ion-content class="bg-white"style="margin-bottom: 9rem;">
+     <form name="shuaixuan"id="shuaixuan" novalidate
+		  ng-submit="getResult()">
+     	<ul class="list">
+     		<li class="item nopadding borderb">
+     			<div class="item item-divider bg-white noborder">
+     				价格区间（元）
+     			</div>
+     			<div class="row">
+     				<div class="item item-input  col col-40 noborder">
+     					<input type="number"name="low"style="border: 1px solid #ddd;border-radius: 0.25rem;padding-left: 1rem;"/>
+     				</div>
+     				<div class="item col col-20 text-center noborder">
+     					——
+     				</div>
+     				<div class="item item-input  col col-40 noborder">
+     					<input type="number"name="heigh"style="border: 1px solid #ddd;border-radius: 0.25rem;padding-left: 1rem;"/>
+     				</div>
+     			</div>    			
+     		</li>
+     		<li class="item item-icon-right"ng-click="showModal2()">
+     			品牌<span class="fr fs-tip c-tip"ng-bind="pinpaiIt.brandName"></span>
+     			<i class="icon ion-ios-arrow-right"></i>
+     		</li>
+     		<li class="item item-icon-right"ng-click="showModal3()">
+     			分类<span class="fr fs-tip c-tip"ng-bind="feileiIt.gcName"></span>
+     			<i class="icon ion-ios-arrow-right"></i>
+     		</li>
+     		<li class="margin-t biao">
+     			<div class="item item-divider bg-white noborder">
+     				商品标签
+     			</div>
+     			<!--<ion-scroll scrollbar-y="false"scrollbar-x="false"style="height: 100%;">-->
+   <button class="button btn-key btn-ai biaoqian noborder"style="margin: 0.25rem;"ng-click="cheIt($event,key)"ng-repeat="key in keys"ng-bind="key.labelName"></button>    			
+     			<!--</ion-scroll>-->
+     	</ul>
+     </form>
+    </ion-content>
+    <div class="padding row bg-grey"style="position:fixed;bottom:4.5rem;">
+    	 <div class="col col-50">
+	        <button class="button  button-light button-block nopadding"ng-click="resIt()">重置</button>
+	    </div>
+	    <div class="col col-50">
+	        <button class="button  button-block button-dark nopadding"ng-click="sureIt()">确定</button>
+	    </div>
+    </div>
+</ion-modal-view>  
+</script> 
+<script id="paipai.html" type="text/ng-template">  
+<ion-modal-view style="height: 100%;position: relative;"> 	
+    <div class="bar bar-header noborder bar-dark">
+	  <button class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="modal2.hide()"></button>
+    <h3 class="title">全部品牌馆</h3>
+</div>
+<!--header e-->
+<ion-content class="has-header bg-grey">
+   	<div class="pinpaiguan-list-imgwrap"ng-repeat="pinpaiIt in pinpais"ng-click="chePinpai(pinpaiIt)">
+    	<img ng-src="{{pinpai_img+pinpaiIt.brandPic}}"/>
+    </div>    	
+</ion-content>
+</ion-modal-view>  
+</script> 
+</script> 
+<script id="feilei.html" type="text/ng-template">  
+<ion-modal-view style="height: 100%;position: relative;"> 	
+    <div class="bar bar-header noborder bar-dark">
+	  <button class="button button-icon ion-ios-arrow-left padding c-while back-button fs-icon"ng-click="modal3.hide()"></button>
+    <h3 class="title">全部分类</h3>
+</div>
+<!--header e-->
+<ion-content class="has-header" scroll="false">
+    <ion-content class="classify text-center fs-prim">
+	   <ul>
+	       <li ng-class="{'active':openId==$index}"class="esp1 padding-left"ng-repeat="feilei in fenlei1s"ng-bind="feilei.gcName"ng-click="onfenlei($index,feilei.gcId)"></li>
+	   </ul>
+    </ion-content>
+     <ion-content class="classify-con bg-grey"scrollbar-y="false">
+	    <ul class="classify-detail text-center fr fs-prim ">
+	        <li class="fl bg-white"ng-repeat="feilei in fenlei2s"ng-bind="feilei.gcName"ng-click="cheFeilei(feilei)"></li>
+	    </ul>
+    </ion-content>
+</ion-content>
+</ion-modal-view>  
+</script>     
 </ion-view>

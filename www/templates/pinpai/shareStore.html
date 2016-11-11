@@ -1,0 +1,73 @@
+<ion-view title="店铺首页">
+<!--header e-->
+<ion-content class="bg-grey">	
+    <div class="store-top">
+    	<img ng-src="{{store_img+storeIt.storeLable}}" class="store-top_bg"/>
+        <div class="store-index-con c-while">        	
+            <img src="{{store_img+storeIt.storeLogo}}" class="store-img">
+            <div class="store-cen">
+                <h3 class=" c-while fs-puton"ng-bind="storeIt.storeName"></h3>
+                <p class=" fs-showmin"><span ng-bind="storeIt.storeCollect"></span>人收藏</p>
+            </div>
+            <i class="goods-shoucang  button-icon fs-icon"ng-class="{true: 'ion-android-favorite', false: 'ion-android-favorite-outline'}[storeIt.isCollect==1]"ng-click="collectionIt(storeIt.isCollect)"style="z-index: 10;color: #ff2b26;"></i>
+        </div>
+    </div>
+    <div class="flex text-center store-title ord-title">
+        <span class="ordactive">店铺首页</span>
+        <span>全部宝贝</span>
+        <span >新品上架</span>
+        <span >优惠券</span>
+    </div>
+    <section class="store-index-list"style="overflow: hidden;">
+        <div class="store_pinpai"ng-click="goTo(adv1.advEvent,adv1[0].advEventValue)"ng-if="adv1">
+            <img ng-src="{{store_img+adv1.advImg}}" class="img-v">
+        </div>
+        <div class="row row-no-padding borderb bg-white"ng-if="adv2">
+        	<div class="col col-33 text-center"ng-repeat="adv in adv2"ng-click="goTo(adv.advEvent,adv.advEventValue)">
+        		<img ng-src="{{store_img+adv.advImg}}"class="img-h"style="height: 33.3vw;"/>
+        	</div>
+        </div>
+        <div class="clearfix borderb">
+            <div class="goodbig fl"ng-click="goTo(adv3l.advEvent,adv3l.advEventValue)"ng-if="adv3l">
+                <img ng-src="{{store_img+adv3l.advImg}}" class="img-f">
+            </div>
+            <div class="goodssmall fr"ng-if="adv3r">
+                <div class="small1 fl"ng-repeat="adv in adv3r"ng-click="goTo(adv.advEvent,adv.advEventValue)">
+                        <img ng-src="{{store_img+adv.advImg}}"class="img-f">
+                </div>          
+            </div>
+        </div>
+        <div class="store_pinpai"ng-click="goTo(adv4.advEvent,adv4.advEventValue)"ng-if="adv4">
+            <img ng-src="{{store_img+adv4.advImg}}" class="img-v">
+        </div>
+    </section>
+    <!--<section class="dianpufeilei" ng-repeat="sfeilei in storesIt">
+        <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;"ui-sref="quan">
+            <span class="xixian"><span class="cuxian"ng-bind="sfeilei.stcName"></span></span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </div>    
+        <div class="list-goods flex bg-grey "ng-if="sfeilei.elandStoreRecommendGoods">
+            <div class="goods"ng-repeat="goods in sfeilei.elandStoreRecommendGoods"ui-sref="detail({goodsId:goods.goodsId})">
+                <div class="goods-img">
+                    <img ng-src="{{goods_img+goods.goodsImage}}">
+                </div>
+                <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
+                <div class="c-red fs-prim padding-v">¥ {{goods.price}}</div>
+             </div>
+        </div>
+        <!--<div class="item item-divider noborder text-center more">
+            <button class="button button-small button-clear">
+            	<span>查看更多</span>
+                <img src="img/切图/P2首页/drawable-hdpi/more.png"class="more-img">
+            </button>
+        </div>
+    </section> -->
+
+</ion-content>
+<!--ion-content ed-->
+<div class="tabs row-no-padding noborder store-index-footer">
+	    <a href=""class="button button-clear tab-item bg-grey c-black">宝贝分类</a>
+	    <a href=""class="button button-dark tab-item bg-dark3 "ui-sref="aboutStore">店铺介绍</a>
+	    <a href=""class="button button-assertive tab-item bg-red">联系卖家</a>
+</div>
+</ion-view>

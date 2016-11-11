@@ -83,6 +83,7 @@ del{color:@del}
 //button
 .btn-outline{outline: none;border:@boder-dark6;}
 .btn-key{height: 1.25rem;line-height:1.25rem;font-size:0.5rem;border-radius:1.25rem;background-color:#f1f1f1;outline: none;display: inline-block;text-align: center;color:@dark6 ;text-decoration:none}
+.btn-key.active{background-color: #4D4D4D;}
 .btn-small{width: 3.05rem;}
 .btn-mid{width: 4.05rem;}
 .btn-big{width: 6.55rem;}
@@ -99,6 +100,22 @@ button.button.btn-ai{min-height: 1.2rem;height: 1.2rem;font-size: 0.6rem;line-he
   color:#fff;}
 .dis1.button.disabled,.dis1.button[disabled]{opacity: 1;}
 //一些其他样式
+.slide-in-right {
+  -webkit-transform: translateX(100%);
+    transform: translateX(100%); }
+
+.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms; }
+
+.slide-in-right.ng-enter-active, .slide-in-right > .ng-enter-active {
+  -webkit-transform: translateX(0);
+    transform: translateX(0); }
+
+.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms; }
+
 .val-m{vertical-align: middle;}
 .right-cen{position: absolute;left: 0;top: 0;transform: translate(-100%,0);}
 .close{position: absolute;top: 0.65rem;right: 0.65rem;}
@@ -185,6 +202,7 @@ hr{margin: 0;}
     color: @pl;
     text-align: center;
 }
+.pao{position: fixed;right: 0.5rem;top:0.25rem;color: red;background-color: #fff;height: 0.75rem;width: 0.75rem;line-height: 0.75rem;text-align: center;border-radius: 50%;z-index: 100;}
 .toTop{position: fixed;right: 0.75rem;bottom:5.2rem;color: #fff;background-color: #a9aaab;height: 1.375rem;width: 1.35rem;line-height: 1.375rem;text-align: center;border-radius: 50%;}
 .index-footer .tabs{background-color: #fff;}
 ion-tabs.tabs-color-active-dark.index-footer .tab-item{color: inherit;}
@@ -380,7 +398,7 @@ ion-nav-view{background-color:transparent;}
   -webkit-background-size:cover;padding-left: 5px;
   background-size:cover;}
 .store-index .search-shop{border:none}
-.store-index input{color: #666;text-align: left}
+.store-index input{color: #666;text-align: left;}
 .store-index .icon{margin-top:-2px; margin-left: 10px}
 .store-index .icon-img{vertical-align: inherit}
 .store-index.bar{
@@ -436,9 +454,9 @@ ion-nav-view{background-color:transparent;}
 .feilei-feilei-imgwrap{height: 23.33vw;padding: 0;overflow: hidden;text-align: center;line-height:;}
 .feilei-feilei-imgwrap img{height: 100%;width:auto;max-width: 100%;}
 
-.pinpaiguan-list-imgwrap{width:32vw;height:32vw;margin-top: 2vw;float: left;overflow: hidden;text-align: center;}
+.pinpaiguan-list-imgwrap{width:32vw;height:32vw;margin-top: 2vw;float: left;overflow: hidden;text-align: center;line-height:32vw;}
 .pinpaiguan-list-imgwrap:nth-child(3n+2){margin-left: 2vw;margin-right: 2vw;}
-.pinpaiguan-list-imgwrap img{height: 100%;line-height: 100%;}
+.pinpaiguan-list-imgwrap img{height: 100%;width:100%;}
 .pinpaiguan-list .pinpaiguan-list-box{padding-bottom: 1.5rem;}
 .pinpaiguan-list .pinpaiguan-list-box .slider-pager .slider-pager-page{bottom: 10px;color:#000}
 .pinpaitehui h3:before,.pinpaitehui h3:after{content: "";width: 0.75rem;height: 0.15rem;background-color: #000;display: inline-block;margin: 5px;}

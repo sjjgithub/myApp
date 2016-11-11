@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('TuiHistoryCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
 	if($stateParams.tuiType||$stateParams.tuiType==0){locals.set("tuiType",$stateParams.tuiType);}
-	var memberId=locals.getObject("userData").memberId;
+	var memberId=locals.get("memberId");
 	$scope.tuiApi=$rootScope.path+"elandRefundLog/selectRefundLog?memberId="+memberId;
 	$scope.huanApi=$rootScope.path+"elandChange/selectChangeLog?memberId="+memberId;
 	$scope.ordtype=locals.get("tuiType");

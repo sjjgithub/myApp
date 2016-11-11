@@ -1,8 +1,8 @@
 angular.module('starter.controllers')
 .controller('AddressCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals,$ionicActionSheet) {
-	
-	$scope.thisApi=$rootScope.path+"elandAddress/getAddressList?memberId="+locals.getObject("userData").memberId;
-	$scope.defApi=$rootScope.path+"elandAddress/setDefaultAddress?memberId="+locals.getObject("userData").memberId+"&addressId=";
+	var memberId=locals.get("memberId");
+	$scope.thisApi=$rootScope.path+"elandAddress/getAddressList?memberId="+memberId;
+	$scope.defApi=$rootScope.path+"elandAddress/setDefaultAddress?memberId="+lmemberId+"&addressId=";
 	$scope.delApi=$rootScope.path+"elandAddress/deleteAddress?addressId=";
 	function getIts(){
 		$http.get($scope.thisApi)

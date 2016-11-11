@@ -1,8 +1,8 @@
 angular.module('starter.controllers')
 .controller('MyinfoCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals) {	
-
-	$scope.thisApi=$rootScope.path+"elandPersonalCenter/getPersonalCenterInfo?memberId="+locals.getObject("userData").memberId;
-	$scope.infosApi=$rootScope.path+"elandOrder/getAllOrderStateCount?memberId="+locals.getObject("userData").memberId;
+	var memberId=locals.get("memberId")
+	$scope.thisApi=$rootScope.path+"elandPersonalCenter/getPersonalCenterInfo?memberId="+memberId;
+	$scope.infosApi=$rootScope.path+"elandOrder/getAllOrderStateCount?memberId="+memberId;
 	$http.get($scope.thisApi)
 		.success(function(data){
 			console.log(data)

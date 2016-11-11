@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('ShopcartCtrl', function($scope,$parse,$state,$rootScope,$timeout,shcemUtil,$ionicPopover,$stateParams,$http,locals,$ionicScrollDelegate,$ionicActionSheet) {
-       var memberId=locals.getObject("userData").memberId;
+       var memberId=locals.get("memberId");
        $scope.carsApi=$rootScope.path+"elandCart/enterCart?memberId="+memberId;
        $scope.delApi=$rootScope.path+"elandCart/dustBin";
        $scope.numApi=$rootScope.path+"elandCart/plusAndMinus"

@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('AddItCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
 	
-	$scope.thisApi=$rootScope.path+"elandAddress/editOrAddAddress?member_id="+locals.getObject("userData").memberId;
+	$scope.thisApi=$rootScope.path+"elandAddress/editOrAddAddress?member_id="+locals.get("memberId");
 	//三级联动str
 	var vm=$scope.vm={};
 	  vm.CityPickData2 = {

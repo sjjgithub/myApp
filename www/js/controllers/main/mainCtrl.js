@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('MainCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,$ionicSlideBoxDelegate,shcemUtil,$ionicPopover,locals) {
-var memberId=locals.getObject("userData").memberId;
+var memberId=locals.get("memberId");
 $scope.homeApi=$rootScope.path+"elandHome/getHomePage?memberId="+memberId+"&apName=1&count=3";
 $scope.homeListApi=$rootScope.path+"elandHome/getHomeRecommend?memberId="+memberId+"&pageSize=6&pageIndex=1"
 $scope.bannerQuanApi=$rootScope.path+"elandAdv/getAdvPosition?apName=2"; 

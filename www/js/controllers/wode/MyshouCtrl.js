@@ -1,8 +1,8 @@
 angular.module('starter.controllers')
 .controller('MyshouCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	
-	$scope.thisgoodsApi=$rootScope.path+"elandFavorites/getFavoritesGoodsList?memberId="+locals.getObject("userData").memberId;
-	$scope.thisStoreApi=$rootScope.path+"elandFavorites/getFavoritesStoresList?memberId="+locals.getObject("userData").memberId;
+	var =locals.get("memberId")
+	$scope.thisgoodsApi=$rootScope.path+"elandFavorites/getFavoritesGoodsList?memberId="+memberId;
+	$scope.thisStoreApi=$rootScope.path+"elandFavorites/getFavoritesStoresList?memberId="+memberId;
 	$scope.ordtype=0;
 	
 	$scope.getGoods=function(param){

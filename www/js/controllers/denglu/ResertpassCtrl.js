@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('ResertpassCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals) {
-	if(!locals.getObject("userData")){$state.go("denglu");}	
-	$scope.thisApi=$rootScope.path+"elandMember/modifyPswd?memberId="+locals.getObject("userData").memberId;
+	if(locals.get("memberId")){$state.go("denglu");}	
+	$scope.thisApi=$rootScope.path+"elandMember/modifyPswd?memberId="+locals.get("memberId");
 	$scope.timeout="获取验证码";
 	$scope.putIt=function(){
 		if(resert.newpass.value!=resert.newpass2.value&&resert.newpass.value!=""){

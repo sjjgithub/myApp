@@ -11,7 +11,7 @@
     		<img ng-src="{{banner_img+details.advList[0].advSlidePic}}"/>
     	</div>
     	<div class="feilei-goods clearfix"style="border-top: 1px solid #e2e2e2;">
-    		<div class="feilei-goods-imgwrap col col-33 fl"ng-repeat="detail in details.goodsClassList"style="padding: 0.25rem;"ui-sref="search.feileig({gcId:detail.gcId})">   			
+    		<div class="feilei-goods-imgwrap col col-33 fl"ng-repeat="detail in details.goodsClassList"style="padding: 0.25rem;"ui-sref="searchfeileig({gcId:detail.gcId})">   			
     			<img ng-src="{{class_img+detail.classPic}}"/>
     			<p class="fs-tip c-tip esp1"ng-bind="detail.gcName"></p>
     		</div>    		

@@ -48,7 +48,7 @@ angular.module('starter.controllers')
       $scope.youhui=0;
       $scope.yunType=0;
       $scope.fapiaoType=1;
-      var memberId=locals.getObject("userData").memberId;
+      var memberId=locals.get("memberId");
       $scope.addressApi=$rootScope.path+"elandAddress/getAddressList?memberId="+memberId;
       $scope.quansApi=$rootScope.path+"elandCoupon/getAvailableCoupon?memberId="+memberId+"&pageIndex=1&pageSize=10";
       $scope.sureApi=$rootScope.path+"elandOrder/confirmOrder";

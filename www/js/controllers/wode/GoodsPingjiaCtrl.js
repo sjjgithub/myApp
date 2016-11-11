@@ -8,7 +8,7 @@ angular.module('starter.controllers')
 	var orderId=locals.get("pingjiaId");
 	var storeId=locals.get("pingjiaStoreId");
 	console.log(storeId)
-	var memberId=locals.getObject("userData").memberId
+	var memberId=locals.get("memberId")
 	console.log(orderId)
     $scope.thisApi=$rootScope.path+"elandGetIntoEvaluate/getIntoEvaluate?orderId="+orderId;	
     $scope.starApi=$rootScope.path+"elandEvaluateStore/addEvaluateStore?memberId="+memberId+"&orderId="+orderId+"&storeId="+storeId;

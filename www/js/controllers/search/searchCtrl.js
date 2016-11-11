@@ -4,15 +4,14 @@ angular.module('starter.controllers')
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  document.querySelector("input").focus();
+ 
+//document.querySelector("input").focus();
   $scope.getHotKeyApi=$rootScope.path+"elandSetting/getHotSearch";
 	$http.get($scope.getHotKeyApi)
 			.success(function(data){		
 				console.log(data)
 				$scope.keysIt=data.data;
+				
 			})
-			.error(function(){
-					
-				})
+			
 		})
-

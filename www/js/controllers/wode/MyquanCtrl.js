@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('MyquanCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals) {
 
-	$scope.thisApi=$rootScope.path+"elandCoupon/getMyCoupon?memberId="+locals.getObject("userData").memberId;
+	$scope.thisApi=$rootScope.path+"elandCoupon/getMyCoupon?memberId="+locals.get("memberId");
 	
 	$http.get($scope.thisApi)
 		.success(function(data){

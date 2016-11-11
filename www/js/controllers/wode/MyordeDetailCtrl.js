@@ -7,7 +7,7 @@ angular.module('starter.controllers')
 	}
 	var orderId=locals.get("orderId");
 	var orderState=locals.get("orderState");
-	var memberId=locals.getObject("userData").memberId;
+	var memberId=locals.get("memberId");
 	$scope.thisApi=$rootScope.path+"elandOrder/getOrderDetail?memberId="+memberId+"&orderId="+orderId;
 	$scope.cancelApi=$rootScope.path+"elandOrder/cancelOrder?memberId="+memberId+"&orderId="+orderId;
 	$scope.delApi=$rootScope.path+"elandOrder/deleteOrder?memberId="+memberId+"&orderId="+orderId;

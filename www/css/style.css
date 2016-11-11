@@ -206,6 +206,9 @@ del {
   color: #666666;
   text-decoration: none;
 }
+.btn-key.active {
+  background-color: #4D4D4D;
+}
 .btn-small {
   width: 3.05rem;
 }
@@ -239,6 +242,25 @@ button.button.btn-ai {
 .dis1.button.disabled,
 .dis1.button[disabled] {
   opacity: 1;
+}
+.slide-in-right {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.slide-in-right.ng-enter,
+.slide-in-right > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}
+.slide-in-right.ng-enter-active,
+.slide-in-right > .ng-enter-active {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.slide-in-right.ng-leave,
+.slide-in-right > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
 }
 .val-m {
   vertical-align: middle;
@@ -554,6 +576,19 @@ hr {
 .header-inp input::-webkit-input-placeholder {
   color: #535252;
   text-align: center;
+}
+.pao {
+  position: fixed;
+  right: 0.5rem;
+  top: 0.25rem;
+  color: red;
+  background-color: #fff;
+  height: 0.75rem;
+  width: 0.75rem;
+  line-height: 0.75rem;
+  text-align: center;
+  border-radius: 50%;
+  z-index: 100;
 }
 .toTop {
   position: fixed;
@@ -1439,6 +1474,7 @@ ion-nav-view {
   float: left;
   overflow: hidden;
   text-align: center;
+  line-height: 32vw;
 }
 .pinpaiguan-list-imgwrap:nth-child(3n+2) {
   margin-left: 2vw;
@@ -1446,7 +1482,7 @@ ion-nav-view {
 }
 .pinpaiguan-list-imgwrap img {
   height: 100%;
-  line-height: 100%;
+  width: 100%;
 }
 .pinpaiguan-list .pinpaiguan-list-box {
   padding-bottom: 1.5rem;

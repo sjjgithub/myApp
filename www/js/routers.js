@@ -138,7 +138,7 @@ angular.module('starter')
 			.state("info",{
 		    	url:"/info",
 		    		params:{"goodsId":null},		    		
-		        templateUrl: 'templates/main/info.html',
+		        templateUrl: 'templates/main/info\n.html',
 		       	controller: 'InfoCtrl'
 		   })
 			.state("infoDetail",{
@@ -251,9 +251,9 @@ angular.module('starter')
         controller: 'ShouyinCtrl'
  })
   .state('tab.myinfo', {
-    url: '/myinfo',
+    url: '/myinfo',  	
     views: {
-      'tab-myinfo': {
+      'tab-myinfo': {     	
         templateUrl: 'templates/wode/myinfo.html',
         controller: 'MyinfoCtrl'
       }
@@ -261,7 +261,6 @@ angular.module('starter')
   })
 		.state('myorder', {
    		 	url: '/myorder',  
-   		 	cache:'false',
     		params:{"ordType":null},	
         templateUrl: 'templates/wode/myorder.html',
         controller: 'MyorderCtrl'   
@@ -282,8 +281,6 @@ angular.module('starter')
   	})
 		.state('tuiHistory', {
    		 	url: '/tuiHistory',  
-   		 	cache:'false',
-    		params:{"ordType":null},	
         templateUrl: 'templates/wode/tuiHistory.html',
         controller:"TuiHistoryCtrl"
   	})

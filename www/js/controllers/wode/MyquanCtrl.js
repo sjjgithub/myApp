@@ -8,7 +8,5 @@ angular.module('starter.controllers')
 			console.log(data)
 			$scope.quans=data.data;
 		})
-        .error(function(){
-        	
-        })
+        
 })

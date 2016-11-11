@@ -1,10 +1,12 @@
 angular.module('starter.controllers')
 .controller('MyhistoryCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals,$ionicPopup) {
-	var memberId=locals.get("memberId")
-	$scope.thisApi=$rootScope.path+"elandFoot/getFootHistory?pageIndex=1&pageSize=20&memberId="+memberId;
+	var memberId=locals.get("memberId");
+	var pageIndex=1;
+	$scope.more=false;
+	$scope.thisApi=$rootScope.path+"elandFoot/getFootHistory?pageSize=20&memberId="+memberId+"&pageIndex=";
 	$scope.delApi=$rootScope.path+"elandFoot/deleteFootHistory?memberId="+memberId;
 	function getfoot(){
-		$http.get($scope.thisApi)
+		$http.get($scope.thisApi+pageIndex)
 		.success(function(data){
 			console.log(data)
 			$scope.goodsHistory=data.data;
@@ -34,4 +36,24 @@ angular.module('starter.controllers')
                        })
             
     }
+    $scope.loadMoreData=function(){
+				pageIndex++;			
+				$http.get($scope.thisApi+pageIndex)
+				.success(function(data){
+					console.log(data);
+					if(data.data.length>1&&data.status==0){
+						$scope.goodsHistory=$scope.goodsHistory.concat(data.data);
+					}else{
+						$scope.more=true;
+						if(pageIndex>1){
+							shcemUtil.showMsg("没有更多数据了");
+						}
+						
+					}										
+				})
+				.finally(function(){
+					$scope.$broadcast('scroll.infiniteScrollComplete');
+				})
+			
+			}
 })

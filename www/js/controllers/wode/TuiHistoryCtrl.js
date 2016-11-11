@@ -1,14 +1,14 @@
 angular.module('starter.controllers')
 .controller('TuiHistoryCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	if($stateParams.tuiType||$stateParams.tuiType==0){locals.set("tuiType",$stateParams.tuiType);}
+	$scope.tuiType=0;
+	if(locals.get("tuiType")){$scope.tuiType=locals.get("tuiType")}
 	var memberId=locals.get("memberId");
 	$scope.tuiApi=$rootScope.path+"elandRefundLog/selectRefundLog?memberId="+memberId;
 	$scope.huanApi=$rootScope.path+"elandChange/selectChangeLog?memberId="+memberId;
 	$scope.ordtype=locals.get("tuiType");
-	console.log(locals.get("tuiType"))
+
 	$scope.getGoods=function(type){
 			//获取商品
-			console.log(type)
 		var path="";
 		type==0?path=$scope.tuiApi:path=$scope.huanApi;
 		console.log(path)
@@ -68,8 +68,7 @@ angular.module('starter.controllers')
 		$scope.getGoods($scope.ordtype)
 		$scope.ordByIt=function(ind){									
 					$scope.ordtype=ind;
-					locals.set("tuiType",$scope.ordtype);
-					console.log(ind)
+					locals.set("tuiType",ind);
 					$scope.getGoods($scope.ordtype);
 			}//ordByIt ed                    
 })

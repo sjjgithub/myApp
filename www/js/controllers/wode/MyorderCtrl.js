@@ -1,10 +1,11 @@
 angular.module('starter.controllers')
 .controller('MyorderCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals,$ionicScrollDelegate) {
-	console.log($stateParams.ordType)
 	var pageIndex=1;
 	$scope.more=false;
 	$scope.thisApi=$rootScope.path+"elandOrder/getOrderList?memberId="+locals.get("memberId")+"&pageSize=10&orderState=";
+	console.log($stateParams.ordType);
 	if($stateParams.ordType||$stateParams.ordType==0){locals.set("ordType",$stateParams.ordType);}
+	console.log(locals.get("ordType"))
 	$scope.ordtype=locals.get("ordType");
 			function stateBian(arr){
 					for(order in arr){
@@ -61,8 +62,7 @@ angular.module('starter.controllers')
 					$scope.ordtype=ind;
 					pageIndex=1;
 					$scope.more=false;
-					locals.set("ordType",$scope.ordtype);
-					console.log(ind)
+					locals.set("ordType",$scope.ordtype);					
 					$ionicScrollDelegate.scrollTop(false)
 					$scope.getGoods($scope.thisApi,$scope.ordtype+"&pageIndex="+pageIndex);
 			}//ordByIt ed     

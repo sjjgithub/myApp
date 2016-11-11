@@ -15,7 +15,12 @@
                     <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
                     <div class="c-red fs-prim padding-v">¥{{goods.price}}</div>
                 </div>
-        </div>    	
+        </div>   
+    <ion-infinite-scroll
+	ng-if="!more"
+	immediate-check="false"
+    on-infinite="loadMoreData()">
+</ion-infinite-scroll>
     </ion-content>
      <span class="toTop icon ion-android-arrow-up"ng-click="scrollTop()"style="bottom:1rem;"></span>
 </ion-view>

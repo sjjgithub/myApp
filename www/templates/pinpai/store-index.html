@@ -42,7 +42,7 @@
         </div>
     </section>
     <section class="dianpufeilei" ng-repeat="sfeilei in storesIt">
-        <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;"ui-sref="quan">
+        <div class="item item-divider noborder text-center fs-rem c-most item-icon-right"style="padding-left: 2.5rem;">
             <span class="xixian"><span class="cuxian"ng-bind="sfeilei.stcName"></span></span>
             <i class="icon ion-ios-arrow-right"></i>
         </div>    
@@ -51,8 +51,8 @@
                 <div class="goods-img">
                     <img ng-src="{{goods_img+goods.goodsImage}}">
                 </div>
-                <h5 class="goods-title padding-v esp">{{goods.goodsName}}</h5>
-                <div class="c-red fs-prim padding-v">¥ {{goods.price}}</div>
+                <h5 class="goods-title padding-v esp"ng-bind="goods.goodsName"></h5>
+                <div class="c-red fs-prim padding-v">¥ <i ng-bind="goods.price"></i></div>
              </div>
         </div>
         <!--<div class="item item-divider noborder text-center more">

@@ -3,21 +3,21 @@
 	<div class="bar bar-header item-input-inset bg-black fs-most header">
 			<a class="button button-icon ion-ios-arrow-left c-while back-button fs-icon"ng-click="goBack()"></a>
 			<div class="item-input-wrapper bg-transparent header-inp text-center">
-    			<i class="icon ion-ios-search placeholder-icon c-while fs-icon fs-b search"ui-sref="search.result({keywords:search.text})"></i>
-    			<input type="search" name="keywords"placeholder="搜索商品或品牌"class="c-while search-shop"ng-model="search.text">
-    			<i class="icon ion-ios-close-outline icon-right c-while fs-b fs-prim"ng-show="search.text"ng-click="search.text='';"></i>
+    			<i class="icon ion-ios-search placeholder-icon c-while fs-icon fs-b search"ui-sref="search.result({keywords:searchres})"></i>
+    			<input type="search" name="keywords"placeholder="搜索商品或品牌"class="c-while search-shop"ng-model="searchres"set-Focus>
+    			<i class="icon ion-ios-close-outline icon-right c-while fs-b fs-prim"ng-show="searchres"ng-click="$event.stopPropagation();clearSearch()"></i>
   			</div> 			
 			<button class="button-clear c-while">搜索</button>
 	</div>
 	</form>
     <ion-content class="bg-grey has-header">
-    	<ul class="list-store">
-      	<li class="item item-image text-left"ng-repeat="store in stores">
+    	<ul class="list-store ">
+      	<li class="item item-thumbnail-left text-left item-text-wrap bg-grey noborder"ng-repeat="store in stores"ui-sref="store.index({storeId:store.storeId})">
 			<img ng-src="{{store_img+store.storeAuth}}"class="fl"style="margin-right: 0.75rem;"/>
-			<div class="item-right">
-			<h3 class="text-left title" ng-bind="store.storeName"></h3>
-			<p class="text-left"><span>销量{{store.saleNum}}</span>&nbsp;&nbsp;<span>共{{store.classNum}}件宝贝</span></p>
-			<p class="text-left">主营：{{store.storeZy}}</p>
+			<div>
+			<h3 class="text-left title esp1" ng-bind="store.storeName"style="overflow: hidden;white-space: nowrap"></h3>
+			<div class="text-left esp fs-tip c-tip"style="overflow: hidden;">主营：{{store.storeZy}}</div>
+			<div class="text-left fs-tip c-tip"><span>销量{{store.saleNum}}</div>
 			</div>
 		</li>
 		</ul>

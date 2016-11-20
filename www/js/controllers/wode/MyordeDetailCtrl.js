@@ -71,7 +71,7 @@ $scope.changeGoods=function(it){
 	$scope.specId=it.specId;
 	$http.get($scope.changeApi+"&goodsId="+it.goodsId+"&recId="+it.recId+"&specId="+it.specId)
 	.success(function(data){
-		if(!data.status){
+		if(data.status==0){
 			$scope.guigeIt=data.data;
 			$scope.guigeIt.specStatus=it.specStatus;
 			console.log($scope.guigeIt)
@@ -124,7 +124,9 @@ $scope.changeGoods=function(it){
 					}				
 				})
 			}
-		}		
+		}else{
+			shcemUtil.showMsg(data.msg)
+		}
 	})
 }
 })

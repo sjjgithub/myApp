@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('ResultCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http) {
+.controller('ResultCtrl', function($scope,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,$http,locals) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -8,22 +8,28 @@ angular.module('starter.controllers')
 			$scope.goodsList=[];//商品集合
 			$scope.ordtype=0;//排序类别
 			$scope.soft=0;//价格排序默认升序
-			$scope.keywords="";
-//获取店铺
-			if($stateParams.keywords){$scope.keywords=$stateParams.keywords}
-			$scope.param="key="+$scope.keywords+"&pageSize=10&pageIndex=1"//参数
+										//获取店铺
+			$scope.searchres='';
+			if($stateParams.keywords)locals.set("keywords",$stateParams.keywords);
+			$scope.searchres=locals.get("keywords");
+			$scope.param="key="+$scope.searchres+"&pageSize=10&pageIndex=1"//参数
 			$scope.path1=$rootScope.path+"elandGoods/selectByGoodsNameList?";
 			$scope.path2=$rootScope.path+"elandGoods/selectByGoodsNameAndSaleNum?";
 			$scope.path3=$rootScope.path+"elandGoods/selectByGoodsNameAndPrice?";
 			$scope.path=$scope.path1;
 			function getStore(){
-				$http.get($rootScope.path+"elandStore/getStoreByKeyWord?key="+$scope.keywords)
+				$http.get($rootScope.path+"elandStore/getStoreByKeyWord?key="+$scope.searchres)
 				.success(function(data){
 					console.log(data)
 					$scope.stores=data.data;				
 				})//获取店铺ed
 			}
 			getStore();
+			$scope.clearSearch=function(){
+				$scope.searchres='';
+				console.log(searchIt.keywords)			
+				searchIt.keywords.focus();				
+			}
 			$scope.ordByIt=function(even,scope){
 				var ordtype=$(even.target).index();
 				
@@ -67,14 +73,15 @@ angular.module('starter.controllers')
 			}
 			$scope.getGoods($scope.path,$scope.param);
 			$scope.search=function(){
-				$scope.keywords=$scope.search.text;
+//				$scope.keywords=$scope.searchres;
+				locals.set("keywords",$stateParams.searchres)
 				getStore();
-				$scope.param="key="+$scope.keywords+"&pageSize=10&pageIndex=1"//参数
+				$scope.param="key="+$scope.searchres+"&pageSize=10&pageIndex=1"//参数
 				$scope.getGoods($scope.path,$scope.param);
 			}
 			//清空输入框
 //			$scope.can=function(){
 //				console.log(searchIt)
-//				$scope.search.text="";				
+//				$scope.searchres="";				
 //			}
 		})

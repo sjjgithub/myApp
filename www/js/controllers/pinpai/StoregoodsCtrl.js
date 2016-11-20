@@ -12,8 +12,8 @@ angular.module('starter.controllers')
          var stcType=locals.get("stcType")|0;;
          console.log(stcType)
      var PageIndex=1;
-     $scope.domore=false;$scope.thisApi=$rootScope.path+"elandGoods/selectStoreGoodsByOrder?pageIndex="+PageIndex+"&pageSize=20&storeId="+storeId+"&stcId="+stcId;
-     $scope.xinpinApi=$rootScope.path+"elandGoods/selectStoreGoodsByOrder?newGoods=1&pageIndex=1&pageSize=20&storeId="+storeId+"&stcId="+stcId;
+     $scope.domore=false;$scope.thisApi=$rootScope.path+"elandGoods/selectStoreGoodsByOrder?pageIndex="+PageIndex+"&pageSize=20&storeId="+storeId+"&stcId="+stcId+"&memberId"+locals.get("memberId");
+     $scope.xinpinApi=$rootScope.path+"elandGoods/selectStoreGoodsByOrder?newGoods=1&pageIndex=1&pageSize=20&storeId="+storeId+"&stcId="+stcId+"&memberId"+locals.get("memberId");
      	$scope.ordtype=stcType;//排序类别
 	    $scope.soft=0;//价格排序默认升序
 	    $scope.params="";

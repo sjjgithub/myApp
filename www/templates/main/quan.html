@@ -9,14 +9,14 @@
 <!--header e-->
     <ion-content class="has-header c-most"scroll="false">
     <section>
-     <ion-slide-box show-pager="true" class="lunbo quanbans" auto-play="true" slide-interval="3000" >
+     <ion-slide-box class="quanbans"show-pager="true"auto-play="true"does-continue="true"slide-interval="4000">
             <ion-slide ng-repeat="banner in banners">
-                 <img ng-src="{{banner_img+banner.advSlidePic}}">
-            </ion-slide>          
+                <img ng-src="{{banner_img+banner.advSlidePic}}">
+            </ion-slide>
     </ion-slide-box>	
     </section>
     <ion-scroll direction="y"scrollbar-y="false"zooming="true"style="height: 100%;">
-    <section class="quanlist clearfix"style="height: 100%;">
+    <section class="quanlist clearfix"style="margin-bottom: 5rem;">
        <div class="quanwrap"ng-repeat="quanq in quans">
         			<div class="quan clearfix"ng-class="{'quan2':quanq.isGet}">
 		                <div class="quan-l text-center fl">

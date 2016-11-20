@@ -5,10 +5,10 @@
 			
 			<div class="item-input-wrapper bg-transparent header-inp text-center">
     			<i class="icon ion-ios-search placeholder-icon c-while fs-icon fs-b search"ui-sref="search.result({keywords:search.text})"></i>
-    			<input type="search" placeholder="搜索商品或品牌"class="c-while search-shop"ng-model="search.text"autofocus="autofocus">
+    			<input type="search" placeholder="搜索商品或品牌"class="c-while search-shop"ng-model="search.text"set-Focus>
     			<i class="icon ion-ios-close-outline icon-right c-while fs-b fs-prim"ng-show="search.text"ng-click="search.text='';"></i>
   			</div> 			
-			<button class="button-clear c-while"ui-sref="searchResult({keywords:search.text})">搜索</button>			
+			<button class="button-clear c-while"ui-sref="searchResult({keywords:search.text?search.text:''})">搜索</button>			
 	</div>
 	</form>
     <ion-content class="bg-grey has-header">

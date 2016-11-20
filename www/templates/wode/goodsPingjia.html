@@ -1,26 +1,26 @@
 <ion-view title="商品评价"> 
 	<div class="bar bar-header noborder bar-dark ">
-        <a class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></a>
+        <button class="button button-icon ion-ios-arrow-left padding c-while back-button "ng-click="goBack()"></button>
         <h3 class="title">商品评价</h3>
     </div>
     <ion-content class="has-header bg-grey">
     	<section>
     		<div class="item borderb nomargin">对商品的评价</div>
-    		<div class="item item-image order-goods borderb nomargin item-text-wrap padding-v"ng-repeat="order in orders">
-	        	<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">
+    		<div class="item item-thumbnail-left order-goods borderb nomargin item-text-wrap "ng-repeat="order in orders">
+	        	
 	        		<img ng-src="{{goods_img+order.goodsImage}}"class="img-a">
-	        	</div>           
+	        	        
 	            <div class="order-goods-info">
 		            <h3 class="text-left goods-name esp"ng-bind="order.goodsName"></h3>
-		            <p class="c-tip text-left"style="overflow: hidden;white-space: nowrap;height: 1rem;"><span class="order-goods-color fs-prim"ng-bind="order.specInfo"></span><span class="order-goods-size fs-prim"></span></p>
-		            <button class="button button-dark btn-ai fr"ng-click="show($event,order)"ng-bind="order.isEvaluate==0?'去评价':'已评价'"ng-disabled="order.isEvaluate!=0"></button>
+		            <p class="c-tip text-left esp1"style="height: 1rem;"><span class="order-goods-color fs-prim"ng-bind="order.specInfo"></span><span class="order-goods-size fs-prim"></span></p>
+		            <button class="button button-dark btn-ai fr dis1"ng-click="show($event,order)"ng-bind="order.isEvaluate==0?'去评价':'已评价'"ng-disabled="order.isEvaluate!=0"></button>
 	            </div>
         	</div>
     	</section>
     	<section>
     		<div class="item borderb">对店铺的评价</div>
-    		<ul class="list">
-    			<li class="item noborder"style="padding-top: 0;"><span>商品质量</span>
+    		<ul class="list margin-t">
+    			<li class="item noborder"><span>商品质量</span>
     				<span class="fr">
     					<i class="cion  c-red fs-icon"ng-class="{true:'ion-android-star-outline',false:'ion-android-star'}[type1ind<1]"ng-click="strIt(1,1)"></i>
     					<i class="cion  c-red fs-icon"ng-class="{true:'ion-android-star-outline',false:'ion-android-star'}[type1ind<2]"ng-click="strIt(1,2)"></i>

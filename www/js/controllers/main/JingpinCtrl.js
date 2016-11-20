@@ -5,11 +5,10 @@ angular.module('starter.controllers')
         $scope.carApi=$rootScope.path+"elandCart/cartNum?memberId="+locals.get("memberId");
 	$http.get($scope.carApi)
 	.success(function(data){
-		console.log(data);
-		$scope.cars=1+"..";
+		console.log(data);		
 		if(data.status==0)$scope.cars=data.data;
 		if($scope.cars>99){
-			
+			$scope.cars=data.data.substring(0,1)+"..";
 		}
 	})
         $scope.ordtype=0;//排序类别

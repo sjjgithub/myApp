@@ -24,16 +24,16 @@
                 <li class="padding-hs" style="margin-bottom: 0.5rem;"><span>商品数量：</span><span ng-bind="orderIt.num+'个'"></span></span></li>
             </ul>
         </div>       
-        <section class="order-goods-list padding-v bg-white">
+        <section class="order-goods-list  bg-white">
     	<!--<div class="padding-h borderb">-->
     	<div ng-repeat="order in orderIt.listGoods">
-        <div class="item item-image order-goods borderb nomargin item-text-wrap"ui-sref="detail({goodsId:order.goodsId})">
-        	<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">
+        <div class="item item-thumbnail-left order-goods borderb nomargin item-text-wrap"ui-sref="detail({goodsId:order.goodsId})">
+        	
         		<img ng-src="{{goods_img+order.goodsImage}}"class="img-a">
-        	</div>           
+        	         
             <div class="order-goods-info">
 	            <h3 class="text-left goods-name esp"ng-bind="order.goodsName"></h3>
-	            <p class="c-tip text-left"style="overflow: hidden;white-space: nowrap;"><span class="order-goods-color fs-prim"ng-bind="order.specInfo"></span><span class="order-goods-size fs-prim"></span></p>
+	            <p class="c-tip text-left esp1"><span class="order-goods-color fs-prim"ng-bind="order.specInfo"></span><span class="order-goods-size fs-prim"></span></p>
 	            <p class="text-left"><span class="order-goods-price c-red fs-prim">¥<i ng-bind="order.goodsPrice"></i></span><span class="order-goods-num fr fs-prim">X<i ng-bind="order.goodsNum"></i></span></p>
             </div>
         </div>

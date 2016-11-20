@@ -22,6 +22,11 @@
         <div class="store_pinpai"ng-click="goTo(adv1.advEvent,adv1[0].advEventValue)"ng-if="adv1">
             <img ng-src="{{store_img+adv1.advImg}}" class="img-v">
         </div>
+         <div class="row row-no-padding borderb bg-white noborder"ng-if="adv12"style="overflow: hidden;">
+        	<div class="col text-center"ng-repeat="adv in adv12"ng-click="goTo(adv.advEvent,adv.advEventValue)"style="padding: 0 1vw;">
+        		<img ng-src="{{store_img+adv.advImg}}"class="img-v"/>
+        	</div>
+        </div>
         <div class="row row-no-padding borderb bg-white"ng-if="adv2">
         	<div class="col col-33 text-center"ng-repeat="adv in adv2"ng-click="goTo(adv.advEvent,adv.advEventValue)">
         		<img ng-src="{{store_img+adv.advImg}}"class="img-h"style="height: 33.3vw;"/>

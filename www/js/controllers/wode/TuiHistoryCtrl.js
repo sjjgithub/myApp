@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 .controller('TuiHistoryCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,$stateParams,locals) {
-	$scope.tuiType=0;
+	if($stateParams.tuiType==0){locals.set("tuiType",$stateParams.tuiType)}
 	if(locals.get("tuiType")){$scope.tuiType=locals.get("tuiType")}
 	var memberId=locals.get("memberId");
 	$scope.tuiApi=$rootScope.path+"elandRefundLog/selectRefundLog?memberId="+memberId;

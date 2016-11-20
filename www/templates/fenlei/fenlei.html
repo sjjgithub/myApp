@@ -21,7 +21,7 @@
     			<p class="fs-prim borderb2 nomargin"style="width: 100%;padding: 0.5rem 0;">分类品牌</p>
     		</div>  
     		<div class="flex">
-    			<div class="feilei-feilei-imgwrap col col-33"ng-repeat="brand in details.brandList"ui-sref="store.index({storeId:brand.storeId})">
+    			<div class="feilei-feilei-imgwrap col col-33 border"ng-repeat="brand in details.brandList"ui-sref="store.index({storeId:brand.storeId})">
     			<img ng-src="{{pinpai_img+brand.brandPic}}"/>
     			</div>
     		</div>   		

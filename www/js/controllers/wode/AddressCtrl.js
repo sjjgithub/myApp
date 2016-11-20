@@ -2,7 +2,7 @@ angular.module('starter.controllers')
 .controller('AddressCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,shcemUtil,$ionicPopover,locals,$ionicActionSheet) {
 	var memberId=locals.get("memberId");
 	$scope.thisApi=$rootScope.path+"elandAddress/getAddressList?memberId="+memberId;
-	$scope.defApi=$rootScope.path+"elandAddress/setDefaultAddress?memberId="+lmemberId+"&addressId=";
+	$scope.defApi=$rootScope.path+"elandAddress/setDefaultAddress?memberId="+memberId+"&addressId=";
 	$scope.delApi=$rootScope.path+"elandAddress/deleteAddress?addressId=";
 	function getIts(){
 		$http.get($scope.thisApi)

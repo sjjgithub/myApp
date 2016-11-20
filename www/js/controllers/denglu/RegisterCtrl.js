@@ -5,7 +5,8 @@ angular.module('starter.controllers')
 	$scope.timeout="获取验证码";
 				$scope.getCode=function(event){
 					$scope.isSend=true;
-					$http.get($scope.codeApi+register.phone.value)
+					if(register.phone.value){
+						$http.get($scope.codeApi+register.phone.value)
 							.success(function(data){
 								if(data.status){
 									shcemUtil.showMsg(data.msg,2000);
@@ -28,7 +29,11 @@ angular.module('starter.controllers')
 									},1000,100)
 								}
 	
-							})				
+							})	
+					}else{
+						shcemUtil.showMsg('手机号码不能为空');
+					}
+								
 				}//getCode
 
 		$scope.putIt=function(){

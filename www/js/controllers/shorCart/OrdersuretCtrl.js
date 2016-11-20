@@ -8,6 +8,7 @@ angular.module('starter.controllers')
       $scope.orders=[];
       $scope.price=0;
       $scope.order={};
+      $scope.quans=[];
       var data=locals.getObject("Orders");
       if($scope.buType){    	      	
       	$scope.storeName=data.goodsId;
@@ -50,7 +51,7 @@ angular.module('starter.controllers')
       $scope.fapiaoType=1;
       var memberId=locals.get("memberId");
       $scope.addressApi=$rootScope.path+"elandAddress/getAddressList?memberId="+memberId;
-      $scope.quansApi=$rootScope.path+"elandCoupon/getAvailableCoupon?memberId="+memberId+"&pageIndex=1&pageSize=10";
+      $scope.lingquApi=$rootScope.path+"elandCoupon/receiveCoupon?memberId="+memberId+"&couponId=";$scope.quansApi=$rootScope.path+"elandCoupon/getAvailableCoupon?memberId="+memberId+"&pageIndex=1&pageSize=10";
       $scope.sureApi=$rootScope.path+"elandOrder/confirmOrder";
       $http.get($scope.addressApi)
       .success(function(data){  
@@ -64,14 +65,18 @@ angular.module('starter.controllers')
       		}
       	}else{$scope.address=null;}
       })
-      $http.get($scope.quansApi+"&price="+$scope.price+"&storeId="+$scope.storeId)
-      .success(function(data){
-      	console.log(data);
-      	if(!data.status){
-      		$scope.quans=data.data.length?data.data:null;
-      		$scope.quaninfo=$scope.quans?"使用优惠券":null;
-      	}     	
-      })
+      function getone(){
+				 $http.get($scope.quansApi+"&price="+$scope.price+"&storeId="+$scope.storeId)
+	      .success(function(data){
+	      	console.log(data);
+	      	if(data.status==0){
+	      		$scope.quans=data.data;
+	      		console.log($scope.quans)
+	      		$scope.quaninfo=$scope.quans?"使用优惠券":null;
+	      	}     	
+	      })
+			};
+      getone();
       $scope.userQuan=function(quan){
       	$scope.quanUse=quan;
       		 $scope.quaninfo="优惠券 "+quan.couponPrice+"元";
@@ -127,6 +132,22 @@ if($scope.liuyan.length>=45){
 	$scope.liuyan=$scope.liuyan.substring(0,46);
 }
 }
+
+     $scope.lingqu=function(quanId,isGet){
+        	if(isGet){
+        		$http.get($scope.lingquApi+quanId)
+	        	.success(function(data){
+	        		console.log(data);
+	        		shcemUtil.showMsg(data.msg,2000)
+	        		if(data.status==0){
+	        			getone();
+	        		}
+	        	})
+        	}else{
+        		shcemUtil.showMsg("该优惠券您已领过啦！",2000)
+        	}
+        	
+        }
 $scope.payIt=function(){	
 	$scope.order.buyerId=memberId;
 	$scope.order.address=$scope.address.address;

@@ -2,8 +2,7 @@ angular.module('starter.controllers')
 .controller('FenleiSearchCtrl', function($scope,$http,$state,$timeout,$parse,$rootScope,locals,$stateParams,$ionicScrollDelegate,shcemUtil,$ionicModal) {
 	if($stateParams.gcId){
          	 locals.set("gcId",$stateParams.gcId);
-         }	
-         var memberId=locals.get("memberId");
+        }	
          var gcId=locals.get("gcId");
          console.log(gcId)
          var PageIndex=1;	

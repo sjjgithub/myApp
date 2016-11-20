@@ -7,7 +7,7 @@
 
 <!--header e-->
 <ion-content class=" has-header c-most bg-grey fs-prim c-dark6"ng-controller="OrdersureCtrl">
-    <section class="order-user-info borderb-dark bg-white positr">
+    <section class=" borderb-dark bg-white positr">
     	<span class="posita allCenter"ui-sref="addIt"ng-if="!address">
     		<i class="icon ion-plus-round c-red"style="vertical-align: middle;"></i><span>添加新地址</span>
     	</span>   	
@@ -21,15 +21,15 @@
     </div>
     </div>
     </section>
-    <section class="order-goods-list padding-v bg-white borderb-dark">
+    <section class="order-goods-list bg-white borderb-dark">
     	<!--<div class="padding-h borderb">-->
-        <div class="item item-image order-goods borderb nomargin item-text-wrap"ng-repeat="order in orders">
-        	<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">
+        <div class="item item-thumbnail-left order-goods borderb nomargin item-text-wrap"ng-repeat="order in orders">
+        	<!--<div class="img-wrap fl ord padding-h text-center"style="margin-right: 0.5rem;line-height: 3.5rem;">-->
         		<img ng-src="{{goods_img+order.goodsImage}}"class="img-a">
-        	</div>           
+        	<!--</div>  -->         
             <div class="order-goods-info">
             <h3 class="text-left goods-name esp"ng-bind="order.goodsName"></h3>
-            <p class="c-tip text-left"style="overflow: hidden;white-space: nowrap;"><span class="order-goods-color fs-prim"ng-bind="order.goodsSpecInfo"></span><span class="order-goods-size fs-prim"></span></p>
+            <p class="c-tip text-left esp1"><span class="order-goods-color fs-prim"ng-bind="order.goodsSpecInfo"></span><span class="order-goods-size fs-prim"></span></p>
             <p class="text-left"><span class="order-goods-price c-red fs-prim">¥<i ng-bind="order.goodsprice"></i></span><span class="order-goods-num fr fs-prim">X<i ng-bind="order.goodsNum"></i></span></p>
             </div>
         </div>
@@ -67,12 +67,12 @@
     <section class="fapiao  bg-white borderb-dark ">
         <div class="item item-icon-right fs-prim noborder nomargin-v item-divider bg-white"ng-click="popover.show($event)">
            发票: <span class="fr c-tip"ng-if="fapiaoType==2">单位</span>
-            <i class="icon  ion-ios-arrow-right "></i>
+            <i class="icon  ion-ios-arrow-right"></i>
         </div>
     </section>
     <section class="youhuiquan  bg-white borderb-dark ">
         <div class="item item-icon-right fs-prim noborder nomargin-v item-divider bg-white">
-            优惠券: <span class="fr c-tip"ng-if="quans"ng-click="modal.show()"ng-bind="quaninfo"></span>
+            优惠券: <span class="fr c-tip"ng-if="quans"ng-click="modal.show()"ng-if="quans"ng-bind="quaninfo"></span>
               <span class="fr c-tip"ng-if="!quans">无可用券</span>
             <i class="icon  ion-ios-arrow-right"></i>
         </div>
@@ -140,7 +140,7 @@
 		                </div>		         
 		                <div class="quan-r text-center posit">
 		                    <button class="getQuan button-small button"ng-class="{'button-outline dis1':quanq.isGet!='0'}"ng-click="lingqu(quanq.couponId,quanq.isGet=='0')">
-		                        	<span ng-if="quanq.isGet=='0'"ng-click="">领取</span><span ng-if="quanq.isGet!='0'">已领取</span>
+		                        	<span ng-if="quanq.isGet=='0'">领取</span><span ng-if="quanq.isGet!='0'">已领取</span>
 		                    </button>
 		                    <h3 class="c-while quanStore fs-most moreit"ng-bind="quanq.storeName"></h3>
 		                    <div class="fs-tip c-while">{{quanq.couponStartDate}}-{{quanq.couponEndDate}}</div>

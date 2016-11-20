@@ -54,8 +54,8 @@ angular.module('starter.controllers')
 			stateBian($scope.ordersIt)		
 		})
 	}
-	$scope.goIt=function(orderIt){
-		$state.go("myorderDetail",{'orderId':orderIt.orderId,'orderState':orderIt.orderState})
+	$scope.goIt=function(orderIt,type){
+		type?$state.go("myorderDetail",{'orderId':orderIt.orderId,'orderState':orderIt.orderState}):$state.go("goodsPingjia",{'pingjiaId':orderIt.orderId,'pingjiaStoreId':orderIt.storeId});		
 	}
        	$scope.getGoods($scope.thisApi,$scope.ordtype+"&pageIndex="+pageIndex)
 		$scope.ordByIt=function(ind){									

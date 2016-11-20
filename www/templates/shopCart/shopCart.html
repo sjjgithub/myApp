@@ -22,7 +22,7 @@
            	<div class="img-wrap fl ordcart text-center">
            		<img ng-src="{{goods_img+goods.goodsImage}}"class="img-a"/>
            	</div>
-           	<h3 style="margin-top: 0.75rem;"class="goods-name esp"ng-bind="goods.goodsName"></h3>
+           	<h3 style="margin-top: 0.75rem;overflow: hidden;"class="goods-name esp"ng-bind="goods.goodsName"></h3>
            	<p class="esp1"style="overflow: hidden;white-space: nowrap;"><span ng-bind="goods.specInfo"></span></p>
            	<div>
            	<span class="c-red">¥<i ng-bind="goods.specGoodsPrice"></i></span>
@@ -47,7 +47,7 @@
            		<span class="posita allCenter c-while fs-prim">已下架</span>
            	</div>
            	<div style="margin-top: 1.5rem;">
-           		<h3 class="goods-name esp"ng-bind="goods.goodsName"></h3>
+           		<h3 class="goods-name esp"ng-bind="goods.goodsName"style="overflow: hidden;"></h3>
            		<p class="esp1"style="overflow: hidden;white-space: nowrap;"><span ng-bind="goods.specInfo"></span></p>
            	</div>
            	

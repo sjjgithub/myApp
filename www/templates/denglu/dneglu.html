@@ -1,10 +1,13 @@
+
 <ion-view title="登录">
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
 	<div class="bgIt"style="height: 100%;">
 	<div class="bar bar-header bar-stable bar-denglu">
        
     </div>
 <!--header e-->
     <ion-content class="has-header"controller="DengluCtrl">
+    
         <div class="list dl_list padding"style="padding: 1rem 2rem;">
         	<form name="login_form"id="login" novalidate="novalidate" ng-submit="login()">
             <div class="item item-input dl">
@@ -19,7 +22,10 @@
             <p class="pBot clearfix"><button class="button button-royal1 fl"ng-submit="login()">登录</button> <button class="button button-royal2 fr"ui-sref="register">注册</button></p>
             <p class="pTrh text-center">第三方登录</p>
           	<div class="row">
-          		<div class="col col-33 san"><img src="img/切图/P7登录/drawable-hdpi/icon1.png" ></div>
+          		<div class="col col-33 san"ng-click="qqLogin()">
+          			<img src="img/切图/P7登录/drawable-hdpi/icon1.png" >
+          			<!--<span id="qqLoginBtn"></span>-->
+          		</div>
                 <div class="col col-33 san text-center"><img src="img/切图/P7登录/drawable-hdpi/icon2.png" ></div>
                 <div class="col col-33 san text-right"><img src="img/切图/P7登录/drawable-hdpi/icon3.png" ></div>
           	</div>          

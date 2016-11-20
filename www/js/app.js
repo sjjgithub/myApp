@@ -14,13 +14,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 .constant('ApiEndpoint', {
   url: 'http://10.9.174.35:8090/eland/api/'
 })
-.run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state,$location) {
+.run(function($ionicPlatform,$rootScope,$ionicHistory,$ionicViewSwitcher,$ionicSlideBoxDelegate,$ionicLoading,$ionicScrollDelegate,locals,$state,$location,$window) {
   $ionicPlatform.ready(function() {
 //  Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 //     for form inputs)
-//	var Ip="http://192.168.3.45";
+	var Ip="http://192.168.3.45";
 // 	var Ip="http://127.0.0.1";
-   	var Ip="http://172.16.0.19";
+// 	var Ip="http://172.16.0.19";
 // 	var Ip="http://10.9.174.35";
     $rootScope.path =Ip+":8090/eland/api/";
     $rootScope.store_img=Ip+"/eland/upload/store/"
@@ -28,7 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 		$rootScope.banner_img=Ip+"/eland/upload/adv/";
 		$rootScope.pinpai_img=Ip+"/eland/upload/brand/";
 		$rootScope.xianshi_img=Ip+"/eland/upload/xianshi/";
-		$rootScope.touxiang_img=Ip+"/img/";
+		$rootScope.touxiang_img=Ip+":8090/img/";
 		$rootScope.bendi_img=Ip+"/img/sellerShowPics/";
 		$rootScope.tuihuo_img=Ip+"/img/sellerShowPics/";
 		$rootScope.class_img=Ip+"/eland/upload/goodsclass/"
@@ -36,9 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
     $rootScope.win_H=window.innerHeight;
     $rootScope.hideTop=false;
 //  $rootScope.isTo=false;
-		// 应用公钥    
-		$rootScope.appkey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7vi69qLbyye38GtDCoOKZNYtqYP8OY9AoSOKwEBz9Vsyl1FPYAiKC4i7H3Dmh3+tNeWjhe3zYk6oOhcPepo81NMgSGTihZAaBW5U6wMmIyyU5RFKhNdQUOf8+EmpypoaH7bwz92iLAASivBOpjXi/1qEbqvpn+n5zs0TQAZeUJQIDAQAB";
-		$rootScope.mayikey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB";
+	
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);    
@@ -62,6 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
   })
   //页面刷新
   //后退
+
 	  $rootScope.goTo=function(type,id){
 	  	console.log(id)
 	  	switch (type){
@@ -87,15 +86,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 		 $rootScope.showIt=function(){
 		 	$rootScope.itshow=!$rootScope.itshow;	 	
 		 }
-    $rootScope.goBack = function (ind) {  
-      if($ionicHistory.viewHistory().backView){
-      	if(ind<0){
-      			$ionicHistory.goBack(ind);
-      	}else{$ionicHistory.goBack()}     
-     		
-      }
-    }
+    $rootScope.goBack = function (ind){  
+//    if($ionicHistory.viewHistory().backView){
+//    	if(ind<0){
+//    			$ionicHistory.goBack(ind);
+//    	}else{$ionicHistory.goBack()}     
+//   		
+//    }
+//			$rootScope.$ionicGoBack();
+		if(ind<0){
+      			$window.history.back(ind);
+      	}else{$window.history.back()}   
 		
+			$ionicViewSwitcher.nextDirection("back");
+    }	
   });
   //返回顶部
    $rootScope.scrollTop=function () {
@@ -107,7 +111,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
         function(event, toState, toParams, fromState, fromParamss){
           $rootScope.isLogin=locals.get("memberId");
           var tabsHide=["tab.myinfo","tab.pinpai","tab.shopCart"];
-         
+//        var notLog=["shareStore","shareGoodsDetail"];
 					if($rootScope.isLogin){	
 							if(toState.name=="denglu"){
 								$state.go("tab.main");

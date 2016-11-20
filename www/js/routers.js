@@ -96,8 +96,8 @@ angular.module('starter')
 		       	controller: 'SearchCtrl'
 		    })
 			.state("searchResult",{
-		    	url:"/search-result/:keywords",
-//		    		params:{"keywords":null},
+		    	url:"/search-result",
+		    		params:{"keywords":null},
 		        templateUrl: 'templates/search/result.html',
 		       	controller: 'ResultCtrl'
 		    })
@@ -125,8 +125,8 @@ angular.module('starter')
 		       	controller: 'StoreIndexCtrl'
 		    		})
 						.state("store.goods",{
-		    	  url:"/store-goods/:stcId/:stcType",
-//		    		params:{"stcId":null,"stcType":null},		
+		    	  url:"/store-goods",
+		    		params:{"stcId":null,"stcType":null},		
 		        templateUrl: 'templates/pinpai/store-goods.html',
 		       	controller: 'StoregoodsCtrl'
 		    		})
@@ -154,7 +154,7 @@ angular.module('starter')
 		       	controller: 'ToutiaoCtrl'
 		   })
 			.state("toutiaoDetail",{
-		    	url:"/toutiaoDetail/:con/:tit",
+		    	url:"/toutiaoDetail",
 		    		params:{"con":null,"tit":null},		    		
 		        templateUrl: 'templates/main/toutiaoDetail.html',
 		        controller: 'ToutiaoDetailCtrl'
@@ -179,6 +179,7 @@ angular.module('starter')
 		   })
 			.state("quan",{
 		    	url:"/quan/:goodsId",
+		    	cache:'false',
 		    		params:{"goodsId":null},		    		
 		        templateUrl: 'templates/main/quan.html',
 		       	controller: 'QuanCtrl'
@@ -280,7 +281,9 @@ angular.module('starter')
         controller:"TuikuanCtrl"
   	})
 		.state('tuiHistory', {
-   		 	url: '/tuiHistory',  
+   		 	url: '/tuiHistory', 
+   		 	cache:'\nfalae',
+   		 	params:{"tuiType":null},
         templateUrl: 'templates/wode/tuiHistory.html',
         controller:"TuiHistoryCtrl"
   	})

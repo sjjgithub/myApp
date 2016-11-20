@@ -29,7 +29,8 @@ angular.module('starter.controllers')
 					case 1:
 						arr.push(obj[k].advDetail[0]);
 						break;
-					case 2:				
+					case 2:		
+						$scope.adv12=obj[k].advDetail;
 						break;
 					case 3:
 						$scope.adv2=obj[k].advDetail;
